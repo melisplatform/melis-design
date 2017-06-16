@@ -1,0 +1,169 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">Form Validator</h1>
+        <div class="innerAll spacing-x2">
+
+            <!-- Form -->
+            <form class="form-horizontal margin-none" id="validateSubmitForm" method="get" autocomplete="off">
+
+                <!-- Widget -->
+                <div class="widget widget-inverse">
+
+                    <!-- Widget heading -->
+                    <div class="widget-head">
+                        <h4 class="heading">Validate a form with jQuery</h4>
+                    </div>
+                    <!-- // Widget heading END -->
+
+                    <div class="widget-body">
+
+                        <!-- Row -->
+                        <div class="row">
+
+                            <!-- Column -->
+                            <div class="col-md-4">
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="firstname">First name</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="firstname" name="firstname" type="text" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="lastname">Last name</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="lastname" name="lastname" type="text" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="username">Username</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="username" name="username" type="text" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                            </div>
+                            <!-- // Column END -->
+
+                            <!-- Column -->
+                            <div class="col-md-8">
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="password">Password</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="password" name="password" type="password" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="confirm_password">Confirm password</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="confirm_password" name="confirm_password" type="password" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                                <!-- Group -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="email">E-mail</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="email" name="email" type="email" />
+                                    </div>
+                                </div>
+                                <!-- // Group END -->
+
+                            </div>
+                            <!-- // Column END -->
+
+                        </div>
+                        <!-- // Row END -->
+
+                        <hr class="separator" />
+
+                        <!-- Row -->
+                        <div class="row uniformjs">
+
+                            <!-- Column -->
+                            <div class="col-md-4">
+                                <h4>Policy &amp; Newsletter</h4>
+                                <label class="checkbox" for="agree">
+                                    <input type="checkbox" class="checkbox" id="agree" name="agree" /> Please agree to our policy
+                                </label>
+                                <label class="checkbox" for="newsletter">
+                                    <input type="checkbox" class="checkbox" id="newsletter" name="newsletter" /> Receive Newsletter
+                                </label>
+                            </div>
+                            <!-- // Column END -->
+
+                            <!-- Column -->
+                            <div class="col-md-8">
+                                <div id="newsletter_topics">
+                                    <h4>Topics</h4>
+                                    <p>Select at least two topics you would like to receive in the newsletter.</p>
+                                    <label for="topic_marketflash">
+                                        <input type="checkbox" id="topic_marketflash" value="marketflash" name="topic" /> Marketflash
+                                    </label>
+                                    <label for="topic_fuzz">
+                                        <input type="checkbox" id="topic_fuzz" value="fuzz" name="topic" /> Latest fuzz
+                                    </label>
+                                    <label for="topic_digester">
+                                        <input type="checkbox" id="topic_digester" value="digester" name="topic" /> Mailing list digester
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- // Column END -->
+
+                        </div>
+                        <!-- // Row END -->
+
+                        <hr class="separator" />
+
+                        <!-- Form actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-check-circle"></i> Save</button>
+                            <button type="button" class="btn btn-default"><i class="fa fa-times"></i> Cancel</button>
+                        </div>
+                        <!-- // Form actions END -->
+
+                    </div>
+                </div>
+                <!-- // Widget END -->
+
+            </form>
+            <!-- // Form END -->
+
+
+
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

@@ -1,0 +1,319 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <div class="heading-buttons bg-white innerAll">
+            <h1 class="content-heading padding-none pull-left">Knowledge Base</h1>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="input-group	 half pull-right">
+            <input type="text" class="form-control" placeholder="Search the Knowlede Base">
+            <span class="input-group-btn">
+    		<button class="btn btn-primary rounded-none" type="button"><i class="fa fa-search"></i></button>
+    		</span>
+        </div>
+        <div class="clearfix"></div>
+
+
+        <div class="innerAll spacing-x2">
+
+
+            <div class="row">
+                <!-- Content -->
+                <div class="col-md-9">
+                    <div class="widget no-bg">
+                        <div class="row row-merge">
+                            <div class="col-sm-4 col-hover">
+                                <div class="innerAll half text-center">
+                                    <i class="icon-question fa fa-5x innerTB   text-primary "></i>
+                                    <div class="clearfix"></div>
+                                    <a class="lead innerTB strong text-inverse ">Community Q&amp;A</a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, deserunt.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-hover">
+                                <div class="innerAll half text-center">
+                                    <i class="icon-ticket fa fa-5x innerTB   text-primary"></i>
+                                    <div class="clearfix"></div>
+                                    <a class="lead innerTB strong text-inverse ">Support Tickets</a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, deserunt.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-hover">
+                                <div class="innerAll half text-center">
+                                    <i class=" icon-comment-heart-fill fa fa-5x innerTB  text-primary"></i>
+                                    <div class="clearfix"></div>
+                                    <a class="lead innerTB strong text-inverse ">Feedback</a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, deserunt.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="widget no-bg">
+
+                        <!-- Category Heading -->
+                        <h4 class="innerAll half bg-gray  border-bottom margin-bottom-none ">General Information</h4>
+
+                        <!-- Category Links -->
+                        <div class="row innerAll half border-bottom">
+                            <div class="col-sm-4">
+                                <p class="lead border-bottom">Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="lead border-bottom">Other Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="lead border-bottom">Heading</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- // END Widget -->
+
+                    <div class="widget no-bg">
+
+
+                        <!-- Category Heading -->
+                        <h4 class="innerAll half bg-gray  border-bottom margin-bottom-none">Documentation</h4>
+
+                        <!-- Category Links -->
+                        <div class="row innerAll half border-bottom">
+                            <div class="col-sm-6">
+                                <p class="lead border-bottom">Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="lead border-bottom">Other Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="lead border-bottom">Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="lead border-bottom">Other Category</p>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Getting Started</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Requirements</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Common Questions</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Pro and Cons</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="icon-paper-document fa fa-fw text-muted"></i> Best Practices</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-separator-h"></div>
+                    </div>
+                    <!-- // END col-separator -->
+                </div>
+                <!-- // END col -->
+
+                <!-- col -->
+                <div class="col-md-3">
+
+                    <!-- col-separator -->
+                    <div class="widget no-bg">
+
+                        <!-- Heading -->
+                        <a href="" class="btn btn-success display-block innerTB  strong margin-none rounded-none">Ask a question <i class="fa fa-question-circle"></i></a>
+
+                    </div>
+                    <div class="widget no-bg">
+                        <!--  Category -->
+                        <ul class="list-group list-group-1 margin-none borders-none">
+                            <li class="list-group-item active animated fadeInUp"><a href="#"><span class="badge pull-right badge-primary hidden-md">30</span><i class="fa fa-exclamation-circle"></i> Category #1</a>
+                            </li>
+                            <li class="list-group-item animated fadeInUp"><a href="#"><span class="badge pull-right badge-primary hidden-md">2</span><i class="fa fa-ticket"></i> Category #1</a>
+                            </li>
+                            <li class="list-group-item animated fadeInUp"><a href="#"><i class="fa fa-spinner"></i>  Category #1</a>
+                            </li>
+                            <li class="list-group-item border-bottom-none animated fadeInUp"><a href="#"><i class="fa fa-pencil"></i> Category #1</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="widget no-bg">
+                        <!-- Heading -->
+                        <h5 class="innerAll half margin-bottom-none bg-inverse border-bottom"><i class="fa fa-refresh"></i> Latest Questions</h5>
+
+                        <!-- Listing -->
+
+                        <div class="row-hover innerAll half border-bottom">
+                            <a href="#" class="innerT half margin-none text-primary strong">How do you guys change navbar into white?</a>
+                            <div class="clearfix"></div>
+                            <small class="text-center text-inverse text-muted"><i class="fa fa-fw fa-user "></i> by Adrian | <i class="fa fa-fw fa-calendar "></i> 17/01/2014</small>
+                        </div>
+
+
+                        <div class="row-hover innerAll half border-bottom">
+                            <a href="#" class="innerT half margin-none text-primary strong">How do you guys change navbar into white?</a>
+                            <div class="clearfix"></div>
+                            <small class="text-center text-inverse text-muted"><i class="fa fa-fw fa-user "></i> by Adrian | <i class="fa fa-fw fa-calendar "></i> 17/01/2014</small>
+                        </div>
+
+
+                        <div class="row-hover innerAll half border-bottom">
+                            <a href="#" class="innerT half margin-none text-primary strong">How do you guys change navbar into white?</a>
+                            <div class="clearfix"></div>
+                            <small class="text-center text-inverse text-muted"><i class="fa fa-fw fa-user "></i> by Adrian | <i class="fa fa-fw fa-calendar "></i> 17/01/2014</small>
+                        </div>
+
+
+                        <div class="row-hover innerAll half border-bottom">
+                            <a href="#" class="innerT half margin-none text-primary strong">How do you guys change navbar into white?</a>
+                            <div class="clearfix"></div>
+                            <small class="text-center text-inverse text-muted"><i class="fa fa-fw fa-user "></i> by Adrian | <i class="fa fa-fw fa-calendar "></i> 17/01/2014</small>
+                        </div>
+
+                        <!-- // END Listing -->
+
+                        <div class="col-separator-h"></div>
+                    </div>
+                    <!-- // END col-separator -->
+                </div>
+                <!-- // END col -->
+            </div>
+            <!-- // END row -->
+
+        </div>
+
+
+
+    </div>
+    <!-- // Content END -->
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

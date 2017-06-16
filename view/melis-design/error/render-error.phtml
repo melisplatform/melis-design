@@ -1,0 +1,40 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+        
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+
+    <div id="content">
+        <!-- row -->
+        <div class="row error">
+
+            <div class="col-md-4 col-md-offset-1 center">
+                <div class="center">
+                    <img src="MelisDesign/images/error-icon-bucket.png " class="img-responsive error-icon"/>
+                </div>
+            </div>
+            <div class="col-md-5 content center">
+                <h1 class="strong">Oups!</h1>
+                <h4 class="innerB">This page does not exist.</h4>
+                <div class="well">
+                    ERROR MESSAGE GOES HERE!
+                </div>
+            </div>  
+
+        </div>
+        <!-- // END row-app -->
+    </div>
+        
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+
+</div>
+<!-- // Tab END -->

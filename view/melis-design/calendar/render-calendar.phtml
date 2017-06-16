@@ -1,0 +1,105 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">Calendar <span>Components</span></h1>
+        <div class="innerAll spacing-x2">
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <!-- Widget -->
+                    <div class="widget">
+                        <div class="widget-body">
+                            <div data-component>
+                                <div id="calendar"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <div class="col-md-4">
+
+                    <!-- External Events -->
+                    <div class="uniformjs" id="external-events">
+
+                        <!-- Widget -->
+                        <div class="widget widget-inverse">
+
+                            <!-- Widget heading -->
+                            <div class="widget-head">
+                                <h3 class="heading">Draggable Events</h3>
+                            </div>
+                            <!-- // Widget heading END -->
+
+                            <div class="widget-body">
+
+                                <!-- Events list -->
+                                <ul class="unstyled">
+                                    <li class="glyphicons move"><i></i> My Event 1</li>
+                                    <li class="glyphicons move"><i></i> My Event 2</li>
+                                    <li class="glyphicons move"><i></i> My Event 3</li>
+                                    <li class="glyphicons move"><i></i> My Event 4</li>
+                                    <li class="glyphicons move"><i></i> My Event 5</li>
+                                </ul>
+                                <!-- Events list END -->
+
+                                <label for="drop-remove" class="checkbox">
+                                    <input type="checkbox" class="checkbox" id="drop-remove" /> remove after drop
+                                </label>
+                                <p>FLAT PLUS provides a full-sized, drag &amp; drop calendar. It uses AJAX to fetch events on-the-fly for each month and is easily configured to use your own feed format, plus there's an extension provided for Google Calendar.</p>
+                            </div>
+                        </div>
+                        <!-- // Widget END -->
+
+                        <!-- Widget -->
+                        <div class="widget widget-inverse">
+
+                            <!-- Widget Heading -->
+                            <div class="widget-head">
+                                <h4 class="heading glyphicons calendar"><i></i>Mini Calendar</h4>
+                            </div>
+                            <!-- // Widget Heading END -->
+
+                            <div class="widget-body innerAll half">
+                                <div class="datepicker-block"></div>
+
+
+
+                            </div>
+                        </div>
+                        <!-- // Widget END -->
+
+
+
+
+                    </div>
+                    <!-- // External Events END -->
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+</div>
+<!-- // Tab END -->

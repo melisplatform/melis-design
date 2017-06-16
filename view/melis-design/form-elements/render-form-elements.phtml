@@ -1,0 +1,1685 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">Form Elements</h1>
+        <div class="innerAll spacing-x2">
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+                <div class="widget-body">
+                    <p>There are various form elements contained in FLAT PLUS, custom select controls, custom checkbox &amp; radio controls, custom input controls with &amp; without appended / prepended elements (icons, dropdowns, dropups, groups), toggle (on/off) buttons, icons &amp; many more.</p>
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading">Toggle buttons</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body center switch-design">
+
+                    <div class="make-switch sm-switch" data-on="default" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+
+
+                    <div class="make-switch sm-switch" data-on="primary" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+
+
+                    <div class="make-switch sm-switch" data-on="warning" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+
+
+                    <div class="make-switch sm-switch" data-on="danger" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+
+
+                    <div class="make-switch sm-switch" data-on="success" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <h3>Input controls</h3>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Default Inputs</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="innerB">
+                                <input type="text" placeholder="Text input" class="form-control" />
+
+                            </div>
+                            <div class="innerB">
+                                <input type="text" placeholder="Large Input" class="form-control input-lg" />
+
+                            </div>
+                            <div class="innerB">
+                                <input type="text" placeholder="Disabled Input" class="form-control " disabled />
+
+                            </div>
+                            <div class="innerB">
+                                <input type="text" class="form-control" placeholder="Help Block below Input">
+                                <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+
+                            </div>
+                            <div class="innerB">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <input type="text" class="form-control" placeholder="col 3">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input type="text" class="form-control" placeholder="col 4">
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" placeholder="col 5">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="innerB">
+                                <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Extended</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input id="prependedInput" class="form-control col-md-12" type="text" placeholder="Username" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Combined</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input class="form-control col-md-10" id="appendedPrependedInput" type="text" placeholder="100,000,000" />
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse" data-toggle="collapse-widget">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Checkbox</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body uniformjs">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox" value="1" /> Option 1 - Sexy checkbox
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox" value="1" checked="checked" /> Option 2 - Checked
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox" value="1" disabled="disabled" /> Option 3 - Disabled checkbox
+                            </label>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+
+
+                </div>
+                <!-- // Column END -->
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Horizontal Form</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">User</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">mosaicpro</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="checkbox">
+                                            <label class="checkbox-custom">
+                                                <i class="fa fa-fw fa-square-o"></i>
+                                                <input type="checkbox" checked="checked"> Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Form in Modals</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+
+                            <!-- Form Modal 1 -->
+                            <a href="#modal-1" data-toggle="modal" class="btn btn-primary"> Modal Example 1</a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal-1">
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal heading -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h3 class="modal-title">Login</h3>
+                                        </div>
+                                        <!-- // Modal heading END -->
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">User</label>
+                                                    <div class="col-sm-10">
+                                                        <p class="form-control-static">mosaicpro</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <div class="checkbox">
+                                                            <label class="checkbox-custom">
+                                                                <i class="fa fa-fw fa-square-o"></i>
+                                                                <input type="checkbox" checked="checked"> Remember me
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+
+
+
+                                        </div>
+                                        <!-- // Modal body END -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- // Modal END -->
+
+
+
+
+
+                            <!-- Form Modal 2 -->
+                            <a href="#modal-2" data-toggle="modal" class="btn btn-info btn-regular"> Modal Example 2</a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal-2">
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body padding-none">
+
+                                            <!-- Form Wizard / Widget Tabs / Double Style -->
+                                            <div class="wizard">
+                                                <div class="widget widget-tabs widget-tabs-double widget-tabs-gray">
+
+                                                    <!-- Widget heading -->
+                                                    <div class="widget-head bg-gray">
+                                                        <ul>
+                                                            <li class="active"><a href="#tab1-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+                                                            </li>
+                                                            <li><a href="#tab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+                                                            </li>
+                                                            <li><a href="#tab3-2" class="glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+                                                            </li>
+                                                            <li><a href="#tab4-2" class="glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- // Widget heading END -->
+
+                                                    <div class="widget-body">
+                                                        <div class="tab-content">
+
+                                                            <!-- Step 1 -->
+                                                            <div class="tab-pane active" id="tab1-2">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <strong>Product title</strong>
+                                                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <label for="inputTitle">Title</label>
+                                                                        <input type="text" id="inputTitle" class="col-md-6 form-control" value="" placeholder="Enter product title ..." />
+                                                                        <div class="separator"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- // Step 1 END -->
+
+                                                            <!-- Step 2 -->
+                                                            <div class="tab-pane" id="tab2-2">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <strong>Description</strong>
+                                                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <label for="textDescription">Description</label>
+                                                                        <textarea id="textDescription" class="wysihtml5 form-control" style="width: 96%;" rows="5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- // Step 2 END -->
+
+                                                            <!-- Step 3 -->
+                                                            <div class="tab-pane" id="tab3-2">
+                                                                <h4>Third tab</h4>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices libero vel massa egestas facilisis. Mauris convallis augue nec dolor dignissim vestibulum. Praesent imperdiet elit posuere arcu posuere consectetur. Morbi dignissim eleifend nibh, eget tincidunt nibh dignissim hendrerit. Cras iaculis congue lorem, eget gravida augue vehicula sed. Nam lorem sem, consectetur ac tempus quis, consectetur ut lectus. In bibendum luctus pharetra. Morbi lacinia sem sem. Phasellus quis tellus magna.</p>
+                                                            </div>
+                                                            <!-- // Step 3 END -->
+
+                                                            <!-- Step 4 -->
+                                                            <div class="tab-pane" id="tab4-2">
+                                                                <h4>Fourth tab</h4>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices libero vel massa egestas facilisis. Mauris convallis augue nec dolor dignissim vestibulum. Praesent imperdiet elit posuere arcu posuere consectetur. Morbi dignissim eleifend nibh, eget tincidunt nibh dignissim hendrerit. Cras iaculis congue lorem, eget gravida augue vehicula sed. Nam lorem sem, consectetur ac tempus quis, consectetur ut lectus. In bibendum luctus pharetra. Morbi lacinia sem sem. Phasellus quis tellus magna.</p>
+                                                            </div>
+                                                            <!-- // Step 4 END -->
+
+                                                        </div>
+
+                                                        <!-- Wizard pagination controls -->
+                                                        <ul class="pagination margin-bottom-none">
+                                                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
+                                                            </li>
+                                                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
+                                                            </li>
+                                                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
+                                                            </li>
+                                                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
+                                                            </li>
+                                                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- // Wizard pagination controls END -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- // Form Wizard / Widget Tabs / Double Style END -->
+                                        </div>
+                                        <!-- // Modal body END -->
+                                        <div class="modal-footer center">
+                                            <a href="#" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- // Modal END -->
+
+
+
+
+
+                            <!-- Form Modal 3 -->
+                            <a href="#modal-3" data-toggle="modal" class="btn btn-inverse"> Modal Example 3</a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal-3">
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body padding-none">
+
+                                            <!-- Form Wizard / Widget Pills -->
+                                            <div class="wizard">
+                                                <div class="widget widget-tabs widget-wizard-pills widget-tabs-gray">
+
+                                                    <!-- Widget heading -->
+                                                    <div class="widget-head bg-gray">
+                                                        <ul>
+                                                            <li class="status"><span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
+                                                            </li>
+                                                            <li class="active no-padding"><a href="#tab1-3" data-toggle="tab">1</a>
+                                                            </li>
+                                                            <li><a href="#tab2-3" data-toggle="tab">2</a>
+                                                            </li>
+                                                            <li><a href="#tab3-3" data-toggle="tab">3</a>
+                                                            </li>
+                                                            <li><a href="#tab4-3" data-toggle="tab">4</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- // Widget heading END -->
+
+                                                    <div class="widget-body">
+                                                        <div class="tab-content">
+
+                                                            <!-- Step 1 -->
+                                                            <div class="tab-pane active" id="tab1-3">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <strong>Product title</strong>
+                                                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <label for="inputTitle">Title</label>
+                                                                        <input type="text" id="inputTitle" class="col-md-6 form-control" value="" placeholder="Enter product title ..." />
+                                                                        <div class="separator"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- // Step 1 END -->
+
+                                                            <!-- Step 2 -->
+                                                            <div class="tab-pane" id="tab2-3">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <strong>Description</strong>
+                                                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <label for="textDescription">Description</label>
+                                                                        <textarea id="textDescription" class="wysihtml5 form-control" style="width: 96%;" rows="5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- // Step 2 END -->
+
+                                                            <!-- Step 3 -->
+                                                            <div class="tab-pane" id="tab3-3">
+                                                                <h4>Third tab</h4>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices libero vel massa egestas facilisis. Mauris convallis augue nec dolor dignissim vestibulum. Praesent imperdiet elit posuere arcu posuere consectetur. Morbi dignissim eleifend nibh, eget tincidunt nibh dignissim hendrerit. Cras iaculis congue lorem, eget gravida augue vehicula sed. Nam lorem sem, consectetur ac tempus quis, consectetur ut lectus. In bibendum luctus pharetra. Morbi lacinia sem sem. Phasellus quis tellus magna.</p>
+                                                            </div>
+                                                            <!-- // Step 3 END -->
+
+                                                            <!-- Step 4 -->
+                                                            <div class="tab-pane" id="tab4-3">
+                                                                <h4>Fourth tab</h4>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices libero vel massa egestas facilisis. Mauris convallis augue nec dolor dignissim vestibulum. Praesent imperdiet elit posuere arcu posuere consectetur. Morbi dignissim eleifend nibh, eget tincidunt nibh dignissim hendrerit. Cras iaculis congue lorem, eget gravida augue vehicula sed. Nam lorem sem, consectetur ac tempus quis, consectetur ut lectus. In bibendum luctus pharetra. Morbi lacinia sem sem. Phasellus quis tellus magna.</p>
+                                                            </div>
+                                                            <!-- // Step 4 END -->
+
+                                                        </div>
+
+                                                        <!-- Wizard pagination controls -->
+                                                        <ul class="pagination margin-bottom-none pull-left">
+                                                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
+                                                            </li>
+                                                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="pagination margin-bottom-none pull-right">
+                                                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
+                                                            </li>
+                                                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
+                                                            </li>
+                                                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                        <!-- // Wizard pagination controls END -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- // Form Wizard / Widget Pills END -->
+                                        </div>
+                                        <!-- // Modal body END -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- // Modal END -->
+
+
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+
+
+
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Buttons</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="input-group">
+                                <input class="form-control" id="appendedInputButtons" type="text" placeholder="Placeholder .." />
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Options</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Dropdown / Dropup</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="input-group">
+                                <input class="form-control" id="appendedDropdownButton" type="text" />
+                                <div class="input-group-btn">
+                                    <div class="dropup">
+                                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            Action <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="#">Action</a>
+                                            </li>
+                                            <li><a href="#">Another action</a>
+                                            </li>
+                                            <li><a href="#">Something else here</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Separated link</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget row widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Segmented Groups</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body">
+                            <div class="input-group">
+                                <input type="text" class="form-control" />
+                                <div class="input-group-btn btn-group dropup">
+                                    <button class="btn btn-default" tabindex="-1">Action</button>
+                                </div>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse" data-toggle="collapse-widget">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Radio</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body uniformjs">
+                            <label class="radio">
+                                <input type="radio" class="radio" name="radio" value="1" /> Option 1 - Sexy radio
+                            </label>
+                            <br/>
+                            <label class="radio">
+                                <input type="radio" class="radio" name="radio" value="1" checked="checked" /> Option 2 - Checked
+                            </label>
+                            <br/>
+                            <label class="radio">
+                                <input type="radio" class="radio disabled" name="radio" value="1" disabled="disabled" /> Option 3 - Disabled radio
+                            </label>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+
+
+                </div>
+                <!-- // Column END -->
+
+            </div>
+            <!-- // Row END -->
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading">File controls</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="separator bottom">File upload widget</h4>
+                            <div class="fileupload fileupload-new margin-none" data-provides="fileupload">
+                                <div class="input-group">
+                                    <div class="form-control col-md-3"><i class="fa fa-file fileupload-exists"></i> <span class="fileupload-preview"></span>
+                                    </div>
+                                    <span class="input-group-btn">
+                <span class="btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
+                                    <input type="file" class="margin-none" />
+                                    </span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="separator bottom">File upload button</h4>
+                            <div class="fileupload fileupload-new margin-none" data-provides="fileupload">
+                                <span class="btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
+                                <input type="file" class="margin-none" />
+                                </span>
+                                <span class="fileupload-preview"></span>
+                                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">&times;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <!-- Widget -->
+            <div class="widget row widget-heading-simple widget-body-gray">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading">WYSIHTML5 Editor</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <textarea id="mustHaveId" class="wysihtml5 col-md-12 form-control" rows="5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</textarea>
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Loading button</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body center">
+                            <button type="button" id="btn-loading" class="btn btn-primary" data-loading-text="Custom Loading Text ...">Click for Loading state</button>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Toggle button</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body center">
+                            <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Toggle checkbox style</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body center">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="checkbox" checked="checked"> Option 1
+                                </label>
+                                <label class="btn btn-primary active">
+                                    <input type="checkbox" checked="checked"> Option 2
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="checkbox"> Option 3
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Toggle radio style</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body center">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="radio" name="options" id="option1" checked="checked">Left
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="options" id="option2">Middle
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="options" id="option3">Right
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+            </div>
+            <!-- // Row END -->
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading">Select controls</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h5>Default</h5>
+                            <div class="row">
+                                <div class="innerLR innerB">
+                                    <select class="col-md-12 form-control">
+                                        <optgroup label="Picnic">
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </optgroup>
+                                        <optgroup label="Camping">
+                                            <option>Tent</option>
+                                            <option>Flashlight</option>
+                                            <option>Toilet Paper</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <h5>Extended</h5>
+                            <div class="row">
+                                <select class="selectpicker col-md-12">
+                                    <optgroup label="Picnic">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </optgroup>
+                                    <optgroup label="Camping">
+                                        <option>Tent</option>
+                                        <option>Flashlight</option>
+                                        <option>Toilet Paper</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h5>Styles</h5>
+                            <div class="row">
+                                <select class="selectpicker col-md-6" data-style="btn-primary">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-6" data-style="btn-default">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <select class="selectpicker col-md-6" data-style="btn-info">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-6" data-style="btn-success">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <select class="selectpicker col-md-6" data-style="btn-warning">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-6" data-style="btn-inverse">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Grid</h5>
+                            <div class="row">
+                                <select class="selectpicker col-md-3">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-9">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <select class="selectpicker col-md-4">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-8">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <select class="selectpicker col-md-6">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                                <select class="selectpicker col-md-6">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <div class="widget widget-inverse">
+                <div class="widget-head">
+                    <h4 class="heading">Advanced Select controls</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Basics</h5>
+                            <div class="row innerLR">
+                                <select style="width: 100%;" id="select2_1">
+                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                    </optgroup>
+                                    <optgroup label="Pacific Time Zone">
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                    </optgroup>
+                                    <optgroup label="Mountain Time Zone">
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="WY">Wyoming</option>
+                                    </optgroup>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="WI">Wisconsin</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="separator bottom"></div>
+                            <h5>Multi-Value Select Boxes</h5>
+                            <div class="row innerLR">
+                                <select multiple="multiple" style="width: 100%;" id="select2_2">
+                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                    </optgroup>
+                                    <optgroup label="Pacific Time Zone">
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                    </optgroup>
+                                    <optgroup label="Mountain Time Zone">
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="WY">Wyoming</option>
+                                    </optgroup>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="WI">Wisconsin</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="separator bottom"></div>
+                            <h5>Placeholders</h5>
+                            <div class="row innerLR">
+                                <select style="width: 100%;" id="select2_3">
+                                    <option></option>
+                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                    </optgroup>
+                                    <optgroup label="Pacific Time Zone">
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                    </optgroup>
+                                    <optgroup label="Mountain Time Zone">
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="WY">Wyoming</option>
+                                    </optgroup>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="WI">Wisconsin</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                                <div class="separator bottom"></div>
+                                <select multiple="multiple" style="width: 100%;" id="select2_4">
+                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                    </optgroup>
+                                    <optgroup label="Pacific Time Zone">
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                    </optgroup>
+                                    <optgroup label="Mountain Time Zone">
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="WY">Wyoming</option>
+                                    </optgroup>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="WI">Wisconsin</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Tagging Support</h5>
+                            <input type="hidden" id="select2_5" style="width: 100%;" value="brown,red,green" />
+                            <div class="separator bottom"></div>
+                            <h5>Disabled Mode</h5>
+                            <select disabled="disabled" id="select2_6_1" style="width:100%">
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="WI">Wisconsin</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                            <div class="separator bottom"></div>
+                            <select disabled="disabled" id="select2_6_2" multiple style="width:100%">
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="WI">Wisconsin</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                            <div class="separator bottom"></div>
+                            <input type="button" id="select2_6_enable" class="btn btn-primary" value="Enable" />
+                            <input type="button" id="select2_6_disable" class="btn btn-warning" value="Disable" />
+                            <div class="separator bottom"></div>
+                            <h5>Templating</h5>
+                            <select style="width: 100%;" id="select2_7">
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                    <option value="AK">Alaska</option>
+                                    <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </optgroup>
+                                <optgroup label="Central Time Zone">
+                                    <option value="AL">Alabama</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="WI">Wisconsin</option>
+                                </optgroup>
+                                <optgroup label="Eastern Time Zone">
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WV">West Virginia</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="widget widget-inverse">
+                <div class="widget-head">
+                    <h4 class="heading">Input Masks</h4>
+                </div>
+                <div class="widget-body padding-none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="strong">Date #1</label>
+                            <input type="text" id="inputmask-date" class="form-control span8" placeholder="__/__/____" />
+                            <span class="help-inline">d/m/y mask</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">Date #2</label>
+                            <input type="text" id="inputmask-date-1" class="form-control span8" placeholder="**/**/****" />
+                            <span class="help-inline">Changing placeholder</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">Date #3</label>
+                            <input type="text" id="inputmask-date-2" class="form-control span8" placeholder="dd/mm/yyyy" />
+                            <span class="help-inline">Multi-char placeholder</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">Currency</label>
+                            <input type="text" id="inputmask-currency" class="form-control span8" placeholder="&euro; 999.999.999,99" />
+                            <span class="help-inline">&euro; 999.999.999,99</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="strong">Phone Number</label>
+                            <input type="text" id="inputmask-phone" class="form-control span8" placeholder="(123) 456-7890" />
+                            <span class="help-inline">(999) 999-9999</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">VAT Number</label>
+                            <input type="text" id="inputmask-tax" class="form-control span8" placeholder="12-3456789" />
+                            <span class="help-inline">Multi-char placeholder</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">Decimal</label>
+                            <input type="text" id="inputmask-decimal" class="form-control span8" placeholder="123.01" />
+                            <span class="help-inline">Allow numbers &amp; decimals</span>
+                            <div class="separator bottom"></div>
+
+                            <label class="strong">SSN</label>
+                            <input type="text" id="inputmask-ssn" class="form-control span8" placeholder="999-99-9999" />
+                            <span class="help-inline">999-99-9999</span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="widget widget-heading-simple widget-body-simple margin-none">
+                <div class="widget-head">
+                    <h4 class="heading">Date Picker</h4>
+                </div>
+                <div class="widget-body">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="well">
+                                <h4>Default input</h4>
+                                <input class="form-control" type="text" value="2013-02-14" id="datepicker1" />
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <h4>Default component</h4>
+                                <div class="input-group date" id="datepicker2">
+                                    <input class="form-control" type="text" value="14 February 2013" />
+                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <h4>Today Button</h4>
+                                <div class="input-group date" id="datepicker3">
+                                    <input class="form-control" type="text" value="14 February 2013" />
+                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="widget widget-inverse">
+                <div class="widget-head">
+                    <h4 class="heading">Time Pickers</h4>
+                </div>
+                <div class="widget-body padding-none">
+                    <div class="row row-merge">
+                        <div class="col-md-6">
+                            <div class="innerAll">
+                                <p>Default timepicker.</p>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input id="timepicker1" type="text" class="form-control">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                </div>
+
+                                <div class="separator bottom"></div>
+
+                                <p>Without component markup and keyboard input disabled.</p>
+                                <div class="bootstrap-timepicker">
+                                    <input id="timepicker3" type="text" class="form-control" />
+                                </div>
+
+                                <div class="separator bottom"></div>
+
+                                <p>Without a template.</p>
+                                <input id="timepicker5" type="text" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="innerAll">
+                                <p>Inside a modal with 24hr mode and seconds enabled.</p>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input id="timepicker2" type="text" class="form-control" />
+                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                </div>
+
+                                <div class="separator bottom"></div>
+
+                                <p>Inside a modal with backdrop enabled, inputs disabled and with a preset value.</p>
+                                <div id="timepicker4Modal" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">A Timepicker Inside A Modal</h3>
+                                            </div>
+                                            <div class="modal-body" style="overflow: visible;">
+                                                <div class="bootstrap-timepicker relativeWrapp" style="vertical-align: middle;">
+                                                    <input id="timepicker4" class="form-control" value="10:35 AM" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary" href="#timepicker4Modal" data-toggle="modal">Open Modal</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Color picker</h4>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body center">
+                            <label class="control-label">Color picker</label>
+                            <input type="text" id="colorpickerColor" class="form-control" value="#5a6a87" />
+                            <div class="separator bottom"></div>
+                            <div id="colorpicker"></div>
+                        </div>
+
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+                <!-- Column -->
+                <div class="col-md-6">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget Heading -->
+                        <div class="widget-head">
+                            <h4 class="heading glyphicons calendar"><i></i>Calendar</h4>
+                        </div>
+                        <!-- // Widget Heading END -->
+
+                        <div class="widget-body">
+                            <div id="datepicker-inline"></div>
+
+
+
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+            </div>
+            <!-- // Row END -->
+
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+</div>
+<!-- // Tab END -->

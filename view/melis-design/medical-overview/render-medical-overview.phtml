@@ -1,0 +1,178 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+        
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">Medical overview</h1>
+        <div class="bg-white innerAll border-bottom">
+            <ul class="menubar">
+                <li><a href="index.html?lang=en">Dashboard</a>
+                </li>
+                <li><a href="#"><span class="badge badge-primary pull-right">30</span> Button</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown Link #1</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #2</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="innerAll spacing-x2">
+
+            <!-- row-app -->
+            <div class="row row-app">
+
+                <!-- col -->
+                <div class="col-md-4">
+
+                    <div class="box-generic innerAll border-bottom-none margin-none half bg-white">
+                        <span class="pull-right"><strong class="text-primary">25 days</strong> left</span>
+                        <span class="label label-primary">Next cycle</span> 01/12/13
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-euro text-primary pull-right"></i> Ballance</h5>
+                        <div class="innerAll">
+                            <div class="media">
+                                <div class="pull-left">
+                                    <div class="innerAll">
+                                        <div data-percent="85" data-size="70" class="easy-pie primary" data-scale-color="false" data-track-color="#ffffff"><span class="value text-primary">85%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="text-large text-regular">&euro;4,387.00</div>
+                                    <p class="lead"><span class="text-primary">Current balance</span> this billing cycle</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-bar-chart-o text-primary pull-right"></i> Statistic</h5>
+                        <div class="innerAll">
+                            <div class="innerAll text-center">
+                                <div data-percent="82" data-size="150" class="easy-pie inline-block easy-pie-gender inverse" data-scale-color="false" data-track-color="#ffffff" data-line-width="5" data-animate="false">
+                                    <div class="value text-center innerAll">
+                                        <p class="lead text-large">82%</p>
+                                    </div>
+                                </div>
+                                <div class="separator bottom"></div>
+                                <p class="lead"><span class="text-large text-regular">8,320</span> of <span class="text-primary">your customers</span>
+                                </p>
+                                <p class="margin-none">living in <span class="strong">Caracal</span>, aged <span class="strong">50+</span>
+                                </p>
+                                <p class="margin-none">suffer from a <span class="strong text-primary">Heart Disease</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- // END col -->
+
+                <!-- col -->
+                <div class="col-md-4">
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-group text-primary pull-right"></i> By Gender</h5>
+                        <div class="innerAll">
+                            <div class="innerAll text-center">
+                                <div data-percent="50" data-size="200" class="easy-pie inline-block easy-pie-gender" data-scale-color="false" data-track-color="#D67FB0" data-bar-color="#4193d0" data-line-width="8" data-animate="false">
+                                    <div class="value text-center innerAll">
+                                        <p class="lead">Your customers</p>
+                                        <p class="sublead">Male: <strong class="male">50%</strong>
+                                        </p>
+                                        <p class="sublead">Female: <strong class="female">50%</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="separator"></div>
+                                <div id="chart_gender"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-bar-chart-o text-primary pull-right"></i> Comparison</h5>
+                        <div class="innerAll">
+                            <div class="innerAll text-center">
+                                <p class="lead"><span class="text-large text-regular">1,210</span> of <span class="text-primary">your customers</span>
+                                </p>
+                                <div class="progress progress-mini">
+                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                </div>
+                                <p class="margin-none">living in <span class="strong">Bucharest</span>, aged <span class="strong">45+</span>
+                                </p>
+                                <p class="margin-none">suffer from a <span class="strong text-primary">deadly disease</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- // END col -->
+
+                <!-- col -->
+                <div class="col-md-4">
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-bar-chart-o text-primary pull-right"></i> Male</h5>
+                        <div class="innerAll">
+                            <i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i><i class="fa fa-male fa-fw text-male-light"></i>
+                            <div class="innerAll text-center">
+                                <p class="lead"><span class="text-large text-regular">1,400,120</span> (45%)</p>
+                                <p class="margin-none">of your male customers, living <span class="strong">nationwide</span>, aged <span class="strong">25-65</span>, who used to smoke, suffer from <span class="strong text-male">lung cancer</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-generic padding-none">
+                        <h5 class="strong border-bottom innerAll half margin-none"><i class="fa fa-bar-chart-o text-primary pull-right"></i> Female</h5>
+                        <div class="innerAll">
+                            <i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i><i class="fa fa-female fa-fw text-female-light"></i>
+                            <div class="innerAll text-center">
+                                <p class="lead"><span class="text-large text-regular">10,240</span> (15%)</p>
+                                <p class="margin-none">of your female customers, living <span class="strong">nationwide</span>, aged <span class="strong">25-35</span>, who used to smoke, suffer from <span class="strong text-female">Hypertension</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- // END col -->
+
+            </div>
+            <!-- // END row-app -->
+
+        </div>
+
+
+
+
+
+    </div>
+    <!-- // Content END -->
+
+        
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

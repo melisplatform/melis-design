@@ -1,0 +1,278 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+
+        <h1 class="bg-white content-heading border-bottom">Profile / Resume</h1>
+        <div class="innerAll spacing-x2">
+
+            <!-- Widget -->
+            <div class="widget finances_summary widget-inverse">
+
+                <div class="row row-merge">
+                    <!-- col -->
+                    <div class="col-sm-12 col-md-3">
+                        <!-- Profile Photo -->
+                        <div class="border-bottom">
+                            <a href="">
+                                <img src="MelisDesign/images/people/250/22.jpg" class="img-responsive img-clean" />
+                            </a>
+                        </div>
+                        <div class="innerAll inner-2x text-center">
+                            <p class="lead strong margin-none">Bill Jonson</p>
+                            <p class="lead">Senior UI Designer</p>
+
+                            <div class="btn-group">
+                                <a href="" class="btn btn-primary"><i class="fa fa-plus fa-fw"></i> Add to list</a>
+                                <a href="" class="btn btn-primary btn-stroke"><i class="fa fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <hr class="separator" />
+
+
+                        <div class="innerAll border-bottom bg-gray">
+                            <h4 class="text-primary"><i class=""></i> Skills</h4>
+                            <ul class="list-unstyled">
+                                <li>Photoshop</li>
+                                <li>HTML/CSS</li>
+                                <li>User Experience</li>
+
+                            </ul>
+                        </div>
+                        <div class="innerAll border-bottom">
+                            <h4 class="text-primary"><i class=""></i> Experience</h4>
+                            <div class="innerAll half box-generic">
+                                <p class="margin-none strong">FLAT PLUS UI Design</p>
+                                <span>User Interface Design</span>
+                            </div>
+                            <div class="innerAll half box-generic">
+                                <p class="margin-none strong">FLAT PLUS UI Design</p>
+                                <span>User Interface Design</span>
+                            </div>
+                            <div class="innerAll half box-generic margin-none">
+                                <p class="margin-none strong">FLAT PLUS UI Design</p>
+                                <span>User Interface Design</span>
+                            </div>
+
+
+                        </div>
+                        <div class="innerAll">
+                            <h4 class="text-primary"><i class=""></i> Education</h4>
+                            <div class="bg-gray innerAll half box-generic">
+                                <p class="margin-none">Adobe Photoshop Cerficate</p>
+                                <span class="label label-default ">on 16 Dec 2013</span>
+                            </div>
+                            <div class="bg-gray innerAll half box-generic">
+                                <p class="margin-none">Bachelor Degree in Web Graphics</p>
+                                <span class="label label-default ">on 16 Dec 2013</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-xs">View all</a>
+                        </div>
+
+
+                    </div>
+                    <!-- // END col -->
+
+
+                    <!-- col -->
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+
+                        <div class="innerAll half border-bottom">
+                            <h4 class="pull-left innerT half margin-none">Short Bio</h4>
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="innerAll ">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, voluptatibus laboriosam debitis quod consectetur ratione accusamus quibusdam alias magni in cum distinctio dolorum quam quo repellendus possimus dignissimos! Enim, reprehenderit rem explicabo illum saepe similique architecto adipisci eius consequuntur libero?</p>
+                            <a href="#" class="btn btn-info btn-sm btn-regular"><i class="fa fa-download fa-fw"></i> Resume</a>
+                        </div>
+
+
+
+                        <div class="innerAll half heading-buttons border-bottom">
+                            <h4 class="margin-none pull-left">Recommendations</h4>
+
+                            <button class="btn btn-default btn-xs  pull-right"><i class="fa fa-cog "></i>
+                            </button>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="innerAll">
+                            <ul class="list-unstyled resume-documents">
+                                <li><a href=""><i class="fa fa-file-o"></i> mosaicpro <span>17/12/2013</span></a>
+                                </li>
+                                <li><a href=""><i class="fa fa-file-o"></i> Company LTD <span>17/12/2013</span></a>
+                                </li>
+                                <li><a href=""><i class="fa fa-file-o"></i> Adrian <span>17/12/2013</span></a>
+                                </li>
+                                <li><a href=""><i class="fa fa-file-o"></i> Bogdan <span>17/12/2013</span></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <div class="innerLR innerB">
+                                <a href="" class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-fw"></i> Write New </a>
+                            </div>
+                        </div>
+
+
+                        <div class="innerAll half heading-buttons border-bottom">
+                            <h4 class="margin-none pull-left">Work History  </h4>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <ul class="timeline-activity list-unstyled">
+                            <li class="active">
+                                <i class="list-icon fa fa-share"></i>
+                                <div class="block block-inline">
+                                    <div class="caret"></div>
+                                    <div class="box-generic">
+                                        <div class="timeline-top-info content-filled border-bottom">
+                                            <i class="fa fa-user"></i> <a href="">Bill</a> got a review for <a href="" class="text-primary">FLAT PLUS UI Interface Design</a> from
+                                            <a href="#"><img src="MelisDesign/images/people/80/8.jpg" alt="photo" width="20">
+                                            </a> <a href="">Andrew M.</a>
+                                            <div class="timeline-bottom">
+                                                <i class="fa fa-clock-o"></i> 2 days ago
+
+                                            </div>
+                                        </div>
+                                        <div class="media innerAll margin-none">
+                                            <a class="pull-left" href="#"><img src="MelisDesign/images/people/80/8.jpg" alt="photo" class="media-object" width="35">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="" class="strong">Andrew</a> Good Job. Congrats and hope to see more admin templates like this in the future.
+                                                <div class="timeline-bottom">
+                                                    <i class="fa fa-clock-o"></i> 2 days ago
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <i class="list-icon fa fa-share"></i>
+                                <div class="block block-inline">
+                                    <div class="caret"></div>
+                                    <div class="box-generic">
+                                        <div class="timeline-top-info content-filled border-bottom">
+                                            <i class="fa fa-user"></i> <a href="">Bill</a> got a review for <a href="" class="text-primary">Support &amp; Ticket System</a> from
+                                            <a href="#"><img src="MelisDesign/images/people/80/20.jpg" alt="photo" width="20">
+                                            </a> <a href="">Andrew M.</a>
+                                            <div class="timeline-bottom">
+                                                <i class="fa fa-clock-o"></i> 2 days ago
+
+                                            </div>
+                                        </div>
+                                        <div class="media innerAll margin-none">
+                                            <a class="pull-left" href="#"><img src="MelisDesign/images/people/80/20.jpg" alt="photo" class="media-object" width="35">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="" class="strong">Bogdan</a> Good Job. Congrats and hope to see more admin templates like this in the future.
+                                                <div class="timeline-bottom">
+                                                    <i class="fa fa-clock-o"></i> 2 days ago
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <i class="list-icon fa fa-share"></i>
+                                <div class="block block-inline">
+                                    <div class="caret"></div>
+                                    <div class="box-generic">
+                                        <div class="timeline-top-info content-filled border-bottom">
+                                            <i class="fa fa-user"></i> <a href="">Bill</a> got a review for <a href="" class="text-primary">Project Management</a> from
+                                            <a href="#"><img src="MelisDesign/images/people/80/12.jpg" alt="photo" width="20">
+                                            </a> <a href="">Andrew M.</a>
+                                            <div class="timeline-bottom">
+                                                <i class="fa fa-clock-o"></i> 2 days ago
+
+                                            </div>
+                                        </div>
+                                        <div class="media innerAll margin-none">
+                                            <a class="pull-left" href="#"><img src="MelisDesign/images/people/80/12.jpg" alt="photo" class="media-object" width="35">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="" class="strong">John </a> Good Job. Congrats and hope to see more admin templates like this in the future.
+                                                <div class="timeline-bottom">
+                                                    <i class="fa fa-clock-o"></i> 2 days ago
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <i class="list-icon fa fa-share"></i>
+                                <div class="block block-inline">
+                                    <div class="caret"></div>
+                                    <div class="box-generic">
+                                        <div class="timeline-top-info content-filled border-bottom">
+                                            <i class="fa fa-user"></i> <a href="">Bill</a> got a review for <a href="" class="text-primary">FLAT PLUS UI Interface Design</a> from
+                                            <a href="#"><img src="MelisDesign/images/people/80/10.jpg" alt="photo" width="20">
+                                            </a> <a href="">Andrew M.</a>
+                                            <div class="timeline-bottom">
+                                                <i class="fa fa-clock-o"></i> 2 days ago
+
+                                            </div>
+                                        </div>
+                                        <div class="media innerAll margin-none">
+                                            <a class="pull-left" href="#"><img src="MelisDesign/images/people/80/10.jpg" alt="photo" class="media-object" width="35">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="" class="strong">Andrew</a> Good Job. Congrats and hope to see more admin templates like this in the future.
+                                                <div class="timeline-bottom">
+                                                    <i class="fa fa-clock-o"></i> 2 days ago
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+
+
+
+                    </div>
+                    <!-- // END col -->
+
+                </div>
+
+            </div>
+            <!-- // END row -->
+        </div>
+        <!-- // END row-app -->
+    </div>
+    <!-- // Content END -->
+        
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+
+
+</div>
+<!-- // Tab END -->

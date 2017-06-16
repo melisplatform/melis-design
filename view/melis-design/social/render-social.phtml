@@ -1,0 +1,256 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+        
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+
+    <div id="content">
+    <h1 class="bg-white content-heading border-bottom">Social <span>Widgets</span></h1>
+    <div class="bg-white innerAll border-bottom">
+        <ul class="menubar">
+            <li><a href="index.html?lang=en">Dashboard</a>
+            </li>
+            <li><a href="#"><span class="badge badge-primary pull-right">30</span> Button</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown Link #1</a>
+                    </li>
+                    <li><a href="#">Dropdown Link #2</a>
+                    </li>
+                    <li><a href="#">Dropdown Link #3</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="innerAll spacing-x2">
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="widget activity-line">
+                    <div class="widget-body padding-none">
+                        <div class="share">
+                            <textarea class="form-control" rows="3" placeholder="Share what you've been up to..."></textarea>
+                            <div class="share-buttons">
+                                <a href="#" class="glyphicons user"><i></i></a>
+                                <a href="#" class="glyphicons plus"><i></i></a>
+                                <a href="#" class="glyphicons envelope"><i></i></a>
+                                <a href="#" class="glyphicons-social facebook"><i></i></a>
+                                <a href="#" class="glyphicons-social twitter"><i></i></a>
+                            </div>
+                            <a class="btn btn-primary  btn-sm pull-right">Submit</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="widget activity-line small">
+                    <div class="widget-body padding-none">
+                        <div class="icon primary"><a class="glyphicons luggage"><i></i></a>
+                        </div>
+                        <span><a href="">Background Colored</a> icon activity line</span>
+                        <a class="activity-action pull-right glyphicons chat"><i></i></a>
+                    </div>
+                </div>
+
+
+                <div class="widget activity-line">
+                    <div class="widget-body padding-none">
+                        <div class="activity-status border-bottom">
+                            <div class="activity-author">
+                                <a href="#"><img src="MelisDesign/images/avatar-large.jpg" alt="..." width="50">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <a href="#">Adrian Demian</a> posted on
+                                <a href="#">his Profile</a>
+                                <span class="glyphicons calendar"><i></i> on 16 September 2013 </span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="bg-gray border-bottom margin-none">
+                            <p class="bg-gray innerAll margin-none"><i class="fa fa-2x fa-comments pull-left"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus ipsum
+                                <br/><small><em><abbr>- <a href="">mosaicpro </a> December 12, 2011</abbr></em></small>
+                            </p>
+                        </div>
+                        <div class="bg-gray border-bottom margin-none">
+                            <p class="bg-gray innerAll margin-none"><i class="fa fa-2x fa-comments pull-left"></i> Lorem ipsum dolor sit am ipsum
+                                <br/><small><em><abbr>- <a href="">mosaicpro </a> December 12, 2011</abbr></em></small>
+                            </p>
+                        </div>
+                        <div class="innerAll">
+                            <input class="form-control input-sm" placeholder="Comment here..." />
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+
+                <div class="widget activity-line medium">
+                    <div class="widget-body padding-none">
+                        <div class="color-widget primary">
+                            <div class="icon inverse"><a class="glyphicons envelope"><i></i></a>
+                            </div>
+                            <span><a href="">Combined Colors</a> both for icon and text activity line</span>
+                            <a class="activity-action pull-right glyphicons chat"><i></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="widget activity-line">
+                    <div class="widget-body padding-none">
+                        <div class="row row-merge">
+
+                            <div class="col-md-3 ">
+                                <div class="color-widget dribble center">
+                                    <span class="glyphicons-social dribbble social-big"><i></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="innerAll muted">
+                                    <a href="" class="pull-right">
+                                        <div class="label label-primary"><em>FOLLOW</em>
+                                        </div>
+                                    </a>
+                                    <a><h4 class="strong muted text-uppercase">Adrian Demian</h4></a>
+                                    <ul class="fa-ul margin-bottom-none">
+                                        <li><i class="fa fa-li fa-suitcase"></i> Working at <a href="http://www.mosaicpro.biz">MosaicPro</a>
+                                        </li>
+                                        <li><i class="fa fa-li fa-certificate"></i> Adobe Certification</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="widget activity-line">
+                    <div class="widget-body padding-none">
+                        <div class="color-widget inverse center">
+                            <span class="glyphicons-social twitter social-big"><i></i></span>
+                        </div>
+                        <p class="center innerAll">Follow us on <a href="#">twitter</a> </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="widget widget-heading-simple widget-body-white">
+                    <div class="widget-body padding-none">
+
+                        <div class="innerAll border-bottom">
+                            <div class="pull-right label label-default"> <em>3 days ago</em>
+                            </div>
+                            <h5 class="strong muted text-uppercase"><i class="fa fa-user "></i> Adrian Demian</h5>
+                            <span>on <a href="#">FLAT PLUS Template</a><span>
+                      </div>
+                <div class="innerAll border-bottom">
+                    <p class="margin-none">Make use of a super basic HTML template, or dive into a few examples we've started for you. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+                </div>
+                <div class="bg-inverse dark">
+                    <img data-src="holder.js/100%x200/dark" class="img-clean" />
+                </div>
+                <div class="border-bottom innerAll bg-gray">
+                    <a href="" class="text-primary"><i class="fa fa-comment"></i> Comment</a> &nbsp;
+                    <a href="" class="text-primary"><i class="fa fa-share"></i> Share Post</a>
+                </div>
+                
+                <div class="innerAll">
+                    <ul class="list-group social-comments margin-none">
+                        <li class="list-group-item">
+                            <img src="MelisDesign/images/avatar-36x36.jpg" alt="Avatar" class="pull-left" />
+                            <div class="user-info">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="">Adrian Demian</a> 
+                                        <abbr>4 days ago</abbr>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <span> Wow... nice post</span>
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                        <li class="list-group-item">
+                            <img src="MelisDesign/images/avatar-36x36.jpg" alt="Avatar" class="pull-left">
+                            <div class="user-info">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="">Adrian Demian</a>
+                                        <abbr>4 days ago</abbr>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <span> Wow... nice post</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item innerAll">
+                            <input type="text" name="message" class="form-control input-sm" placeholder="Comment here ..." />
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+    <div class="widget widget-heading-simple widget-body-white">
+        <div class="widget-body padding-none">
+            <div class="row row-merge">
+                <div class="col-md-3">
+                    <div class="innerAll center"><img src="MelisDesign/images/avatar-large.jpg" alt="image" class="img-rounded img-responsive" />
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="innerAll muted">
+                        <a href="" class="pull-right"><span class="label label-success"> <em>FOLLOW</em></span></a>
+                        <h4 class="strong muted text-uppercase">Adrian Demian</h4>
+                        <ul class="fa-ul margin-bottom-none">
+                            <li><i class="fa fa-li fa-suitcase"></i> Working at <a href="http://www.mosaicpro.biz">MosaicPro</a>
+                            </li>
+                            <li><i class="fa fa-li fa-certificate"></i> Adobe Certification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+    </div>
+
+    </div>
+
+
+
+</div>
+<!-- // Content END -->
+
+        
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

@@ -1,0 +1,72 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">Google maps</h1>
+        <div class="innerAll bg-white border-bottom">
+            <ul class="menubar">
+                <li class="active"><a">Google Maps</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="innerAll spacing-x2">
+
+            <!-- Tabs -->
+            <div class="widget widget-tabs widget-tabs-vertical row row-merge" id="maps_google_tabs">
+                <!-- Tabs Heading -->
+                <div class="widget-head col-md-3">
+                    <ul>
+                        <li class="active"><a>Clustering</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- // Tabs Heading END -->
+
+                <div class="widget-body col-md-9">
+
+                    <!-- Tab content -->
+                    <div class="tab-content">
+
+
+                        <!-- Clustering -->
+                        <h4 class="separator bottom">Clustering</h4>
+                        <div class="thumbnail">
+                            <div class="map_canvas" id="google-map-clustering" style="height: 400px"></div>
+                        </div>
+                        <!-- // Clustering END -->
+
+
+
+
+
+                    </div>
+                    <!-- // Tab content END -->
+
+                </div>
+            </div>
+            <!-- // Tabs END -->
+
+        </div>
+
+
+
+
+    </div>
+    <!-- // Content END -->
+
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

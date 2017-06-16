@@ -1,0 +1,75 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="content-heading bg-white border-bottom">File Managers</h1>
+        <div class="innerAll spacing-x2">
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading glyphicons file_import"><i></i>Dropzone File Upload</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <!-- Dropzone -->
+                    <div id="dropzone">
+                        <form action="/MelisDesign/upload.php" class="dropzone" id="demo-upload">
+                            <div class="fallback">
+                                <input name="file" type="file" multiple />
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="separator bottom"></div>
+                    <!-- // Dropzone END -->
+
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading glyphicons file_import"><i></i>Plupload File Upload</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <!-- Plupload -->
+                    <form id="pluploadForm">
+                        <div id="pluploadUploader">
+                            <p>You browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support.</p>
+                        </div>
+                    </form>
+                    <!-- // Plupload END -->
+
+
+                </div>
+            </div>
+            <!-- // Widget END -->
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

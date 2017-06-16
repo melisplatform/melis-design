@@ -1,0 +1,518 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+        
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+
+    <div id="content">
+        <div class="heading-buttons bg-white border-bottom innerAll">
+            <a href="shop_edit_product.html?lang=en" class="btn btn-xs pull-right btn-primary">Add product</a>
+            <h1 class="content-heading padding-none pull-left">Products <span>Online Shop</span></h1>
+            <div class="clearfix"></div>
+        </div>
+        <div class="bg-white innerAll border-bottom">
+            <ul class="menubar">
+                <li><a href="index.html?lang=en">Dashboard</a>
+                </li>
+                <li><a href="#"><span class="badge badge-primary pull-right">30</span> Button</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown Link #1</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #2</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="innerAll spacing-x2">
+
+            <div class="row">
+                <!-- Row -->
+
+                <!-- Column -->
+                <div class="col-md-4">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Last order</h4>
+                            <a href="" class="details pull-right">view all</a>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body innerAll half">
+                            <ul class="unstyled">
+                                <li>
+                                    <div class="media">
+                                        <a class="pull-left thumb"><img data-src="holder.js/40x40/dark" class="media-object img-responsive" alt="40x40">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="margin-none text-uppercase">10 items</p>
+                                            <p><strong>&euro;5,900</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+                <!-- Column -->
+                <div class="col-md-4">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Best seller</h4>
+                            <a href="" class="details pull-right">view all</a>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body innerAll half">
+                            <ul class="unstyled">
+                                <li>
+                                    <div class="media">
+                                        <a class="pull-left thumb"><img data-src="holder.js/40x40/dark" class="media-object img-responsive" alt="40x40">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="margin-none">Product name</p>
+                                            <p><strong>&euro;2,900</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+                <!-- Column -->
+                <div class="col-md-4">
+
+                    <!-- Widget -->
+                    <div class="widget widget-inverse">
+
+                        <!-- Widget heading -->
+                        <div class="widget-head">
+                            <h4 class="heading">Promotion</h4>
+                            <a href="" class="details pull-right">view all</a>
+                        </div>
+                        <!-- // Widget heading END -->
+
+                        <div class="widget-body innerAll half">
+                            <ul class="unstyled">
+                                <li>
+                                    <div class="media">
+                                        <a class="pull-left thumb"><img data-src="holder.js/40x40/dark" class="media-object img-responsive" alt="40x40">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="margin-none">Product name</p>
+                                            <p><strong>&euro;1,800</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // Widget END -->
+
+                </div>
+                <!-- // Column END -->
+
+
+                <!-- // Row END -->
+            </div>
+
+
+
+
+
+            <!-- Widget -->
+            <div class="widget widget-inverse">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <h4 class="heading glyphicons list"><i></i> Manage products</h4>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <!-- Total products & Sort by options -->
+                    <div class="form-inline separator bottom small">
+                        Total products: 26
+                        <span class="pull-right">
+            <label class="strong">Sort by:</label>
+            <select class="selectpicker" data-style="btn-default btn-xs">
+                <option>Option</option>
+                <option>Option</option>
+                <option>Option</option>
+            </select>
+        </span>
+                    </div>
+                    <!-- // Total products & Sort by options END -->
+
+                    <!-- Filters -->
+                    <div class="filter-bar">
+                        <form class="form-inline">
+
+                            <!-- From -->
+                            <div class="form-group col-md-2 padding-none">
+                                <label>From:</label>
+                                <div class="input-group input-table">
+                                    <input type="text" name="from" id="dateRangeFrom" class="form-control" value="08/05/13" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <!-- // From END -->
+
+                            <!-- To -->
+                            <div class="form-group col-md-2 padding-none">
+                                <label>To:</label>
+                                <div class="input-group input-table">
+                                    <input type="text" name="to" id="dateRangeTo" class="form-control" value="08/18/13" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <!-- // To END -->
+
+                            <!-- Min -->
+                            <div class="form-group col-md-2 padding-none">
+                                <label>Min:</label>
+                                <div class="input-group input-table">
+                                    <input type="text" name="from" class="form-control" value="100" />
+                                    <span class="input-group-addon"><i class="fa fa-euro"></i></span>
+                                </div>
+                            </div>
+                            <!-- // Min END -->
+
+                            <!-- Max -->
+                            <div class="form-group col-md-2 padding-none">
+                                <label>Max:</label>
+                                <div class="input-group input-table">
+                                    <input type="text" name="from" class="form-control" value="500" />
+                                    <span class="input-group-addon"><i class="fa fa-euro"></i></span>
+                                </div>
+                            </div>
+                            <!-- // Max END -->
+
+                            <!-- Select -->
+                            <div class="form-group col-md-3 padding-none">
+                                <label class="label-control">Select:</label>
+                                <div class="col-md-8 padding-none">
+                                    <select name="from" class="form-control">
+                                        <option>Some option</option>
+                                        <option>Other option</option>
+                                        <option>Some other option</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- // Select END -->
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                    <!-- // Filters END -->
+
+
+
+
+                    <!-- Products table -->
+                    <table class="table table-bordered table-condensed table-striped table-primary table-vertical-center table-center checkboxs js-table-sortable">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%;" class="uniformjs">
+                                    <input type="checkbox" />
+                                </th>
+                                <th style="width: 1%;" class="center">No.</th>
+                                <th>Title</th>
+                                <th style="width: 1%;" class="center">Drag</th>
+                                <th class="center">Preview</th>
+                                <th class="center">Stock</th>
+                                <th class="center">Price</th>
+                                <th class="center" style="width: 100px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">1</td>
+                                <td class="important">Lorem Ipsum Sit</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="10" />
+                                </td>
+                                <td class="center">&euro;50</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable selected">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" checked="checked" />
+                                </td>
+                                <td class="center">2</td>
+                                <td class="important">Lorem Dolor Ipsum</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="2" />
+                                </td>
+                                <td class="center">&euro;13</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable selected">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" checked="checked" />
+                                </td>
+                                <td class="center">3</td>
+                                <td class="important">Lorem Dolor Ipsum</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="7" />
+                                </td>
+                                <td class="center">&euro;27</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">4</td>
+                                <td class="important">Lorem Ipsum Sit</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="7" />
+                                </td>
+                                <td class="center">&euro;35</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">5</td>
+                                <td class="important">Lorem Dolor Ipsum</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 1 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="1" />
+                                </td>
+                                <td class="center">&euro;23</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">6</td>
+                                <td class="important">Lorem Dolor Ipsum</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 3 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="2" />
+                                </td>
+                                <td class="center">&euro;20</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">7</td>
+                                <td class="important">Lorem Dolor Ipsum</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="3" />
+                                </td>
+                                <td class="center">&euro;41</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">8</td>
+                                <td class="important">Lorem Ipsum Sit</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 2 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="4" />
+                                </td>
+                                <td class="center">&euro;34</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">9</td>
+                                <td class="important">Lorem Ipsum Sit</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 3 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="1" />
+                                </td>
+                                <td class="center">&euro;43</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="selectable">
+                                <td class="center uniformjs">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="center">10</td>
+                                <td class="important">Lorem Amet Dolor</td>
+                                <td class="center js-sortable-handle"><span class="fa fa-arrows move"></span>
+                                </td>
+                                <td class="center"><span class="fa fa-picture-o fa-fw"></span> 1 photos</td>
+                                <td class="text-center">
+                                    <input type="text" class="form-control" style="width: 50px; margin: 0 auto;" value="1" />
+                                </td>
+                                <td class="center">&euro;40</td>
+                                <td class="center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="product_edit.html?lang=en" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- // Products table END -->
+
+                    <!-- Options -->
+                    <div class="">
+
+                        <!-- With selected actions -->
+                        <div class="pull-left checkboxs_actions" style="display: none;">
+                            <label>With selected:
+                                <select class="selectpicker margin-none dropup" data-style="btn-default btn-xs">
+                                    <option>Action</option>
+                                    <option>Action</option>
+                                    <option>Action</option>
+                                </select>
+                            </label>
+                        </div>
+                        <!-- // With selected actions END -->
+
+                        <div class="pull-right">
+                            <ul class="pagination margin-none">
+                                <li class="disabled"><a href="#">&laquo;</a>
+                                </li>
+                                <li class="active"><a href="#">1</a>
+                                </li>
+                                <li><a href="#">2</a>
+                                </li>
+                                <li><a href="#">3</a>
+                                </li>
+                                <li><a href="#">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <!-- // Pagination END -->
+
+                    </div>
+                    <!-- // Options END -->
+
+
+
+
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+        
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->

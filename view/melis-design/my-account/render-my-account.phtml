@@ -1,0 +1,289 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+        
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+    <div id="content">
+        <h1 class="bg-white content-heading border-bottom">My Account</h1>
+        <div class="bg-white innerAll border-bottom">
+            <ul class="menubar">
+                <li><a href="index.html?lang=en">Dashboard</a>
+                </li>
+                <li><a href="#"><span class="badge badge-primary pull-right">30</span> Button</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Dropdown Link #1</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #2</a>
+                        </li>
+                        <li><a href="#">Dropdown Link #3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="innerAll spacing-x2">
+
+            <!-- Widget -->
+            <div class="widget widget-tabs widget-tabs-gray border-bottom-none">
+
+                <!-- Widget heading -->
+                <div class="widget-head">
+                    <ul>
+                        <li class="active"><a class="glyphicons edit" href="#account-details" data-toggle="tab"><i></i>Account details</a>
+                        </li>
+                        <li><a class="glyphicons settings" href="#account-settings" data-toggle="tab"><i></i>Account settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- // Widget heading END -->
+
+                <div class="widget-body">
+                    <form class="form-horizontal">
+                        <div class="tab-content">
+
+                            <!-- Tab content -->
+                            <div class="tab-pane active" id="account-details">
+
+                                <!-- Row -->
+                                <div class="row">
+
+                                    <!-- Column -->
+                                    <div class="col-md-6">
+
+                                        <!-- Group -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">First name</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" value="John" class="form-control" />
+                                                    <span class="input-group-addon" data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="First name is mandatory"><i class="fa fa-question-circle"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // Group END -->
+
+                                        <!-- Group -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Last name</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" value="Doe" class="form-control" />
+                                                    <span class="input-group-addon" data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Last name is mandatory"><i class="fa fa-question-circle"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // Group END -->
+
+                                        <!-- Group -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Date of birth</label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" id="datepicker1" class="form-control" value="13/06/1988" />
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // Group END -->
+
+                                    </div>
+                                    <!-- // Column END -->
+
+                                    <!-- Column -->
+                                    <div class="col-md-6">
+
+                                        <!-- Group -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Gender</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control">
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- // Group END -->
+
+                                        <!-- Group -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Age</label>
+                                            <div class="col-md-9">
+                                                <input type="text" value="25" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <!-- // Group END -->
+
+                                    </div>
+                                    <!-- // Column END -->
+
+                                </div>
+                                <!-- // Row END -->
+
+                                <div class="separator line bottom"></div>
+
+                                <textarea id="mustHaveId" class="wysihtml5 form-control" rows="5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</textarea>
+
+                                <!-- Form actions -->
+                                <div class="separator top">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check"></i> Save changes</button>
+                                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-times"></i> Cancel</button>
+                                </div>
+                                <!-- // Form actions END -->
+
+                            </div>
+                            <!-- // Tab content END -->
+
+                            <!-- Tab content -->
+                            <div class="tab-pane" id="account-settings">
+
+                                <!-- Row -->
+                                <div class="row">
+
+                                    <!-- Column -->
+                                    <div class="col-md-3">
+                                        <strong>Change password</strong>
+                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                    <!-- // Column END -->
+
+                                    <!-- Column -->
+                                    <div class="col-md-9">
+                                        <label for="inputUsername">Username</label>
+                                        <div class="input-group">
+                                            <input type="text" id="inputUsername" class="form-control" value="john.doe2012" disabled="disabled" />
+                                            <span class="input-group-addon" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="Username can't be changed"><i class="icon-question-sign"></i></span>
+                                        </div>
+                                        <div class="separator bottom"></div>
+
+                                        <label for="inputPasswordOld">Old password</label>
+                                        <div class="input-group">
+                                            <input type="password" id="inputPasswordOld" class="form-control" value="" placeholder="Leave empty for no change" />
+                                            <span class="input-group-addon" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="Leave empty if you don't wish to change the password"><i class="icon-question-sign"></i></span>
+                                        </div>
+                                        <div class="separator bottom"></div>
+
+                                        <label for="inputPasswordNew">New password</label>
+                                        <input type="password" id="inputPasswordNew" class="form-control" value="" placeholder="Leave empty for no change" />
+                                        <div class="separator bottom"></div>
+
+                                        <label for="inputPasswordNew2">Repeat new password</label>
+                                        <input type="password" id="inputPasswordNew2" class="form-control" value="" placeholder="Leave empty for no change" />
+                                        <div class="separator bottom"></div>
+                                    </div>
+                                    <!-- // Column END -->
+
+                                </div>
+                                <!-- // Row END -->
+
+                                <div class="separator line bottom"></div>
+
+                                <!-- Row -->
+                                <div class="row">
+
+                                    <!-- Column -->
+                                    <div class="col-md-3">
+                                        <strong>Contact details</strong>
+                                        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                    <!-- // Column END -->
+
+                                    <!-- Column -->
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="inputPhone">Phone</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                    <input type="text" id="inputPhone" class="form-control" placeholder="01234567897" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+
+                                                <label for="inputEmail">E-mail</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    <input type="text" id="inputEmail" class="form-control" placeholder="contact@mosaicpro.biz" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+
+                                                <label for="inputWebsite">Website</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                                    <input type="text" id="inputWebsite" class="form-control" placeholder="http://www.mosaicpro.biz" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="inputFacebook">Facebook</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                                                    <input type="text" id="inputFacebook" class="form-control" placeholder="mosaicpro" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+
+                                                <label for="inputTwitter">Twitter</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+                                                    <input type="text" id="inputTwitter" class="form-control" placeholder="mosaicpro" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+
+                                                <label for="inputSkype">Skype ID</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-skype"></i></span>
+                                                    <input type="text" id="inputSkype" class="form-control" placeholder="mySkypeID" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+
+                                                <label for="inputgplus">Google</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-google-plus"></i></span>
+                                                    <input type="text" id="inputgplus" class="form-control" placeholder="google ID" />
+                                                </div>
+                                                <div class="separator bottom"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- // Column END -->
+
+                                </div>
+                                <!-- // Row END -->
+
+                                <!-- Form actions -->
+                                <div class="form-actions" style="margin: 0;">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save changes</button>
+                                </div>
+                                <!-- // Form actions END -->
+
+                            </div>
+                            <!-- // Tab content END -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- // Widget END -->
+
+
+
+        </div>
+
+
+    </div>
+    <!-- // Content END -->
+
+        
+<div class="clearfix"></div>
+<!-- // Sidebar menu & content wrapper END -->
+
+
+</div>
+<!-- // Tab END -->

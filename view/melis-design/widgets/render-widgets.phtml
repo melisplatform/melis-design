@@ -1,0 +1,768 @@
+<?php
+
+    $name = '';
+    $id = '';
+    if (!empty($this->zoneconfig['conf']['name']))
+        $name = $this->zoneconfig['conf']['name'];
+    if (!empty($this->zoneconfig['conf']['id']))
+        $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
+    $data_melisKey = $this->melisKey;
+
+?>
+<div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
+<div id="content">
+    <ul class="breadcrumb">
+        <li>You are here</li>
+        <li><a href="index.html?lang=en" class="glyphicons dashboard"><i></i> FLAT PLUS</a>
+        </li>
+        <li class="divider"><i class="fa fa-caret-right"></i>
+        </li>
+        <li>Components</li>
+        <li class="divider"><i class="fa fa-caret-right"></i>
+        </li>
+        <li>Widgets</li>
+    </ul>
+
+    <h1>Statistical Widgets <span>with over 400 icons!</span></h1>
+
+    <!-- Stats Widgets -->
+    <div class="innerLR">
+
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-times"></i></a>
+                <h3 class="heading"><i class="fa fa-exclamation-triangle"></i> Alerts</h3>
+            </div>
+
+            <div class="widget-body">
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-gray widget-stats-1">
+                            <span class="glyphicons cart_in"><i></i><span class="txt">Sales</span></span>
+                            <div class="clearfix"></div>
+                            <span class="count">20</span>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-1">
+                            <span class="glyphicons shield"><i></i><span class="txt">Alerts</span></span>
+                            <div class="clearfix"></div>
+                            <span class="count">125</span>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+                        <!-- // Stats Widget END -->
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-gray widget-stats-2">
+                            <span class="count">2</span>
+                            <span class="txt">Orders</span>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+                        <!-- // Stats Widget END -->
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-2">
+                            <span class="count">30</span>
+                            <span class="txt">Bookings</span>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+                        <!-- // Stats Widget END -->
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-gray widget-stats-2 widget-stats-easy-pie txt-single">
+                            <div data-percent="85" class="easy-pie danger"><span class="value">85</span>%</div>
+                            <span class="txt">Workload</span>
+                            <div class="clearfix"></div>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+
+
+                        <!-- // Stats Widget END -->
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <!-- Stats Widget -->
+                        <!-- Stats Widget -->
+                        <a href="" class="widget-stats widget-stats-2 widget-stats-easy-pie txt-single">
+                            <div data-percent="90" class="easy-pie success"><span class="value">90</span>%</div>
+                            <span class="txt">Completed</span>
+                            <div class="clearfix"></div>
+                        </a>
+                        <!-- // Stats Widget END -->
+
+
+
+                        <!-- // Stats Widget END -->
+
+                    </div>
+                </div>
+                <!-- // Row END -->
+            </div>
+        </div>
+
+        <!-- // Stats Widgets END -->
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading"> Wells</h3>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="well">
+                            <address class="margin-none">
+        <h2>John Doe</h2>
+        <strong>Business manager</strong> at 
+        <strong><a href="#">Business</a></strong><br> 
+        <abbr title="Work email">e-mail:</abbr> <a href="mailto:#">john.doe@mybiz.com</a><br /> 
+        <abbr title="Work Phone">phone:</abbr> (012) 345-678-901<br/>
+        <abbr title="Work Fax">fax:</abbr> (012) 678-132-901
+        <div class="separator bottom"></div>
+        <p class="margin-none"><strong>You can also find us:</strong><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique rutrum libero, vel bibendum nunc consectetur sed.</p>
+    </address>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="well">
+                            <h2>Wells are cool</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique porttitor elit, faucibus convallis enim fringilla eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, esse.</p>
+                            <p class="margin-none">Sed nibh nunc, egestas sit amet convallis ac, molestie vitae dui. Pellentesque placerat fermentum mauris, eu tempus dui egestas eget. </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- // Wells END -->
+
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading"> Collapsible Widgets</h3>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Collapsible Widget -->
+                        <div class="widget" data-toggle="collapse-widget">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget END -->
+
+
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <!-- Collapsible Widget (closed by default) -->
+                        <div class="widget" data-toggle="collapse-widget" data-collapse-closed="true">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget (closed by default) END -->
+
+
+                        <!-- Collapsible Widget (closed by default) -->
+                        <div class="widget" data-toggle="collapse-widget" data-collapse-closed="true">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget (closed by default) END -->
+
+
+                        <!-- Collapsible Widget (closed by default) -->
+                        <div class="widget" data-toggle="collapse-widget" data-collapse-closed="true">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget (closed by default) END -->
+
+
+                        <!-- Collapsible Widget (closed by default) -->
+                        <div class="widget" data-toggle="collapse-widget" data-collapse-closed="true">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget (closed by default) END -->
+
+
+                        <!-- Collapsible Widget (closed by default) -->
+                        <div class="widget" data-toggle="collapse-widget" data-collapse-closed="true">
+                            <div class="widget-head">
+                                <h4 class="heading">Collapsible widget</h4>
+                            </div>
+                            <div class="widget-body">
+                                Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                            </div>
+                        </div>
+                        <!-- // Collapsible Widget (closed by default) END -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- // Collapsible Widgets END -->
+
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading"><i class="icon-manager"></i> Timeline Widget</h3>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- Timeline Widget -->
+                        <div class="widget-timeline">
+                            <ul class="list-timeline">
+
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">Melisa Ragae</a> registered at <a href="">Melisa Ragae's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">Melisa Ragae</a> registered at <a href="">Darius Jackson's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">John Doe</a> registered at <a href="">Melisa Ragae's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">John Doe</a> registered at <a href="">Martin Glades's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">John Doe</a> registered at <a href="">Martin Glades's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+                                <!-- Item -->
+                                <li>
+                                    <span class="date">21/03</span>
+                                    <span class="glyphicons activity-icon user_add"><i></i></span>
+                                    <span class="ellipsis"><a href="">Jane Doe</a> registered at <a href="">Jane Doe's</a> suggestion.</span>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <!-- // Item END -->
+
+                            </ul>
+                            <a href="" class="btn btn-primary view-all">View all</a>
+                        </div>
+                        <!-- Timeline Widget END -->
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading"><i class="icon-manager"></i><i class="fa fa-ellipsis-horizontal"></i>Other Widgets</h3>
+            </div>
+            <div class="widget-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- Widget -->
+                        <div class="relativeWrap" data-toggle="source-code">
+                            <div class="widget widget-heading-simple widget-body-gray">
+                                <div class="widget-head">
+                                    <h4 class="heading glyphicons magic"><i></i>Widget: Simple heading + Icon + Gray body</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Widget END -->
+
+                        <!-- Widget -->
+                        <div class="relativeWrap" data-toggle="source-code">
+                            <div class="widget widget-heading-simple widget-body-white">
+                                <div class="widget-head">
+                                    <h4 class="heading glyphicons magic"><i></i>Widget: Simple heading + Icon + White body</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Widget END -->
+
+                        <!-- Widget -->
+                        <div class="relativeWrap" data-toggle="source-code">
+                            <div class="widget widget-regular">
+                                <div class="widget-head">
+                                    <h4 class="heading">Widget</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Widget END -->
+
+                        <!-- Widget With Progress Bar -->
+
+                        <div class="widget">
+                            <div class="widget-head progress" id="widget-progress-bar">
+                                <div class="progress-bar progress-bar-primary">Lorem ipsum <strong>dolor</strong> - <strong class="steps-percent">100%</strong>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <h4>Progress Widget</h4>
+                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                        <!-- // Widget With Progress Bar END -->
+
+
+
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <!-- Accordion Default -->
+                        <div class="panel-group accordion" id="accordion">
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-1">Collapsible Accordions</a></h4>
+                                </div>
+                                <div id="collapse-1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-2">Collapsible Accordions</a></h4>
+                                </div>
+                                <div id="collapse-2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-3">Collapsible Accordions</a></h4>
+                                </div>
+                                <div id="collapse-3" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                        </div>
+                        <!-- // Accordion Default END -->
+
+
+
+                        <!-- Accordion #2 Style -->
+                        <div class="panel-group accordion accordion-2" id="tabAccountAccordion">
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle glyphicons right_arrow" data-toggle="collapse" data-parent="#tabAccountAccordion" href="#collapse-1-1"><i></i>Lorem ipsum dolor sit amet?</a></h4>
+                                </div>
+                                <div id="collapse-1-1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique rutrum libero, vel bibendum nunc consectetur sed.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle glyphicons right_arrow" data-toggle="collapse" data-parent="#tabAccountAccordion" href="#collapse-2-1"><i></i>Quisque porttitor elit ac mauris?</a></h4>
+                                </div>
+                                <div id="collapse-2-1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Quisque porttitor elit ac mauris aliquam sollicitudin. Nam imperdiet ligula et dolor pulvinar consequat. Sed in turpis id erat vehicula gravida.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle glyphicons right_arrow" data-toggle="collapse" data-parent="#tabAccountAccordion" href="#collapse-3-1"><i></i>Vivamus eros tortor consequat sed?</a></h4>
+                                </div>
+                                <div id="collapse-3-1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Vivamus eros tortor, consequat sed posuere non, tempus non ligula. Integer pharetra sem eu dolor rhoncus euismod.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                            <!-- Accordion Item -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading p-no-icon">
+                                    <h4 class="panel-title"><a class="accordion-toggle glyphicons right_arrow" data-toggle="collapse" data-parent="#tabAccountAccordion" href="#collapse-4-1"><i></i>Etiam suscipit leo tincidunt mi volutpat?</a></h4>
+                                </div>
+                                <div id="collapse-4-1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Etiam suscipit leo tincidunt mi volutpat commodo. Morbi tempor interdum dictum. In hac habitasse platea dictumst.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // Accordion Item END -->
+
+                        </div>
+                        <!-- // Accordion #2 Style END -->
+
+
+
+                        <!-- List Widget -->
+                        <div class="widget">
+                            <div class="widget-head">
+                                <h4 class="heading glyphicons history"><i></i>List Widget</h4>
+                                <a href="" class="details pull-right">link</a>
+                            </div>
+                            <div class="widget-body list">
+                                <ul>
+                                    <li>
+                                        <span>List item #1</span>
+                                        <span class="count">&euro;5,900</span>
+                                    </li>
+                                    <li>
+                                        <span>List item #2</span>
+                                        <span class="count">36,900</span>
+                                    </li>
+                                    <li>
+                                        <span>List item #3</span>
+                                        <span class="count">55,200</span>
+                                    </li>
+                                    <li>
+                                        <span>List item #4</span>
+                                        <span class="count">26,300</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- // List Widget END -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Media Widgets -->
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading"><i class="fa fa-picture-o"></i> Media Widgets</h3>
+            </div>
+            <div class="widget-body">
+                <!-- Row -->
+                <div class="row">
+
+                    <!-- Column -->
+                    <div class="col-md-6">
+
+                        <!-- Media item -->
+                        <div class="media box-generic">
+                            <img class="media-object pull-left thumb" data-src="holder.js/51x51" alt="Image" />
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+
+                            </div>
+                        </div>
+                        <!-- // Media item END -->
+
+
+                        <!-- Media item -->
+                        <div class="media box-generic">
+                            <img class="media-object pull-left thumb" data-src="holder.js/51x51" alt="Image" />
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+                                <!-- Media item -->
+                                <div class="media box-generic">
+                                    <img class="media-object pull-left thumb" data-src="holder.js/51x51" alt="Image" />
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Media heading</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+
+                                    </div>
+                                </div>
+                                <!-- // Media item END -->
+
+
+                            </div>
+                        </div>
+                        <!-- // Media item END -->
+
+
+
+                    </div>
+                    <!-- // Column END -->
+
+                    <!-- Column -->
+                    <div class="col-md-6">
+
+                        <!-- Media item -->
+                        <div class="media box-generic">
+                            <img class="media-object pull-right thumb" data-src="holder.js/51x51" alt="Image" />
+                            <div class="media-body right">
+                                <h4 class="media-heading">Media heading right</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+
+                            </div>
+                        </div>
+                        <!-- // Media item END -->
+
+
+                        <!-- Media item -->
+                        <div class="media box-generic">
+                            <img class="media-object pull-right thumb" data-src="holder.js/51x51" alt="Image" />
+                            <div class="media-body right">
+                                <h4 class="media-heading">Media heading right</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+                                <!-- Media item -->
+                                <div class="media box-generic">
+                                    <img class="media-object pull-right thumb" data-src="holder.js/51x51" alt="Image" />
+                                    <div class="media-body right">
+                                        <h4 class="media-heading">Media heading right</h4> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien. Duis a odio id erat scelerisque fermentum in ut leo. Suspendisse potenti. Nunc semper cursus dui luctus porttitor. Donec facilisis semper magna sit amet ullamcorper.
+
+
+                                    </div>
+                                </div>
+                                <!-- // Media item END -->
+
+
+                            </div>
+                        </div>
+                        <!-- // Media item END -->
+
+
+
+                    </div>
+                    <!-- // Column END -->
+
+                </div>
+                <!-- // Row END -->
+
+            </div>
+        </div>
+        <!-- // Media Widgets END -->
+
+
+
+
+        <!-- Nice scroll -->
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading">Nice scrollable Widgets</h3>
+            </div>
+            <div class="widget-body">
+                <!-- Row -->
+                <div class="row">
+
+                    <!-- Column -->
+                    <div class="col-md-6">
+                        <div class="box-generic">
+
+                            <!-- Slim Scroll -->
+                            <div class="slim-scroll" data-scroll-height="255px">
+
+                                <h4>Large content scrollable box</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique porttitor elit, faucibus convallis enim fringilla eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed nibh nunc, egestas sit amet convallis ac, molestie vitae dui. Pellentesque placerat fermentum mauris, eu tempus dui egestas eget. Mauris sodales, lectus quis accumsan adipiscing, ante libero porta risus, eu posuere sapien magna a metus. Phasellus laoreet fermentum risus, sed congue nisl facilisis nec. Curabitur ullamcorper ultricies erat, non posuere ipsum adipiscing tincidunt. Vivamus molestie hendrerit odio at rutrum. Suspendisse porta ligula ac eros hendrerit bibendum. Integer quis metus est, eu accumsan enim.</p>
+                                <p>Nam commodo imperdiet condimentum. Maecenas in orci odio, quis sagittis augue. Aenean eu nisl turpis. Etiam gravida risus vitae nunc porttitor vestibulum. Praesent ut lorem erat, accumsan ornare erat. Nam in magna magna, nec posuere mi. Curabitur semper mi sed dui ornare vel posuere magna imperdiet. Quisque id tellus ipsum. Maecenas accumsan velit id velit pulvinar tincidunt. Nullam in ante dui. Suspendisse ut orci lectus. Nulla in nunc nec enim interdum auctor. Etiam imperdiet volutpat porta. In bibendum, tortor suscipit facilisis eleifend, lectus lacus laoreet enim, non aliquam nisi justo sit amet leo.</p>
+                                <p>Nunc sed dapibus diam. Suspendisse aliquam ultricies sem et semper. Nulla varius, purus ac sodales fermentum, velit sem scelerisque tellus, et hendrerit neque justo bibendum mauris. Etiam vel neque vel dolor aliquam dignissim non sit amet mauris. Ut purus ante, accumsan in venenatis eget, auctor sit amet quam. Morbi nibh quam, lacinia id porta et, pretium id arcu. Mauris justo justo, tincidunt a rhoncus sit amet, mattis id enim. Vivamus vehicula, mi ac dapibus aliquet, sapien metus dignissim odio, vel ornare elit nulla non quam. Suspendisse id ligula odio. Maecenas nunc massa, pharetra sit amet condimentum id, tempus suscipit nisl. Nulla facilisi.</p>
+                                <p>Maecenas blandit libero a enim faucibus porta. Proin id mauris non lorem tristique dignissim. Duis hendrerit commodo lorem, ac pellentesque dolor sodales sed. Vivamus accumsan erat sed sem mollis facilisis. Praesent vel magna felis, quis convallis augue. Donec dictum, dolor in fermentum venenatis, est nunc fermentum nulla, at suscipit magna dolor a metus. Pellentesque malesuada pellentesque tellus, tristique eleifend dolor tempor vitae. Phasellus sed sem non massa varius mollis. Curabitur non suscipit nunc. Sed vel metus sapien, in pharetra nisi. In vel nibh et odio congue tristique. Praesent non eros purus. Aenean eleifend lacus iaculis tellus eleifend sodales. Cras auctor tellus ac dui vehicula pretium. Proin non ipsum a elit molestie sodales eu in nisi. In ac nulla tortor, sollicitudin imperdiet nisl.</p>
+                                <p>Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+                            </div>
+                            <!-- // Slim Scroll END -->
+
+                        </div>
+
+
+
+
+
+                        <div class="separator bottom"></div>
+                    </div>
+                    <!-- // Column END -->
+
+                    <!-- Column -->
+                    <div class="col-md-6">
+                        <!-- Widget Scroll -->
+                        <div class="widget widget-scroll" data-scroll-height="219px">
+                            <div class="widget-head">
+                                <h4 class="heading">Large content scrollable box</h4>
+                            </div>
+                            <div class="widget-body">
+                                <div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique porttitor elit, faucibus convallis enim fringilla eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed nibh nunc, egestas sit amet convallis ac, molestie vitae dui. Pellentesque placerat fermentum mauris, eu tempus dui egestas eget. Mauris sodales, lectus quis accumsan adipiscing, ante libero porta risus, eu posuere sapien magna a metus. Phasellus laoreet fermentum risus, sed congue nisl facilisis nec. Curabitur ullamcorper ultricies erat, non posuere ipsum adipiscing tincidunt. Vivamus molestie hendrerit odio at rutrum. Suspendisse porta ligula ac eros hendrerit bibendum. Integer quis metus est, eu accumsan enim.</p>
+                                    <p>Nam commodo imperdiet condimentum. Maecenas in orci odio, quis sagittis augue. Aenean eu nisl turpis. Etiam gravida risus vitae nunc porttitor vestibulum. Praesent ut lorem erat, accumsan ornare erat. Nam in magna magna, nec posuere mi. Curabitur semper mi sed dui ornare vel posuere magna imperdiet. Quisque id tellus ipsum. Maecenas accumsan velit id velit pulvinar tincidunt. Nullam in ante dui. Suspendisse ut orci lectus. Nulla in nunc nec enim interdum auctor. Etiam imperdiet volutpat porta. In bibendum, tortor suscipit facilisis eleifend, lectus lacus laoreet enim, non aliquam nisi justo sit amet leo.</p>
+                                    <p>Nunc sed dapibus diam. Suspendisse aliquam ultricies sem et semper. Nulla varius, purus ac sodales fermentum, velit sem scelerisque tellus, et hendrerit neque justo bibendum mauris. Etiam vel neque vel dolor aliquam dignissim non sit amet mauris. Ut purus ante, accumsan in venenatis eget, auctor sit amet quam. Morbi nibh quam, lacinia id porta et, pretium id arcu. Mauris justo justo, tincidunt a rhoncus sit amet, mattis id enim. Vivamus vehicula, mi ac dapibus aliquet, sapien metus dignissim odio, vel ornare elit nulla non quam. Suspendisse id ligula odio. Maecenas nunc massa, pharetra sit amet condimentum id, tempus suscipit nisl. Nulla facilisi.</p>
+                                    <p>Maecenas blandit libero a enim faucibus porta. Proin id mauris non lorem tristique dignissim. Duis hendrerit commodo lorem, ac pellentesque dolor sodales sed. Vivamus accumsan erat sed sem mollis facilisis. Praesent vel magna felis, quis convallis augue. Donec dictum, dolor in fermentum venenatis, est nunc fermentum nulla, at suscipit magna dolor a metus. Pellentesque malesuada pellentesque tellus, tristique eleifend dolor tempor vitae. Phasellus sed sem non massa varius mollis. Curabitur non suscipit nunc. Sed vel metus sapien, in pharetra nisi. In vel nibh et odio congue tristique. Praesent non eros purus. Aenean eleifend lacus iaculis tellus eleifend sodales. Cras auctor tellus ac dui vehicula pretium. Proin non ipsum a elit molestie sodales eu in nisi. In ac nulla tortor, sollicitudin imperdiet nisl.</p>
+                                    <p>Nunc vitae diam eget arcu rutrum euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper libero et dui faucibus egestas. Mauris consequat, lectus at imperdiet faucibus, ante augue egestas neque, ac luctus velit odio id ipsum. Curabitur sed sem at mi elementum aliquam venenatis a risus. Aliquam et arcu sem. Phasellus vestibulum enim ac lacus commodo lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Widget Scroll END -->
+
+
+
+
+
+                    </div>
+                    <!-- // Column END -->
+
+                </div>
+                <!-- // Row END -->
+            </div>
+        </div>
+        <!-- // Nice scroll END -->
+
+
+        <!-- Other Widgets -->
+        <div class="widget widget-inverse widget-regular">
+            <div class="widget-head">
+                <h3 class="heading">Other</h3>
+            </div>
+            <div class="widget-body">
+                <div class="box-generic">
+
+                    <!-- Simple heading with arrow preview & code sample -->
+                    <h4 class="heading-arrow">Simple heading with arrow</h4>
+                    <div class="separator bottom"></div>
+                    <!-- // Simple heading with arrow preview & code sample END -->
+
+                    <div class="menubar links primary">
+                        <ul>
+                            <li>Link widget:</li>
+                            <li><a href="">Button 1</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="">Button 2</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="">Button 3</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="separator bottom"></div>
+
+                    <div class="menubar">
+                        <ul>
+                            <li>Button widget:</li>
+                            <li><a href="">Button 1</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="">Button 2</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="">Export</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+    </div>
+    <!-- // Content END -->
+
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
+
+</div>
+<!-- // Tab END -->
