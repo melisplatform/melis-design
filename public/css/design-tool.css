@@ -1188,7 +1188,7 @@ div.radio.default input {
 }
 
 /* Buttons & Icons */
-.alert {
+/* .alert {
     margin: 0 0 15px
 }
 .alert h4 {
@@ -1248,7 +1248,7 @@ div.radio.default input {
     opacity: 1;
     filter: alpha(opacity=100);
     color: #fff
-}
+} */
 .ribbon-wrapper {
     width: 85px;
     height: 88px;
