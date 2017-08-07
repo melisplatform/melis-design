@@ -2,7 +2,7 @@ function formWizardsInit() {
 	$(function()
 	{
 		var bWizardTabClass = '';
-		$('.wizard').each(function()
+		$('.wizard.wizard-design').each(function()
 		{
 			if ($(this).is('#rootwizard'))
 				bWizardTabClass = 'bwizard-steps';

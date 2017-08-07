@@ -52,14 +52,14 @@ function initScripts()
 function checkAPIMaps() {
     if (typeof google === 'object' && typeof google.maps === 'object') {
         initGoogleMaps();
-
-    } else {
+    }
+    
+    if( $('#google-map-clustering').length || $('#google-map-extend-pagination').length || $('#google-map-filters').length || $('#google-map-geocoding').length || $('#google-map-json').length || $('#google-map-streetview').length || $('#google-fs').length || $('#google-fs-realestate').length ) {
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.async = "async";
         script.async = "defeer";
         // script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=handleApiReady";
-
         script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"
         if (!$('script[src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"]').length > 0) {
 		    //script exists
