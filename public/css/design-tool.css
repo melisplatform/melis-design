@@ -4536,10 +4536,10 @@ div.DTFC_LeftFootWrapper table {
     background: #292929;
     padding: 3px;
     color: white;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
-    line-height: 10px;
+    line-height: 8px;
     text-align: center;
 }
 
