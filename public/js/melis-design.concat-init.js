@@ -5005,19 +5005,6 @@ function coreInit() {
         if ($('html').is('.ie'))
             $('html').removeClass('app');
 
-        if ($('.sidebar > .sidebarMenuWrapper').length && typeof $.fn.niceScroll !== 'undefined')
-        {
-            $('.sidebar > .sidebarMenuWrapper')
-                .addClass('hasNiceScroll')
-                .niceScroll({
-                    horizrailenabled: false,
-                    zindex: 2,
-                    cursorborder: "none",
-                    cursorborderradius: "0",
-                    cursorcolor: primaryColor
-                }).hide();
-        }
-
         $('body')
             .on('mouseenter', '[data-toggle="dropdown"].dropdown-hover', function()
             {
