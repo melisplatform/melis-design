@@ -15,7 +15,11 @@ use Zend\ModuleManager\ModuleManager;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Session\Container;
 
-
+/**
+ * Class Module
+ * @package MelisDesign
+ * @require melis-core
+ */
 class Module
 {
     public function onBootstrap(MvcEvent $e)
