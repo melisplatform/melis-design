@@ -28,12 +28,26 @@ return array(
             ),
             'ressources' => array(
                 'css' => array(
-                    'MelisDesign/css/design-tool.css',
+                    '/MelisDesign/css/design-tool.css',
                 ),
                 'js' => array(
                     '/MelisDesign/js/melis-design.concat-plugins.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
                 ),
+                /**
+                 * the "build" configuration compiles all assets into one file to make
+                 * lesser requests
+                 */
+                'build' => [
+                    // lists of assets that will be loaded in the layout
+                    'css' => [
+                        '/MelisDesign/build/css/bundle.css',
+
+                    ],
+                    'js' => [
+                        '/MelisDesign/build/js/bundle.js',
+                    ]
+                ]
             ),
             'datas' => '',
             'interface' => array(
