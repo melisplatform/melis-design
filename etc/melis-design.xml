@@ -1,0 +1,48 @@
+<melis-design>
+	<package_info>
+		<mp_title>Melis Design</mp_title>
+		<mp_subtitle>The module that brings you a complete set of designs to build your own modules, plugins and tools.</mp_subtitle>
+		<mp_description>
+			MelisDesign brings many ready to use designs, organized in 50 categories such as:<br /> - dashboard items<br /> - forms elements<br /> - tabulation systems<br /> - buttons<br /> - survey<br /> - Google Maps<br /> - tables examples<br /> - charts and graphs<br /> - and a lot more<br /> <br /> With this module, you can quickly start developping your tools and create nice interfaces with a good user's experience.
+		</mp_description>
+		<mp_maintainers>melisplatform</mp_maintainers>
+		<mp_group>Melis Core</mp_group>
+	</package_info>
+	<package_images>
+		<img_1>
+			<mpi_image_title>MelisDesign example of Dashboard</mpi_image_title>
+			<mpi_image_file>melis-design-1.JPG</mpi_image_file>
+			<mpi_image_main>1</mpi_image_main>
+		</img_1>
+		<img_2>
+			<mpi_image_title>MelisDesign example of Galleries</mpi_image_title>
+			<mpi_image_file>melis-design-2.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_2>
+		<img_3>
+			<mpi_image_title>MelisDesign example of Buttons</mpi_image_title>
+			<mpi_image_file>melis-design-3.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_3>
+		<img_4>
+			<mpi_image_title>MelisDesign example of Tabs</mpi_image_title>
+			<mpi_image_file>melis-design-4.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_4>
+		<img_5>
+			<mpi_image_title>MelisDesign example of Graphs</mpi_image_title>
+			<mpi_image_file>melis-design-5.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_5>
+		<img_6>
+			<mpi_image_title>MelisDesign example of Ratings in Tablet mode</mpi_image_title>
+			<mpi_image_file>melis-design-6.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_6>
+		<img_7>
+			<mpi_image_title>MelisDesign example of Form Elements</mpi_image_title>
+			<mpi_image_file>melis-design-7.JPG</mpi_image_file>
+			<mpi_image_main>0</mpi_image_main>
+		</img_7>
+	</package_images>
+</melis-design>
