@@ -51,7 +51,7 @@ return array(
             ),
             'datas' => '',
             'interface' => array(
-                
+
                 'melisdesign_cof' => array(
                     'conf' => array(
                         'id' => 'id_medesign_leftnemu',
