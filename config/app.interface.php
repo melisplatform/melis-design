@@ -48,6 +48,7 @@ return [
                  * lesser requests
                  */
                 'build' => [
+                    'disable_bundle' => true,
                     // lists of assets that will be loaded in the layout
                     'css' => [
                         '/MelisDesign/build/css/bundle.css',
@@ -81,7 +82,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Dashboard',
                                 'action' => 'render-dashboard',
-                                'jscallback' => 'initDashboard(];',
+                                'jscallback' => 'initDashboard();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -113,7 +114,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Portfolio',
                                 'action' => 'render-portfolio',
-                                'jscallback' => 'initPortfolio(];',
+                                'jscallback' => 'initPortfolio();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -129,7 +130,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'SupportTickets',
                                 'action' => 'render-support-tickets',
-                                'jscallback' => 'initSupportTickets(];',
+                                'jscallback' => 'initSupportTickets();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -177,7 +178,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'SupportQuestions',
                                 'action' => 'render-support-questions',
-                                'jscallback' => 'initSupportQuestions(];',
+                                'jscallback' => 'initSupportQuestions();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -193,7 +194,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'SupportAnswers',
                                 'action' => 'render-support-answers',
-                                'jscallback' => 'initSupportAnswers(];',
+                                'jscallback' => 'initSupportAnswers();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -241,7 +242,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Survey',
                                 'action' => 'render-survey',
-                                'jscallback' => 'loadResources("id_melis_survey"];',
+                                'jscallback' => 'loadResources("id_melis_survey");',
                                 'jsdatas' => []
                             ],
                         ],
@@ -257,7 +258,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Events',
                                 'action' => 'render-events',
-                                'jscallback' => 'initEvents(];',
+                                'jscallback' => 'initEvents();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -273,7 +274,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Contacts',
                                 'action' => 'render-contacts',
-                                'jscallback' => 'loadResources("id_melis_contacts"];',
+                                'jscallback' => 'loadResources("id_melis_contacts");',
                                 'jsdatas' => []
                             ],
                         ],
@@ -289,7 +290,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsGoogle',
                                 'action' => 'render-maps-google',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -305,7 +306,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsClustering',
                                 'action' => 'render-maps-clustering',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -321,7 +322,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsExtendPagination',
                                 'action' => 'render-maps-extend-pagination',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -337,7 +338,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsFiltering',
                                 'action' => 'render-maps-filtering',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -353,7 +354,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsGeoSearch',
                                 'action' => 'render-maps-geo-search',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -369,7 +370,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsJSON',
                                 'action' => 'render-maps-json',
-                                'jscallback' => 'checkAPIMaps(];',
+                                'jscallback' => 'checkAPIMaps();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -385,7 +386,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MapsVector',
                                 'action' => 'render-maps-vector',
-                                'jscallback' => 'mapsVectorInit(];',
+                                'jscallback' => 'mapsVectorInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -401,7 +402,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'PhotoGallery',
                                 'action' => 'render-photo-gallery',
-                                'jscallback' => 'initPhotoGallery(];',
+                                'jscallback' => 'initPhotoGallery();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -417,7 +418,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'GalleryVideo',
                                 'action' => 'render-gallery-video',
-                                'jscallback' => 'initGalleryVideo(];',
+                                'jscallback' => 'initGalleryVideo();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -433,7 +434,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Carousel',
                                 'action' => 'render-carousel',
-                                'jscallback' => 'initCarousel(];',
+                                'jscallback' => 'initCarousel();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -449,7 +450,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'ButtonsIcons',
                                 'action' => 'render-buttons-icons',
-                                'jscallback' => 'initButtons(];',
+                                'jscallback' => 'initButtons();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -481,7 +482,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Tables',
                                 'action' => 'render-tables',
-                                'jscallback' => 'tablesInit(];',
+                                'jscallback' => 'tablesInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -497,7 +498,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'TablesResponsive',
                                 'action' => 'render-tables-responsive',
-                                'jscallback' => 'tablesResponsiveInit(];',
+                                'jscallback' => 'tablesResponsiveInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -545,7 +546,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Notifications',
                                 'action' => 'render-notifications',
-                                'jscallback' => 'initNotifications(];',
+                                'jscallback' => 'initNotifications();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -561,7 +562,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Modals',
                                 'action' => 'render-modals',
-                                'jscallback' => 'initModals(];',
+                                'jscallback' => 'initModals();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -577,7 +578,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Widgets',
                                 'action' => 'render-widgets',
-                                'jscallback' => 'initWidgets(];',
+                                'jscallback' => 'initWidgets();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -593,7 +594,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Sliders',
                                 'action' => 'render-sliders',
-                                'jscallback' => 'initSliders(];',
+                                'jscallback' => 'initSliders();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -641,7 +642,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Charts',
                                 'action' => 'render-charts',
-                                'jscallback' => 'initCharts(];',
+                                'jscallback' => 'initCharts();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -657,7 +658,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Calendar',
                                 'action' => 'render-calendar',
-                                'jscallback' => 'initCalendar(];',
+                                'jscallback' => 'initCalendar();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -673,7 +674,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'FormWizards',
                                 'action' => 'render-form-wizards',
-                                'jscallback' => 'initFormWizards(];',
+                                'jscallback' => 'initFormWizards();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -689,7 +690,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'FormElements',
                                 'action' => 'render-form-elements',
-                                'jscallback' => 'initFormElements(];',
+                                'jscallback' => 'initFormElements();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -705,7 +706,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'FormValidator',
                                 'action' => 'render-form-validator',
-                                'jscallback' => 'initFormValidator(];',
+                                'jscallback' => 'initFormValidator();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -721,7 +722,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'FileManager',
                                 'action' => 'render-file-manager',
-                                'jscallback' => 'initFileManger(];',
+                                'jscallback' => 'initFileManger();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -753,7 +754,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Finances',
                                 'action' => 'render-finances',
-                                'jscallback' => 'initFinances(];',
+                                'jscallback' => 'initFinances();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -769,7 +770,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Invoice',
                                 'action' => 'render-invoice',
-                                'jscallback' => 'initInvoice(];',
+                                'jscallback' => 'initInvoice();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -785,7 +786,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Bookings',
                                 'action' => 'render-bookings',
-                                'jscallback' => 'initBookings(];',
+                                'jscallback' => 'initBookings();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -801,7 +802,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MedicalOverview',
                                 'action' => 'render-medical-overview',
-                                'jscallback' => 'initMedicalOverview(];',
+                                'jscallback' => 'initMedicalOverview();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -833,7 +834,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MedicalAppointments',
                                 'action' => 'render-medical-appointments',
-                                'jscallback' => 'initMedicalAppointments(];',
+                                'jscallback' => 'initMedicalAppointments();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -865,7 +866,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MedicalMetrics',
                                 'action' => 'render-medical-metrics',
-                                'jscallback' => 'initMedicalMetrics(];',
+                                'jscallback' => 'initMedicalMetrics();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -881,7 +882,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Social',
                                 'action' => 'render-social',
-                                'jscallback' => 'initSocial(];',
+                                'jscallback' => 'initSocial();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -897,7 +898,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'ShopEditProducts',
                                 'action' => 'render-shop-edit-products',
-                                'jscallback' => 'initShopEditProductsInit(];',
+                                'jscallback' => 'initShopEditProductsInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -913,7 +914,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'ShopProducts',
                                 'action' => 'render-shop-products',
-                                'jscallback' => 'initShopProductsInit(];',
+                                'jscallback' => 'initShopProductsInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -961,7 +962,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'MyAccount',
                                 'action' => 'render-my-account',
-                                'jscallback' => 'initMyAccountInit(];',
+                                'jscallback' => 'initMyAccountInit();',
                                 'jsdatas' => []
                             ],
                         ],
@@ -977,7 +978,7 @@ return [
                                 'module' => 'MelisDesign',
                                 'controller' => 'Ratings',
                                 'action' => 'render-ratings',
-                                'jscallback' => 'initRatings(];',
+                                'jscallback' => 'initRatings();',
                                 'jsdatas' => []
                             ],
                         ],
