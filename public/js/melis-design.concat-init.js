@@ -592,8 +592,7 @@ function bootstrapDatepickerInit() {
 
 /* google map init */
 var igms = false;
-function initScripts()
-{
+function initScripts() {
     if (igms) return;
     componentsPath = "";
     var $scripts = [
@@ -661,8 +660,7 @@ function checkAPIMaps() {
     }
 }
 
-function initGoogleMaps()
-{
+function initGoogleMaps() {
     initScripts();
 
     /*
@@ -1755,10 +1753,8 @@ function dtBootstrap() {
 /* datatables.init.js */
 function dataTablesInit() {
 
-    (function ($, window)
-    {
-        function fnInitCompleteCallback(that)
-        {
+    (function ($, window) {
+        function fnInitCompleteCallback(that) {
             var p = that.parents('.dataTables_wrapper').first();
             var l = p.find('.row').find('label');
 
@@ -1776,7 +1772,7 @@ function dataTablesInit() {
 
         /* DataTables */
         componentsPath = "";
-        if ($('.design-table').size() > 0)
+        if ($('.design-table').length > 0)
         {
             $('.design-table').each(function()
             {
@@ -1901,7 +1897,28 @@ function dataTablesInit() {
 
 /* mixitup.init.js */
 function mixItUpInit() {
-    $('.mixitup').mixitup({ showOnLoad: 'mixit-filter-1' });
+    $(function() {
+        //var containerEl = document.querySelector('.mixitup');
+        //$('.mixitup').mixitup({ showOnLoad: 'mixit-filter-1' });
+        if ( $('.mixitup').length > 0 ) {
+            mixitup('.mixitup', {
+                load: {
+                    sort: 'order:asc'
+                },
+                animation: {
+                    effects: 'fade',
+                    duration: 700
+                },
+                classNames: {
+                    block: 'button-filters',
+                    elementFilter: 'filter'
+                },
+                selectors: {
+                    target: '.mix-target'
+                }
+            });
+        }
+    });
 }
 
 /* fuelux-checkbox */
@@ -2155,18 +2172,18 @@ function tablesClassicInit() {
                     $(this).addClass('selected');
                 }
             }
-            if ($('.checkboxs tr.selectable :checked').size() == $('.checkboxs tr.selectable :checkbox').size())
+            if ($('.checkboxs tr.selectable :checked').length == $('.checkboxs tr.selectable :checkbox').length)
                 $('.checkboxs thead :checkbox').prop('checked', true).parent().addClass('checked');
             else
                 $('.checkboxs thead :checkbox').prop('checked', false).parent().removeClass('checked');
 
-            if ($('.checkboxs tr.selectable :checked').size() >= 1)
+            if ($('.checkboxs tr.selectable :checked').length >= 1)
                 $('.checkboxs_actions').removeClass('hide').show();
             else
                 $('.checkboxs_actions').hide();
         });
 
-        if ($('.checkboxs tbody :checked').size() == $('.checkboxs tbody :checkbox').size() && $('.checkboxs tbody :checked').length)
+        if ($('.checkboxs tbody :checked').length == $('.checkboxs tbody :checkbox').length && $('.checkboxs tbody :checked').length)
             $('.checkboxs thead :checkbox').prop('checked', true).parent().addClass('checked');
 
         if ($('.checkboxs tbody :checked').length)
@@ -2219,7 +2236,7 @@ function tablesClassicInit() {
                     },
                     start: function(event, ui)
                     {
-                        ui.placeholder.html('<td colspan="' + $(this).find('tbody tr:first td').size() + '">&nbsp;</td>');
+                        ui.placeholder.html('<td colspan="' + $(this).find('tbody tr:first td').length + '">&nbsp;</td>');
                     }
                 });
         }
@@ -2526,7 +2543,7 @@ function modalsBootBoxInit() {
 function wysiHTML5() {
     (function($){
         /* wysihtml5 */
-        if ($('textarea.wysihtml5').size() > 0)
+        if ($('textarea.wysihtml5').length > 0)
             $('textarea.wysihtml5').wysihtml5();
     })(jQuery);
 }
@@ -2806,7 +2823,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Default slider
          */
-        if ($('.slider-single').size() > 0)
+        if ($('.slider-single').length > 0)
         {
             $( ".slider-single" ).slider({
                 create: JQSliderCreate,
@@ -2837,7 +2854,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range Slider
          */
-        if ($('.range-slider').size() > 0)
+        if ($('.range-slider').length > 0)
         {
             $( ".range-slider .slider" ).each(function()
             {
@@ -2870,7 +2887,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Snap to Increments
          */
-        if ($('.increments-slider').size() > 0)
+        if ($('.increments-slider').length > 0)
         {
             $( ".increments-slider .slider" ).slider({
                 create: JQSliderCreate,
@@ -2890,7 +2907,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Vertical Range Slider
          */
-        if ($('.vertical-range-slider').size() > 0)
+        if ($('.vertical-range-slider').length > 0)
         {
             $( ".vertical-range-slider .slider" ).slider({
                 create: JQSliderCreate,
@@ -2912,7 +2929,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed minimum
          */
-        if ($('.slider-range-min').size() > 0)
+        if ($('.slider-range-min').length > 0)
         {
             $( ".slider-range-min .slider" ).slider({
                 create: JQSliderCreate,
@@ -2932,7 +2949,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed maximum
          */
-        if ($('.slider-range-max').size() > 0)
+        if ($('.slider-range-max').length > 0)
         {
             $( ".slider-range-max .slider" ).slider({
                 create: JQSliderCreate,
@@ -2950,7 +2967,6 @@ function jqueryUiSlidersInit() {
         }
     });
 }
-
 
 /* flotchart-simple-01.init.js */
 function flotchartSimpleInit() {
@@ -4212,8 +4228,7 @@ function uniformInit() {
 
 /* calendar.init.js */
 function calendarInit() {
-    $(function()
-    {
+    $(function() {
         /* initialize the external events
          -----------------------------------------------------------------*/
 
@@ -4770,8 +4785,7 @@ function formValidatorInit() {
 
 /* dropzone.init.js */
 function dropzoneInit() {
-    (function($)
-    {
+    (function($) {
         if (typeof Dropzone != 'undefined')
             Dropzone.autoDiscover = false;
 
