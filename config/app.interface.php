@@ -38,6 +38,7 @@ return [
             'ressources' => [
                 'css' => [
                     '/MelisDesign/css/design-tool.css',
+                    '/MelisDesign/css/tiny-slider.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',

@@ -5207,3 +5207,170 @@ div.DTFC_LeftFootWrapper table {
 .switch-design .has-switch span.switch-success:hover {
     background: #8dc266;
 }
+
+/**
+ * Dashboard
+ */
+.panel-flip .back .widget .widget-head .btn {
+    padding: 1px 5px;
+    font-size: 12px;
+}
+.widget .half .media-body,
+.media-list .media-body,
+.timeline-activity .block .box-generic .media .media-body,
+.chat-items .media .media-body,
+.widget-body .media .media-body,
+.panel-flip .back .widget .widget-body .media .media-body {
+    margin-left: 1rem;
+}
+.widget-chat .media small.date {
+    text-align: right;
+}
+.widget-body .datepicker table thead tr th,
+.widget-body .datepicker table tbody tr td {
+    text-align: center;
+}
+td.active.day {
+    color: #fff;
+}
+.btn.btn-primary i.fa.fa-comments-o {
+    color: #fff;
+}
+.label {
+    display: inline-block;
+}
+.label-default {
+    background-color: #777;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label a {
+    color: #fff;
+}
+.widget .half .media-body small {
+    display: block;
+}
+.widget .innerT .media {
+    margin-top: 15px;
+}
+.widget .innerT .media:first-child {
+    margin-top: 0;
+}
+.media-list .media-body .media .media-body .btn-default,
+.media-list .media-body .btn-group-xs > .btn-default {
+    color: #797979 !important;
+}
+.media-list .media-body .media .media-body .btn-info,
+.media-list .media-body .btn-group-xs > .btn-info {
+    border-color: #007bff !important;
+    color: #007bff !important;
+}
+.media-list .media-body .media .media-body .btn-info:hover,
+.media-list .media-body .btn-group-xs > .btn-info:hover {
+    background: #007bff !important;
+    color: #fff !important;
+}
+.widget .half .btn,
+.media-list .media-body .media .media-body .btn,
+.btn-group-xs > .btn {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+/* pricing table */
+.table-pricing-3 .innerAll .footer a {
+    color: #72af46;
+}
+.pricing-table ul li a {
+    color: #fff !important;
+}
+.pricing-table.primary ul li a {
+    color: #797979 !important;
+}
+.pricing-table.primary ul li a:hover {
+    color: #333 !important;
+}
+/* survey */
+.nav-pills .nav-item {
+    display: inline-block;
+}
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link {
+    color: #fff;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background: #007bff !important;
+}
+.badge.badge-primary.badge-stroke {
+    background: none !important;
+}
+/* events */
+.tns-controls {
+    display: none;
+}
+.tns-nav {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.tns-nav > [aria-controls] {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #999;
+    border: 0;
+}
+.tns-outer [aria-controls], .tns-outer [data-action] {
+    cursor: pointer;
+}
+.tns-nav > .tns-nav-active {
+    background: #333;
+}
+/* contacts */
+.contacts .input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.contacts .half .btn {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.contacts .innerLR .innerAll,
+.contacts .innerLR .media .media-body {
+    padding-bottom: 0 !important;
+}
+.contacts .innerLR .media .media-body {
+    margin-left: 1rem;
+}
+.contacts .innerLR .media .media-body h4 {
+    font-size: 18px;
+}
+.map_canvas #pagination .display {
+    color: #fff;
+}
+.map_canvas #pagination .display:hover {
+    color: #424242;
+}
+.bootbox .modal-dialog .modal-header .modal-title,
+.bootbox .modal-dialog .modal-header .close {
+    color: #7c7c7c;
+}
+#maps_google_tabs .tab-content #modals {
+    display: none;
+}
