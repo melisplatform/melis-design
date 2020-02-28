@@ -2125,22 +2125,32 @@ function gridaliciousInit() {
     (function($) {
         $('[data-toggle*="gridalicious"]').each(function(){
             var $that = $(this);
-            $(this).removeClass('hide2').gridalicious({
-                gutter: $that.attr('data-gridalicious-gutter') || 13,
-                width: $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 200,
-                animate: true,
-                selector: '.widget'
-            });
+            
+                $that.removeClass('hide2');
+
+                $that.gridalicious({
+                    gutter: $that.attr('data-gridalicious-gutter') || 13,
+                    width: $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 200,
+                    animate: true,
+                    selector: '.widget'
+                });
         });
     })(jQuery);
 }
 
 /* prettyphoto.init.js */
 function prettyPhotoInit() {
-    (function($)
-    {
-        if ($('[data-toggle="prettyPhoto"]').length)
-            $('[data-toggle="prettyPhoto"]').prettyPhoto();
+    (function($) {
+        /* if ($('[data-toggle="prettyPhoto"]').length)
+            $('[data-toggle="prettyPhoto"]').prettyPhoto(); */
+
+            if ( $("a[rel^='prettyPhoto']").length )
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+            
+            $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
+                e.preventDefault();
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+            });
     })(jQuery);
 }
 
@@ -2152,7 +2162,7 @@ function jqueryBootpagInit() {
 
     $('.jquery-bootpag-pagination').bootpag({
         total: 23,
-        page: 1,
+        page: 2,
         maxVisible: 10
     }).on('page', function(event, num){
         $(".jquery-bootpag-content").html("Page " + num); // or some ajax content loading ...
@@ -5813,6 +5823,12 @@ function initRatings() {
 
 $(function() {
     initRatings();
+
+    $("body").on("click", "#blueimp-gallery .close.no-ajaxify", function() {
+        setTimeout(function() {
+            $("body").removeAttr("style");
+        }, 1000);
+    });
 });
 
 /* charts.init.js */
