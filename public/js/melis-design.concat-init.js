@@ -1790,22 +1790,23 @@ function dataTablesInit() {
             });
 
             var s = p.find('select');
-            s.addClass('.selectpicker').selectpicker();
+                    s.addClass('selectpicker').selectpicker();
+
+            //$(".bootstrap-select .dropdown-toggle .filter-option").append("<span class='caret'></span>");
+            var dtId = that.parents('.dataTables_wrapper').attr("id");
+                $("#"+dtId).find(".bootstrap-select .dropdown-toggle").append("<span class='caret'></span>");
         }
 
 
         /* DataTables */
         componentsPath = "";
-        if ($('.design-table').length > 0)
-        {
-            $('.design-table').each(function()
-            {
+        if ( $('.design-table').length > 0 ) {
+            $('.design-table').each(function() {
                 // DataTables with TableTools
-                if ($(this).is('.tableTools'))
-                {
+                if ( $(this).is('.tableTools') ) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "oLanguage": {
                             "sLengthMenu": "_MENU_ Show"
                         },
@@ -1829,8 +1830,7 @@ function dataTablesInit() {
                     });
                 }
                 // colVis extras initialization
-                else if ($(this).is('.colVis'))
-                {
+                else if ($(this).is('.colVis')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "sDom": "<'row separator bottom'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
@@ -1849,8 +1849,7 @@ function dataTablesInit() {
                         }
                     });
                 }
-                else if ($(this).is('.scrollVertical'))
-                {
+                else if ($(this).is('.scrollVertical')) {
                     $(this).dataTable({
                         "bPaginate": false,
                         "sScrollY": "200px",
@@ -1863,8 +1862,7 @@ function dataTablesInit() {
                         }
                     });
                 }
-                else if ($(this).is('.ajax'))
-                {
+                else if ($(this).is('.ajax')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "bProcessing": true,
@@ -1878,8 +1876,7 @@ function dataTablesInit() {
                         }
                     });
                 }
-                else if ($(this).is('.fixedHeaderColReorder'))
-                {
+                else if ($(this).is('.fixedHeaderColReorder')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "sDom": "R<'clear'><'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
@@ -1896,8 +1893,7 @@ function dataTablesInit() {
                     });
                 }
                 // default initialization
-                else
-                {
+                else {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "sDom": "<'row separator bottom'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
@@ -1914,8 +1910,6 @@ function dataTablesInit() {
                 }
             });
         }
-
-
     })(jQuery, window);
 }
 
@@ -2123,14 +2117,14 @@ function eventsCarouselInit() {
 /* gridalicious.init.js */
 function gridaliciousInit() {
     (function($) {
-        $('[data-toggle*="gridalicious"]').each(function(){
+        $('[data-toggle="gridalicious"]').each(function(){
             var $that = $(this);
             
                 $that.removeClass('hide2');
 
                 $that.gridalicious({
-                    gutter: $that.attr('data-gridalicious-gutter') || 13,
-                    width: $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 200,
+                    gutter: 13, // $that.attr('data-gridalicious-gutter') || 
+                    width: 200, // $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 
                     animate: true,
                     selector: '.widget'
                 });
@@ -2177,8 +2171,7 @@ function bootstrapSelectInit() {
 
 /* tables-classic.init.js */
 function tablesClassicInit() {
-    (function($)
-    {
+    (function($) {
         /* Table select / checkboxes utility */
         $('.checkboxs thead :checkbox').change(function(){
             if ($(this).is(':checked'))
@@ -2275,8 +2268,7 @@ function tablesClassicInit() {
         });
 
         // sortable tables
-        if ($( ".js-table-sortable" ).length)
-        {
+        if ($( ".js-table-sortable" ).length) {
             $( ".js-table-sortable" ).sortable(
                 {
                     placeholder: "ui-state-highlight",
@@ -4988,7 +4980,9 @@ function coreInit() {
         });
 
         // carousels
-        $('.carousel').carousel();
+        $('.carousel').each(function() {
+            $(this).carousel();
+        });
 
         // Google Code Prettify
         if ($('.prettyprint').length && typeof prettyPrint != 'undefined')
@@ -5591,7 +5585,7 @@ $(function() {
 /* tables.init.js */
 function tablesInit() {
     jQueryDataTables();
-    // tableTools();
+    //tableTools();
     colVis();
     dtBootstrap();
     dataTablesInit();

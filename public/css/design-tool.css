@@ -5380,6 +5380,9 @@ td.active.day {
 .video-gallery [data-toggle="gridalicious"] .widget {
     width: 380px;
 }
+.video-gallery .widget.widget-body-white > .widget-body {
+    min-height: 350px;
+}
 #carousel-1 {
     width: 700px;
     overflow: hidden;
@@ -5388,16 +5391,15 @@ td.active.day {
     padding: 20px;
 }
 .carousel-indicators .active {
-    width: 12px;
-    height: 12px;
-    margin: 0;
+    width: 8px;
+    height: 8px;
     background-color: #fff;
 }
 .carousel-indicators li {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 1px;
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
     text-indent: -999px;
     cursor: pointer;
     background-color: rgba(0,0,0,0);
@@ -5471,7 +5473,16 @@ td.active.day {
     padding: 5px 14px;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 15px;
+}
+.pager li>a:focus, .pager li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+.pager li.previous {
+    float: left;
+}
+.pager li.next {
+    float: right;
 }
 .jquery-bootpag-pagination .pagination {
     display: inline-block;
@@ -5485,6 +5496,7 @@ td.active.day {
 .jquery-bootpag-pagination .pagination > li {
     display: inline;
 }
+.jquery-bootpag-pagination .pagination > li a:hover,
 .jquery-bootpag-pagination .pagination > li.active a:hover,
 .jquery-bootpag-pagination .pagination > li.active a {
     color: #fff;
@@ -5510,4 +5522,43 @@ td.active.day {
     border-color: #e5e5e5;
     background: #fff;
     color: #cb4040;
+}
+.popover .popover-title {
+    font-size: 14px;
+}
+.platform-icons .widget .nav-tabs {
+    border-color: transparent;
+}
+.bootstrap-select .dropdown-menu {
+    border: 0;
+    min-width: 257px;
+}
+.bootstrap-select .dropdown-toggle {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    text-align: left;
+    position: relative;
+}
+.bootstrap-select .dropdown-toggle .filter-option {
+    width: 100%;
+}
+.bootstrap-select .dropdown-toggle .filter-option .filter-option-inner {
+    width: inherit;
+}
+.bootstrap-select .dropdown-toggle .filter-option .caret {
+    margin-left: -1rem;
+}
+/* .bootstrap-select .dropdown-menu.inner.show {
+    top: 0;
+    overflow: auto !important;
+} */
+div.dataTables_wrapper div.dataTables_length .bootstrap-select .custom-select {
+    display: none;
+}   
+div.dataTables_wrapper div.dataTables_length .control-label {
+    text-align: left;
+    vertical-align: middle;
+}
+div.dataTables_wrapper .table-tools div.dataTables_length div {
+    display: inline-block;
 }
