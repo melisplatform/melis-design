@@ -1730,6 +1730,7 @@ div.radio.default input {
 .wizard .widget.widget-wizard-pills .widget-head.widget-steps-head ul li.active a {
   border: 1px solid #e5e5e5;
   border-radius: 5px;
+  color: #fff;
 }
 
 .wizard.wizard-design .widget.widget-tabs-double>.widget-head ul li a.glyphicons {
@@ -2221,7 +2222,7 @@ div.radio.default input {
     border-radius: 10px 10px 10px 10px
 }
 .ui-slider-wrap .ui-slider-horizontal {
-    height: 10px
+    height: 15px
 }
 .ui-slider-wrap .ui-slider-horizontal .ui-slider-handle {
     top: -5px
@@ -5545,13 +5546,17 @@ td.active.day {
 .bootstrap-select .dropdown-toggle .filter-option .filter-option-inner {
     width: inherit;
 }
-.bootstrap-select .dropdown-toggle .filter-option .caret {
-    margin-left: -1rem;
+.bootstrap-select .dropdown-toggle .caret {
+    float: right;
+    margin-top: -0.7rem;
 }
-/* .bootstrap-select .dropdown-menu.inner.show {
+.bootstrap-select .dropdown-menu.show {
+    display: block;
+}
+.bootstrap-select .dropdown-menu.show .inner.show {
     top: 0;
     overflow: auto !important;
-} */
+}
 div.dataTables_wrapper div.dataTables_length .bootstrap-select .custom-select {
     display: none;
 }   
@@ -5559,6 +5564,100 @@ div.dataTables_wrapper div.dataTables_length .control-label {
     text-align: left;
     vertical-align: middle;
 }
-div.dataTables_wrapper .table-tools div.dataTables_length div {
+div.dataTables_wrapper .table-tools div.dataTables_filter .col-md-8,
+div.dataTables_wrapper .table-tools div.dataTables_filter .col-md-4,
+div.dataTables_wrapper .table-tools div.dataTables_length .col-md-8,
+div.dataTables_wrapper .table-tools div.dataTables_length .col-md-4 {
     display: inline-block;
+}
+.table-with-progress tbody tr td.innerLR {
+    vertical-align: middle;
+}
+@media (min-width: 980px) {
+    .table-responsive {
+        display: table;
+    }
+}
+.widget .widget-body .jumbotron .btn-primary {
+    color: #fff;
+}
+.modals .modal .modal-header .modal-title,
+.modals .modal .modal-header .close {
+    color: #7c7c7c;
+}
+.modals .modal .modal-body .checkbox-custom i.checked {
+    margin-left: -14px;
+}
+.modals .modal .modal-body .checkbox-custom i {
+    margin-left: -16px;
+}
+.modals .modal .modal-body .form-group > label {
+    margin-bottom: 0;
+    text-align: right;
+    padding: 8px 0;
+}
+.form-control-static {
+    padding: 5px 0;
+}
+.modals .widget-body .btn {
+    text-decoration: none;
+}
+#modal-compose .modal-body .form-group .control-label-to {
+    padding: 8px 0;
+}
+#modal-compose .modal-body .form-group > label {
+    padding: 2px 0;
+}
+.modals .modal .modal-body .pagination {
+    margin-top: 1rem;
+}
+.modals .wizard .widget.widget-wizard-pills .widget-head.widget-steps-head ul li.active a {
+    border: 0;
+    color: #505050;
+}
+.modals .modal-content .widget.widget-tabs.widget-tabs-responsive>.widget-head {
+    height: 80px;
+}
+.modals .wizard .widget.widget-wizard-pills .widget-head.widget-steps-head ul li.active a.active,
+.modals .wizard .widget.widget-wizard-pills .widget-head.widget-steps-head ul li.active.primary a {
+    color: #fff;
+}
+.modals .widget.widget-wizard-pills .widget-head ul li a,
+.modals .widget.widget-wizard-pills .widget-head ul li.primary a {
+    background: #e5e5e5;
+    color: #c8c8c8;
+}
+#modal-credit-card .modal-body .form-group label {
+    text-align: left;
+}
+.modal.modal-inline .modal-dialog {
+    max-width: 100%;
+}
+.widgets .breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+.widgets [data-toggle="collapse-widget"] .collapse:not(.list) {
+    padding: 15px;
+}
+.accordion .panel-collapse.collapse.show .panel-body {
+    padding: 15px;
+}
+.accordion .panel .panel-heading .panel-title {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.widgets .menubar ul {
+    margin-block-start: 0;
+    padding-inline-start: 40px;
+}
+.widgets .widget-timeline .view-all {
+    color: #fff;
+}
+#widget-progress-bar .progress-bar {
+    display: block;
+}
+#content.widgets .widget .widget-body .widget-timeline a.btn-primary.view-all {
+    color: #fff !important;
 }
