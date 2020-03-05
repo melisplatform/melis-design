@@ -117,7 +117,7 @@ function fueluxCheckBoxInit() {
 
 		// CHECKBOX DATA-API
 
-		$(function () {
+		$(function() {
 			$('.checkbox-custom > input[type=checkbox]').each(function () {
 				var $this = $(this);
 				if ($this.data('checkbox')) return;

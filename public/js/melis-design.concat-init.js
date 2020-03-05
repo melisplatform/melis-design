@@ -3765,15 +3765,12 @@ function flotchartPieInit() {
 
 /* flotchart-donut.init.js */
 function flotchartDonutInit() {
-
-    (function($)
-    {
-        if($("#chart_donut").length) {
-            if (typeof charts == 'undefined')
+    (function($) {
+        if( $("#chart_donut").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_donut =
-                {
+            charts.chart_donut = {
                     // chart data
                     data: [
                         { label: "USA",  data: 38 },
@@ -3789,8 +3786,7 @@ function flotchartDonutInit() {
                     plot: null,
 
                     // chart options
-                    options:
-                        {
+                    options: {
                             series: {
                                 pie: {
                                     show: true,
@@ -3839,8 +3835,7 @@ function flotchartDonutInit() {
                     placeholder: "#chart_donut",
 
                     // initialize
-                    init: function()
-                    {
+                    init: function() {
                         // apply styling
                         charts.utility.applyStyle(this);
 
@@ -3850,7 +3845,6 @@ function flotchartDonutInit() {
 
             charts.chart_donut.init();
         }
-
     })(jQuery);
 }
 
