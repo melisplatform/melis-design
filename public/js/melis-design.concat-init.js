@@ -5809,14 +5809,30 @@ function initRatings() {
     tablesResponsiveFootableInit();
 }
 
-$(function() {
-    initRatings();
+/* remove body style */
+function removeStyleAttr() {
+    var $body = $("body");
 
-    $("body").on("click", "#blueimp-gallery .close.no-ajaxify", function() {
         setTimeout(function() {
-            $("body").removeAttr("style");
+            $body.removeAttr("style");
         }, 1000);
-    });
+}
+
+$(function() {
+    var $body       = $("body"),
+        $document   = $("document");
+
+        initRatings();
+
+        $body.on("click", "#blueimp-gallery .close.no-ajaxify", function() {
+            removeStyleAttr();
+        });
+
+        $document.keyup(function(e) {
+            if ( e.keyCode === 27 ) {
+                removeStyleAttr();
+            }
+        });
 });
 
 /* charts.init.js */

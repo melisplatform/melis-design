@@ -10,7 +10,7 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-    <div id="content">
+    <div id="content" class="bookings">
         <div class="heading-buttons bg-white border-bottom innerAll">
             <a href="" class="btn btn-xs float-right btn-primary">Add booking</a>
             <h1 class="content-heading padding-none float-left">Bookings</h1>
@@ -118,7 +118,7 @@
                         Total bookings: 26
                         <span class="float-right">
                         <label class="strong">Sort by:</label>
-                        <select class="selectpicker margin-none" data-style="btn-default btn-xs">
+                        <select class="common-select margin-none" data-style="btn-default btn-xs">
                             <option>Option</option>
                             <option>Option</option>
                             <option>Option</option>
@@ -242,7 +242,7 @@
                     <!-- With selected actions -->
                     <div class="float-left checkboxs_actions hide-2">
                         <label class="strong">With selected:
-                            <select class="selectpicker margin-none" data-style="btn-default btn-small">
+                            <select class="common-select margin-none" data-style="btn-default btn-small">
                                 <option>Action</option>
                                 <option>Action</option>
                                 <option>Action</option>
@@ -252,18 +252,25 @@
                     <!-- // With selected actions END -->
 
                     <!-- Pagination -->
-                    <ul class="pagination float-right margin-none">
-                        <li class="disabled"><a href="#">&laquo;</a>
-                        </li>
-                        <li class="active"><a href="#">1</a>
-                        </li>
-                        <li><a href="#">2</a>
-                        </li>
-                        <li><a href="#">3</a>
-                        </li>
-                        <li><a href="#">&raquo;</a>
-                        </li>
-                    </ul>
+                    <nav>
+                        <ul class="pagination float-right margin-none">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">&laquo;</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
                     <div class="clearfix"></div>
                     <!-- // Pagination END -->
 

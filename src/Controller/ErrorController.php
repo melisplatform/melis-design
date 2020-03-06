@@ -19,9 +19,11 @@ class ErrorController extends AbstractActionController
 
     public function renderErrorAction()
     {
+       
         $melisKey = $this->params()->fromRoute('melisKey', '');
         $view = new ViewModel();
         $view->melisKey = $melisKey;
+
         return $view;
     }
     

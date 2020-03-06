@@ -1048,7 +1048,8 @@ div.radio.default input {
     height: 30px;
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
-    border-radius: 0 0 0 0
+    border-radius: 0 0 0 0;
+    text-align: center;
 }
 .datepicker thead th.dow {
     background: #cb4040;
@@ -3089,8 +3090,10 @@ li.plupload_droptext {
     border-bottom: 1px solid #efefef;
     color: #555
 }
+.email .email-item-list .list-group-item:hover,
 .email .email-item-list .list-group-item.active {
-    background: #f5f5f5
+    background: #f5f5f5;
+    text-decoration: none;
 }
 .email .email-item-list .list-group-item:hover {
     color: #797979
@@ -5777,4 +5780,47 @@ div.dataTables_wrapper .table-tools div.dataTables_length .col-md-4 {
 }
 .select-group {
     width: 100%;
+}
+.has-error {
+    color: #dc3545;
+}
+#validateSubmitForm .form-group .control-label {
+    text-align: right;
+    line-height: 34px;
+}
+.table-primary tbody tr.selected td,
+.table-primary tbody tr.selectable:hover td {
+    background: #e7e7e7;
+}
+.common-select {
+    width: 13rem;
+}
+.by-gender .value {
+    top: -28%;
+}
+.by-gender .lead {
+    height: 124px;
+}
+.memos .input-group .search-for {
+    height: 35px;
+}
+.activity-line .share .btn-primary {
+    color: #fff;
+}
+.total-products.form-inline {
+    display: block;
+}
+.products .select-option {
+    margin-top: 1.6rem;
+}
+.modal .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons,
+.modal .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons i:before {
+    color: #fff;
+}
+.tooltabmodal .widget.widget-tabs-double>.widget-head, 
+.tooltabmodal .widget.widget-tabs.widget-tabs-responsive>.widget-head {
+    height: 40px;
+}
+.row.error {
+    margin: 0;
 }

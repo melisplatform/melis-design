@@ -989,7 +989,7 @@ return [
                                 'id' => 'id_melis_error',
                                 'melisKey' => 'melis_error',
                                 'name' => 'Error',
-                                'icon' => '',
+                                'icon' => 'fa-wrench',
                                 'rightsDisplay' => 'none',
                             ],
                             'forward' => [
