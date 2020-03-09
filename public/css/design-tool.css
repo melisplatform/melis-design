@@ -1710,6 +1710,8 @@ div.radio.default input {
 .wizard .widget.widget-tabs-double>.widget-head ul li.active a.glyphicons {
     padding: 9px 15px 0 38px;
 }
+.modal .wizard .widget.widget-tabs-double.widget-tabs-gray>.widget-head ul li a.glyphicons i:before,
+.modal .wizard .widget.widget-tabs-double.widget-tabs-gray>.widget-head ul li a.glyphicons,
 .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons i:before,
 .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons {
     color: #7c7c7c;
@@ -5823,4 +5825,18 @@ div.dataTables_wrapper .table-tools div.dataTables_length .col-md-4 {
 }
 .row.error {
     margin: 0;
+}
+#id_melis_widgets .widget .widget-head .btn-default {
+    padding: 0 5px;
+}
+.accordion .panel-body {
+    padding: 15px;
+}
+#resetPlatformScheme:hover i,
+#resetPlatformScheme:hover,
+.table-pricing-3 .innerAll .footer a:hover,
+.table-vertical-center.checkboxs .selectable .center .btn-group .btn-danger:hover .fa,
+.table-thead-simple .actions .btn-danger:hover .fa,
+.table-thead-simple .important .btn-danger:hover .fa {
+    color: #fff;
 }

@@ -3766,20 +3766,42 @@ function flotchartPieInit() {
 /* flotchart-donut.init.js */
 function flotchartDonutInit() {
     (function($) {
-        if( $("#chart_donut").length ) {
-            if ( typeof charts == 'undefined' )
-                return;
+        if( $("#chart_donut").length > 0 ) {
+            /* console.log("charts: ", charts);
+            if ( typeof charts === 'undefined' )
+                return; */
 
-            charts.chart_donut = {
+                charts.chart_donut = {
                     // chart data
                     data: [
-                        { label: "USA",  data: 38 },
-                        { label: "Brazil",  data: 23 },
-                        { label: "India",  data: 15 },
-                        { label: "Turkey",  data: 9 },
-                        { label: "France",  data: 7 },
-                        { label: "China",  data: 5 },
-                        { label: "Germany",  data: 3 }
+                        { 
+                            label: "USA",
+                            data: 38 
+                        },
+                        { 
+                            label: "Brazil",
+                            data: 23
+                        },
+                        { 
+                            label: "India",
+                            data: 15
+                        },
+                        {
+                            label: "Turkey",
+                            data: 9 
+                        },
+                        {
+                            label: "France",
+                            data: 7
+                        },
+                        {
+                            label: "China",
+                            data: 5
+                        },
+                        {
+                            label: "Germany",
+                            data: 3
+                        }
                     ],
 
                     // will hold the chart object
@@ -3830,7 +3852,7 @@ function flotchartDonutInit() {
                                 },
                                 defaultTheme: false
                             }
-                        },
+                    },
 
                     placeholder: "#chart_donut",
 
@@ -3843,7 +3865,7 @@ function flotchartDonutInit() {
                     }
                 };
 
-            charts.chart_donut.init();
+                charts.chart_donut.init();
         }
     })(jQuery);
 }

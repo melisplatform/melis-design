@@ -1,7 +1,8 @@
 function flotchartDonutInit() {
 	(function($) {
-		if( $("#chart_donut").length ) {
-			if ( typeof charts == 'undefined' ) 
+		if( $("#chart_donut").length > 0 ) {
+			console.log("#chart_donut found flotchartDonutInit flotchart-donut.init.js");
+			if ( typeof charts === 'undefined' ) 
 				return;
 
 				charts.chart_donut = {
