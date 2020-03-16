@@ -1710,12 +1710,12 @@ div.radio.default input {
 .wizard .widget.widget-tabs-double>.widget-head ul li.active a.glyphicons {
     padding: 9px 15px 0 38px;
 }
-.modal .wizard .widget.widget-tabs-double.widget-tabs-gray>.widget-head ul li a.glyphicons i:before,
+/* .modal .wizard .widget.widget-tabs-double.widget-tabs-gray>.widget-head ul li a.glyphicons i:before,
 .modal .wizard .widget.widget-tabs-double.widget-tabs-gray>.widget-head ul li a.glyphicons,
 .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons i:before,
 .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons {
     color: #7c7c7c;
-}
+} */
 .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons:hover,
 .wizard .widget.widget-tabs-double>.widget-head ul li.active a.glyphicons:hover {
   color: #932E2A;
@@ -4150,7 +4150,7 @@ div.ColVis_collectionBackground {
     -webkit-border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
-    margin: 0
+    margin-top: 1rem;
 }
 .ColVis_Button {
     position: relative;
@@ -5815,10 +5815,10 @@ div.dataTables_wrapper .table-tools div.dataTables_length .col-md-4 {
 .products .select-option {
     margin-top: 1.6rem;
 }
-.modal .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons,
+/* .modal .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons,
 .modal .wizard .widget.widget-tabs-double>.widget-head ul li a.glyphicons i:before {
     color: #fff;
-}
+} */
 .tooltabmodal .widget.widget-tabs-double>.widget-head, 
 .tooltabmodal .widget.widget-tabs.widget-tabs-responsive>.widget-head {
     height: 40px;
@@ -5839,4 +5839,35 @@ div.dataTables_wrapper .table-tools div.dataTables_length .col-md-4 {
 .table-thead-simple .actions .btn-danger:hover .fa,
 .table-thead-simple .important .btn-danger:hover .fa {
     color: #fff;
+}
+.widget-visits-link:hover,
+.widget-sign-ups-link:hover,
+.widget-alerts-link:hover {
+    text-decoration: none;
+}
+body > .nicescroll-rails {
+    display: none !important;
+}
+.search-posts-btn {
+    padding: .375rem .75rem !important;
+}
+.survey .nav-pills .nav-link.active, 
+.survey .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #337ab7 !important;
+}
+.wizard .widget.widget-tabs-double>.widget-head.bg-gray ul li a.glyphicons i:before,
+.wizard .widget.widget-tabs-double>.widget-head.bg-gray ul li a.glyphicons,
+.wizard .widget.widget-tabs-double>.widget-head.bg-gray ul li.active a.glyphicons {
+    color: #7c7c7c;
+}
+.inbox-app .list-group-1>li.active a:hover [class*="fa-"],
+.inbox-app .list-group-1>li.active [class*="fa-"] {
+    color: #fff !important;
+}
+.bg-trans .btn-primary:hover {
+    background: #fff;
+}
+body > #loader {
+    overflow: hidden;
 }

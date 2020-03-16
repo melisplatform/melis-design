@@ -1833,7 +1833,7 @@ function dataTablesInit() {
                 else if ($(this).is('.colVis')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "oLanguage": {
                             "sLengthMenu": "_MENU_ per page"
                         },
@@ -1856,7 +1856,7 @@ function dataTablesInit() {
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
-                        "sDom": "<'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "fnInitComplete": function () {
                             fnInitCompleteCallback(this);
                         }
@@ -1867,7 +1867,7 @@ function dataTablesInit() {
                         "sPaginationType": "bootstrap",
                         "bProcessing": true,
                         "sAjaxSource": rootPath + 'admin/ajax/DataTables.json',
-                        "sDom": "<'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -1879,7 +1879,7 @@ function dataTablesInit() {
                 else if ($(this).is('.fixedHeaderColReorder')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "R<'clear'><'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "R<'clear'><'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -1896,7 +1896,7 @@ function dataTablesInit() {
                 else {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -5855,6 +5855,15 @@ $(function() {
                 removeStyleAttr();
             }
         });
+
+        $body.on("mouseover", "#melis-id-nav-bar-tabs li a[title], .navbar-right li a[title], #id_meliscore_header_logout a i[title], #content a[title]", function() {
+            var $this = $(this);
+
+                $this.tooltip().tooltip("disable");
+                //$this.attr("title", $this.text());
+        });
+
+        $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 });
 
 /* charts.init.js */
