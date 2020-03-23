@@ -153,7 +153,7 @@
                         <div class="widget-body">
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input class="form-control col-md-10" id="appendedPrependedInput" type="text" placeholder="100,000,000" />
+                                <input class="form-control" id="appendedPrependedInput" type="text" placeholder="100,000,000" />
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
@@ -793,7 +793,10 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <button type="button" id="btn-loading" class="btn btn-primary" data-loading-text="Custom Loading Text ...">Click for Loading state</button>
+                            <button class="btn btn-primary spinner-border-btn" type="button">
+                                <span class="span-text">Click for Loading state</span>
+                            </button>
+                            <!-- <button type="button" id="btn-loading" class="btn btn-primary" data-loading-text="Custom Loading Text ...">Click for Loading state</button> -->
                         </div>
 
                     </div>
@@ -1481,52 +1484,50 @@
                 </div>
             </div>
 
-
-
             <div class="widget widget-inverse">
                 <div class="widget-head">
                     <h4 class="heading">Input Masks</h4>
                 </div>
-                <div class="widget-body padding-none">
+                <div class="widget-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="strong">Date #1</label>
-                            <input type="text" id="inputmask-date" class="form-control span8" placeholder="__/__/____" />
+                            <label class="strong" for="inputmask-date">Date #1</label>
+                            <input type="text" id="inputmask-date" class="form-control span8 input-mask" placeholder="__/__/____" data-inputmask="'alias':'date'" />
                             <span class="help-inline">d/m/y mask</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Date #2</label>
-                            <input type="text" id="inputmask-date-1" class="form-control span8" placeholder="**/**/****" />
+                            <input type="text" id="inputmask-date-1" class="form-control span8 input-mask" placeholder="**/**/****" />
                             <span class="help-inline">Changing placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Date #3</label>
-                            <input type="text" id="inputmask-date-2" class="form-control span8" placeholder="dd/mm/yyyy" />
+                            <input type="text" id="inputmask-date-2" class="form-control span8 input-mask" placeholder="dd/mm/yyyy" />
                             <span class="help-inline">Multi-char placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Currency</label>
-                            <input type="text" id="inputmask-currency" class="form-control span8" placeholder="&euro; 999.999.999,99" />
+                            <input type="text" id="inputmask-currency" class="form-control span8 input-mask" placeholder="&euro; 999.999.999,99" />
                             <span class="help-inline">&euro; 999.999.999,99</span>
                         </div>
                         <div class="col-md-6">
                             <label class="strong">Phone Number</label>
-                            <input type="text" id="inputmask-phone" class="form-control span8" placeholder="(123) 456-7890" />
+                            <input type="text" id="inputmask-phone" class="form-control span8 input-mask" placeholder="(123) 456-7890" />
                             <span class="help-inline">(999) 999-9999</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">VAT Number</label>
-                            <input type="text" id="inputmask-tax" class="form-control span8" placeholder="12-3456789" />
+                            <input type="text" id="inputmask-tax" class="form-control span8 input-mask" placeholder="12-3456789" />
                             <span class="help-inline">Multi-char placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Decimal</label>
-                            <input type="text" id="inputmask-decimal" class="form-control span8" placeholder="123.01" />
+                            <input type="text" id="inputmask-decimal" class="form-control span8 input-mask" placeholder="123.01" />
                             <span class="help-inline">Allow numbers &amp; decimals</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">SSN</label>
-                            <input type="text" id="inputmask-ssn" class="form-control span8" placeholder="999-99-9999" />
+                            <input type="text" id="inputmask-ssn" class="form-control span8 input-mask" placeholder="999-99-9999" />
                             <span class="help-inline">999-99-9999</span>
                         </div>
                     </div>

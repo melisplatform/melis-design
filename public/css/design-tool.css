@@ -5871,3 +5871,9 @@ body > .nicescroll-rails {
 body > #loader {
     overflow: hidden;
 }
+
+/* .btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+
+} */

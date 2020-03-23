@@ -5864,6 +5864,17 @@ $(function() {
         });
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
+
+        // <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        $body.on("click", ".spinner-border-btn", function() {
+            var $this       = $(this),
+                $spinner    = $(".spinner-border"),
+                spinnerHtml = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+                if ( $spinner.length === 0 ) {
+                    $this.prepend( spinnerHtml );
+                }
+        });
 });
 
 /* charts.init.js */
