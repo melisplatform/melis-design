@@ -7,7 +7,6 @@
     if (!empty($this->zoneconfig['conf']['id']))
         $id = ' id="' . $this->zoneconfig['conf']['id'] . '"';
     $data_melisKey = $this->melisKey;
-
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
     <div id="content" class="render-login">
@@ -19,7 +18,8 @@
             <div class="col-sm-4 offset-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-body innerAll">
-                        <form role="form" action="index.html?lang=en">
+                        <!-- index.html?lang=en -->
+                        <form role="form" action="/melis/">
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
@@ -40,7 +40,8 @@
                 </div>
             </div>
             <div class="col-sm-6 offset-sm-3 text-center">
-                <a href="signup.html?lang=en" class="btn btn-info btn-regular">Create a new account? <i class="fa fa-pencil"></i> </a>
+                <!-- signup.html?lang=en -->
+                <a href="#" class="btn btn-info btn-regular">Create a new account? <i class="fa fa-pencil"></i> </a>
             </div>
         </div>
     </div>
