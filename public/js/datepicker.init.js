@@ -1,7 +1,7 @@
 function datepickerInit() {
 
 	$.fn.bdatepicker = $.fn.datepicker.noConflict();
-
+	console.log("datepickerInit datepicker.init.js")
 	$(function()
 	{
 
@@ -53,9 +53,5 @@ function datepickerInit() {
 		}
 		
 		initDatepicker();*/
-		
-		
-		
-
 	});
 }

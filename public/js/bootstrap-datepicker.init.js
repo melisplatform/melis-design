@@ -1,6 +1,6 @@
 function bootstrapDatepickerInit() {
 	$.fn.bdatepicker = $.fn.datepicker;
-
+	console.log("bootstrapDatepickerInit bootstrap-datepicker.init.js");
 	/* DatePicker */
 	// default
 	$("#datepicker1").bdatepicker({
@@ -44,4 +44,3 @@ function bootstrapDatepickerInit() {
 	if ($('#datepicker-inline').length) $('#datepicker-inline').bdatepicker({ inline: true, showOtherMonths:true });
 	if ($('.datepicker-block').length) $('.datepicker-block').bdatepicker({ inline: true, showOtherMonths:true });
 }
-

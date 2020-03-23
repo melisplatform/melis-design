@@ -560,7 +560,6 @@ function widgetScrollableInit() {
             cursorborder: "none",
             cursorborderradius: "0",
             cursorcolor: primaryColor
-
         });
     });
 
@@ -569,7 +568,7 @@ function widgetScrollableInit() {
 /* Bootstrap Datepicker */
 function bootstrapDatepickerInit() {
     $.fn.bdatepicker = $.fn.datepicker;
-
+    
     /* DatePicker */
     // default
     $("#datepicker1").bdatepicker({
@@ -5665,7 +5664,6 @@ function initCalendar() {
     uniformInit();
     calendarInit();
     bootstrapDatepickerInit();
-
 }
 
 $(function() {
@@ -5875,6 +5873,19 @@ $(function() {
                     $this.prepend( spinnerHtml );
                 }
         });
+
+        /* $body.on("click", ".btn-single-toggle", function() {
+            var $this = $(this);
+
+                if ( $this.hasClass("active") ) {
+                    $this.removeClass("active");
+                    $this.removeClass("focus");
+                }
+                else {
+                    $this.addClass("active");
+                    $this.removeClass("focus");
+                }
+        }); */
 });
 
 /* charts.init.js */

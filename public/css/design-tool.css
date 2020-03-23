@@ -5285,7 +5285,7 @@ td.active.day {
     background: #007bff !important;
     color: #fff !important;
 }
-.widget .half .btn,
+.widget .half:not(.chat-controls) .btn,
 .media-list .media-body .media .media-body .btn,
 .btn-group-xs > .btn {
     padding: 1px 5px;
