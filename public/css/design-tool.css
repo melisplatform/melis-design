@@ -5882,3 +5882,18 @@ body > #loader {
     height: 36px;
     border: 1px solid #e5e5e5;
 }
+.ColVis .ColVis_Button {
+    border-width: 1px;
+    border-style: solid;
+}
+.ColVis_collection {
+    background: #fff;
+    width: auto;
+    padding: 15px;
+    list-style: none;
+    margin-block-start: 0;
+    min-width: 154px;
+}
+.ColVis_collection li label input {
+    margin-right: 0.5rem;
+}
