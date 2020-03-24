@@ -3146,12 +3146,14 @@ function fueluxCheckBoxInit() {
         // CHECKBOX DATA-API
 
         $(function () {
-            $('.checkbox-custom > input[type=checkbox]').each(function () {
+            $('.checkbox-custom > input[type=checkbox]').each(function() {
                 var $this = $(this);
-                if ($this.data('checkbox')) return;
-                $this.checkbox($this.data());
+
+                    if ($this.data('checkbox')) return;
+                        $this.checkbox($this.data());
             });
         });
+
     })(jQuery);
 }
 
@@ -6782,6 +6784,8 @@ $(function() {
 function initFormElements() {
     switchBootstrap();
     bootstrapSwitchInit();
+    fueluxCheckBoxInit();
+    formWizardsInit();
 }
 
 $(function() {
