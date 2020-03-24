@@ -5871,9 +5871,14 @@ body > .nicescroll-rails {
 body > #loader {
     overflow: hidden;
 }
-
-/* .btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show > .btn-primary.dropdown-toggle {
-
-} */
+.composer-email label {
+    display: block;
+    text-align: right;
+    margin-bottom: 0;
+    padding: 8px 0;
+}
+.composer-email .selectpicker {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #e5e5e5;
+}
