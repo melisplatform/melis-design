@@ -3677,10 +3677,13 @@ function modalsBootBoxInit() {
 
 /* wysihtml5.init.js */
 function wysiHTML5() {
-    (function($){
-        /* wysihtml5 */
-        if ($('textarea.wysihtml5').length > 0)
-            $('textarea.wysihtml5').wysihtml5();
+    (function($) {
+        var $textarea = $("textarea.wysihtml5");
+
+            /* wysihtml5 */
+            if ( $textarea.length > 0 )
+                $textarea.wysihtml5();
+                $textarea.css("display", "block");
     })(jQuery);
 }
 
