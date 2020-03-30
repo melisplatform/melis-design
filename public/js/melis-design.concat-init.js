@@ -6813,10 +6813,21 @@ function colorPickerInit() {
     var $colorPicker = $("#colorpickerColor");
 
         $colorPicker.colorpicker();
-        
+
         $colorPicker.on('colorpickerChange', function(event) {
             $colorPicker.css('background-color', event.color.toString());
         });
+}
+
+function inputMaskInit() {
+    $("#inputmask-date").inputmask("99/99/9999");
+    $("#inputmask-date-1").inputmask("99/99/9999");
+    $("#inputmask-date-2").inputmask("dd/mm/yyyy");
+    $("#inputmask-currency").inputmask("€ 999.999.999,99");
+    $("#inputmask-phone").inputmask("(999) 999-9999");
+    $("#inputmask-tax").inputmask("99-9999999");
+    $("#inputmask-decimal").inputmask("999.99");
+    $("#inputmask-ssn").inputmask("999-99-9999");
 }
 
 /* form-elements.init.js */
@@ -6828,6 +6839,7 @@ function initFormElements() {
     bootstrapDatepickerInit();
     bootstrapTimePickerInit();
     colorPickerInit();
+    inputMaskInit();
 }
 
 $(function() {
