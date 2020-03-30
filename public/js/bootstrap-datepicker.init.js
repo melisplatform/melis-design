@@ -1,6 +1,6 @@
 function bootstrapDatepickerInit() {
 	$.fn.bdatepicker = $.fn.datepicker;
-	console.log("bootstrapDatepickerInit bootstrap-datepicker.init.js");
+	
 	/* DatePicker */
 	// default
 	$("#datepicker1").bdatepicker({

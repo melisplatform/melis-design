@@ -613,6 +613,36 @@ function bootstrapDatepickerInit() {
     if ($('.datepicker-block').length) $('.datepicker-block').bdatepicker({ inline: true, showOtherMonths:true });
 }
 
+/* bootstrap-timepicker */
+function bootstrapTimePickerInit() {
+    //$.fn.btimepicker = $.fn.timepicker;
+    $('#timepicker1').timepicker();
+    $('#timepicker2').timepicker({
+        minuteStep: 1,
+        template: 'modal',
+        showSeconds: true,
+        showMeridian: false,
+        modalBackdrop: true
+    });
+    $('#timepicker3').timepicker({
+        minuteStep: 5,
+        showInputs: false,
+        disableFocus: true
+    });
+    $('#timepicker4').timepicker({
+        minuteStep: 1,
+        secondStep: 5,
+        showInputs: false,
+        showSeconds: true,
+        showMeridian: false
+    });
+    $('#timepicker5').timepicker({
+        template: false,
+        showInputs: false,
+        minuteStep: 5
+    });
+}
+
 /* google map init */
 var igms = false;
 function initScripts() {
@@ -5311,14 +5341,14 @@ function flotchartFinancesSimpleInit() {
 }
 
 /* datepicker.init.js */
-function datepickerInit() {
+/* function datepickerInit() {
 
     $.fn.bdatepicker = $.fn.datepicker.noConflict();
 
     $(function()
     {
 
-        /* DatePicker */
+        // DatePicker
         // default
         $("#datepicker1").bdatepicker({
             format: 'yyyy-mm-dd',
@@ -5359,19 +5389,15 @@ function datepickerInit() {
         if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
 
 
-        /*      window.initDatepicker = function(){
+        //window.initDatepicker = function(){
          // other
          // if ($('#datepicker').length) $("#datepicker").bdatepicker({ showOtherMonths:true });
-         if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
-         }
+         // if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
+        //}
 
-         initDatepicker();*/
-
-
-
-
+        //initDatepicker();
     });
-}
+} */
 
 /* uniform.init.js */
 function uniformInit() {
@@ -6783,12 +6809,25 @@ $(function() {
     initFormWizards();
 });
 
+function colorPickerInit() {
+    var $colorPicker = $("#colorpickerColor");
+
+        $colorPicker.colorpicker();
+        
+        $colorPicker.on('colorpickerChange', function(event) {
+            $colorPicker.css('background-color', event.color.toString());
+        });
+}
+
 /* form-elements.init.js */
 function initFormElements() {
     switchBootstrap();
     bootstrapSwitchInit();
     fueluxCheckBoxInit();
     formWizardsInit();
+    bootstrapDatepickerInit();
+    bootstrapTimePickerInit();
+    colorPickerInit();
 }
 
 $(function() {
