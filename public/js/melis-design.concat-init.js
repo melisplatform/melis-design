@@ -3864,8 +3864,7 @@ function widgetProgressInit() {
 
 /* range-sliders-init.js */
 function rangeSlidersInit() {
-    $(function()
-    {
+    $(function() {
         /* jQRangeSliders */
 
         // regular Range Slider
@@ -4023,10 +4022,8 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range Slider
          */
-        if ($('.range-slider').length > 0)
-        {
-            $( ".range-slider .slider" ).each(function()
-            {
+        if ( $('.range-slider').length > 0 ) {
+            $( ".range-slider .slider" ).each(function() {
                 var t = $(this).parent(),
                     i = t.find('input'),
                     min = $(this).data('min') || 0,
@@ -4797,14 +4794,12 @@ function flotchartBarsStackedInit() {
 
 /* flotchart-pie.init.js */
 function flotchartPieInit() {
-    (function($)
-    {
-        if($("#chart_pie").length) {
+    (function($) {
+        if ( $("#chart_pie").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_pie =
-                {
+            charts.chart_pie = {
                     // chart data
                     data: [
                         { label: "USA",  data: 38 },
@@ -4880,113 +4875,111 @@ function flotchartPieInit() {
 
             charts.chart_pie.init();
         }
-
     })(jQuery);
 }
 
 /* flotchart-donut.init.js */
 function flotchartDonutInit() {
     (function($) {
-        if( $("#chart_donut").length > 0 ) {
-            /* console.log("charts: ", charts);
-            if ( typeof charts === 'undefined' )
-                return; */
+        if( $("#chart_donut").length ) {
+            if ( typeof charts == 'undefined' )
+                return;
 
-                charts.chart_donut = {
-                    // chart data
-                    data: [
-                        { 
-                            label: "USA",
-                            data: 38 
-                        },
-                        { 
-                            label: "Brazil",
-                            data: 23
-                        },
-                        { 
-                            label: "India",
-                            data: 15
-                        },
-                        {
-                            label: "Turkey",
-                            data: 9 
-                        },
-                        {
-                            label: "France",
-                            data: 7
-                        },
-                        {
-                            label: "China",
-                            data: 5
-                        },
-                        {
-                            label: "Germany",
-                            data: 3
-                        }
-                    ],
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options: {
-                            series: {
-                                pie: {
-                                    show: true,
-                                    innerRadius: 0.4,
-                                    highlight: {
-                                        opacity: 0.1
-                                    },
-                                    radius: 1,
-                                    stroke: {
-                                        color: '#fff',
-                                        width: 8
-                                    },
-                                    startAngle: 2,
-                                    combine: {
-                                        color: '#EEE',
-                                        threshold: 0.05
-                                    },
-                                    label: {
-                                        show: true,
-                                        radius: 1,
-                                        formatter: function(label, series){
-                                            return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                        }
-                                    }
-                                },
-                                grow: { active: false}
-                            },
-                            legend:{show:false},
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                backgroundColor : { }
-                            },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.1"+"%",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+            charts.chart_donut = {
+                // chart data
+                data: [
+                    { 
+                        label: "USA",
+                        data: 38 
                     },
-
-                    placeholder: "#chart_donut",
-
-                    // initialize
-                    init: function() {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                    { 
+                        label: "Brazil",
+                        data: 23
+                    },
+                    { 
+                        label: "India",
+                        data: 15
+                    },
+                    {
+                        label: "Turkey",
+                        data: 9 
+                    },
+                    {
+                        label: "France",
+                        data: 7
+                    },
+                    {
+                        label: "China",
+                        data: 5
+                    },
+                    {
+                        label: "Germany",
+                        data: 3
                     }
-                };
+                ],
 
-                charts.chart_donut.init();
+                // will hold the chart object
+                plot: null,
+
+                // chart options
+                options: {
+                        series: {
+                            pie: {
+                                show: true,
+                                innerRadius: 0.4,
+                                highlight: {
+                                    opacity: 0.1
+                                },
+                                radius: 1,
+                                stroke: {
+                                    color: '#fff',
+                                    width: 8
+                                },
+                                startAngle: 2,
+                                combine: {
+                                    color: '#EEE',
+                                    threshold: 0.05
+                                },
+                                label: {
+                                    show: true,
+                                    radius: 1,
+                                    formatter: function(label, series){
+                                        return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+                                    }
+                                }
+                            },
+                            grow: { active: false}
+                        },
+                        legend:{show:false},
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            backgroundColor : { }
+                        },
+                        colors: [],
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "%s : %y.1"+"%",
+                            shifts: {
+                                x: -30,
+                                y: -50
+                            },
+                            defaultTheme: false
+                        }
+                },
+
+                placeholder: "#chart_donut",
+
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
+
+            charts.chart_donut.init();
         }
     })(jQuery);
 }
@@ -6983,11 +6976,25 @@ function removeStyleAttr() {
         }, 1000);
 }
 
+/* charts.init.js */
+function initCharts() {
+    flotchartSimple02Init();
+    flotChartLineInit();
+    flotchartBarsOrderedInit();
+    flotchartBarsStackedInit();
+    flotchartDonutInit();
+    flotchartPieInit();
+    flotchartBarsHorizontalInit();
+    flotchartAutoUpdatingInit();
+}
+
 $(function() {
     var $body       = $("body"),
         $document   = $("document");
 
         initRatings();
+        //flotchartDonutInit();
+        //flotchartPieInit();
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 
@@ -7019,28 +7026,10 @@ $(function() {
                 }
         });
 
-        /* $body.on("click", ".btn-single-toggle", function() {
+        //$("[title]").not("#melisDashBoardPluginBtn").tooltip("disable");
+        $body.on("mouseover", "[title]:not(#melisDashBoardPluginBtn)", function() {
             var $this = $(this);
 
-                if ( $this.hasClass("active") ) {
-                    $this.removeClass("active");
-                    $this.removeClass("focus");
-                }
-                else {
-                    $this.addClass("active");
-                    $this.removeClass("focus");
-                }
-        }); */
+                $this.tooltip("disable");
+        });
 });
-
-/* charts.init.js */
-function initCharts() {
-    flotchartSimple02Init();
-    flotChartLineInit();
-    flotchartBarsOrderedInit();
-    flotchartBarsStackedInit();
-    flotchartDonutInit();
-    flotchartPieInit();
-    flotchartBarsHorizontalInit();
-    flotchartAutoUpdatingInit();
-}
