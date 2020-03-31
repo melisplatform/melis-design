@@ -4023,30 +4023,45 @@ function jqueryUiSlidersInit() {
          * JQueryUI Slider: Range Slider
          */
         if ( $('.range-slider').length > 0 ) {
+            console.log(".range-slider found");
             $( ".range-slider .slider" ).each(function() {
-                var t = $(this).parent(),
+                /* var t = $(this).parent(),
                     i = t.find('input'),
                     min = $(this).data('min') || 0,
                     max = $(this).data('max') || 500,
                     values = $(this).data('values') ? $(this).data('values').split(',') : [i.first().val(), i.last().val() || max];
 
-                $(this).slider({
-                    create: JQSliderCreate,
-                    range: true,
-                    min: min,
-                    max: max,
-                    values: values,
-                    slide: function( event, ui ) {
-                        if (i.length == 1)
-                            t.find(".amount").val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-                        else
-                            i.each(function(k,v){ $(i[k]).val(ui.values[k]); });
-                    }
-                });
+                    $(this).slider({
+                        create: JQSliderCreate,
+                        range: true,
+                        min: min,
+                        max: max,
+                        values: values,
+                        slide: function( event, ui ) {
+                            if (i.length == 1)
+                                t.find(".amount").val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                            else
+                                i.each(function(k,v){ $(i[k]).val(ui.values[k]); });
+                        }
+                    });
 
-                if (i.length == 1)
-                    t.find(".amount").val( $(this).slider( "values", 0 ) +
-                        " - " + $(this).slider( "values", 1 ) );
+                    if (i.length == 1)
+                        t.find(".amount").val( $(this).slider( "values", 0 ) + " - " + $(this).slider( "values", 1 ) ); */
+                var $this   = $(this),
+                    t       = $this.parent(),
+                    i       = t.find("input");
+
+                    $this.slider({
+                        range   : true,
+                        min     : 0,
+                        max     : 500,
+                        values  : [ 75, 300 ],
+                        slide   : function( event, ui ) {
+                            $("#amount").val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                        }
+                    });
+
+                    $("#amount").val( "$" + $this.slider( "values", 0 ) + " - $" + $this.slider( "values", 1 ) );
             });
         }
 
