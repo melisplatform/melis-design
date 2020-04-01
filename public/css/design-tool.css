@@ -5904,7 +5904,7 @@ textarea.wysihtml5 {
     color: #fff;
 }
 .commerce-dashboard-plugin-order-messages .label.label-inverse.pull-right {
-    color: #fff;
+    color: #fff !important;
 }
 .table-responsive thead tr th {
     padding: 1.16rem .75rem;
