@@ -5903,3 +5903,9 @@ textarea.wysihtml5 {
 .render-modals .widget .widget-head .heading {
     color: #fff;
 }
+.table-responsive thead tr th {
+    padding: 1.16rem .75rem;
+}
+.firefox .table-responsive thead tr th {
+    padding: 1.07rem .75rem;
+}
