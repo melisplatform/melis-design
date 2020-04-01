@@ -3291,16 +3291,16 @@ function bootstrapSelectInit() {
 function tablesClassicInit() {
     (function($) {
         /* Table select / checkboxes utility */
-        $('.checkboxs thead :checkbox').change(function(){
-            if ($(this).is(':checked'))
-            {
+        $('.checkboxs thead :checkbox').change(function() {
+            if ( $(this).is(':checked') ) {
                 $('.checkboxs tbody :checkbox').prop('checked', true).trigger('change').parent().addClass('checked');
+                $('.checkboxs tbody :checkbox').prop('checked', true).closest(".checkbox-custom.checked").find(".fa").addClass("checked");
                 $('.checkboxs tbody tr.selectable').addClass('selected');
                 $('.checkboxs_actions').removeClass('hide').show();
             }
-            else
-            {
+            else {
                 $('.checkboxs tbody :checkbox').prop('checked', false).trigger('change').parent().removeClass('checked');
+                $('.checkboxs tbody :checkbox').prop('checked', false).closest(".checkbox-custom:not(.checked)").find(".fa").removeClass("checked");
                 $('.checkboxs tbody tr.selectable').removeClass('selected');
                 $('.checkboxs_actions').hide();
             }
@@ -3311,25 +3311,32 @@ function tablesClassicInit() {
             $(this).parent('tr').addClass('selected');
         });
 
-        $('.checkboxs tbody').on('click', 'tr.selectable', function(e){
-            var c = $(this).find(':checkbox');
-            var s = $(e.srcElement);
+        $('.checkboxs tbody').on('click', 'tr.selectable', function(e) {
+            var $this   = $(this),
+                $label  = $this.find(".checkbox-custom"),
+                c       = $this.find(':checkbox'),
+                s       = $(e.srcElement);
 
-            if (e.srcElement.nodeName == 'INPUT')
-            {
+            if ( ! $label.hasClass( 'checked' ) ) {
+                $label.addClass("checked");
+                $label.find(".fa").addClass("checked");
+            }
+            /* else {
+                $label.removeClass("checked");
+                $label.find(".fa").removeClass("checked");
+            } */
+
+            if ($this.nodeName === 'INPUT') {
                 if (c.is(':checked'))
                     $(this).addClass('selected');
                 else
                     $(this).removeClass('selected');
             }
-            else if (e.srcElement.nodeName != 'TD' && e.srcElement.nodeName != 'TR' && e.srcElement.nodeName != 'DIV')
-            {
+            else if ($this.nodeName != 'TD' && $this.nodeName != 'TR' && $this.nodeName != 'DIV') {
                 return true;
             }
-            else
-            {
-                if (c.is(':checked'))
-                {
+            else {
+                if ( c.is(':checked') ) {
                     c.prop('checked', false).trigger('change').parent().removeClass('checked');
                     $(this).removeClass('selected');
                 }
@@ -3355,6 +3362,43 @@ function tablesClassicInit() {
 
         if ($('.checkboxs tbody :checked').length)
             $('.checkboxs_actions').removeClass('hide').show();
+
+        $("body").on("click", ".checkboxs thead tr th:not('.sorting_disabled')", function() {
+            var $theadCheckbox  = $('.checkboxs thead :checkbox'),
+                $selectableTr   = $(".checkboxs tbody tr");
+
+            var checkboxsInterval = setInterval(function() {
+                var $selectable = $(".checkboxs tbody tr");
+                    $selectable.each(function() {
+                        var $this = $(this);
+                        
+                            if ( $this.find("selectable").length === 0 ) {
+                                $this.addClass("selectable");
+
+                                clearInterval( checkboxsInterval );
+                            }
+                    });
+            }, 1000);
+
+            /* if ( $selectableTr.find(":checkbox").is(":checked") ) {
+                if ( $theadCheckbox.is(":checked") ) {
+                    $selectableTr.each(function() {
+                        var $this = $(this);
+
+                            $this.find(".checkbox-custom").addClass("checked");
+                            $this.find(".checkbox-custom .fa").addClass("checked");
+                    });
+                }
+                else {
+                    $selectableTr.each(function() {
+                        var $this = $(this);
+
+                            $this.find(".checkbox-custom").removeClass("checked");
+                            $this.find(".checkbox-custom .fa").removeClass("checked");
+                    });
+                }
+            } */
+        });
 
         $('.radioboxs tbody tr.selectable').click(function(e){
             var c = $(this).find(':radio');
@@ -4023,7 +4067,6 @@ function jqueryUiSlidersInit() {
          * JQueryUI Slider: Range Slider
          */
         if ( $('.range-slider').length > 0 ) {
-            console.log(".range-slider found");
             $( ".range-slider .slider" ).each(function() {
                 /* var t = $(this).parent(),
                     i = t.find('input'),

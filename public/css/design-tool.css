@@ -5912,3 +5912,9 @@ textarea.wysihtml5 {
 .firefox .table-responsive thead tr th {
     padding: 1.07rem .75rem;
 }
+table.dataTable.design-table tbody td.selected,
+table.dataTable.design-table tbody th.selected,
+table.dataTable.design-table tbody tr.selected {
+    color: #686868;
+    background-color: transparent;
+}
