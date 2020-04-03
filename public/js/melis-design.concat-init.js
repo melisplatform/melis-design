@@ -1137,17 +1137,14 @@ function initGoogleMaps() {
 
 /* google maps vector init */
 function mapsVectorInit() {
-    $(function()
-    {
-
-        $('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e)
-        {
+    $(function() {
+        $('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             if ($(this).attr('data-init'))
                 return;
 
             $(this).attr('data-init', 1);
-            switch ($(this).attr('href'))
-            {
+
+            switch ( $(this).attr('href') ) {
                 case '#tab1':
                     initWorldMapGDP();
                     break;
@@ -1186,8 +1183,7 @@ function mapsVectorInit() {
         initWorldMapGDP();
 
         // GDP by country
-        function initWorldMapGDP()
-        {
+        function initWorldMapGDP() {
             $('#world-map-gdp').vectorMap({
                 map: 'world_mill_en',
                 series: {
@@ -1204,8 +1200,7 @@ function mapsVectorInit() {
         }
 
         // World map markers
-        function initWorldMapMarkers()
-        {
+        function initWorldMapMarkers() {
             $('#world-map-markers').vectorMap({
                 map: 'world_mill_en',
                 scaleColors: ['#C8EEFF', '#0071A4'],
@@ -1249,11 +1244,19 @@ function mapsVectorInit() {
                 ]
             });
         }
+
+        function JQSliderCreate() {
+            $(this)
+                .removeClass('ui-corner-all ui-widget-content')
+                .wrap('<span class="ui-slider-wrap"></span>')
+                .find('.ui-slider-handle')
+                .removeClass('ui-corner-all ui-state-default');
+        }
+
         componentsPath = '';
         // USA unemployment
-        function initUSAUnemployment()
-        {
-            $.getJSON( componentsPath + 'MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data){
+        function initUSAUnemployment() {
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data){
                 // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
                 var val = 2009;
                 statesValues = jvm.values.apply({}, jvm.values(data.states)),
@@ -1301,26 +1304,25 @@ function mapsVectorInit() {
                 });
 
                 var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
-                /*              $("#usa-unemployment-slider").slider({
-                 value: val,
-                 min: 2005,
-                 max: 2009,
-                 step: 1,
-                 create: JQSliderCreate,
-                 slide: function( event, ui ) {
-                 $('#usa-unemployment-slider-year strong').html(ui.value);
-                 val = ui.value;
-                 mapObject.series.regions[0].setValues(data.states[ui.value]);
-                 mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-                 mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
-                 }
-                 });*/
+                $("#usa-unemployment-slider").slider({
+                    value: val,
+                    min: 2005,
+                    max: 2009,
+                    step: 1,
+                    create: JQSliderCreate,
+                    slide: function( event, ui ) {
+                        $('#usa-unemployment-slider-year strong').html(ui.value);
+                        val = ui.value;
+                        mapObject.series.regions[0].setValues(data.states[ui.value]);
+                        mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
+                        mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+                    }
+                 });
             });
         }
 
         // regions selection
-        function initRegionSelection()
-        {
+        function initRegionSelection() {
             map = new jvm.WorldMap({
                 container: $('#regions-selection'),
                 map: 'de_merc_en',
@@ -1394,8 +1396,7 @@ function mapsVectorInit() {
         }
 
         // France elections
-        function initFranceElections()
-        {
+        function initFranceElections() {
             $.getJSON('/MelisDesign/ajax/france-elections.json', function(data){
                 new jvm.WorldMap({
                     map: 'fr_merc_en',
@@ -1431,7 +1432,7 @@ function mapsVectorInit() {
 
         // random colors
         var palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'],
-            generateColors = function(){
+            generateColors = function() {
                 var colors = {},
                     key;
 
@@ -1442,8 +1443,7 @@ function mapsVectorInit() {
             },
             colorsMap;
 
-        function initRandomColors()
-        {
+        function initRandomColors() {
             colorsMap = new jvm.WorldMap({
                 map: 'es_merc_en',
                 container: $('#random-colors-map'),
@@ -1461,8 +1461,7 @@ function mapsVectorInit() {
         }
 
         // mall map
-        function initMallMap()
-        {
+        function initMallMap() {
             $('#mall-map').vectorMap({
                 map: 'mall',
                 backgroundColor: 'transparent',
@@ -1565,8 +1564,7 @@ function mapsVectorInit() {
             markerIndex = 0,
             markersCoords = {};
 
-        function initProjectionMap()
-        {
+        function initProjectionMap() {
             mapProjection = new jvm.WorldMap({
                 map: 'us_lcc_en',
                 markerStyle: {
@@ -1595,7 +1593,6 @@ function mapsVectorInit() {
                 }
             });
         }
-
     });
 }
 
@@ -3996,8 +3993,7 @@ function jqueryUiSlidersInit() {
     /*
      * Helper function for JQueryUI Sliders Create event
      */
-    function JQSliderCreate()
-    {
+    function JQSliderCreate() {
         $(this)
             .removeClass('ui-corner-all ui-widget-content')
             .wrap('<span class="ui-slider-wrap"></span>')
@@ -4005,14 +4001,11 @@ function jqueryUiSlidersInit() {
             .removeClass('ui-corner-all ui-state-default');
     }
 
-    $(function()
-    {
-
+    $(function() {
         /*
          * JQueryUI Slider: Default slider
          */
-        if ($('.slider-single').length > 0)
-        {
+        if ($('.slider-single').length > 0) {
             $( ".slider-single" ).slider({
                 create: JQSliderCreate,
                 value: 10,
@@ -4025,8 +4018,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Multiple Vertical Sliders
          */
-        $( ".sliders-vertical > span" ).each(function()
-        {
+        $( ".sliders-vertical > span" ).each(function() {
             var value = parseInt( $( this ).text(), 10 );
             $( this ).empty().slider({
                 create: JQSliderCreate,
@@ -4087,8 +4079,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Snap to Increments
          */
-        if ($('.increments-slider').length > 0)
-        {
+        if ($('.increments-slider').length > 0) {
             $( ".increments-slider .slider" ).slider({
                 create: JQSliderCreate,
                 value:100,
@@ -4107,8 +4098,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Vertical Range Slider
          */
-        if ($('.vertical-range-slider').length > 0)
-        {
+        if ($('.vertical-range-slider').length > 0) {
             $( ".vertical-range-slider .slider" ).slider({
                 create: JQSliderCreate,
                 orientation: "vertical",
@@ -4129,8 +4119,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed minimum
          */
-        if ($('.slider-range-min').length > 0)
-        {
+        if ($('.slider-range-min').length > 0) {
             $( ".slider-range-min .slider" ).slider({
                 create: JQSliderCreate,
                 range: "min",
@@ -4149,8 +4138,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed maximum
          */
-        if ($('.slider-range-max').length > 0)
-        {
+        if ($('.slider-range-max').length > 0) {
             $( ".slider-range-max .slider" ).slider({
                 create: JQSliderCreate,
                 range: "max",
@@ -4170,7 +4158,6 @@ function jqueryUiSlidersInit() {
 
 /* flotchart-simple-01.init.js */
 function flotchartSimpleInit() {
-
     $(function() {
         if($("#chart_simple_001").length) {
             if (typeof charts == 'undefined')
