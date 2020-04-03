@@ -7055,14 +7055,10 @@ $(function() {
         $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
             var $this = $(this);
                 $this.tooltip({ disabled: true });
-
-                console.log("elements with [title] not .melis-core-dashboard-plugin-snippets");
         });
 
         $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
             var $this = $(this);
                 $this.tooltip({ disabled: true });
-
-                console.log("elements with [title] on main nav tabs li a $body.hover");
         });
 });
