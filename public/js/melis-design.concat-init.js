@@ -2885,14 +2885,13 @@ function dataTablesInit() {
                 $("#"+dtId).find(".bootstrap-select .dropdown-toggle").append("<span class='caret'></span>");
         }
 
-
         /* DataTables */
         componentsPath = "";
         if ( $('.design-table').length > 0 ) {
             $('.design-table').each(function() {
-                // DataTables with TableTools
+                // DataTables with TableTools, render-tables.phtml
                 if ( $(this).is('.tableTools') ) {
-                    $(this).dataTable({
+                    var oTableTools = $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "sDom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "oLanguage": {
@@ -2912,10 +2911,26 @@ function dataTablesInit() {
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
+                        "stateSave": true,
                         "fnInitComplete": function () {
                             fnInitCompleteCallback(this);
                         }
                     });
+
+                    var allPages = oTableTools.fnGetNodes();
+
+                        $("body").on("click", ".sorting_asc .checkbox-custom .fa", function() {
+                            var $this = $(this);
+
+                                if ( $this.hasClass("allChecked") ) {
+                                    $("input[type='checkbox']", allPages).prop("checked", false);
+                                } else {
+                                    $("input[type='checkbox']", allPages).prop("checked", true);
+                                }
+
+                                $this.toggleClass("allChecked");
+                        });
+
                 }
                 // colVis extras initialization
                 else if ($(this).is('.colVis')) {
@@ -3289,15 +3304,6 @@ function tablesClassicInit() {
                 c       = $this.find(':checkbox'),
                 s       = $(e.srcElement);
 
-            if ( ! $label.hasClass( 'checked' ) ) {
-                $label.addClass("checked");
-                $label.find(".fa").addClass("checked");
-            }
-            /* else {
-                $label.removeClass("checked");
-                $label.find(".fa").removeClass("checked");
-            } */
-
             if ($this.nodeName === 'INPUT') {
                 if (c.is(':checked'))
                     $(this).addClass('selected');
@@ -3334,43 +3340,6 @@ function tablesClassicInit() {
 
         if ($('.checkboxs tbody :checked').length)
             $('.checkboxs_actions').removeClass('hide').show();
-
-        $("body").on("click", ".checkboxs thead tr th:not('.sorting_disabled')", function() {
-            var $theadCheckbox  = $('.checkboxs thead :checkbox'),
-                $selectableTr   = $(".checkboxs tbody tr");
-
-            var checkboxsInterval = setInterval(function() {
-                var $selectable = $(".checkboxs tbody tr");
-                    $selectable.each(function() {
-                        var $this = $(this);
-                        
-                            if ( $this.find("selectable").length === 0 ) {
-                                $this.addClass("selectable");
-
-                                clearInterval( checkboxsInterval );
-                            }
-                    });
-            }, 1000);
-
-            /* if ( $selectableTr.find(":checkbox").is(":checked") ) {
-                if ( $theadCheckbox.is(":checked") ) {
-                    $selectableTr.each(function() {
-                        var $this = $(this);
-
-                            $this.find(".checkbox-custom").addClass("checked");
-                            $this.find(".checkbox-custom .fa").addClass("checked");
-                    });
-                }
-                else {
-                    $selectableTr.each(function() {
-                        var $this = $(this);
-
-                            $this.find(".checkbox-custom").removeClass("checked");
-                            $this.find(".checkbox-custom .fa").removeClass("checked");
-                    });
-                }
-            } */
-        });
 
         $('.radioboxs tbody tr.selectable').click(function(e){
             var c = $(this).find(':radio');
@@ -7022,13 +6991,13 @@ $(function() {
         });
 
         // disable tooltip when hovered on element with attribute title other than [.melis-core-dashboard-plugin-snippets]
-        $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
+        /* $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
             var $this = $(this);
                 $this.tooltip({ disabled: true });
         });
 
-        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect, button", function() {
+        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
             var $this = $(this);
                 $this.tooltip({ disabled: true });
-        });
+        }); */
 });
