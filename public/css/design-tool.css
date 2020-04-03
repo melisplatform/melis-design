@@ -5918,3 +5918,6 @@ table.dataTable.design-table tbody tr.selected {
     color: #686868;
     background-color: transparent;
 }
+/* .ui-tooltip.ui-widget-shadow :not(.melis-core-dashboard-plugin-snippets) {
+    text-indent: -999999px;
+} */

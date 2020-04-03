@@ -1,29 +1,6 @@
 /**
  * Created by conta on 8/17/2017.
  */
-/* Dashboard Recent Activty */
-/* $(function() {
-    var $tabMenu = $(".widget-activity .widget-head ul li a");
-
-        $tabMenu.on('shown.bs.tab', function (e) {
-            var $this = $(this),
-                href     = $this.attr("href"),
-                id       = href.replace("#", "")
-
-                // .tab-pane [this a hrefs]
-                $this.addClass("active");
-                $this.closest("li").removeClass("active");
-
-                // a hrefs siblings
-                $this.closest("li").siblings().removeClass("active");
-                $this.closest("li").siblings().find("a").removeClass("active");
-
-                // .tab-content
-                $(href).siblings().removeClass("active");
-                $(href).addClass("active");
-
-        });
-}); */
 
 /* Animations Init */
 function animationsInit() {
@@ -3461,8 +3438,7 @@ function uiInit() {
 
 /* notify.init.js */
 function notyfyInit() {
-    $('[data-toggle="notyfy"]').click(function ()
-    {
+    $('[data-toggle="notyfy"]').click(function() {
         var self = $(this);
         if(self.data('layout') == 'inline')
         {
@@ -7051,8 +7027,6 @@ $(function() {
         $document   = $("document");
 
         initRatings();
-        //flotchartDonutInit();
-        //flotchartPieInit();
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 
@@ -7066,14 +7040,7 @@ $(function() {
             }
         });
 
-        $body.on("mouseover", "#melis-id-nav-bar-tabs li a[title], .navbar-right li a[title], #id_meliscore_header_logout a i[title], #content a[title]", function() {
-            var $this = $(this);
-
-                $this.tooltip().tooltip("disable");
-                //$this.attr("title", $this.text());
-        });
-
-        // <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        // spinner/loading button
         $body.on("click", ".spinner-border-btn", function() {
             var $this       = $(this),
                 $spinner    = $(".spinner-border"),
@@ -7084,10 +7051,18 @@ $(function() {
                 }
         });
 
-        //$("[title]").not("#melisDashBoardPluginBtn").tooltip("disable");
-        $body.on("mouseover", "[title]:not(#melisDashBoardPluginBtn)", function() {
+        // disable tooltip when hovered on element with attribute title other than [.melis-core-dashboard-plugin-snippets]
+        $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
             var $this = $(this);
+                $this.tooltip({ disabled: true });
 
-                $this.tooltip("disable");
+                console.log("elements with [title] not .melis-core-dashboard-plugin-snippets");
+        });
+
+        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
+            var $this = $(this);
+                $this.tooltip({ disabled: true });
+
+                console.log("elements with [title] on main nav tabs li a $body.hover");
         });
 });
