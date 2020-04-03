@@ -1256,7 +1256,7 @@ function mapsVectorInit() {
         componentsPath = '';
         // USA unemployment
         function initUSAUnemployment() {
-            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data){
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
                 // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
                 var val = 2009;
                 statesValues = jvm.values.apply({}, jvm.values(data.states)),
@@ -2720,7 +2720,6 @@ function colVis() {
     
     
     })(window, document);
-    
 }
 
 /* DT_bootstrap.js */
@@ -2866,7 +2865,6 @@ function dtBootstrap() {
 
 /* datatables.init.js */
 function dataTablesInit() {
-
     (function ($, window) {
         function fnInitCompleteCallback(that) {
             var p = that.parents('.dataTables_wrapper').first();
@@ -3736,8 +3734,7 @@ function wysiHTML5() {
 
 /* form-wizards.init.js */
 function formWizardsInit() {
-    $(function()
-    {
+    $(function() {
         var bWizardTabClass = '';
         $('.wizard.wizard-design').each(function()
         {
@@ -3832,8 +3829,7 @@ function formWizardsInit() {
 
 /* widget-collapsible.init.js */
 function widgetCollapsibleInit() {
-    (function($)
-    {
+    (function($) {
         $('.widget[data-toggle="collapse-widget"] .widget-body')
             .on('show.bs.collapse', function(){
                 $(this).parents('.widget:first').attr('data-collapse-closed', "false");
@@ -4721,8 +4717,7 @@ function flotchartBarsOrderedInit() {
 
 /* flotchart-bars-stacked.init.js */
 function flotchartBarsStackedInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_stacked_bars").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -5007,8 +5002,7 @@ function flotchartDonutInit() {
 
 /* flotchart-bars-horizontal.init.js */
 function flotchartBarsHorizontalInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_horizontal_bars").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -5122,8 +5116,7 @@ function flotchartBarsHorizontalInit() {
 
 /* flotchart-autoupdating.init.js */
 function flotchartAutoUpdatingInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_live").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -5236,8 +5229,7 @@ function flotchartAutoUpdatingInit() {
 
 /* flotchart-finances-simple.init.js */
 function flotchartFinancesSimpleInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_finances_simple").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -5359,8 +5351,7 @@ function flotchartFinancesSimpleInit() {
 
     $.fn.bdatepicker = $.fn.datepicker.noConflict();
 
-    $(function()
-    {
+    $(function() {
 
         // DatePicker
         // default
@@ -5874,20 +5865,16 @@ function switchBootstrap() {
 /* bootstrap-switch.init.js */
 function bootstrapSwitchInit() {
     (function($){
-
         if (typeof $.fn.bootstrapSwitch != 'undefined' && $('.make-switch').length)
             $('.make-switch:not(.has-switch)').bootstrapSwitch();
-
     })(jQuery);
 }
 
 /* form-validator.init.js */
 function formValidatorInit() {
-    $.validator.setDefaults(
-        {
+    $.validator.setDefaults({
             submitHandler: function() { alert("submitted!"); },
-            showErrors: function(map, list)
-            {
+            showErrors: function(map, list) {
                 this.currentElements.parents('label:first, div:first').find('.has-error').remove();
                 this.currentElements.parents('.form-group:first').removeClass('has-error');
 
@@ -5991,8 +5978,7 @@ function dropzoneInit() {
 
 /* plupload.init.js */
 function plUploadInit() {
-    $(function()
-    {
+    $(function() {
         /* Plupload */
         $("#pluploadUploader").pluploadQueue({
             // General settings
@@ -6047,8 +6033,7 @@ function coreInit() {
     if (window.location != window.parent.location)
         top.location.href = document.location.href;
 
-    (function($, window)
-    {
+    (function($, window) {
 
         window.onunload = function(){};
 
@@ -6322,8 +6307,7 @@ function coreInit() {
 
 /* medical.init.js */
 function medicalInit() {
-    (function($)
-    {
+    (function($) {
         if (typeof charts == 'undefined')
             return;
 
@@ -6626,8 +6610,7 @@ function medicalInit() {
 
 /* tables-responsive-footable.init.js */
 function tablesResponsiveFootableInit() {
-    $(function()
-    {
+    $(function() {
         /* FooTable */
         if ($('.footable').length)
             $('.footable').footable();
@@ -7044,7 +7027,7 @@ $(function() {
                 $this.tooltip({ disabled: true });
         });
 
-        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
+        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect, button", function() {
             var $this = $(this);
                 $this.tooltip({ disabled: true });
         });
