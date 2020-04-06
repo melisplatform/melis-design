@@ -5919,25 +5919,13 @@ table.dataTable.design-table tbody tr.selected {
     background-color: transparent;
 }
 .ui-tooltip:not(.melis-core-dashboard-plugin-snippets) {
-    background: #212121 !important;
+    background: #292a2d !important;
     box-shadow: none;
-    border: none;
+    border: 1px solid #fff;
     border-radius: 3px !important;
     color: #fff;
     font-size: 12px;
     margin: 0;
     padding: 4px 7px;
-    opacity: 1 !important;
-}
-.tooltip {
-    text-decoration: none;
-    position: relative;
-}
-.tooltip span {
-    display: none;
-}
-.tooltip:hover span {
-    display: block;
-    position: fixed;
-    overflow: hidden;
+    opacity: .5 !important;
 }
