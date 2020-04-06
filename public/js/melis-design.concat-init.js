@@ -2917,10 +2917,11 @@ function dataTablesInit() {
                         }
                     });
 
-                    var allPages = oTableTools.fnGetNodes();
+                    var $body    = $("body"),
+                        allPages = oTableTools.fnGetNodes();
 
-                        $("body").on("click", ".sorting_asc .checkbox-custom .fa", function() {
-                            var $this = $(this);
+                        $body.on("click", ".sorting_disabled .checkbox-custom .fa", function() {
+                            var $this           = $(this);
 
                                 if ( $this.hasClass("allChecked") ) {
                                     $("input[type='checkbox']", allPages).prop("checked", false);
@@ -2928,7 +2929,22 @@ function dataTablesInit() {
                                     $("input[type='checkbox']", allPages).prop("checked", true);
                                 }
 
-                                $this.toggleClass("allChecked");
+                                $this.toggleClass("allChecked");                                
+                        });
+
+                        $body.on("click", ".tableTools thead tr th:not('.sorting_disabled')", function(e) {
+                            var $this           = $(this),
+                                $allChecked     = $(".tableTools thead tr th.sorting_disabled").find(".checkbox .checkbox-custom .fa"),
+                                $tableTools     = $(".tableTools tbody tr"),
+                                $customCheckBox = $tableTools.find("td .checkbox .checkbox-custom");
+
+                                $tableTools.addClass("selectable");
+
+                                if ( $allChecked.hasClass("allChecked") ) {
+                                    $customCheckBox.addClass("checked");
+                                    $customCheckBox.find(".fa").addClass("checked");
+                                    $tableTools.addClass("selected");
+                                }
                         });
 
                 }

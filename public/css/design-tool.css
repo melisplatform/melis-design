@@ -5918,6 +5918,26 @@ table.dataTable.design-table tbody tr.selected {
     color: #686868;
     background-color: transparent;
 }
-/* .ui-tooltip.ui-widget-shadow :not(.melis-core-dashboard-plugin-snippets) {
-    text-indent: -999999px;
-} */
+.ui-tooltip:not(.melis-core-dashboard-plugin-snippets) {
+    background: #212121 !important;
+    box-shadow: none;
+    border: none;
+    border-radius: 3px !important;
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+    padding: 4px 7px;
+    opacity: 1 !important;
+}
+.tooltip {
+    text-decoration: none;
+    position: relative;
+}
+.tooltip span {
+    display: none;
+}
+.tooltip:hover span {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+}
