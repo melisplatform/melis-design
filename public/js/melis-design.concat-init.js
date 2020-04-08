@@ -1184,10 +1184,10 @@ function mapsVectorInit() {
     });
 
     // load this map by default
-    initWorldMapGDP();
+    //initWorldMapGDP();
 
     // GDP by country
-    function initWorldMapGDP() {
+    /* function initWorldMapGDP() {
         $('#world-map-gdp').vectorMap({
             map: 'world_mill',
             series: {
@@ -1201,7 +1201,7 @@ function mapsVectorInit() {
                 el.html(el.html()+' (GDP - '+gdpData[code]+')');
             }
         });
-    }
+    } */
 
     //initWorldMapMarkers();    
 
