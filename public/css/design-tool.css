@@ -6032,3 +6032,7 @@ table.dataTable.design-table tbody tr.selected {
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
 }
+
+.melis-opentools [data-tool-meliskey='melis_maps_vector'] {
+    display: none;
+}
