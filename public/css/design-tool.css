@@ -6017,16 +6017,16 @@ table.dataTable.design-table tbody tr.selected {
     background-color: transparent;
 }
 .ui-tooltip:not(.melis-core-dashboard-plugin-snippets) {
-    background: #292a2d !important;
+    /* background: #292a2d !important; */
     box-shadow: none;
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     border-radius: 0 !important;
-    color: #fff;
+    /* color: #fff; */
     font-size: 12px;
     margin: 0;
     padding: 4px 7px;
     opacity: 1 !important;
-    top: 5px;
+    /* top: 5px; */
 }
 #maps_vector_tabs li.nav-item.active a {
     border-bottom: 1px solid #e5e5e5;
