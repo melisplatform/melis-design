@@ -6001,9 +6001,6 @@ textarea.wysihtml5 {
 .render-modals .widget .widget-head .heading {
     color: #fff;
 }
-.commerce-dashboard-plugin-order-messages .label.label-inverse.pull-right {
-    color: #fff !important;
-}
 .table-responsive thead tr th {
     padding: 1.16rem .75rem;
 }
@@ -6016,23 +6013,10 @@ table.dataTable.design-table tbody tr.selected {
     color: #686868;
     background-color: transparent;
 }
-.ui-tooltip:not(.melis-core-dashboard-plugin-snippets) {
-    /* background: #292a2d !important; */
-    box-shadow: none;
-    /* border: 1px solid #fff; */
-    border-radius: 0 !important;
-    /* color: #fff; */
-    font-size: 12px;
-    margin: 0;
-    padding: 4px 7px;
-    opacity: 1 !important;
-    /* top: 5px; */
-}
 #maps_vector_tabs li.nav-item.active a {
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
 }
-
 .melis-opentools[data-tool-meliskey='melis_maps_vector'] {
     display: none;
 }
