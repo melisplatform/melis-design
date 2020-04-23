@@ -1506,7 +1506,7 @@ div.radio.default input {
 .progress .progress-bar.progress-bar-inverse {
     background: #424242
 }
-.tooltip .tooltip-inner {
+/* .tooltip .tooltip-inner {
     background-color: #cb4040;
     color: #fff;
     -webkit-border-radius: 0 0 0 0;
@@ -1527,7 +1527,7 @@ div.radio.default input {
 }
 .tooltip.bottom .tooltip-arrow {
     border-bottom-color: #cb4040
-}
+} */
 .popover {
     border-color: #e5e5e5;
     background: #fff;
@@ -3546,7 +3546,7 @@ li.plupload_droptext {
     border-radius: 0 5px 5px 0;
     border-right: 1px solid #e5e5e5
 }
-.tooltip .tooltip-inner {
+/* .tooltip .tooltip-inner {
     background-color: #cb4040;
     color: #fff;
     -webkit-border-radius: 0 0 0 0;
@@ -3567,7 +3567,7 @@ li.plupload_droptext {
 }
 .tooltip.bottom .tooltip-arrow {
     border-bottom-color: #cb4040
-}
+} */
 .box-generic {
     border: 1px solid #e5e5e5;
     padding: 15px;
@@ -6019,4 +6019,66 @@ table.dataTable.design-table tbody tr.selected {
 }
 .melis-opentools[data-tool-meliskey='melis_maps_vector'] {
     display: none;
+}
+/*
+ * Tooltip issue
+ */
+[role="tooltip"]:not(.melis-dashboard-plugin-tooltip):not(.popover) {
+    border-width: 1px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+    background-color: #fff;
+    border-color: #333;
+    color: #333;
+
+    background: none;
+    opacity: 1;
+    border-radius: 0;
+
+    padding: 0;
+
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+[role="tooltip"]:not(.melis-dashboard-plugin-tooltip):not(.popover) .ui-tooltip-content {
+    background-color: #fff;
+    padding: 2px 5px;
+}
+/*
+ * Bootstrap tooltip
+ */
+.tooltip.fade.bs-tooltip-right.show {
+    left: 10px !important;
+}
+.bs-tooltip-auto[x-placement^=right] .arrow,
+.bs-tooltip-right .arrow {
+    left: -6px !important;
+}
+.tooltip.fade.bs-tooltip-left.show {
+    left: -6px !important;
+}
+.bs-tooltip-auto[x-placement^=left] .arrow,
+.bs-tooltip-left .arrow {
+    right: -6px !important;
+}
+.tooltip.fade.bs-tooltip-bottom.show {
+    top: 6px !important;
+}
+.bs-tooltip-auto[x-placement^=bottom] .arrow,
+.bs-tooltip-bottom .arrow {
+    top: -6px !important;
+}
+.tooltip.fade.bs-tooltip-top.show {
+    top: -6px !important;
+}
+.bs-tooltip-auto[x-placement^=top] .arrow,
+.bs-tooltip-top .arrow {
+    bottom: -6px !important;
+}
+/* .tooltip:not(.bs-tooltip-left):not(.bs-tooltip-right):not(.bs-tooltip-top):not(.bs-tooltip-bottom) {
+    left: auto;
+} */
+#demo_popovers .popover-content {
+    padding: .5rem .75rem;
 }
