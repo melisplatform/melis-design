@@ -6082,3 +6082,14 @@ table.dataTable.design-table tbody tr.selected {
 #demo_popovers .popover-content {
     padding: .5rem .75rem;
 }
+.datepicker-years span.year {
+    margin: 0 4px;
+}
+.datepicker-block span.month {
+    margin: 0 8px;
+}
+.datepicker-years span.year.active,
+.datepicker-block span.month.active {
+    color: #fff;
+    padding: 0 4px;
+}
