@@ -6082,14 +6082,31 @@ table.dataTable.design-table tbody tr.selected {
 #demo_popovers .popover-content {
     padding: .5rem .75rem;
 }
-.datepicker-years span.year {
-    margin: 0 4px;
+.datepicker-block .datepicker-years span.year,
+.datepicker-block .datepicker-months span.month {
+    display: block;
+    width: 23%;
+    height: 54px;
+    line-height: 54px;
+    float: left;
+    margin: 1%;
+    cursor: pointer;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
-.datepicker-block span.month {
-    margin: 0 8px;
+.datepicker-block .datepicker-years span.year:hover,
+.datepicker-block .datepicker-months span.month:hover {
+    background: #eee;
 }
-.datepicker-years span.year.active,
-.datepicker-block span.month.active {
+.datepicker-block .datepicker-years span.year.active,
+.datepicker-block .datepicker-months span.month.active {
     color: #fff;
     padding: 0 4px;
+}
+.datepicker-block table thead tr th.next:hover,
+.datepicker-block table thead tr th.prev:hover,
+.datepicker-block table thead tr th.datepicker-switch:hover {
+    background: #eee;
+    cursor: pointer;
 }
