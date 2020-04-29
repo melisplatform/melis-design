@@ -1,4 +1,4 @@
-
+/* 
 function animationsInit() {
     $('.panel-3d').find('.front .btn').on('click', function(){
         $(this).closest('.panel-3d').addClass('panel-flip');
@@ -35,4 +35,4 @@ function animationsInit() {
             }, (i+1)*200);
         }, (i+1)*800);
     });
-}
+} */

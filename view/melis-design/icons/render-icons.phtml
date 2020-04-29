@@ -10,13 +10,15 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-	<div id="content">
+	<div id="content" class="render-icons platform-icons">
 	    <h1 class="bg-white content-heading border-bottom">Premium Icons</h1>
 	    <div class="innerAll bg-white border-bottom">
 	        <ul class="menubar">
-	            <li><a href="ui.html?lang=en">Buttons</a>
-	            </li>
-	            <li class="active"><a href="icons.html?lang=en">Icons</a>
+				<!-- ui.html?lang=en -->
+	            <li><a href="#">Buttons</a>
+				</li>
+				<!-- icons.html?lang=en -->
+	            <li class="active"><a href="#">Icons</a>
 	            </li>
 	        </ul>
 	    </div>
@@ -25,16 +27,21 @@
 
 	        <div class="widget widget-tabs">
 	            <div class="widget-head">
-	                <ul>
-	                    <li class="active"><a href="#picto" data-toggle="tab">Picto Foundry Elite &nbsp; <span class="badge badge-stroke">852</span></a>
+	                <ul class="nav nav-tabs">
+	                    <li class="nav-item">
+							<a class="nav-link active" href="#picto" data-toggle="tab">Picto Foundry Elite &nbsp; <span class="badge badge-stroke">852</span></a>
 	                    </li>
-	                    <li><a href="#fontawesome" data-toggle="tab">Font Awesome &nbsp;<span class="badge badge-stroke">370</span></a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#fontawesome" data-toggle="tab">Font Awesome &nbsp;<span class="badge badge-stroke">370</span></a>
 	                    </li>
-	                    <li><a href="#glyphicons_regular" data-toggle="tab">Glyphicons Regular &nbsp;<span class="badge badge-primary badge-stroke">470</span></a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#glyphicons_regular" data-toggle="tab">Glyphicons Regular &nbsp;<span class="badge badge-primary badge-stroke">470</span></a>
 	                    </li>
-	                    <li><a href="#glyphicons_social" data-toggle="tab">Glyphicons Social &nbsp;<span class="badge badge-info badge-stroke">50</span></a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#glyphicons_social" data-toggle="tab">Glyphicons Social &nbsp;<span class="badge badge-info badge-stroke">50</span></a>
 	                    </li>
-	                    <li><a href="#glyphicons_filetypes" data-toggle="tab">Glyphicons Filetypes &nbsp;<span class="badge badge-stroke">130</span></a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#glyphicons_filetypes" data-toggle="tab">Glyphicons Filetypes &nbsp;<span class="badge badge-stroke">130</span></a>
 	                    </li>
 	                </ul>
 	            </div>

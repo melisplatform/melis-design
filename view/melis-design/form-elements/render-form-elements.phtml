@@ -10,7 +10,7 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-    <div id="content">
+    <div id="content" class="render-form-elements form-elements">
         <h1 class="content-heading bg-white border-bottom">Form Elements</h1>
         <div class="innerAll spacing-x2">
 
@@ -100,13 +100,13 @@
                             </div>
                             <div class="innerB">
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-3">
                                         <input type="text" class="form-control" placeholder="col 3">
                                     </div>
-                                    <div class="col-xs-4">
+                                    <div class="col-4">
                                         <input type="text" class="form-control" placeholder="col 4">
                                     </div>
-                                    <div class="col-xs-5">
+                                    <div class="col-5">
                                         <input type="text" class="form-control" placeholder="col 5">
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
 
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -142,7 +142,7 @@
                     <!-- // Widget END -->
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -153,7 +153,7 @@
                         <div class="widget-body">
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input class="form-control col-md-10" id="appendedPrependedInput" type="text" placeholder="100,000,000" />
+                                <input class="form-control" id="appendedPrependedInput" type="text" placeholder="100,000,000" />
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                 <div class="col-md-6">
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -203,26 +203,26 @@
 
                         <div class="widget-body">
                             <form class="form-horizontal" role="form">
-                                <div class="form-group">
+                                <div class="form-group d-flex">
                                     <label class="col-sm-2 control-label">User</label>
                                     <div class="col-sm-10">
                                         <p class="form-control-static">mycompany</p>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group d-flex">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
                                         <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group d-flex">
                                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
+                                <div class="form-group d-flex">
+                                    <div class="offset-sm-2 col-sm-10">
                                         <div class="checkbox">
                                             <label class="checkbox-custom">
                                                 <i class="fa fa-fw fa-square-o"></i>
@@ -231,8 +231,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
+                                <div class="form-group d-flex">
+                                    <div class="offset-sm-2 col-sm-10">
                                         <button type="submit" class="btn btn-primary">Sign in</button>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@
 
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -276,26 +276,26 @@
                                         <!-- Modal body -->
                                         <div class="modal-body">
                                             <form class="form-horizontal" role="form">
-                                                <div class="form-group">
+                                                <div class="form-group d-flex">
                                                     <label class="col-sm-2 control-label">User</label>
                                                     <div class="col-sm-10">
                                                         <p class="form-control-static">mycompany</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group d-flex">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                                     <div class="col-sm-10">
                                                         <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group d-flex">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                                                     <div class="col-sm-10">
                                                         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                <div class="form-group d-flex">
+                                                    <div class="offset-sm-2 col-sm-10">
                                                         <div class="checkbox">
                                                             <label class="checkbox-custom">
                                                                 <i class="fa fa-fw fa-square-o"></i>
@@ -304,8 +304,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                <div class="form-group d-flex">
+                                                    <div class="offset-sm-2 col-sm-10">
                                                         <button type="submit" class="btn btn-primary">Sign in</button>
                                                     </div>
                                                 </div>
@@ -340,19 +340,23 @@
                                         <div class="modal-body padding-none">
 
                                             <!-- Form Wizard / Widget Tabs / Double Style -->
-                                            <div class="wizard">
+                                            <div class="wizard wizard-design">
                                                 <div class="widget widget-tabs widget-tabs-double widget-tabs-gray">
 
                                                     <!-- Widget heading -->
                                                     <div class="widget-head bg-gray">
-                                                        <ul>
-                                                            <li class="active"><a href="#tab1-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="nav-item active">
+                                                                <a href="#tab1-2" class="nav-link glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
                                                             </li>
-                                                            <li><a href="#tab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+                                                            <li class="nav-item">
+                                                                <a href="#tab2-2" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
                                                             </li>
-                                                            <li><a href="#tab3-2" class="glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+                                                            <li class="nav-item">
+                                                                <a href="#tab3-2" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
                                                             </li>
-                                                            <li><a href="#tab4-2" class="glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+                                                            <li class="nav-item">
+                                                                <a href="#tab4-2" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -409,18 +413,25 @@
                                                         </div>
 
                                                         <!-- Wizard pagination controls -->
-                                                        <ul class="pagination margin-bottom-none">
-                                                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                                                            </li>
-                                                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                                                            </li>
-                                                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                                                            </li>
-                                                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                                                            </li>
-                                                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                                                            </li>
-                                                        </ul>
+                                                        <nav>
+                                                            <ul class="pagination margin-bottom-none">
+                                                                <li class="page-item primary previous first">
+                                                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                                                </li>
+                                                                <li class="page-item primary previous">
+                                                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                                                </li>
+                                                                <li class="page-item last primary">
+                                                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                                                </li>
+                                                                <li class="page-item next primary">
+                                                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                                                </li>
+                                                                <li class="page-item next finish primary" style="display:none;">
+                                                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                                                </li>
+                                                            </ul>
+                                                        </nav>
                                                         <!-- // Wizard pagination controls END -->
 
                                                     </div>
@@ -460,16 +471,20 @@
 
                                                     <!-- Widget heading -->
                                                     <div class="widget-head bg-gray">
-                                                        <ul>
+                                                        <ul class="nav nav-tabs">
                                                             <li class="status"><span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
                                                             </li>
-                                                            <li class="active no-padding"><a href="#tab1-3" data-toggle="tab">1</a>
+                                                            <li class="nav-item active no-padding">
+                                                                <a class="nav-link" href="#tab1-3" data-toggle="tab">1</a>
                                                             </li>
-                                                            <li><a href="#tab2-3" data-toggle="tab">2</a>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#tab2-3" data-toggle="tab">2</a>
                                                             </li>
-                                                            <li><a href="#tab3-3" data-toggle="tab">3</a>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#tab3-3" data-toggle="tab">3</a>
                                                             </li>
-                                                            <li><a href="#tab4-3" data-toggle="tab">4</a>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#tab4-3" data-toggle="tab">4</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -526,20 +541,29 @@
                                                         </div>
 
                                                         <!-- Wizard pagination controls -->
-                                                        <ul class="pagination margin-bottom-none pull-left">
-                                                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                                                            </li>
-                                                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                                                            </li>
-                                                        </ul>
-                                                        <ul class="pagination margin-bottom-none pull-right">
-                                                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                                                            </li>
-                                                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                                                            </li>
-                                                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                                                            </li>
-                                                        </ul>
+                                                        <nav>
+                                                            <ul class="pagination margin-bottom-none float-left">
+                                                                <li class="page-item primary previous first">
+                                                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                                                </li>
+                                                                <li class="page-item last primary">
+                                                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                                                </li>
+                                                            </ul>
+                                                        </nav>
+                                                        <nav>
+                                                            <ul class="pagination margin-bottom-none float-right">
+                                                                <li class="page-item primary previous">
+                                                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                                                </li>
+                                                                <li class="page-item next primary">
+                                                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                                                </li>
+                                                                <li class="page-item next finish primary" style="display:none;">
+                                                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                                                </li>
+                                                            </ul>
+                                                        </nav>
                                                         <div class="clearfix"></div>
                                                         <!-- // Wizard pagination controls END -->
 
@@ -570,7 +594,7 @@
 
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -595,7 +619,7 @@
                     <!-- // Widget END -->
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -611,7 +635,7 @@
                                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                             Action <span class="caret"></span>
                                         </button>
-                                        <ul class="dropdown-menu pull-right">
+                                        <ul class="dropdown-menu float-right">
                                             <li><a href="#">Action</a>
                                             </li>
                                             <li><a href="#">Another action</a>
@@ -631,7 +655,7 @@
                     <!-- // Widget END -->
 
                     <!-- Widget -->
-                    <div class="widget row widget-inverse">
+                    <div class="widget widget-inverse">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -649,7 +673,7 @@
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                                         <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu pull-right">
+                                    <ul class="dropdown-menu float-right">
                                         <li><a href="#">Action</a>
                                         </li>
                                         <li><a href="#">Another action</a>
@@ -680,11 +704,9 @@
                             <label class="radio">
                                 <input type="radio" class="radio" name="radio" value="1" /> Option 1 - Sexy radio
                             </label>
-                            <br/>
                             <label class="radio">
                                 <input type="radio" class="radio" name="radio" value="1" checked="checked" /> Option 2 - Checked
                             </label>
-                            <br/>
                             <label class="radio">
                                 <input type="radio" class="radio disabled" name="radio" value="1" disabled="disabled" /> Option 3 - Disabled radio
                             </label>
@@ -718,7 +740,7 @@
                                     <div class="form-control col-md-3"><i class="fa fa-file fileupload-exists"></i> <span class="fileupload-preview"></span>
                                     </div>
                                     <span class="input-group-btn">
-                <span class="btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
+                                    <span class="btn btn-default btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
                                     <input type="file" class="margin-none" />
                                     </span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </span>
@@ -741,7 +763,7 @@
             <!-- // Widget END -->
 
             <!-- Widget -->
-            <div class="widget row widget-heading-simple widget-body-gray">
+            <div class="widget widget-heading-simple widget-body-gray">
 
                 <!-- Widget heading -->
                 <div class="widget-head">
@@ -771,7 +793,10 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <button type="button" id="btn-loading" class="btn btn-primary" data-loading-text="Custom Loading Text ...">Click for Loading state</button>
+                            <button class="btn btn-primary spinner-border-btn" type="button">
+                                <span class="span-text">Click for Loading state</span>
+                            </button>
+                            <!-- <button type="button" id="btn-loading" class="btn btn-primary" data-loading-text="Custom Loading Text ...">Click for Loading state</button> -->
                         </div>
 
                     </div>
@@ -787,7 +812,7 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
+                            <button type="button" class="btn btn-primary btn-single-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">Single Toggle</button>
                         </div>
 
                     </div>
@@ -809,12 +834,12 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-primary active">
-                                    <input type="checkbox" checked="checked"> Option 1
+                                    <input type="checkbox" checked autocomplete="off"> Option 1
                                 </label>
                                 <label class="btn btn-primary active">
-                                    <input type="checkbox" checked="checked"> Option 2
+                                    <input type="checkbox" checked autocomplete="off"> Option 2
                                 </label>
                                 <label class="btn btn-primary">
                                     <input type="checkbox"> Option 3
@@ -836,15 +861,15 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-primary active">
-                                    <input type="radio" name="options" id="option1" checked="checked">Left
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked>Left
                                 </label>
                                 <label class="btn btn-primary">
-                                    <input type="radio" name="options" id="option2">Middle
+                                    <input type="radio" name="options" id="option2" autocomplete="off">Middle
                                 </label>
                                 <label class="btn btn-primary">
-                                    <input type="radio" name="options" id="option3">Right
+                                    <input type="radio" name="options" id="option3" autocomplete="off">Right
                                 </label>
                             </div>
 
@@ -873,7 +898,7 @@
                         <div class="col-md-3">
                             <h5>Default</h5>
                             <div class="row">
-                                <div class="innerLR innerB">
+                                <div class="innerLR innerB select-group">
                                     <select class="col-md-12 form-control">
                                         <optgroup label="Picnic">
                                             <option>Mustard</option>
@@ -1459,52 +1484,50 @@
                 </div>
             </div>
 
-
-
             <div class="widget widget-inverse">
                 <div class="widget-head">
                     <h4 class="heading">Input Masks</h4>
                 </div>
-                <div class="widget-body padding-none">
+                <div class="widget-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="strong">Date #1</label>
-                            <input type="text" id="inputmask-date" class="form-control span8" placeholder="__/__/____" />
+                            <label class="strong" for="inputmask-date">Date #1</label>
+                            <input type="text" id="inputmask-date" class="form-control span8 input-mask" placeholder="__/__/____" />
                             <span class="help-inline">d/m/y mask</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Date #2</label>
-                            <input type="text" id="inputmask-date-1" class="form-control span8" placeholder="**/**/****" />
+                            <input type="text" id="inputmask-date-1" class="form-control span8 input-mask" placeholder="**/**/****" />
                             <span class="help-inline">Changing placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Date #3</label>
-                            <input type="text" id="inputmask-date-2" class="form-control span8" placeholder="dd/mm/yyyy" />
+                            <input type="text" id="inputmask-date-2" class="form-control span8 input-mask" placeholder="dd/mm/yyyy" />
                             <span class="help-inline">Multi-char placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Currency</label>
-                            <input type="text" id="inputmask-currency" class="form-control span8" placeholder="&euro; 999.999.999,99" />
+                            <input type="text" id="inputmask-currency" class="form-control span8 input-mask" placeholder="&euro; 999.999.999,99" />
                             <span class="help-inline">&euro; 999.999.999,99</span>
                         </div>
                         <div class="col-md-6">
                             <label class="strong">Phone Number</label>
-                            <input type="text" id="inputmask-phone" class="form-control span8" placeholder="(123) 456-7890" />
+                            <input type="text" id="inputmask-phone" class="form-control span8 input-mask" placeholder="(123) 456-7890" />
                             <span class="help-inline">(999) 999-9999</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">VAT Number</label>
-                            <input type="text" id="inputmask-tax" class="form-control span8" placeholder="12-3456789" />
+                            <input type="text" id="inputmask-tax" class="form-control span8 input-mask" placeholder="12-3456789" />
                             <span class="help-inline">Multi-char placeholder</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">Decimal</label>
-                            <input type="text" id="inputmask-decimal" class="form-control span8" placeholder="123.01" />
+                            <input type="text" id="inputmask-decimal" class="form-control span8 input-mask" placeholder="123.01" />
                             <span class="help-inline">Allow numbers &amp; decimals</span>
                             <div class="separator bottom"></div>
 
                             <label class="strong">SSN</label>
-                            <input type="text" id="inputmask-ssn" class="form-control span8" placeholder="999-99-9999" />
+                            <input type="text" id="inputmask-ssn" class="form-control span8 input-mask" placeholder="999-99-9999" />
                             <span class="help-inline">999-99-9999</span>
                         </div>
                     </div>
@@ -1524,8 +1547,6 @@
                             <div class="well">
                                 <h4>Default input</h4>
                                 <input class="form-control" type="text" value="2013-02-14" id="datepicker1" />
-
-
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -1545,7 +1566,6 @@
                                     <input class="form-control" type="text" value="14 February 2013" />
                                     <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1566,19 +1586,14 @@
                                     <input id="timepicker1" type="text" class="form-control">
                                     <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                                 </div>
-
                                 <div class="separator bottom"></div>
-
                                 <p>Without component markup and keyboard input disabled.</p>
                                 <div class="bootstrap-timepicker">
                                     <input id="timepicker3" type="text" class="form-control" />
                                 </div>
-
                                 <div class="separator bottom"></div>
-
                                 <p>Without a template.</p>
                                 <input id="timepicker5" type="text" class="form-control">
-
                             </div>
                         </div>
                         <div class="col-md-6">

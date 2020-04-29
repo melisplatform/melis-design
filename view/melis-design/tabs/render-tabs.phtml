@@ -10,8 +10,7 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-
-	<div id="content">
+	<div id="content" class="render-tabs tabs">
 	    <h1 class="content-heading bg-white border-bottom">Tabs <span>7 awesome styles</span></h1>
 
 	    <div class="innerAll spacing-x2">
@@ -22,16 +21,21 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="widget-head">
-	                    <ul>
-	                        <li class="active"><a class="glyphicons list" href="#tabAll" data-toggle="tab"><i></i><span>All topics</span></a>
+	                    <ul class="nav nav-tabs">
+	                        <li class="nav-item active">
+								<a class="nav-link glyphicons list" href="#tabAll" data-toggle="tab"><i></i><span>All topics</span></a>
 	                        </li>
-	                        <li><a class="glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Account</span></a>
+	                        <li class="nav-item">
+								<a class="nav-link glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Account</span></a>
 	                        </li>
-	                        <li><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Payments</span></a>
+	                        <li class="nav-item">
+								<a class="nav-link glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Payments</span></a>
 	                        </li>
-	                        <li><a class="glyphicons cogwheel" href="#tabSupport" data-toggle="tab"><i></i><span>Technical Support</span></a>
+	                        <li class="nav-item">
+								<a class="nav-link glyphicons cogwheel" href="#tabSupport" data-toggle="tab"><i></i><span>Technical Support</span></a>
 	                        </li>
-	                        <li><a class="glyphicons snowflake" href="#tabFeatures" data-toggle="tab"><i></i><span>Features</span></a>
+	                        <li class="nav-item">
+								<a class="nav-link glyphicons snowflake" href="#tabFeatures" data-toggle="tab"><i></i><span>Features</span></a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -94,16 +98,20 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="tabsbar">
-	                    <ul>
-	                        <li class="glyphicons camera active"><a href="#tab1-3" data-toggle="tab"><i></i> View all photos
+	                    <ul class="nav nav-tabs">
+	                        <li class="nav-item glyphicons camera active">
+								<a class="nav-link" href="#tab1-3" data-toggle="tab"><i></i> View all photos
 	                            <strong>(43)</strong></a>
 	                        </li>
-	                        <li class="glyphicons folder_open"><a href="#tab2-3" data-toggle="tab"><i></i> Albums <strong>(3)</strong></a>
+	                        <li class="nav-item glyphicons folder_open">
+								<a class="nav-link" href="#tab2-3" data-toggle="tab"><i></i> Albums <strong>(3)</strong></a>
 	                        </li>
-	                        <li class="glyphicons circle_plus tab-stacked"><a href="#tab3-3" data-toggle="tab"><i></i>
+	                        <li class="nav-item glyphicons circle_plus tab-stacked">
+								<a class="nav-link" href="#tab3-3" data-toggle="tab"><i></i>
 	                            <span>Add Photos</span></a>
 	                        </li>
-	                        <li class="glyphicons folder_plus tab-stacked"><a href="#tab4-3" data-toggle="tab"><i></i>
+	                        <li class="nav-item glyphicons folder_plus tab-stacked">
+								<a class="nav-link" href="#tab4-3" data-toggle="tab"><i></i>
 	                            <span>Create Album</span></a>
 	                        </li>
 	                    </ul>
@@ -156,15 +164,18 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="tabsbar tabsbar-2 tabsbar-design">
-	                    <ul class="row row-merge">
-	                        <li class="col-md-3 glyphicons cargo active"><a href="#tab1-4" data-toggle="tab"><i></i> Product
-	                            Listing</a>
+	                    <ul class="nav nav-tabs row row-merge">
+	                        <li class="nav-item col-md-3 glyphicons cargo active">
+								<a class="nav-link" href="#tab1-4" data-toggle="tab"><i></i> Product Listing</a>
 	                        </li>
-	                        <li class="col-md-3 glyphicons circle_info"><a href="#tab2-4" data-toggle="tab"><i></i> <span>Product Details</span></a>
+	                        <li class="nav-item col-md-3 glyphicons circle_info">
+								<a class="nav-link" href="#tab2-4" data-toggle="tab"><i></i> <span>Product Details</span></a>
 	                        </li>
-	                        <li class="col-md-3 glyphicons cart_in"><a href="#tab3-4" data-toggle="tab"><i></i> <span>Shopping Cart</span></a>
+	                        <li class="nav-item col-md-3 glyphicons cart_in">
+								<a class="nav-link" href="#tab3-4" data-toggle="tab"><i></i> <span>Shopping Cart</span></a>
 	                        </li>
-	                        <li class="col-md-3 glyphicons pencil"><a href="#tab4-4" data-toggle="tab"><i></i> <span>Shop Management</span></a>
+	                        <li class="nav-item col-md-3 glyphicons pencil">
+								<a class="nav-link" href="#tab4-4" data-toggle="tab"><i></i> <span>Shop Management</span></a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -216,11 +227,13 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="widget-head">
-	                    <ul>
-	                        <li class="active"><a class="glyphicons coffe_cup" href="#tab-1" data-toggle="tab"><i></i>Active
+	                    <ul class="nav nav-tabs">
+	                        <li class="nav-item active">
+								<a class="nav-link glyphicons coffe_cup" href="#tab-1" data-toggle="tab"><i></i>Active
 	                            tab</a>
 	                        </li>
-	                        <li><a class="glyphicons share_alt" href="#tab-2" data-toggle="tab"><i></i>Other tab</a>
+	                        <li class="nav-item">
+								<a class="nav-link glyphicons share_alt" href="#tab-2" data-toggle="tab"><i></i>Other tab</a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -254,17 +267,21 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="widget-head col-md-3">
-	                    <ul>
-	                        <li class="active"><a href="#tab1-1" class="glyphicons user" data-toggle="tab"><i></i><span
+	                    <ul class="nav nav-tabs">
+	                        <li class="nav-item active">
+								<a href="#tab1-1" class="nav-link glyphicons user" data-toggle="tab"><i></i><span
 	                                class="strong">Step 1</span><span>Personal details</span></a>
 	                        </li>
-	                        <li><a href="#tab2-1" class="glyphicons calculator" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab2-1" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span
 	                                class="strong">Step 2</span><span>Billing details</span></a>
 	                        </li>
-	                        <li><a href="#tab3-1" class="glyphicons credit_card" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab3-1" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span
 	                                class="strong">Step 3</span><span>Payment</span></a>
 	                        </li>
-	                        <li><a href="#tab4-1" class="glyphicons circle_ok" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab4-1" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span
 	                                class="strong">Step 4</span><span>Confirmation</span></a>
 	                        </li>
 	                    </ul>
@@ -320,17 +337,21 @@
 
 	                <!-- Tabs Heading -->
 	                <div class="widget-head">
-	                    <ul>
-	                        <li class="active"><a href="#tab1-2" class="glyphicons user" data-toggle="tab"><i></i><span
+	                    <ul class="nav nav-tabs">
+	                        <li class="nav-item active">
+								<a href="#tab1-2" class="nav-link glyphicons user" data-toggle="tab"><i></i><span
 	                                class="strong">Step 1</span><span>Personal details</span></a>
 	                        </li>
-	                        <li><a href="#tab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab2-2" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span
 	                                class="strong">Step 2</span><span>Billing details</span></a>
 	                        </li>
-	                        <li><a href="#tab3-2" class="glyphicons credit_card" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab3-2" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span
 	                                class="strong">Step 3</span><span>Payment</span></a>
 	                        </li>
-	                        <li><a href="#tab4-2" class="glyphicons circle_ok" data-toggle="tab"><i></i><span
+	                        <li class="nav-item">
+								<a href="#tab4-2" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span
 	                                class="strong">Step 4</span><span>Confirmation</span></a>
 	                        </li>
 	                    </ul>
@@ -382,24 +403,27 @@
 
 	        <!-- Icon only Tabs -->
 	        <div class="relativeWrap">
-	            <div class="widget widget-4 widget-tabs-icons-only margin-bottom-none">
-
+	            <div class="widget widget-4 widget-tabs-icons-only margin-bottom-none icons-only">
 	                <!-- Widget Heading -->
 	                <div class="widget-head">
 	                    <h4 class="heading">Tabs from Icons <span>400+ Premium Icons to choose from</span></h4>
-
 	                    <!-- Tabs -->
-	                    <ul class="pull-right">
+	                    <ul class="nav nav-tabs float-right">
 	                        <li>Filter by</li>
-	                        <li class="glyphicons user_add active"><span data-toggle="tab" data-target="#tab1-5"><i></i></span>
+	                        <li class="nav-item glyphicons user_add active">
+								<a class="nav-link" data-toggle="tab" href="#tab1-5"><i></i></a>
 	                        </li>
-	                        <li class="glyphicons shopping_cart"><span data-toggle="tab" data-target="#tab2-5"><i></i></span>
+	                        <li class="nav-item glyphicons shopping_cart">
+								<a class="nav-link" data-toggle="tab" href="#tab2-5"><i></i></a>
 	                        </li>
-	                        <li class="glyphicons envelope"><span data-toggle="tab" data-target="#tab3-5"><i></i></span>
+	                        <li class="nav-item glyphicons envelope">
+								<a class="nav-link" data-toggle="tab" href="#tab3-5"><i></i></a>
 	                        </li>
-	                        <li class="glyphicons link"><span data-toggle="tab" data-target="#tab4-5"><i></i></span>
+	                        <li class="nav-item glyphicons link">
+								<a class="nav-link" data-toggle="tab" href="#tab4-5"><i></i></a>
 	                        </li>
-	                        <li class="glyphicons camera"><span data-toggle="tab" data-target="#tab5-5"><i></i></span>
+	                        <li class="nav-item glyphicons camera">
+								<a class="nav-link" data-toggle="tab" href="#tab5-5"><i></i></a>
 	                        </li>
 	                    </ul>
 	                    <div class="clearfix"></div>

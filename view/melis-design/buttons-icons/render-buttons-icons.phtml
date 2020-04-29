@@ -10,13 +10,15 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-    <div id="content">
+    <div id="content" class="render-buttons-icons">
         <h1 class="bg-white content-heading border-bottom">User Interface Elements</h1>
         <div class="innerAll bg-white border-bottom">
             <ul class="menubar">
-                <li class="active"><a href="ui.html?lang=en">Buttons</a>
+                <!-- ui.html?lang=en -->
+                <li class="active"><a href="#">Buttons</a>
                 </li>
-                <li><a href="icons.html?lang=en">Icons</a>
+                <!-- icons.html?lang=en -->
+                <li><a href="#">Icons</a>
                 </li>
             </ul>
         </div>
@@ -25,7 +27,7 @@
 
             <div class="widget widget-inverse">
                 <div class="widget-head">
-                    <div class="btn-group btn-group-xs pull-right">
+                    <div class="btn-group btn-group-xs float-right">
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-refresh"></i>
                         </button>
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-times"></i>
@@ -134,7 +136,7 @@
                                     Dropdown Primary
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu float-right">
                                     <li><a href="#">Action</a>
                                     </li>
                                     <li><a href="#">Another action</a>
@@ -151,7 +153,7 @@
                                     Dropdown Inverse
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu float-right">
                                     <li><a href="#">Action</a>
                                     </li>
                                     <li><a href="#">Another action</a>
@@ -168,7 +170,7 @@
                                     Dropdown Danger
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu float-right">
                                     <li><a href="#">Action</a>
                                     </li>
                                     <li><a href="#">Another action</a>
@@ -185,7 +187,7 @@
                                     Dropdown Success
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu float-right">
                                     <li><a href="#">Action</a>
                                     </li>
                                     <li><a href="#">Another action</a>
@@ -202,7 +204,7 @@
                                     Dropdown Warning
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-right">
+                                <ul class="dropdown-menu float-right">
                                     <li><a href="#">Action</a>
                                     </li>
                                     <li><a href="#">Another action</a>
@@ -261,7 +263,7 @@
 
             <div class="widget widget-inverse">
                 <div class="widget-head">
-                    <div class="btn-group btn-group-xs pull-right">
+                    <div class="btn-group btn-group-xs float-right">
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-refresh"></i>
                         </button>
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-times"></i>
@@ -313,7 +315,7 @@
 
             <div class="widget widget-inverse">
                 <div class="widget-head">
-                    <div class="btn-group btn-group-xs pull-right">
+                    <div class="btn-group btn-group-xs float-right">
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-refresh"></i>
                         </button>
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-times"></i>
@@ -454,7 +456,7 @@
 
             <div class="widget widget-inverse">
                 <div class="widget-head">
-                    <div class="btn-group btn-group-xs pull-right">
+                    <div class="btn-group btn-group-xs float-right">
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-refresh"></i>
                         </button>
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-times"></i>
@@ -464,7 +466,7 @@
                 </div>
                 <div class="widget-body">
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-badges">
                         <thead>
                             <tr>
                                 <th>Type</th>
@@ -476,7 +478,7 @@
                             <tr>
                                 <td>Default</td>
                                 <td>
-                                    <span class="badge">1</span>
+                                    <span class="badge badge-default">1</span>
                                     <span class="badge badge-stroke">1</span>
                                 </td>
                                 <td>
@@ -559,7 +561,7 @@
             </div>
             <div class="widget widget-inverse">
                 <div class="widget-head">
-                    <div class="btn-group btn-group-xs pull-right">
+                    <div class="btn-group btn-group-xs float-right">
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-refresh"></i>
                         </button>
                         <button class="btn btn-inverse"><i class="fa fa-fw fa-times"></i>
@@ -572,36 +574,43 @@
                     <div class="row">
                         <div class="col-md-3">
                             <h5 class="strong">Pagination</h5>
-                            <ul class="pagination margin-none">
-                                <li class="disabled"><a href="#">&laquo;</a>
-                                </li>
-                                <li class="active"><a href="#">1</a>
-                                </li>
-                                <li><a href="#">2</a>
-                                </li>
-                                <li><a href="#">3</a>
-                                </li>
-                                <li><a href="#">&raquo;</a>
-                                </li>
-                            </ul>
-
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination margin-none">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                         <div class="col-md-6">
                             <p class="jquery-bootpag-content">Dynamic content here.</p>
                             <p class="jquery-bootpag-pagination"></p>
-
-
                         </div>
                         <div class="col-md-3">
                             <h5 class="strong">Pager</h5>
                             <ul class="pager margin-none">
-                                <li class="previous disabled"><a href="#">&larr; Older</a>
+                                <li class="previous disabled">
+                                    <a href="#">&larr; Older</a>
                                 </li>
                                 <li class="next"><a href="#">Newer &rarr;</a>
                                 </li>
                             </ul>
-
-
                         </div>
                     </div>
                 </div>
