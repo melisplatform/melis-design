@@ -1,6 +1,7 @@
 /**
  * Created by conta on 8/17/2017.
  */
+
 /* Animations Init */
 function animationsInit() {
     $('.panel-3d').find('.front .btn').on('click', function(){
@@ -536,7 +537,6 @@ function widgetScrollableInit() {
             cursorborder: "none",
             cursorborderradius: "0",
             cursorcolor: primaryColor
-
         });
     });
 
@@ -545,7 +545,7 @@ function widgetScrollableInit() {
 /* Bootstrap Datepicker */
 function bootstrapDatepickerInit() {
     $.fn.bdatepicker = $.fn.datepicker;
-
+    
     /* DatePicker */
     // default
     $("#datepicker1").bdatepicker({
@@ -590,10 +590,39 @@ function bootstrapDatepickerInit() {
     if ($('.datepicker-block').length) $('.datepicker-block').bdatepicker({ inline: true, showOtherMonths:true });
 }
 
+/* bootstrap-timepicker */
+function bootstrapTimePickerInit() {
+    //$.fn.btimepicker = $.fn.timepicker;
+    $('#timepicker1').timepicker();
+    $('#timepicker2').timepicker({
+        minuteStep: 1,
+        template: 'modal',
+        showSeconds: true,
+        showMeridian: false,
+        modalBackdrop: true
+    });
+    $('#timepicker3').timepicker({
+        minuteStep: 5,
+        showInputs: false,
+        disableFocus: true
+    });
+    $('#timepicker4').timepicker({
+        minuteStep: 1,
+        secondStep: 5,
+        showInputs: false,
+        showSeconds: true,
+        showMeridian: false
+    });
+    $('#timepicker5').timepicker({
+        template: false,
+        showInputs: false,
+        minuteStep: 5
+    });
+}
+
 /* google map init */
 var igms = false;
-function initScripts()
-{
+function initScripts() {
     if (igms) return;
     componentsPath = "";
     var $scripts = [
@@ -661,8 +690,7 @@ function checkAPIMaps() {
     }
 }
 
-function initGoogleMaps()
-{
+function initGoogleMaps() {
     initScripts();
 
     /*
@@ -1109,301 +1137,312 @@ function initGoogleMaps()
 
 /* google maps vector init */
 function mapsVectorInit() {
-    $(function()
-    {
+    $('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var $this   = $(this),
+            href    = $this.attr("href");
 
-        $('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e)
-        {
-            if ($(this).attr('data-init'))
+            if ( $this.attr('data-init') )
                 return;
 
-            $(this).attr('data-init', 1);
-            switch ($(this).attr('href'))
-            {
-                case '#tab1':
-                    initWorldMapGDP();
-                    break;
+                $this.attr('data-init', 1);
 
-                case '#tab2':
-                    initWorldMapMarkers();
-                    break;
+                switch ( href ) {
+                    case '#tab1':
+                        initWorldMapGDP();
+                        break;
 
-                case '#tab3':
-                    initUSAUnemployment();
-                    break;
+                    case '#tab2':
+                        initWorldMapMarkers();
+                        break;
 
-                case '#tab4':
-                    initRegionSelection();
-                    break;
+                    case '#tab3':
+                        initUSAUnemployment();
+                        break;
 
-                case '#tab5':
-                    initFranceElections();
-                    break;
+                    case '#tab4':
+                        initRegionSelection();
+                        break;
 
-                case '#tab6':
-                    initRandomColors();
-                    break;
+                    case '#tab5':
+                        initFranceElections();
+                        break;
 
-                case '#tab7':
-                    initMallMap();
-                    break;
+                    case '#tab6':
+                        initRandomColors();
+                        break;
 
-                case '#tab8':
-                    initProjectionMap();
-                    break;
+                    case '#tab7':
+                        initMallMap();
+                        break;
+
+                    case '#tab8':
+                        initProjectionMap();
+                        break;
+                    default:
+                        console.log("Invalid input");
+                }
+    });
+
+    // load this map by default
+    //initWorldMapGDP();
+
+    // GDP by country
+    /* function initWorldMapGDP() {
+        $('#world-map-gdp').vectorMap({
+            map: 'world_mill',
+            series: {
+                regions: [{
+                    values: gdpData,
+                    scale: ['#C8EEFF', '#0071A4'],
+                    normalizeFunction: 'polynomial'
+                }]
+            },
+            onLabelShow: function(e, el, code){
+                el.html(el.html()+' (GDP - '+gdpData[code]+')');
             }
         });
+    } */
 
-        // load this map by default
-        initWorldMapGDP();
+    //initWorldMapMarkers();    
 
-        // GDP by country
-        function initWorldMapGDP()
-        {
-            $('#world-map-gdp').vectorMap({
-                map: 'world_mill_en',
-                series: {
-                    regions: [{
-                        values: gdpData,
-                        scale: ['#C8EEFF', '#0071A4'],
-                        normalizeFunction: 'polynomial'
-                    }]
-                },
-                onLabelShow: function(e, el, code){
-                    el.html(el.html()+' (GDP - '+gdpData[code]+')');
+    // World map markers
+    function initWorldMapMarkers() {
+        $('#world-map-markers').vectorMap({
+            map: 'world_mill',
+            scaleColors: ['#C8EEFF', '#0071A4'],
+            normalizeFunction: 'polynomial',
+            hoverOpacity: 0.7,
+            hoverColor: false,
+            markerStyle: {
+                initial: {
+                    fill: primaryColor,
+                    stroke: '#383f47'
                 }
-            });
-        }
+            },
+            backgroundColor: '#383f47',
+            markers: [
+                {latLng: [41.90, 12.45], name: 'Vatican City'},
+                {latLng: [43.73, 7.41], name: 'Monaco'},
+                {latLng: [-0.52, 166.93], name: 'Nauru'},
+                {latLng: [-8.51, 179.21], name: 'Tuvalu'},
+                {latLng: [43.93, 12.46], name: 'San Marino'},
+                {latLng: [47.14, 9.52], name: 'Liechtenstein'},
+                {latLng: [7.11, 171.06], name: 'Marshall Islands'},
+                {latLng: [17.3, -62.73], name: 'Saint Kitts and Nevis'},
+                {latLng: [3.2, 73.22], name: 'Maldives'},
+                {latLng: [35.88, 14.5], name: 'Malta'},
+                {latLng: [12.05, -61.75], name: 'Grenada'},
+                {latLng: [13.16, -61.23], name: 'Saint Vincent and the Grenadines'},
+                {latLng: [13.16, -59.55], name: 'Barbados'},
+                {latLng: [17.11, -61.85], name: 'Antigua and Barbuda'},
+                {latLng: [-4.61, 55.45], name: 'Seychelles'},
+                {latLng: [7.35, 134.46], name: 'Palau'},
+                {latLng: [42.5, 1.51], name: 'Andorra'},
+                {latLng: [14.01, -60.98], name: 'Saint Lucia'},
+                {latLng: [6.91, 158.18], name: 'Federated States of Micronesia'},
+                {latLng: [1.3, 103.8], name: 'Singapore'},
+                {latLng: [1.46, 173.03], name: 'Kiribati'},
+                {latLng: [-21.13, -175.2], name: 'Tonga'},
+                {latLng: [15.3, -61.38], name: 'Dominica'},
+                {latLng: [-20.2, 57.5], name: 'Mauritius'},
+                {latLng: [26.02, 50.55], name: 'Bahrain'},
+                {latLng: [0.33, 6.73], name: 'S�o Tom� and Pr�ncipe'}
+            ]
+        });
+    }
 
-        // World map markers
-        function initWorldMapMarkers()
-        {
-            $('#world-map-markers').vectorMap({
-                map: 'world_mill_en',
-                scaleColors: ['#C8EEFF', '#0071A4'],
-                normalizeFunction: 'polynomial',
-                hoverOpacity: 0.7,
-                hoverColor: false,
-                markerStyle: {
-                    initial: {
-                        fill: primaryColor,
-                        stroke: '#383f47'
-                    }
-                },
-                backgroundColor: '#383f47',
-                markers: [
-                    {latLng: [41.90, 12.45], name: 'Vatican City'},
-                    {latLng: [43.73, 7.41], name: 'Monaco'},
-                    {latLng: [-0.52, 166.93], name: 'Nauru'},
-                    {latLng: [-8.51, 179.21], name: 'Tuvalu'},
-                    {latLng: [43.93, 12.46], name: 'San Marino'},
-                    {latLng: [47.14, 9.52], name: 'Liechtenstein'},
-                    {latLng: [7.11, 171.06], name: 'Marshall Islands'},
-                    {latLng: [17.3, -62.73], name: 'Saint Kitts and Nevis'},
-                    {latLng: [3.2, 73.22], name: 'Maldives'},
-                    {latLng: [35.88, 14.5], name: 'Malta'},
-                    {latLng: [12.05, -61.75], name: 'Grenada'},
-                    {latLng: [13.16, -61.23], name: 'Saint Vincent and the Grenadines'},
-                    {latLng: [13.16, -59.55], name: 'Barbados'},
-                    {latLng: [17.11, -61.85], name: 'Antigua and Barbuda'},
-                    {latLng: [-4.61, 55.45], name: 'Seychelles'},
-                    {latLng: [7.35, 134.46], name: 'Palau'},
-                    {latLng: [42.5, 1.51], name: 'Andorra'},
-                    {latLng: [14.01, -60.98], name: 'Saint Lucia'},
-                    {latLng: [6.91, 158.18], name: 'Federated States of Micronesia'},
-                    {latLng: [1.3, 103.8], name: 'Singapore'},
-                    {latLng: [1.46, 173.03], name: 'Kiribati'},
-                    {latLng: [-21.13, -175.2], name: 'Tonga'},
-                    {latLng: [15.3, -61.38], name: 'Dominica'},
-                    {latLng: [-20.2, 57.5], name: 'Mauritius'},
-                    {latLng: [26.02, 50.55], name: 'Bahrain'},
-                    {latLng: [0.33, 6.73], name: 'S�o Tom� and Pr�ncipe'}
-                ]
-            });
-        }
-        componentsPath = '';
-        // USA unemployment
-        function initUSAUnemployment()
-        {
-            $.getJSON( componentsPath + 'MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data){
-                // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
-                var val = 2009;
+    /* if ( $('#usa-unemployment').length ) {
+        initUSAUnemployment();
+    } */
+    
+    // USA unemployment
+    function initUSAUnemployment() {
+        var componentsPath = '';
+        $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
+            // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
+            var val = 2009;
                 statesValues = jvm.values.apply({}, jvm.values(data.states)),
-                    metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
-                    metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
+                metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
+                metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
 
-                $('#usa-unemployment').vectorMap({
-                    map: 'us_aea_en',
-                    markers: data.metro.coords,
-                    series: {
-                        markers: [{
-                            attribute: 'fill',
-                            scale: ['#FEE5D9', '#A50F15'],
-                            values: data.metro.unemployment[val],
-                            min: jvm.min(metroUnemplValues),
-                            max: jvm.max(metroUnemplValues)
-                        },{
-                            attribute: 'r',
-                            scale: [5, 20],
-                            values: data.metro.population[val],
-                            min: jvm.min(metroPopValues),
-                            max: jvm.max(metroPopValues)
-                        }],
-                        regions: [{
-                            scale: ['#DEEBF7', '#08519C'],
-                            attribute: 'fill',
-                            values: data.states[val],
-                            min: jvm.min(statesValues),
-                            max: jvm.max(statesValues)
-                        }]
-                    },
-                    onMarkerLabelShow: function(event, label, index){
-                        label.html(
-                            '<b>'+data.metro.names[index]+'</b><br/>'+
-                            '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
-                            '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
-                        );
-                    },
-                    onRegionLabelShow: function(event, label, code){
-                        label.html(
-                            '<b>'+label.html()+'</b></br>'+
-                            '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
-                        );
-                    }
-                });
-
-                var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
-                /*              $("#usa-unemployment-slider").slider({
-                 value: val,
-                 min: 2005,
-                 max: 2009,
-                 step: 1,
-                 create: JQSliderCreate,
-                 slide: function( event, ui ) {
-                 $('#usa-unemployment-slider-year strong').html(ui.value);
-                 val = ui.value;
-                 mapObject.series.regions[0].setValues(data.states[ui.value]);
-                 mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-                 mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
-                 }
-                 });*/
-            });
-        }
-
-        // regions selection
-        function initRegionSelection()
-        {
-            map = new jvm.WorldMap({
-                container: $('#regions-selection'),
-                map: 'de_merc_en',
-                regionsSelectable: true,
-                markersSelectable: true,
-                markers: [
-                    {latLng: [52.50, 13.39], name: 'Berlin'},
-                    {latLng: [53.56, 10.00], name: 'Hamburg'},
-                    {latLng: [48.13, 11.56], name: 'Munich'},
-                    {latLng: [50.95, 6.96], name: 'Cologne'},
-                    {latLng: [50.11, 8.68], name: 'Frankfurt am Main'},
-                    {latLng: [48.77, 9.17], name: 'Stuttgart'},
-                    {latLng: [51.23, 6.78], name: 'Dusseldorf'},
-                    {latLng: [51.51, 7.46], name: 'Dortmund'},
-                    {latLng: [51.45, 7.01], name: 'Essen'},
-                    {latLng: [53.07, 8.80], name: 'Bremen'}
-                ],
-                markerStyle: {
-                    initial: {
-                        fill: '#4DAC26'
-                    },
-                    selected: {
-                        fill: '#CA0020'
-                    }
-                },
-                regionStyle: {
-                    initial: {
-                        fill: '#B8E186'
-                    },
-                    selected: {
-                        fill: '#F4A582'
-                    }
-                },
+            $('#usa-unemployment').vectorMap({
+                map: 'us_aea',
+                markers: data.metro.coords,
                 series: {
                     markers: [{
+                        attribute: 'fill',
+                        scale: ['#FEE5D9', '#A50F15'],
+                        values: data.metro.unemployment[val],
+                        min: jvm.min(metroUnemplValues),
+                        max: jvm.max(metroUnemplValues)
+                    },{
                         attribute: 'r',
-                        scale: [5, 15],
-                        values: [
-                            887.70,
-                            755.16,
-                            310.69,
-                            405.17,
-                            248.31,
-                            207.35,
-                            217.22,
-                            280.71,
-                            210.32,
-                            325.42
-                        ]
+                        scale: [5, 20],
+                        values: data.metro.population[val],
+                        min: jvm.min(metroPopValues),
+                        max: jvm.max(metroPopValues)
+                    }],
+                    regions: [{
+                        scale: ['#DEEBF7', '#08519C'],
+                        attribute: 'fill',
+                        values: data.states[val],
+                        min: jvm.min(statesValues),
+                        max: jvm.max(statesValues)
                     }]
                 },
-                onRegionSelected: function(){
-                    if (window.localStorage) {
-                        window.localStorage.setItem(
-                            'jvectormap-selected-regions',
-                            JSON.stringify(map.getSelectedRegions())
-                        );
-                    }
+                onMarkerLabelShow: function(event, label, index){
+                    label.html(
+                        '<b>'+data.metro.names[index]+'</b><br/>'+
+                        '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
+                        '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
+                    );
                 },
-                onMarkerSelected: function(){
-                    if (window.localStorage) {
-                        window.localStorage.setItem(
-                            'jvectormap-selected-markers',
-                            JSON.stringify(map.getSelectedMarkers())
-                        );
-                    }
+                onRegionLabelShow: function(event, label, code){
+                    label.html(
+                        '<b>'+label.html()+'</b></br>'+
+                        '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
+                    );
                 }
             });
-            map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
-            map.setSelectedMarkers( JSON.parse( window.localStorage.getItem('jvectormap-selected-markers') || '[]' ) );
-        }
 
-        // France elections
-        function initFranceElections()
-        {
-            $.getJSON('/MelisDesign/ajax/france-elections.json', function(data){
-                new jvm.WorldMap({
-                    map: 'fr_merc_en',
-                    container: $('#france-2007'),
-                    series: {
-                        regions: [{
-                            scale: {
-                                '1': '#4169E1',
-                                '2': '#FF69B4'
-                            },
-                            attribute: 'fill',
-                            values: data['year2007'].results
-                        }]
-                    }
-                });
+            var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
 
-                new jvm.WorldMap({
-                    map: 'fr_merc_en',
-                    container: $('#france-2012'),
-                    series: {
-                        regions: [{
-                            scale: {
-                                '1': '#FF69B4',
-                                '2': '#4169E1'
-                            },
-                            attribute: 'fill',
-                            values: data['year2012'].results
-                        }]
-                    }
-                });
+            $("#usa-unemployment-slider").slider({
+                value: val,
+                min: 2005,
+                max: 2009,
+                step: 1,
+                //create: JQSliderCreate,
+                slide: function( event, ui ) {
+                    //$('#usa-unemployment-slider-year strong').html(ui.value);
+                    val = ui.value;
+                    mapObject.series.regions[0].setValues(data.states[ui.value]);
+                    mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
+                    mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+                }
             });
-        }
+        });
+    }
 
+    //initRegionSelection();
+
+    // regions selection
+    function initRegionSelection() {
+        map = new jvm.Map({
+            container: $('#regions-selection'),
+            map: 'de_merc',
+            regionsSelectable: true,
+            markersSelectable: true,
+            markers: [
+                {latLng: [52.50, 13.39], name: 'Berlin'},
+                {latLng: [53.56, 10.00], name: 'Hamburg'},
+                {latLng: [48.13, 11.56], name: 'Munich'},
+                {latLng: [50.95, 6.96], name: 'Cologne'},
+                {latLng: [50.11, 8.68], name: 'Frankfurt am Main'},
+                {latLng: [48.77, 9.17], name: 'Stuttgart'},
+                {latLng: [51.23, 6.78], name: 'Dusseldorf'},
+                {latLng: [51.51, 7.46], name: 'Dortmund'},
+                {latLng: [51.45, 7.01], name: 'Essen'},
+                {latLng: [53.07, 8.80], name: 'Bremen'}
+            ],
+            markerStyle: {
+                initial: {
+                    fill: '#4DAC26'
+                },
+                selected: {
+                    fill: '#CA0020'
+                }
+            },
+            regionStyle: {
+                initial: {
+                    fill: '#B8E186'
+                },
+                selected: {
+                    fill: '#F4A582'
+                }
+            },
+            series: {
+                markers: [{
+                    attribute: 'r',
+                    scale: [5, 15],
+                    values: [
+                        887.70,
+                        755.16,
+                        310.69,
+                        405.17,
+                        248.31,
+                        207.35,
+                        217.22,
+                        280.71,
+                        210.32,
+                        325.42
+                    ]
+                }]
+            },
+            onRegionSelected: function(){
+                if (window.localStorage) {
+                    window.localStorage.setItem(
+                        'jvectormap-selected-regions',
+                        JSON.stringify(map.getSelectedRegions())
+                    );
+                }
+            },
+            onMarkerSelected: function(){
+                if (window.localStorage) {
+                    window.localStorage.setItem(
+                        'jvectormap-selected-markers',
+                        JSON.stringify(map.getSelectedMarkers())
+                    );
+                }
+            }
+        });
+        map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
+        map.setSelectedMarkers( JSON.parse( window.localStorage.getItem('jvectormap-selected-markers') || '[]' ) );
+    }
+
+    //initFranceElections();
+
+    // France elections
+    function initFranceElections() {
+        $.getJSON('/MelisDesign/ajax/france-elections.json', function(data){
+            new jvm.Map({
+                map: 'fr_merc_en',
+                container: $('#france-2007'),
+                series: {
+                    regions: [{
+                        scale: {
+                            '1': '#4169E1',
+                            '2': '#FF69B4'
+                        },
+                        attribute: 'fill',
+                        values: data['year2007'].results
+                    }]
+                }
+            });
+
+            new jvm.Map({
+                map: 'fr_merc_en',
+                container: $('#france-2012'),
+                series: {
+                    regions: [{
+                        scale: {
+                            '1': '#FF69B4',
+                            '2': '#4169E1'
+                        },
+                        attribute: 'fill',
+                        values: data['year2012'].results
+                    }]
+                }
+            });
+        });
+    }
+
+    //initRandomColors();
+
+    function initRandomColors() {
         // random colors
         var palette = ['#66C2A5', '#FC8D62', '#8DA0CB', '#E78AC3', '#A6D854'],
-            generateColors = function(){
+            generateColors = function() {
                 var colors = {},
                     key;
 
@@ -1414,10 +1453,8 @@ function mapsVectorInit() {
             },
             colorsMap;
 
-        function initRandomColors()
-        {
-            colorsMap = new jvm.WorldMap({
-                map: 'es_merc_en',
+            colorsMap = new jvm.Map({
+                map: 'es_merc',
                 container: $('#random-colors-map'),
                 series: {
                     regions: [{
@@ -1425,122 +1462,126 @@ function mapsVectorInit() {
                     }]
                 }
             });
+
             colorsMap.series.regions[0].setValues(generateColors());
-            $('#update-colors-button').click(function(e){
+            
+            $('#update-colors-button').on("click", function(e){
                 e.preventDefault();
                 colorsMap.series.regions[0].setValues(generateColors());
             });
-        }
+    }
 
-        // mall map
-        function initMallMap()
-        {
-            $('#mall-map').vectorMap({
-                map: 'mall',
-                backgroundColor: 'transparent',
-                markers: [{
-                    coords: [60, 110],
-                    name: 'Escalator 1',
-                    style: {fill: 'yellow'}
-                },{
-                    coords: [260, 95],
-                    name: 'Escalator 2',
-                    style: {fill: 'yellow'}
-                },{
-                    coords: [434, 95],
-                    name: 'Escalator 3',
-                    style: {fill: 'yellow'}
-                },{
-                    coords: [634, 110],
-                    name: 'Escalator 4',
-                    style: {fill: 'yellow'}
-                }],
-                series: {
-                    regions: [{
-                        values: {
-                            F102: 'SPORTS & OUTDOOR',
-                            F103: 'HOME DECOR',
-                            F105: 'FASHION',
-                            F106: 'OTHER',
-                            F108: 'BEAUTY & SPA',
-                            F109: 'FASHION',
-                            F110: 'BEAUTY & SPA',
-                            F111: 'URBAN FAVORITES',
-                            F114: 'SERVICES',
-                            F166: 'DINING',
-                            F167: 'FASHION',
-                            F169: 'DINING',
-                            F170: 'ENTERTAINMENT',
-                            F172: 'DINING',
-                            F174: 'DINING',
-                            F115: 'KIDS STUFF',
-                            F117: 'LIFESTYLE',
-                            F118: 'URBAN FAVORITES',
-                            F119: 'FASHION',
-                            F120: 'FASHION',
-                            F122: 'KIDS STUFF',
-                            F124: 'KIDS STUFF',
-                            F125: 'KIDS STUFF',
-                            F126: 'KIDS STUFF',
-                            F128: 'KIDS STUFF',
-                            F129: 'LIFESTYLE',
-                            F130: 'HOME DECOR',
-                            F132: 'DINING',
-                            F133: 'SPORTS & OUTDOOR',
-                            F134: 'KIDS STUFF',
-                            F135: 'LIFESTYLE',
-                            F136: 'LIFESTYLE',
-                            F139: 'KIDS STUFF',
-                            F153: 'DINING',
-                            F155: 'FASHION',
-                            F156: 'URBAN FAVORITES',
-                            F157: 'URBAN FAVORITES',
-                            F158: 'LINGERIE & UNDERWEAR',
-                            F159: 'FASHION',
-                            F160: 'FASHION',
-                            F162: 'FASHION',
-                            F164: 'FASHION',
-                            F165: 'FASHION',
-                            FR01: 'REST ROOMS',
-                            FR02: 'REST ROOMS',
-                            FR03: 'REST ROOMS',
-                            FR04: 'REST ROOMS',
-                            FFC: 'DINING'
-                        },
-                        scale: {
-                            "FASHION": "#2761ad",
-                            "LINGERIE & UNDERWEAR": "#d58aa3",
-                            "BEAUTY & SPA": "#ee549f",
-                            "URBAN FAVORITES": "#15bbba",
-                            "SPORTS & OUTDOOR": "#8864ab",
-                            "KIDS STUFF": "#ef4e36",
-                            "ENTERTAINMENT": "#e47325",
-                            "HOME DECOR": "#a2614f",
-                            "LIFESTYLE": "#8a8934",
-                            "DINING": "#73bb43",
-                            "REST ROOMS": "#6c260f",
-                            "SERVICES": "#504d7c",
-                            "OTHER": "#c7b789"
-                        }
-                    }]
-                },
-                onRegionLabelShow: function(e, el, code){
-                    if (el.html() === '') {
-                        e.preventDefault();
+    //initMallMap();
+
+    // mall map
+    function initMallMap() {
+        $('#mall-map').vectorMap({
+            map: 'mall',
+            backgroundColor: 'transparent',
+            markers: [{
+                coords: [60, 110],
+                name: 'Escalator 1',
+                style: {fill: 'yellow'}
+            },{
+                coords: [260, 95],
+                name: 'Escalator 2',
+                style: {fill: 'yellow'}
+            },{
+                coords: [434, 95],
+                name: 'Escalator 3',
+                style: {fill: 'yellow'}
+            },{
+                coords: [634, 110],
+                name: 'Escalator 4',
+                style: {fill: 'yellow'}
+            }],
+            series: {
+                regions: [{
+                    values: {
+                        F102: 'SPORTS & OUTDOOR',
+                        F103: 'HOME DECOR',
+                        F105: 'FASHION',
+                        F106: 'OTHER',
+                        F108: 'BEAUTY & SPA',
+                        F109: 'FASHION',
+                        F110: 'BEAUTY & SPA',
+                        F111: 'URBAN FAVORITES',
+                        F114: 'SERVICES',
+                        F166: 'DINING',
+                        F167: 'FASHION',
+                        F169: 'DINING',
+                        F170: 'ENTERTAINMENT',
+                        F172: 'DINING',
+                        F174: 'DINING',
+                        F115: 'KIDS STUFF',
+                        F117: 'LIFESTYLE',
+                        F118: 'URBAN FAVORITES',
+                        F119: 'FASHION',
+                        F120: 'FASHION',
+                        F122: 'KIDS STUFF',
+                        F124: 'KIDS STUFF',
+                        F125: 'KIDS STUFF',
+                        F126: 'KIDS STUFF',
+                        F128: 'KIDS STUFF',
+                        F129: 'LIFESTYLE',
+                        F130: 'HOME DECOR',
+                        F132: 'DINING',
+                        F133: 'SPORTS & OUTDOOR',
+                        F134: 'KIDS STUFF',
+                        F135: 'LIFESTYLE',
+                        F136: 'LIFESTYLE',
+                        F139: 'KIDS STUFF',
+                        F153: 'DINING',
+                        F155: 'FASHION',
+                        F156: 'URBAN FAVORITES',
+                        F157: 'URBAN FAVORITES',
+                        F158: 'LINGERIE & UNDERWEAR',
+                        F159: 'FASHION',
+                        F160: 'FASHION',
+                        F162: 'FASHION',
+                        F164: 'FASHION',
+                        F165: 'FASHION',
+                        FR01: 'REST ROOMS',
+                        FR02: 'REST ROOMS',
+                        FR03: 'REST ROOMS',
+                        FR04: 'REST ROOMS',
+                        FFC: 'DINING'
+                    },
+                    scale: {
+                        "FASHION": "#2761ad",
+                        "LINGERIE & UNDERWEAR": "#d58aa3",
+                        "BEAUTY & SPA": "#ee549f",
+                        "URBAN FAVORITES": "#15bbba",
+                        "SPORTS & OUTDOOR": "#8864ab",
+                        "KIDS STUFF": "#ef4e36",
+                        "ENTERTAINMENT": "#e47325",
+                        "HOME DECOR": "#a2614f",
+                        "LIFESTYLE": "#8a8934",
+                        "DINING": "#73bb43",
+                        "REST ROOMS": "#6c260f",
+                        "SERVICES": "#504d7c",
+                        "OTHER": "#c7b789"
                     }
+                }]
+            },
+            onRegionLabelShow: function(e, el, code){
+                if (el.html() === '') {
+                    e.preventDefault();
                 }
-            });
-        }
+            }
+        });
+    }
 
+    //initProjectionMap();
+
+    function initProjectionMap() {
         // reverse projection map
         var mapProjection,
             markerIndex = 0,
             markersCoords = {};
 
-        function initProjectionMap()
-        {
-            mapProjection = new jvm.WorldMap({
-                map: 'us_lcc_en',
+            mapProjection = new jvm.Map({
+                map: 'us_lcc',
                 markerStyle: {
                     initial: {
                         fill: 'red'
@@ -1566,49 +1607,1137 @@ function mapsVectorInit() {
                     markerIndex += 1;
                 }
             });
-        }
-
-    });
+    }
 }
+
+$(function() {
+    mapsVectorInit();
+});
 
 /* ColVis.min.js */
 function colVis() {
-    /*
-     * File:        ColVis.min.js
-     * Version:     1.0.8
-     * Author:      Allan Jardine (www.sprymedia.co.uk)
+    /*! ColVis 1.1.2
+ * ©2010-2015 SpryMedia Ltd - datatables.net/license
+ */
+
+/**
+ * @summary     ColVis
+ * @description Controls for column visibility in DataTables
+ * @version     1.1.2
+ * @file        dataTables.colReorder.js
+ * @author      SpryMedia Ltd (www.sprymedia.co.uk)
+ * @contact     www.sprymedia.co.uk/contact
+ * @copyright   Copyright 2010-2015 SpryMedia Ltd.
+ *
+ * This source file is free software, available under the following license:
+ *   MIT license - http://datatables.net/license/mit
+ *
+ * This source file is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ *
+ * For details please refer to: http://www.datatables.net
+ */
+
+(function(window, document, undefined) {
+
+
+    var factory = function( $, DataTable ) {
+    "use strict";
+    
+    /**
+     * ColVis provides column visibility control for DataTables
      *
-     * Copyright 2010-2012 Allan Jardine, all rights reserved.
-     *
-     * This source file is free software, under either the GPL v2 license or a
-     * BSD (3 point) style license, as supplied with this software.
-     *
-     * This source file is distributed in the hope that it will be useful, but
-     * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-     * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+     * @class ColVis
+     * @constructor
+     * @param {object} DataTables settings object. With DataTables 1.10 this can
+     *   also be and API instance, table node, jQuery collection or jQuery selector.
+     * @param {object} ColVis configuration options
      */
-    (function(d){ColVis=function(a,b){(!this.CLASS||"ColVis"!=this.CLASS)&&alert("Warning: ColVis must be initialised with the keyword 'new'");"undefined"==typeof b&&(b={});this.s={dt:null,oInit:b,fnStateChange:null,activate:"click",sAlign:"left",buttonText:"Show / hide columns",hidden:!0,aiExclude:[],abOriginal:[],bShowAll:!1,sShowAll:"Show All",bRestore:!1,sRestore:"Restore original",iOverlayFade:500,fnLabel:null,sSize:"auto",bCssPosition:!1};this.dom={wrapper:null,button:null,collection:null,background:null,
-        catcher:null,buttons:[],restore:null};ColVis.aInstances.push(this);this.s.dt=a;this._fnConstruct();return this};ColVis.prototype={fnRebuild:function(){for(var a=this.dom.buttons.length-1;0<=a;a--)null!==this.dom.buttons[a]&&this.dom.collection.removeChild(this.dom.buttons[a]);this.dom.buttons.splice(0,this.dom.buttons.length);this.dom.restore&&this.dom.restore.parentNode(this.dom.restore);this._fnAddButtons();this._fnDrawCallback()},_fnConstruct:function(){this._fnApplyCustomisation();var a=this,
-        b,c;this.dom.wrapper=document.createElement("div");this.dom.wrapper.className="ColVis TableTools";this.dom.button=this._fnDomBaseButton(this.s.buttonText);this.dom.button.className+=" ColVis_MasterButton";this.dom.wrapper.appendChild(this.dom.button);this.dom.catcher=this._fnDomCatcher();this.dom.collection=this._fnDomCollection();this.dom.background=this._fnDomBackground();this._fnAddButtons();b=0;for(c=this.s.dt.aoColumns.length;b<c;b++)this.s.abOriginal.push(this.s.dt.aoColumns[b].bVisible);this.s.dt.aoDrawCallback.push({fn:function(){a._fnDrawCallback.call(a)},
-        sName:"ColVis"});d(this.s.dt.oInstance).bind("column-reorder",function(d,g,f){b=0;for(c=a.s.aiExclude.length;b<c;b++)a.s.aiExclude[b]=f.aiInvertMapping[a.s.aiExclude[b]];d=a.s.abOriginal.splice(f.iFrom,1)[0];a.s.abOriginal.splice(f.iTo,0,d);a.fnRebuild()})},_fnApplyCustomisation:function(){var a=this.s.oInit;"undefined"!=typeof a.activate&&(this.s.activate=a.activate);"undefined"!=typeof a.buttonText&&(this.s.buttonText=a.buttonText);"undefined"!=typeof a.aiExclude&&(this.s.aiExclude=a.aiExclude);
-        "undefined"!=typeof a.bRestore&&(this.s.bRestore=a.bRestore);"undefined"!=typeof a.sRestore&&(this.s.sRestore=a.sRestore);"undefined"!=typeof a.bShowAll&&(this.s.bShowAll=a.bShowAll);"undefined"!=typeof a.sShowAll&&(this.s.sShowAll=a.sShowAll);"undefined"!=typeof a.sAlign&&(this.s.sAlign=a.sAlign);"undefined"!=typeof a.fnStateChange&&(this.s.fnStateChange=a.fnStateChange);"undefined"!=typeof a.iOverlayFade&&(this.s.iOverlayFade=a.iOverlayFade);"undefined"!=typeof a.fnLabel&&(this.s.fnLabel=a.fnLabel);
-        "undefined"!=typeof a.sSize&&(this.s.sSize=a.sSize);"undefined"!=typeof a.bCssPosition&&(this.s.bCssPosition=a.bCssPosition)},_fnDrawCallback:function(){for(var a=this.s.dt.aoColumns,b=0,c=a.length;b<c;b++)null!==this.dom.buttons[b]&&(a[b].bVisible?d("input",this.dom.buttons[b]).attr("checked","checked"):d("input",this.dom.buttons[b]).removeAttr("checked"))},_fnAddButtons:function(){for(var a,b=","+this.s.aiExclude.join(",")+",",c=0,d=this.s.dt.aoColumns.length;c<d;c++)-1==b.indexOf(","+c+",")?(a=
-            this._fnDomColumnButton(c),this.dom.buttons.push(a),this.dom.collection.appendChild(a)):this.dom.buttons.push(null);this.s.bRestore&&(a=this._fnDomRestoreButton(),a.className+=" ColVis_Restore",this.dom.buttons.push(a),this.dom.collection.appendChild(a));this.s.bShowAll&&(a=this._fnDomShowAllButton(),a.className+=" ColVis_ShowAll",this.dom.buttons.push(a),this.dom.collection.appendChild(a))},_fnDomRestoreButton:function(){var a=this,b=document.createElement("button"),c=document.createElement("span");
-        b.className=!this.s.dt.bJUI?"ColVis_Button TableTools_Button":"ColVis_Button TableTools_Button ui-button ui-state-default";b.appendChild(c);d(c).html('<span class="ColVis_title">'+this.s.sRestore+"</span>");d(b).click(function(){for(var b=0,c=a.s.abOriginal.length;b<c;b++)a.s.dt.oInstance.fnSetColumnVis(b,a.s.abOriginal[b],!1);a._fnAdjustOpenRows();a.s.dt.oInstance.fnAdjustColumnSizing(!1);a.s.dt.oInstance.fnDraw(!1)});return b},_fnDomShowAllButton:function(){var a=this,b=document.createElement("button"),
-        c=document.createElement("span");b.className=!this.s.dt.bJUI?"ColVis_Button TableTools_Button":"ColVis_Button TableTools_Button ui-button ui-state-default";b.appendChild(c);d(c).html('<span class="ColVis_title">'+this.s.sShowAll+"</span>");d(b).click(function(){for(var b=0,c=a.s.abOriginal.length;b<c;b++)-1===a.s.aiExclude.indexOf(b)&&a.s.dt.oInstance.fnSetColumnVis(b,!0,!1);a._fnAdjustOpenRows();a.s.dt.oInstance.fnAdjustColumnSizing(!1);a.s.dt.oInstance.fnDraw(!1)});return b},_fnDomColumnButton:function(a){var b=
-        this,c=this.s.dt.aoColumns[a],e=document.createElement("button"),g=document.createElement("span"),f=this.s.dt;e.className=!f.bJUI?"ColVis_Button TableTools_Button":"ColVis_Button TableTools_Button ui-button ui-state-default";e.appendChild(g);c=null===this.s.fnLabel?c.sTitle:this.s.fnLabel(a,c.sTitle,c.nTh);d(g).html('<span class="ColVis_radio"><input type="checkbox"/></span><span class="ColVis_title">'+c+"</span>");d(e).click(function(c){var e=!d("input",this).is(":checked");"input"==c.target.nodeName.toLowerCase()&&
-    (e=d("input",this).is(":checked"));c=d.fn.dataTableExt.iApiIndex;d.fn.dataTableExt.iApiIndex=b._fnDataTablesApiIndex.call(b);f.oFeatures.bServerSide&&(""!==f.oScroll.sX||""!==f.oScroll.sY)?(b.s.dt.oInstance.fnSetColumnVis(a,e,!1),b.s.dt.oInstance.fnAdjustColumnSizing(!1),b.s.dt.oInstance.oApi._fnScrollDraw(b.s.dt),b._fnDrawCallback()):b.s.dt.oInstance.fnSetColumnVis(a,e);d.fn.dataTableExt.iApiIndex=c;null!==b.s.fnStateChange&&b.s.fnStateChange.call(b,a,e)});return e},_fnDataTablesApiIndex:function(){for(var a=
-        0,b=this.s.dt.oInstance.length;a<b;a++)if(this.s.dt.oInstance[a]==this.s.dt.nTable)return a;return 0},_fnDomBaseButton:function(a){var b=this,c=document.createElement("button"),e=document.createElement("span"),g="mouseover"==this.s.activate?"mouseover":"click";c.className=!this.s.dt.bJUI?"ColVis_Button TableTools_Button":"ColVis_Button TableTools_Button ui-button ui-state-default";c.appendChild(e);e.innerHTML=a;d(c).bind(g,function(a){b._fnCollectionShow();a.preventDefault()});return c},_fnDomCollection:function(){var a=
-        document.createElement("div");a.style.display="none";a.className=!this.s.dt.bJUI?"ColVis_collection TableTools_collection":"ColVis_collection TableTools_collection ui-buttonset ui-buttonset-multi";this.s.bCssPosition||(a.style.position="absolute");d(a).css("opacity",0);return a},_fnDomCatcher:function(){var a=this,b=document.createElement("div");b.className="ColVis_catcher TableTools_catcher";d(b).click(function(){a._fnCollectionHide.call(a,null,null)});return b},_fnDomBackground:function(){var a=
-        this,b=document.createElement("div");b.style.position="absolute";b.style.left="0px";b.style.top="0px";b.className="ColVis_collectionBackground TableTools_collectionBackground";d(b).css("opacity",0);d(b).click(function(){a._fnCollectionHide.call(a,null,null)});"mouseover"==this.s.activate&&d(b).mouseover(function(){a.s.overcollection=!1;a._fnCollectionHide.call(a,null,null)});return b},_fnCollectionShow:function(){var a=this,b,c;b=d(this.dom.button).offset();var e=this.dom.collection,g=this.dom.background,
-        f=parseInt(b.left,10),h=parseInt(b.top+d(this.dom.button).outerHeight(),10);this.s.bCssPosition||(e.style.top=h+"px",e.style.left=f+"px");e.style.display="block";d(e).css("opacity",0);c=d(window).height();var i=d(document).height(),j=d(window).width(),h=d(document).width();g.style.height=(c>i?c:i)+"px";g.style.width=(j<h?j:h)+"px";c=this.dom.catcher.style;c.height=d(this.dom.button).outerHeight()+"px";c.width=d(this.dom.button).outerWidth()+"px";c.top=b.top+"px";c.left=f+"px";document.body.appendChild(g);
-        document.body.appendChild(e);document.body.appendChild(this.dom.catcher);if("auto"==this.s.sSize){i=[];this.dom.collection.style.width="auto";b=0;for(c=this.dom.buttons.length;b<c;b++)null!==this.dom.buttons[b]&&(this.dom.buttons[b].style.width="auto",i.push(d(this.dom.buttons[b]).outerWidth()));iMax=Math.max.apply(window,i);b=0;for(c=this.dom.buttons.length;b<c;b++)null!==this.dom.buttons[b]&&(this.dom.buttons[b].style.width=iMax+"px");this.dom.collection.style.width=iMax+"px"}this.s.bCssPosition||
-        (e.style.left="left"==this.s.sAlign?f+"px":f-d(e).outerWidth()+d(this.dom.button).outerWidth()+"px",b=d(e).outerWidth(),d(e).outerHeight(),f+b>h&&(e.style.left=h-b+"px"));setTimeout(function(){d(e).animate({opacity:1},a.s.iOverlayFade);d(g).animate({opacity:0.1},a.s.iOverlayFade,"linear",function(){jQuery.browser.msie&&jQuery.browser.version=="6.0"&&a._fnDrawCallback()})},10);this.s.hidden=!1},_fnCollectionHide:function(){var a=this;!this.s.hidden&&null!==this.dom.collection&&(this.s.hidden=!0,d(this.dom.collection).animate({opacity:0},
-        a.s.iOverlayFade,function(){this.style.display="none"}),d(this.dom.background).animate({opacity:0},a.s.iOverlayFade,function(){document.body.removeChild(a.dom.background);document.body.removeChild(a.dom.catcher)}))},_fnAdjustOpenRows:function(){for(var a=this.s.dt.aoOpenRows,b=this.s.dt.oApi._fnVisbleColumns(this.s.dt),c=0,d=a.length;c<d;c++)a[c].nTr.getElementsByTagName("td")[0].colSpan=b}};ColVis.fnRebuild=function(a){var b=null;"undefined"!=typeof a&&(b=a.fnSettings().nTable);for(var c=0,d=ColVis.aInstances.length;c<
-    d;c++)("undefined"==typeof a||b==ColVis.aInstances[c].s.dt.nTable)&&ColVis.aInstances[c].fnRebuild()};ColVis.aInstances=[];ColVis.prototype.CLASS="ColVis";ColVis.VERSION="1.0.8";ColVis.prototype.VERSION=ColVis.VERSION;"function"==typeof d.fn.dataTable&&"function"==typeof d.fn.dataTableExt.fnVersionCheck&&d.fn.dataTableExt.fnVersionCheck("1.7.0")?d.fn.dataTableExt.aoFeatures.push({fnInit:function(a){return(new ColVis(a,"undefined"==typeof a.oInit.oColVis?{}:a.oInit.oColVis)).dom.wrapper},cFeature:"C",
-            sFeature:"ColVis"}):alert("Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download")})(jQuery);
-
-
+    var ColVis = function( oDTSettings, oInit )
+    {
+        /* Santiy check that we are a new instance */
+        if ( !this.CLASS || this.CLASS != "ColVis" )
+        {
+            alert( "Warning: ColVis must be initialised with the keyword 'new'" );
+        }
+    
+        if ( typeof oInit == 'undefined' )
+        {
+            oInit = {};
+        }
+    
+        var camelToHungarian = $.fn.dataTable.camelToHungarian;
+        if ( camelToHungarian ) {
+            camelToHungarian( ColVis.defaults, ColVis.defaults, true );
+            camelToHungarian( ColVis.defaults, oInit );
+        }
+    
+    
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * Public class variables
+         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+        /**
+         * @namespace Settings object which contains customisable information for
+         *     ColVis instance. Augmented by ColVis.defaults
+         */
+        this.s = {
+            /**
+             * DataTables settings object
+             *  @property dt
+             *  @type     Object
+             *  @default  null
+             */
+            "dt": null,
+    
+            /**
+             * Customisation object
+             *  @property oInit
+             *  @type     Object
+             *  @default  passed in
+             */
+            "oInit": oInit,
+    
+            /**
+             * Flag to say if the collection is hidden
+             *  @property hidden
+             *  @type     boolean
+             *  @default  true
+             */
+            "hidden": true,
+    
+            /**
+             * Store the original visibility settings so they could be restored
+             *  @property abOriginal
+             *  @type     Array
+             *  @default  []
+             */
+            "abOriginal": []
+        };
+    
+    
+        /**
+         * @namespace Common and useful DOM elements for the class instance
+         */
+        this.dom = {
+            /**
+             * Wrapper for the button - given back to DataTables as the node to insert
+             *  @property wrapper
+             *  @type     Node
+             *  @default  null
+             */
+            "wrapper": null,
+    
+            /**
+             * Activation button
+             *  @property button
+             *  @type     Node
+             *  @default  null
+             */
+            "button": null,
+    
+            /**
+             * Collection list node
+             *  @property collection
+             *  @type     Node
+             *  @default  null
+             */
+            "collection": null,
+    
+            /**
+             * Background node used for shading the display and event capturing
+             *  @property background
+             *  @type     Node
+             *  @default  null
+             */
+            "background": null,
+    
+            /**
+             * Element to position over the activation button to catch mouse events when using mouseover
+             *  @property catcher
+             *  @type     Node
+             *  @default  null
+             */
+            "catcher": null,
+    
+            /**
+             * List of button elements
+             *  @property buttons
+             *  @type     Array
+             *  @default  []
+             */
+            "buttons": [],
+    
+            /**
+             * List of group button elements
+             *  @property groupButtons
+             *  @type     Array
+             *  @default  []
+             */
+            "groupButtons": [],
+    
+            /**
+             * Restore button
+             *  @property restore
+             *  @type     Node
+             *  @default  null
+             */
+            "restore": null
+        };
+    
+        /* Store global reference */
+        ColVis.aInstances.push( this );
+    
+        /* Constructor logic */
+        this.s.dt = $.fn.dataTable.Api ?
+            new $.fn.dataTable.Api( oDTSettings ).settings()[0] :
+            oDTSettings;
+    
+        this._fnConstruct( oInit );
+        return this;
+    };
+    
+    
+    
+    ColVis.prototype = {
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * Public methods
+         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+        /**
+         * Get the ColVis instance's control button so it can be injected into the
+         * DOM
+         *  @method  button
+         *  @returns {node} ColVis button
+         */
+        button: function ()
+        {
+            return this.dom.wrapper;
+        },
+    
+        /**
+         * Alias of `rebuild` for backwards compatibility
+         *  @method  fnRebuild
+         */
+        "fnRebuild": function ()
+        {
+            this.rebuild();
+        },
+    
+        /**
+         * Rebuild the list of buttons for this instance (i.e. if there is a column
+         * header update)
+         *  @method  fnRebuild
+         */
+        rebuild: function ()
+        {
+            /* Remove the old buttons */
+            for ( var i=this.dom.buttons.length-1 ; i>=0 ; i-- ) {
+                this.dom.collection.removeChild( this.dom.buttons[i] );
+            }
+            this.dom.buttons.splice( 0, this.dom.buttons.length );
+            this.dom.groupButtons.splice(0, this.dom.groupButtons.length);
+    
+            if ( this.dom.restore ) {
+                this.dom.restore.parentNode( this.dom.restore );
+            }
+    
+            /* Re-add them (this is not the optimal way of doing this, it is fast and effective) */
+            this._fnAddGroups();
+            this._fnAddButtons();
+    
+            /* Update the checkboxes */
+            this._fnDrawCallback();
+        },
+    
+    
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * Private methods (they are of course public in JS, but recommended as private)
+         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+        /**
+         * Constructor logic
+         *  @method  _fnConstruct
+         *  @returns void
+         *  @private
+         */
+        "_fnConstruct": function ( init )
+        {
+            this._fnApplyCustomisation( init );
+    
+            var that = this;
+            var i, iLen;
+            this.dom.wrapper = document.createElement('div');
+            this.dom.wrapper.className = "ColVis";
+    
+            this.dom.button = $( '<button />', {
+                    'class': !this.s.dt.bJUI ?
+                        "ColVis_Button ColVis_MasterButton" :
+                        "ColVis_Button ColVis_MasterButton ui-button ui-state-default"
+                } )
+                .append( '<span>'+this.s.buttonText+'</span>' )
+                .bind( this.s.activate=="mouseover" ? "mouseover" : "click", function (e) {
+                    e.preventDefault();
+                    that._fnCollectionShow();
+                } )
+                .appendTo( this.dom.wrapper )[0];
+    
+            this.dom.catcher = this._fnDomCatcher();
+            this.dom.collection = this._fnDomCollection();
+            this.dom.background = this._fnDomBackground();
+    
+            this._fnAddGroups();
+            this._fnAddButtons();
+    
+            /* Store the original visibility information */
+            for ( i=0, iLen=this.s.dt.aoColumns.length ; i<iLen ; i++ )
+            {
+                this.s.abOriginal.push( this.s.dt.aoColumns[i].bVisible );
+            }
+    
+            /* Update on each draw */
+            this.s.dt.aoDrawCallback.push( {
+                "fn": function () {
+                    that._fnDrawCallback.call( that );
+                },
+                "sName": "ColVis"
+            } );
+    
+            /* If columns are reordered, then we need to update our exclude list and
+             * rebuild the displayed list
+             */
+            $(this.s.dt.oInstance).bind( 'column-reorder.dt', function ( e, oSettings, oReorder ) {
+                for ( i=0, iLen=that.s.aiExclude.length ; i<iLen ; i++ ) {
+                    that.s.aiExclude[i] = oReorder.aiInvertMapping[ that.s.aiExclude[i] ];
+                }
+    
+                var mStore = that.s.abOriginal.splice( oReorder.iFrom, 1 )[0];
+                that.s.abOriginal.splice( oReorder.iTo, 0, mStore );
+    
+                that.fnRebuild();
+            } );
+    
+            $(this.s.dt.oInstance).bind( 'destroy.dt', function () {
+                $(that.dom.wrapper).remove();
+            } );
+    
+            // Set the initial state
+            this._fnDrawCallback();
+        },
+    
+    
+        /**
+         * Apply any customisation to the settings from the DataTables initialisation
+         *  @method  _fnApplyCustomisation
+         *  @returns void
+         *  @private
+         */
+        "_fnApplyCustomisation": function ( init )
+        {
+            $.extend( true, this.s, ColVis.defaults, init );
+    
+            // Slightly messy overlap for the camelCase notation
+            if ( ! this.s.showAll && this.s.bShowAll ) {
+                this.s.showAll = this.s.sShowAll;
+            }
+    
+            if ( ! this.s.restore && this.s.bRestore ) {
+                this.s.restore = this.s.sRestore;
+            }
+    
+            // CamelCase to Hungarian for the column groups 
+            var groups = this.s.groups;
+            var hungarianGroups = this.s.aoGroups;
+            if ( groups ) {
+                for ( var i=0, ien=groups.length ; i<ien ; i++ ) {
+                    if ( groups[i].title ) {
+                        hungarianGroups[i].sTitle = groups[i].title;
+                    }
+                    if ( groups[i].columns ) {
+                        hungarianGroups[i].aiColumns = groups[i].columns;
+                    }
+                }
+            }
+        },
+    
+    
+        /**
+         * On each table draw, check the visibility checkboxes as needed. This allows any process to
+         * update the table's column visibility and ColVis will still be accurate.
+         *  @method  _fnDrawCallback
+         *  @returns void
+         *  @private
+         */
+        "_fnDrawCallback": function ()
+        {
+            var columns = this.s.dt.aoColumns;
+            var buttons = this.dom.buttons;
+            var groups = this.s.aoGroups;
+            var button;
+    
+            for ( var i=0, ien=buttons.length ; i<ien ; i++ ) {
+                button = buttons[i];
+    
+                if ( button.__columnIdx !== undefined ) {
+                    $('input', button).prop( 'checked', columns[ button.__columnIdx ].bVisible );
+                }
+            }
+    
+            var allVisible = function ( columnIndeces ) {
+                for ( var k=0, kLen=columnIndeces.length ; k<kLen ; k++ )
+                {
+                    if (  columns[columnIndeces[k]].bVisible === false ) { return false; }
+                }
+                return true;
+            };
+            var allHidden = function ( columnIndeces ) {
+                for ( var m=0 , mLen=columnIndeces.length ; m<mLen ; m++ )
+                {
+                    if ( columns[columnIndeces[m]].bVisible === true ) { return false; }
+                }
+                return true;
+            };
+    
+            for ( var j=0, jLen=groups.length ; j<jLen ; j++ )
+            {
+                if ( allVisible(groups[j].aiColumns) )
+                {
+                    $('input', this.dom.groupButtons[j]).prop('checked', true);
+                    $('input', this.dom.groupButtons[j]).prop('indeterminate', false);
+                }
+                else if ( allHidden(groups[j].aiColumns) )
+                {
+                    $('input', this.dom.groupButtons[j]).prop('checked', false);
+                    $('input', this.dom.groupButtons[j]).prop('indeterminate', false);
+                }
+                else
+                {
+                    $('input', this.dom.groupButtons[j]).prop('indeterminate', true);
+                }
+            }
+        },
+    
+    
+        /**
+         * Loop through the groups (provided in the settings) and create a button for each.
+         *  @method  _fnAddgroups
+         *  @returns void
+         *  @private
+         */
+        "_fnAddGroups": function ()
+        {
+            var nButton;
+    
+            if ( typeof this.s.aoGroups != 'undefined' )
+            {
+                for ( var i=0, iLen=this.s.aoGroups.length ; i<iLen ; i++ )
+                {
+                    nButton = this._fnDomGroupButton( i );
+                    this.dom.groupButtons.push( nButton );
+                    this.dom.buttons.push( nButton );
+                    this.dom.collection.appendChild( nButton );
+                }
+            }
+        },
+    
+    
+        /**
+         * Loop through the columns in the table and as a new button for each one.
+         *  @method  _fnAddButtons
+         *  @returns void
+         *  @private
+         */
+        "_fnAddButtons": function ()
+        {
+            var
+                nButton,
+                columns = this.s.dt.aoColumns;
+    
+            if ( $.inArray( 'all', this.s.aiExclude ) === -1 ) {
+                for ( var i=0, iLen=columns.length ; i<iLen ; i++ )
+                {
+                    if ( $.inArray( i, this.s.aiExclude ) === -1 )
+                    {
+                        nButton = this._fnDomColumnButton( i );
+                        nButton.__columnIdx = i;
+                        this.dom.buttons.push( nButton );
+                    }
+                }
+            }
+    
+            if ( this.s.order === 'alpha' ) {
+                this.dom.buttons.sort( function ( a, b ) {
+                    var titleA = columns[ a.__columnIdx ].sTitle;
+                    var titleB = columns[ b.__columnIdx ].sTitle;
+    
+                    return titleA === titleB ?
+                        0 :
+                        titleA < titleB ?
+                            -1 :
+                            1;
+                } );
+            }
+    
+            if ( this.s.restore )
+            {
+                nButton = this._fnDomRestoreButton();
+                nButton.className += " ColVis_Restore";
+                this.dom.buttons.push( nButton );
+            }
+    
+            if ( this.s.showAll )
+            {
+                nButton = this._fnDomShowXButton( this.s.showAll, true );
+                nButton.className += " ColVis_ShowAll";
+                this.dom.buttons.push( nButton );
+            }
+    
+            if ( this.s.showNone )
+            {
+                nButton = this._fnDomShowXButton( this.s.showNone, false );
+                nButton.className += " ColVis_ShowNone";
+                this.dom.buttons.push( nButton );
+            }
+    
+            $(this.dom.collection).append( this.dom.buttons );
+        },
+    
+    
+        /**
+         * Create a button which allows a "restore" action
+         *  @method  _fnDomRestoreButton
+         *  @returns {Node} Created button
+         *  @private
+         */
+        "_fnDomRestoreButton": function ()
+        {
+            var
+                that = this,
+                dt = this.s.dt;
+    
+            return $(
+                    '<li class="ColVis_Special '+(dt.bJUI ? 'ui-button ui-state-default' : '')+'">'+
+                        this.s.restore+
+                    '</li>'
+                )
+                .click( function (e) {
+                    for ( var i=0, iLen=that.s.abOriginal.length ; i<iLen ; i++ )
+                    {
+                        that.s.dt.oInstance.fnSetColumnVis( i, that.s.abOriginal[i], false );
+                    }
+                    that._fnAdjustOpenRows();
+                    that.s.dt.oInstance.fnAdjustColumnSizing( false );
+                    that.s.dt.oInstance.fnDraw( false );
+                } )[0];
+        },
+    
+    
+        /**
+         * Create a button which allows show all and show node actions
+         *  @method  _fnDomShowXButton
+         *  @returns {Node} Created button
+         *  @private
+         */
+        "_fnDomShowXButton": function ( str, action )
+        {
+            var
+                that = this,
+                dt = this.s.dt;
+    
+            return $(
+                    '<li class="ColVis_Special '+(dt.bJUI ? 'ui-button ui-state-default' : '')+'">'+
+                        str+
+                    '</li>'
+                )
+                .click( function (e) {
+                    for ( var i=0, iLen=that.s.abOriginal.length ; i<iLen ; i++ )
+                    {
+                        if (that.s.aiExclude.indexOf(i) === -1)
+                        {
+                            that.s.dt.oInstance.fnSetColumnVis( i, action, false );
+                        }
+                    }
+                    that._fnAdjustOpenRows();
+                    that.s.dt.oInstance.fnAdjustColumnSizing( false );
+                    that.s.dt.oInstance.fnDraw( false );
+                } )[0];
+        },
+    
+    
+        /**
+         * Create the DOM for a show / hide group button
+         *  @method  _fnDomGroupButton
+         *  @param {int} i Group in question, order based on that provided in settings
+         *  @returns {Node} Created button
+         *  @private
+         */
+        "_fnDomGroupButton": function ( i )
+        {
+            var
+                that = this,
+                dt = this.s.dt,
+                oGroup = this.s.aoGroups[i];
+    
+            return $(
+                    '<li class="ColVis_Special '+(dt.bJUI ? 'ui-button ui-state-default' : '')+'">'+
+                        '<label>'+
+                            '<input type="checkbox" />'+
+                            '<span>'+oGroup.sTitle+'</span>'+
+                        '</label>'+
+                    '</li>'
+                )
+                .click( function (e) {
+                    var showHide = !$('input', this).is(":checked");
+                    if (  e.target.nodeName.toLowerCase() !== "li" )
+                    {
+                        showHide = ! showHide;
+                    }
+    
+                    for ( var j=0 ; j < oGroup.aiColumns.length ; j++ )
+                    {
+                        that.s.dt.oInstance.fnSetColumnVis( oGroup.aiColumns[j], showHide );
+                    }
+                } )[0];
+        },
+    
+    
+        /**
+         * Create the DOM for a show / hide button
+         *  @method  _fnDomColumnButton
+         *  @param {int} i Column in question
+         *  @returns {Node} Created button
+         *  @private
+         */
+        "_fnDomColumnButton": function ( i )
+        {
+            var
+                that = this,
+                column = this.s.dt.aoColumns[i],
+                dt = this.s.dt;
+    
+            var title = this.s.fnLabel===null ?
+                column.sTitle :
+                this.s.fnLabel( i, column.sTitle, column.nTh );
+    
+            return $(
+                    '<li '+(dt.bJUI ? 'class="ui-button ui-state-default"' : '')+'>'+
+                        '<label>'+
+                            '<input type="checkbox" />'+
+                            '<span>'+title+'</span>'+
+                        '</label>'+
+                    '</li>'
+                )
+                .click( function (e) {
+                    var showHide = !$('input', this).is(":checked");
+                    if (  e.target.nodeName.toLowerCase() !== "li" )
+                    {
+                        if ( e.target.nodeName.toLowerCase() == "input" || that.s.fnStateChange === null )
+                        {
+                            showHide = ! showHide;
+                        }
+                    }
+    
+                    /* Need to consider the case where the initialiser created more than one table - change the
+                     * API index that DataTables is using
+                     */
+                    var oldIndex = $.fn.dataTableExt.iApiIndex;
+                    $.fn.dataTableExt.iApiIndex = that._fnDataTablesApiIndex.call(that);
+    
+                    // Optimisation for server-side processing when scrolling - don't do a full redraw
+                    if ( dt.oFeatures.bServerSide )
+                    {
+                        that.s.dt.oInstance.fnSetColumnVis( i, showHide, false );
+                        that.s.dt.oInstance.fnAdjustColumnSizing( false );
+                        if (dt.oScroll.sX !== "" || dt.oScroll.sY !== "" )
+                        {
+                            that.s.dt.oInstance.oApi._fnScrollDraw( that.s.dt );
+                        }
+                        that._fnDrawCallback();
+                    }
+                    else
+                    {
+                        that.s.dt.oInstance.fnSetColumnVis( i, showHide );
+                    }
+    
+                    $.fn.dataTableExt.iApiIndex = oldIndex; /* Restore */
+    
+                    if ( that.s.fnStateChange !== null )
+                    {
+                        if ( e.target.nodeName.toLowerCase() == "span" )
+                        {
+                            e.preventDefault();
+                        }
+                        that.s.fnStateChange.call( that, i, showHide );
+                    }
+                } )[0];
+        },
+    
+    
+        /**
+         * Get the position in the DataTables instance array of the table for this
+         * instance of ColVis
+         *  @method  _fnDataTablesApiIndex
+         *  @returns {int} Index
+         *  @private
+         */
+        "_fnDataTablesApiIndex": function ()
+        {
+            for ( var i=0, iLen=this.s.dt.oInstance.length ; i<iLen ; i++ )
+            {
+                if ( this.s.dt.oInstance[i] == this.s.dt.nTable )
+                {
+                    return i;
+                }
+            }
+            return 0;
+        },
+    
+    
+        /**
+         * Create the element used to contain list the columns (it is shown and
+         * hidden as needed)
+         *  @method  _fnDomCollection
+         *  @returns {Node} div container for the collection
+         *  @private
+         */
+        "_fnDomCollection": function ()
+        {
+            return $('<ul />', {
+                    'class': !this.s.dt.bJUI ?
+                        "ColVis_collection" :
+                        "ColVis_collection ui-buttonset ui-buttonset-multi"
+                } )
+            .css( {
+                'display': 'none',
+                'opacity': 0,
+                'position': ! this.s.bCssPosition ?
+                    'absolute' :
+                    ''
+            } )[0];
+        },
+    
+    
+        /**
+         * An element to be placed on top of the activate button to catch events
+         *  @method  _fnDomCatcher
+         *  @returns {Node} div container for the collection
+         *  @private
+         */
+        "_fnDomCatcher": function ()
+        {
+            var
+                that = this,
+                nCatcher = document.createElement('div');
+            nCatcher.className = "ColVis_catcher";
+    
+            $(nCatcher).click( function () {
+                that._fnCollectionHide.call( that, null, null );
+            } );
+    
+            return nCatcher;
+        },
+    
+    
+        /**
+         * Create the element used to shade the background, and capture hide events (it is shown and
+         * hidden as needed)
+         *  @method  _fnDomBackground
+         *  @returns {Node} div container for the background
+         *  @private
+         */
+        "_fnDomBackground": function ()
+        {
+            var that = this;
+    
+            var background = $('<div></div>')
+                .addClass( 'ColVis_collectionBackground' )
+                .css( 'opacity', 0 )
+                .click( function () {
+                    that._fnCollectionHide.call( that, null, null );
+                } );
+    
+            /* When considering a mouse over action for the activation, we also consider a mouse out
+             * which is the same as a mouse over the background - without all the messing around of
+             * bubbling events. Use the catcher element to avoid messing around with bubbling
+             */
+            if ( this.s.activate == "mouseover" )
+            {
+                background.mouseover( function () {
+                    that.s.overcollection = false;
+                    that._fnCollectionHide.call( that, null, null );
+                } );
+            }
+    
+            return background[0];
+        },
+    
+    
+        /**
+         * Show the show / hide list and the background
+         *  @method  _fnCollectionShow
+         *  @returns void
+         *  @private
+         */
+        "_fnCollectionShow": function ()
+        {
+            var that = this, i, iLen, iLeft;
+            var oPos = $(this.dom.button).offset();
+            var nHidden = this.dom.collection;
+            var nBackground = this.dom.background;
+            var iDivX = parseInt(oPos.left, 10);
+            var iDivY = parseInt(oPos.top + $(this.dom.button).outerHeight(), 10);
+    
+            if ( ! this.s.bCssPosition )
+            {
+                nHidden.style.top = iDivY+"px";
+                nHidden.style.left = iDivX+"px";
+            }
+    
+            $(nHidden).css( {
+                'display': 'block',
+                'opacity': 0
+            } );
+    
+            nBackground.style.bottom ='0px';
+            nBackground.style.right = '0px';
+    
+            var oStyle = this.dom.catcher.style;
+            oStyle.height = $(this.dom.button).outerHeight()+"px";
+            oStyle.width = $(this.dom.button).outerWidth()+"px";
+            oStyle.top = oPos.top+"px";
+            oStyle.left = iDivX+"px";
+    
+            document.body.appendChild( nBackground );
+            document.body.appendChild( nHidden );
+            document.body.appendChild( this.dom.catcher );
+    
+            /* This results in a very small delay for the end user but it allows the animation to be
+             * much smoother. If you don't want the animation, then the setTimeout can be removed
+             */
+            $(nHidden).animate({"opacity": 1}, that.s.iOverlayFade);
+            $(nBackground).animate({"opacity": 0.1}, that.s.iOverlayFade, 'linear', function () {
+                /* In IE6 if you set the checked attribute of a hidden checkbox, then this is not visually
+                 * reflected. As such, we need to do it here, once it is visible. Unbelievable.
+                 */
+                if ( $.browser && $.browser.msie && $.browser.version == "6.0" )
+                {
+                    that._fnDrawCallback();
+                }
+            });
+    
+            /* Visual corrections to try and keep the collection visible */
+            if ( !this.s.bCssPosition )
+            {
+                iLeft = ( this.s.sAlign=="left" ) ?
+                    iDivX :
+                    iDivX - $(nHidden).outerWidth() + $(this.dom.button).outerWidth();
+    
+                nHidden.style.left = iLeft+"px";
+    
+                var iDivWidth = $(nHidden).outerWidth();
+                var iDivHeight = $(nHidden).outerHeight();
+                var iDocWidth = $(document).width();
+    
+                if ( iLeft + iDivWidth > iDocWidth )
+                {
+                    nHidden.style.left = (iDocWidth-iDivWidth)+"px";
+                }
+            }
+    
+            this.s.hidden = false;
+        },
+    
+    
+        /**
+         * Hide the show / hide list and the background
+         *  @method  _fnCollectionHide
+         *  @returns void
+         *  @private
+         */
+        "_fnCollectionHide": function (  )
+        {
+            var that = this;
+    
+            if ( !this.s.hidden && this.dom.collection !== null )
+            {
+                this.s.hidden = true;
+    
+                $(this.dom.collection).animate({"opacity": 0}, that.s.iOverlayFade, function (e) {
+                    this.style.display = "none";
+                } );
+    
+                $(this.dom.background).animate({"opacity": 0}, that.s.iOverlayFade, function (e) {
+                    document.body.removeChild( that.dom.background );
+                    document.body.removeChild( that.dom.catcher );
+                } );
+            }
+        },
+    
+    
+        /**
+         * Alter the colspan on any fnOpen rows
+         */
+        "_fnAdjustOpenRows": function ()
+        {
+            var aoOpen = this.s.dt.aoOpenRows;
+            var iVisible = this.s.dt.oApi._fnVisbleColumns( this.s.dt );
+    
+            for ( var i=0, iLen=aoOpen.length ; i<iLen ; i++ ) {
+                aoOpen[i].nTr.getElementsByTagName('td')[0].colSpan = iVisible;
+            }
+        }
+    };
+    
+    
+    
+    
+    
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Static object methods
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+    /**
+     * Rebuild the collection for a given table, or all tables if no parameter given
+     *  @method  ColVis.fnRebuild
+     *  @static
+     *  @param   object oTable DataTable instance to consider - optional
+     *  @returns void
+     */
+    ColVis.fnRebuild = function ( oTable )
+    {
+        var nTable = null;
+        if ( typeof oTable != 'undefined' )
+        {
+            nTable = $.fn.dataTable.Api ?
+                new $.fn.dataTable.Api( oTable ).table().node() :
+                oTable.fnSettings().nTable;
+        }
+    
+        for ( var i=0, iLen=ColVis.aInstances.length ; i<iLen ; i++ )
+        {
+            if ( typeof oTable == 'undefined' || nTable == ColVis.aInstances[i].s.dt.nTable )
+            {
+                ColVis.aInstances[i].fnRebuild();
+            }
+        }
+    };
+    
+    
+    ColVis.defaults = {
+        /**
+         * Mode of activation. Can be 'click' or 'mouseover'
+         *  @property activate
+         *  @type     string
+         *  @default  click
+         */
+        active: 'click',
+    
+        /**
+         * Text used for the button
+         *  @property buttonText
+         *  @type     string
+         *  @default  Show / hide columns
+         */
+        buttonText: 'Show / hide columns',
+    
+        /**
+         * List of columns (integers) which should be excluded from the list
+         *  @property aiExclude
+         *  @type     array
+         *  @default  []
+         */
+        aiExclude: [],
+    
+        /**
+         * Show restore button
+         *  @property bRestore
+         *  @type     boolean
+         *  @default  false
+         */
+        bRestore: false,
+    
+        /**
+         * Restore button text
+         *  @property sRestore
+         *  @type     string
+         *  @default  Restore original
+         */
+        sRestore: 'Restore original',
+    
+        /**
+         * Show Show-All button
+         *  @property bShowAll
+         *  @type     boolean
+         *  @default  false
+         */
+        bShowAll: false,
+    
+        /**
+         * Show All button text
+         *  @property sShowAll
+         *  @type     string
+         *  @default  Restore original
+         */
+        sShowAll: 'Show All',
+    
+        /**
+         * Position of the collection menu when shown - align "left" or "right"
+         *  @property sAlign
+         *  @type     string
+         *  @default  left
+         */
+        sAlign: 'left',
+    
+        /**
+         * Callback function to tell the user when the state has changed
+         *  @property fnStateChange
+         *  @type     function
+         *  @default  null
+         */
+        fnStateChange: null,
+    
+        /**
+         * Overlay animation duration in mS
+         *  @property iOverlayFade
+         *  @type     integer|false
+         *  @default  500
+         */
+        iOverlayFade: 500,
+    
+        /**
+         * Label callback for column names. Takes three parameters: 1. the
+         * column index, 2. the column title detected by DataTables and 3. the
+         * TH node for the column
+         *  @property fnLabel
+         *  @type     function
+         *  @default  null
+         */
+        fnLabel: null,
+    
+        /**
+         * Indicate if the column list should be positioned by Javascript,
+         * visually below the button or allow CSS to do the positioning
+         *  @property bCssPosition
+         *  @type     boolean
+         *  @default  false
+         */
+        bCssPosition: false,
+    
+        /**
+         * Group buttons
+         *  @property aoGroups
+         *  @type     array
+         *  @default  []
+         */
+        aoGroups: [],
+    
+        /**
+         * Button ordering - 'alpha' (alphabetical) or 'column' (table column
+         * order)
+         *  @property order
+         *  @type     string
+         *  @default  column
+         */
+        order: 'column'
+    };
+    
+    
+    
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Static object properties
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+    /**
+     * Collection of all ColVis instances
+     *  @property ColVis.aInstances
+     *  @static
+     *  @type     Array
+     *  @default  []
+     */
+    ColVis.aInstances = [];
+    
+    
+    
+    
+    
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Constants
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+    /**
+     * Name of this class
+     *  @constant CLASS
+     *  @type     String
+     *  @default  ColVis
+     */
+    ColVis.prototype.CLASS = "ColVis";
+    
+    
+    /**
+     * ColVis version
+     *  @constant  VERSION
+     *  @type      String
+     *  @default   See code
+     */
+    ColVis.VERSION = "1.1.2";
+    ColVis.prototype.VERSION = ColVis.VERSION;
+    
+    
+    
+    
+    
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Initialisation
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    
+    /*
+     * Register a new feature with DataTables
+     */
+    if ( typeof $.fn.dataTable == "function" &&
+         typeof $.fn.dataTableExt.fnVersionCheck == "function" &&
+         $.fn.dataTableExt.fnVersionCheck('1.7.0') )
+    {
+        $.fn.dataTableExt.aoFeatures.push( {
+            "fnInit": function( oDTSettings ) {
+                var init = oDTSettings.oInit;
+                var colvis = new ColVis( oDTSettings, init.colVis || init.oColVis || {} );
+                return colvis.button();
+            },
+            "cFeature": "C",
+            "sFeature": "ColVis"
+        } );
+    }
+    else
+    {
+        alert( "Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download");
+    }
+    
+    
+    // Make ColVis accessible from the DataTables instance
+    $.fn.dataTable.ColVis = ColVis;
+    $.fn.DataTable.ColVis = ColVis;
+    
+    
+    return ColVis;
+    }; // /factory
+    
+    
+    // Define as an AMD module if possible
+    if ( typeof define === 'function' && define.amd ) {
+        define( ['jquery', 'datatables'], factory );
+    }
+    else if ( typeof exports === 'object' ) {
+        // Node/CommonJS
+        factory( require('jquery'), require('datatables') );
+    }
+    else if ( jQuery && !jQuery.fn.dataTable.ColVis ) {
+        // Otherwise simply initialise as normal, stopping multiple evaluation
+        factory( jQuery, jQuery.fn.dataTable );
+    }
+    
+    
+    })(window, document);
 }
 
 /* DT_bootstrap.js */
@@ -1646,10 +2775,10 @@ function dtBootstrap() {
 
                 $(nPaging).append(
                     '<ul class="pagination">' +
-                    '<li class="prev disabled"><a href="#">&larr; ' + oLang.sFirst + '</a></li>' +
-                    '<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-                    '<li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
-                    '<li class="next disabled"><a href="#">' + oLang.sLast + ' &rarr; </a></li>' +
+                    '<li class="page-item prev disabled"><a class="page-link" href="#">&larr; ' + oLang.sFirst + '</a></li>' +
+                    '<li class="page-item prev disabled"><a class="page-link" href="#">&larr; '+oLang.sPrevious+'</a></li>'+
+                    '<li class="page-item next disabled"><a class="page-link" href="#">' + oLang.sNext + ' &rarr; </a></li>' +
+                    '<li class="page-item next disabled"><a class="page-link" href="#">' + oLang.sLast + ' &rarr; </a></li>' +
                     '</ul>'
                 );
                 var els = $('a', nPaging);
@@ -1686,8 +2815,8 @@ function dtBootstrap() {
 
                     // Add the new list items and their event handlers
                     for ( j=iStart ; j<=iEnd ; j++ ) {
-                        sClass = (j==oPaging.iPage+1) ? 'class="active"' : '';
-                        $('<li '+sClass+'><a href="#">'+j+'</a></li>')
+                        sClass = (j==oPaging.iPage+1) ? 'class="page-item active"' : '';
+                        $('<li '+sClass+'><a class="page-link" href="#">'+j+'</a></li>')
                             .insertBefore( $('li.next:first', an[i])[0] )
                             .bind('click', function (e) {
                                 e.preventDefault();
@@ -1754,11 +2883,8 @@ function dtBootstrap() {
 
 /* datatables.init.js */
 function dataTablesInit() {
-
-    (function ($, window)
-    {
-        function fnInitCompleteCallback(that)
-        {
+    (function ($, window) {
+        function fnInitCompleteCallback(that) {
             var p = that.parents('.dataTables_wrapper').first();
             var l = p.find('.row').find('label');
 
@@ -1770,22 +2896,22 @@ function dataTablesInit() {
             });
 
             var s = p.find('select');
-            s.addClass('.selectpicker').selectpicker();
-        }
+                    s.addClass('selectpicker').selectpicker();
 
+            //$(".bootstrap-select .dropdown-toggle .filter-option").append("<span class='caret'></span>");
+            var dtId = that.parents('.dataTables_wrapper').attr("id");
+                $("#"+dtId).find(".bootstrap-select .dropdown-toggle").append("<span class='caret'></span>");
+        }
 
         /* DataTables */
         componentsPath = "";
-        if ($('.design-table').size() > 0)
-        {
-            $('.design-table').each(function()
-            {
-                // DataTables with TableTools
-                if ($(this).is('.tableTools'))
-                {
-                    $(this).dataTable({
+        if ( $('.design-table').length > 0 ) {
+            $('.design-table').each(function() {
+                // DataTables with TableTools, render-tables.phtml
+                if ( $(this).is('.tableTools') ) {
+                    var oTableTools = $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "oLanguage": {
                             "sLengthMenu": "_MENU_ Show"
                         },
@@ -1803,17 +2929,48 @@ function dataTablesInit() {
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
+                        "stateSave": true,
                         "fnInitComplete": function () {
                             fnInitCompleteCallback(this);
                         }
                     });
+
+                    var $body    = $("body"),
+                        allPages = oTableTools.fnGetNodes();
+
+                        $body.on("click", ".sorting_disabled .checkbox-custom .fa", function() {
+                            var $this           = $(this);
+
+                                if ( $this.hasClass("allChecked") ) {
+                                    $("input[type='checkbox']", allPages).prop("checked", false);
+                                } else {
+                                    $("input[type='checkbox']", allPages).prop("checked", true);
+                                }
+
+                                $this.toggleClass("allChecked");                                
+                        });
+
+                        $body.on("click", ".tableTools thead tr th:not('.sorting_disabled')", function(e) {
+                            var $this           = $(this),
+                                $allChecked     = $(".tableTools thead tr th.sorting_disabled").find(".checkbox .checkbox-custom .fa"),
+                                $tableTools     = $(".tableTools tbody tr"),
+                                $customCheckBox = $tableTools.find("td .checkbox .checkbox-custom");
+
+                                $tableTools.addClass("selectable");
+
+                                if ( $allChecked.hasClass("allChecked") ) {
+                                    $customCheckBox.addClass("checked");
+                                    $customCheckBox.find(".fa").addClass("checked");
+                                    $tableTools.addClass("selected");
+                                }
+                        });
+
                 }
                 // colVis extras initialization
-                else if ($(this).is('.colVis'))
-                {
+                else if ($(this).is('.colVis')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "oLanguage": {
                             "sLengthMenu": "_MENU_ per page"
                         },
@@ -1829,27 +2986,25 @@ function dataTablesInit() {
                         }
                     });
                 }
-                else if ($(this).is('.scrollVertical'))
-                {
+                else if ($(this).is('.scrollVertical')) {
                     $(this).dataTable({
                         "bPaginate": false,
                         "sScrollY": "200px",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
-                        "sDom": "<'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "fnInitComplete": function () {
                             fnInitCompleteCallback(this);
                         }
                     });
                 }
-                else if ($(this).is('.ajax'))
-                {
+                else if ($(this).is('.ajax')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
                         "bProcessing": true,
                         "sAjaxSource": rootPath + 'admin/ajax/DataTables.json',
-                        "sDom": "<'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -1858,11 +3013,10 @@ function dataTablesInit() {
                         }
                     });
                 }
-                else if ($(this).is('.fixedHeaderColReorder'))
-                {
+                else if ($(this).is('.fixedHeaderColReorder')) {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "R<'clear'><'row separator bottom'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "R<'clear'><'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -1876,11 +3030,10 @@ function dataTablesInit() {
                     });
                 }
                 // default initialization
-                else
-                {
+                else {
                     $(this).dataTable({
                         "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
                         "sScrollX": "100%",
                         "sScrollXInner": "100%",
                         "bScrollCollapse": true,
@@ -1894,14 +3047,33 @@ function dataTablesInit() {
                 }
             });
         }
-
-
     })(jQuery, window);
 }
 
 /* mixitup.init.js */
 function mixItUpInit() {
-    $('.mixitup').mixitup({ showOnLoad: 'mixit-filter-1' });
+    $(function() {
+        //var containerEl = document.querySelector('.mixitup');
+        //$('.mixitup').mixitup({ showOnLoad: 'mixit-filter-1' });
+        if ( $('.mixitup').length > 0 ) {
+            mixitup('.mixitup', {
+                load: {
+                    sort: 'order:asc'
+                },
+                animation: {
+                    effects: 'fade',
+                    duration: 700
+                },
+                classNames: {
+                    block: 'button-filters',
+                    elementFilter: 'filter'
+                },
+                selectors: {
+                    target: '.mix-target'
+                }
+            });
+        }
+    });
 }
 
 /* fuelux-checkbox */
@@ -2025,59 +3197,93 @@ function fueluxCheckBoxInit() {
         // CHECKBOX DATA-API
 
         $(function () {
-            $('.checkbox-custom > input[type=checkbox]').each(function () {
+            $('.checkbox-custom > input[type=checkbox]').each(function() {
                 var $this = $(this);
-                if ($this.data('checkbox')) return;
-                $this.checkbox($this.data());
+
+                    if ($this.data('checkbox')) return;
+                        $this.checkbox($this.data());
             });
         });
+
     })(jQuery);
 }
 
 /* events-carousel.init.js */
 function eventsCarouselInit() {
-    (function($)
-    {
-        $("#events-carousel").owlCarousel({
+    //$(function() {
+        //$("#events-carousel").owlCarousel();
+        /* $("#events-carousel").owlCarousel({
             slideSpeed : 300,
             paginationSpeed : 400,
             singleItem:true
-        });
-
-        $("#events-speakers").owlCarousel({
+        }); */
+        //$("#events-speakers").owlCarousel();
+        /* $("#events-speakers").owlCarousel({
             slideSpeed : 300,
             paginationSpeed : 400,
             singleItem:true
-        });
+        }); */
+        if ( $(".events-tns").length > 0 ) {
+            var eventsSlider = tns({
+                  container: ".events-tns",
+                  items: 1,
+                  mouseDrag: true,
+                  slideBy: "page",
+                  swipeAngle: false,
+                  speed: 500,
+                  nav: true,
+                  navPosition: "bottom",
+                  navAsThumbnails: false
+            });
+        }
 
-    })(jQuery);
+        if ( $(".speakers-tns").length > 0 ) {
+            var speakerSlider = tns({
+                  container: ".speakers-tns",
+                  items: 1,
+                  mouseDrag: true,
+                  slideBy: "page",
+                  swipeAngle: false,
+                  speed: 500,
+                  nav: true,
+                  navPosition: "bottom",
+                  navAsThumbnails: false
+            });
+        }
+    //});
 }
 
 /* gridalicious.init.js */
 function gridaliciousInit() {
-    (function($)
-    {
-        $('[data-toggle*="gridalicious"]').each(function()
-        {
+    (function($) {
+        $('[data-toggle="gridalicious"]').each(function(){
             var $that = $(this);
-            $(this).removeClass('hide2').gridalicious(
-                {
-                    gutter: $that.attr('data-gridalicious-gutter') || 13,
-                    width: $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 200,
+            
+                $that.removeClass('hide2');
+
+                $that.gridalicious({
+                    gutter: 13, // $that.attr('data-gridalicious-gutter') || 
+                    width: 200, // $that.attr('data-gridalicious-width') ? parseInt($that.attr('data-gridalicious-width')) : 
                     animate: true,
                     selector: '.widget'
                 });
         });
     })(jQuery);
-
 }
 
 /* prettyphoto.init.js */
 function prettyPhotoInit() {
-    (function($)
-    {
-        if ($('[data-toggle="prettyPhoto"]').length)
-            $('[data-toggle="prettyPhoto"]').prettyPhoto();
+    (function($) {
+        /* if ($('[data-toggle="prettyPhoto"]').length)
+            $('[data-toggle="prettyPhoto"]').prettyPhoto(); */
+
+            /* if ( $("a[rel^='prettyPhoto']").length )
+                $("a[rel^='prettyPhoto']").prettyPhoto(); */
+            
+            $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
+                e.preventDefault();
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+            });
     })(jQuery);
 }
 
@@ -2089,7 +3295,7 @@ function jqueryBootpagInit() {
 
     $('.jquery-bootpag-pagination').bootpag({
         total: 23,
-        page: 1,
+        page: 2,
         maxVisible: 10
     }).on('page', function(event, num){
         $(".jquery-bootpag-content").html("Page " + num); // or some ajax content loading ...
@@ -2098,25 +3304,24 @@ function jqueryBootpagInit() {
 
 /* bootstrap-select.init.js */
 function bootstrapSelectInit() {
-    if ($('.selectpicker').length)
+    if ( $('.selectpicker').length)
         $('.selectpicker').selectpicker();
 }
 
 /* tables-classic.init.js */
 function tablesClassicInit() {
-    (function($)
-    {
+    (function($) {
         /* Table select / checkboxes utility */
-        $('.checkboxs thead :checkbox').change(function(){
-            if ($(this).is(':checked'))
-            {
+        $('.checkboxs thead :checkbox').change(function() {
+            if ( $(this).is(':checked') ) {
                 $('.checkboxs tbody :checkbox').prop('checked', true).trigger('change').parent().addClass('checked');
+                $('.checkboxs tbody :checkbox').prop('checked', true).closest(".checkbox-custom.checked").find(".fa").addClass("checked");
                 $('.checkboxs tbody tr.selectable').addClass('selected');
                 $('.checkboxs_actions').removeClass('hide').show();
             }
-            else
-            {
+            else {
                 $('.checkboxs tbody :checkbox').prop('checked', false).trigger('change').parent().removeClass('checked');
+                $('.checkboxs tbody :checkbox').prop('checked', false).closest(".checkbox-custom:not(.checked)").find(".fa").removeClass("checked");
                 $('.checkboxs tbody tr.selectable').removeClass('selected');
                 $('.checkboxs_actions').hide();
             }
@@ -2127,25 +3332,23 @@ function tablesClassicInit() {
             $(this).parent('tr').addClass('selected');
         });
 
-        $('.checkboxs tbody').on('click', 'tr.selectable', function(e){
-            var c = $(this).find(':checkbox');
-            var s = $(e.srcElement);
+        $('.checkboxs tbody').on('click', 'tr.selectable', function(e) {
+            var $this   = $(this),
+                $label  = $this.find(".checkbox-custom"),
+                c       = $this.find(':checkbox'),
+                s       = $(e.srcElement);
 
-            if (e.srcElement.nodeName == 'INPUT')
-            {
+            if ($this.nodeName === 'INPUT') {
                 if (c.is(':checked'))
                     $(this).addClass('selected');
                 else
                     $(this).removeClass('selected');
             }
-            else if (e.srcElement.nodeName != 'TD' && e.srcElement.nodeName != 'TR' && e.srcElement.nodeName != 'DIV')
-            {
+            else if ($this.nodeName != 'TD' && $this.nodeName != 'TR' && $this.nodeName != 'DIV') {
                 return true;
             }
-            else
-            {
-                if (c.is(':checked'))
-                {
+            else {
+                if ( c.is(':checked') ) {
                     c.prop('checked', false).trigger('change').parent().removeClass('checked');
                     $(this).removeClass('selected');
                 }
@@ -2155,18 +3358,18 @@ function tablesClassicInit() {
                     $(this).addClass('selected');
                 }
             }
-            if ($('.checkboxs tr.selectable :checked').size() == $('.checkboxs tr.selectable :checkbox').size())
+            if ($('.checkboxs tr.selectable :checked').length == $('.checkboxs tr.selectable :checkbox').length)
                 $('.checkboxs thead :checkbox').prop('checked', true).parent().addClass('checked');
             else
                 $('.checkboxs thead :checkbox').prop('checked', false).parent().removeClass('checked');
 
-            if ($('.checkboxs tr.selectable :checked').size() >= 1)
+            if ($('.checkboxs tr.selectable :checked').length >= 1)
                 $('.checkboxs_actions').removeClass('hide').show();
             else
                 $('.checkboxs_actions').hide();
         });
 
-        if ($('.checkboxs tbody :checked').size() == $('.checkboxs tbody :checkbox').size() && $('.checkboxs tbody :checked').length)
+        if ($('.checkboxs tbody :checked').length == $('.checkboxs tbody :checkbox').length && $('.checkboxs tbody :checked').length)
             $('.checkboxs thead :checkbox').prop('checked', true).parent().addClass('checked');
 
         if ($('.checkboxs tbody :checked').length)
@@ -2202,8 +3405,7 @@ function tablesClassicInit() {
         });
 
         // sortable tables
-        if ($( ".js-table-sortable" ).length)
-        {
+        if ($( ".js-table-sortable" ).length) {
             $( ".js-table-sortable" ).sortable(
                 {
                     placeholder: "ui-state-highlight",
@@ -2219,7 +3421,7 @@ function tablesClassicInit() {
                     },
                     start: function(event, ui)
                     {
-                        ui.placeholder.html('<td colspan="' + $(this).find('tbody tr:first td').size() + '">&nbsp;</td>');
+                        ui.placeholder.html('<td colspan="' + $(this).find('tbody tr:first td').length + '">&nbsp;</td>');
                     }
                 });
         }
@@ -2234,8 +3436,7 @@ function uiInit() {
 
 /* notify.init.js */
 function notyfyInit() {
-    $('[data-toggle="notyfy"]').click(function ()
-    {
+    $('[data-toggle="notyfy"]').click(function() {
         var self = $(this);
         if(self.data('layout') == 'inline')
         {
@@ -2524,17 +3725,19 @@ function modalsBootBoxInit() {
 
 /* wysihtml5.init.js */
 function wysiHTML5() {
-    (function($){
-        /* wysihtml5 */
-        if ($('textarea.wysihtml5').size() > 0)
-            $('textarea.wysihtml5').wysihtml5();
+    (function($) {
+        var $textarea = $("textarea.wysihtml5");
+
+            /* wysihtml5 */
+            if ( $textarea.length > 0 )
+                $textarea.wysihtml5();
+                $textarea.css("display", "block");
     })(jQuery);
 }
 
 /* form-wizards.init.js */
 function formWizardsInit() {
-    $(function()
-    {
+    $(function() {
         var bWizardTabClass = '';
         $('.wizard.wizard-design').each(function()
         {
@@ -2629,8 +3832,7 @@ function formWizardsInit() {
 
 /* widget-collapsible.init.js */
 function widgetCollapsibleInit() {
-    (function($)
-    {
+    (function($) {
         $('.widget[data-toggle="collapse-widget"] .widget-body')
             .on('show.bs.collapse', function(){
                 $(this).parents('.widget:first').attr('data-collapse-closed', "false");
@@ -2678,8 +3880,7 @@ function widgetProgressInit() {
 
 /* range-sliders-init.js */
 function rangeSlidersInit() {
-    $(function()
-    {
+    $(function() {
         /* jQRangeSliders */
 
         // regular Range Slider
@@ -2791,8 +3992,7 @@ function jqueryUiSlidersInit() {
     /*
      * Helper function for JQueryUI Sliders Create event
      */
-    function JQSliderCreate()
-    {
+    function JQSliderCreate() {
         $(this)
             .removeClass('ui-corner-all ui-widget-content')
             .wrap('<span class="ui-slider-wrap"></span>')
@@ -2800,14 +4000,11 @@ function jqueryUiSlidersInit() {
             .removeClass('ui-corner-all ui-state-default');
     }
 
-    $(function()
-    {
-
+    $(function() {
         /*
          * JQueryUI Slider: Default slider
          */
-        if ($('.slider-single').size() > 0)
-        {
+        if ($('.slider-single').length > 0) {
             $( ".slider-single" ).slider({
                 create: JQSliderCreate,
                 value: 10,
@@ -2820,8 +4017,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Multiple Vertical Sliders
          */
-        $( ".sliders-vertical > span" ).each(function()
-        {
+        $( ".sliders-vertical > span" ).each(function() {
             var value = parseInt( $( this ).text(), 10 );
             $( this ).empty().slider({
                 create: JQSliderCreate,
@@ -2837,41 +4033,52 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range Slider
          */
-        if ($('.range-slider').size() > 0)
-        {
-            $( ".range-slider .slider" ).each(function()
-            {
-                var t = $(this).parent(),
+        if ( $('.range-slider').length > 0 ) {
+            $( ".range-slider .slider" ).each(function() {
+                /* var t = $(this).parent(),
                     i = t.find('input'),
                     min = $(this).data('min') || 0,
                     max = $(this).data('max') || 500,
                     values = $(this).data('values') ? $(this).data('values').split(',') : [i.first().val(), i.last().val() || max];
 
-                $(this).slider({
-                    create: JQSliderCreate,
-                    range: true,
-                    min: min,
-                    max: max,
-                    values: values,
-                    slide: function( event, ui ) {
-                        if (i.length == 1)
-                            t.find(".amount").val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-                        else
-                            i.each(function(k,v){ $(i[k]).val(ui.values[k]); });
-                    }
-                });
+                    $(this).slider({
+                        create: JQSliderCreate,
+                        range: true,
+                        min: min,
+                        max: max,
+                        values: values,
+                        slide: function( event, ui ) {
+                            if (i.length == 1)
+                                t.find(".amount").val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+                            else
+                                i.each(function(k,v){ $(i[k]).val(ui.values[k]); });
+                        }
+                    });
 
-                if (i.length == 1)
-                    t.find(".amount").val( $(this).slider( "values", 0 ) +
-                        " - " + $(this).slider( "values", 1 ) );
+                    if (i.length == 1)
+                        t.find(".amount").val( $(this).slider( "values", 0 ) + " - " + $(this).slider( "values", 1 ) ); */
+                var $this   = $(this),
+                    t       = $this.parent(),
+                    i       = t.find("input");
+
+                    $this.slider({
+                        range   : true,
+                        min     : 0,
+                        max     : 500,
+                        values  : [ 75, 300 ],
+                        slide   : function( event, ui ) {
+                            $("#amount").val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                        }
+                    });
+
+                    $("#amount").val( "$" + $this.slider( "values", 0 ) + " - $" + $this.slider( "values", 1 ) );
             });
         }
 
         /*
          * JQueryUI Slider: Snap to Increments
          */
-        if ($('.increments-slider').size() > 0)
-        {
+        if ($('.increments-slider').length > 0) {
             $( ".increments-slider .slider" ).slider({
                 create: JQSliderCreate,
                 value:100,
@@ -2890,8 +4097,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Vertical Range Slider
          */
-        if ($('.vertical-range-slider').size() > 0)
-        {
+        if ($('.vertical-range-slider').length > 0) {
             $( ".vertical-range-slider .slider" ).slider({
                 create: JQSliderCreate,
                 orientation: "vertical",
@@ -2912,8 +4118,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed minimum
          */
-        if ($('.slider-range-min').size() > 0)
-        {
+        if ($('.slider-range-min').length > 0) {
             $( ".slider-range-min .slider" ).slider({
                 create: JQSliderCreate,
                 range: "min",
@@ -2932,8 +4137,7 @@ function jqueryUiSlidersInit() {
         /*
          * JQueryUI Slider: Range fixed maximum
          */
-        if ($('.slider-range-max').size() > 0)
-        {
+        if ($('.slider-range-max').length > 0) {
             $( ".slider-range-max .slider" ).slider({
                 create: JQSliderCreate,
                 range: "max",
@@ -2951,10 +4155,8 @@ function jqueryUiSlidersInit() {
     });
 }
 
-
 /* flotchart-simple-01.init.js */
 function flotchartSimpleInit() {
-
     $(function() {
         if($("#chart_simple_001").length) {
             if (typeof charts == 'undefined')
@@ -3518,8 +4720,7 @@ function flotchartBarsOrderedInit() {
 
 /* flotchart-bars-stacked.init.js */
 function flotchartBarsStackedInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_stacked_bars").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -3612,14 +4813,12 @@ function flotchartBarsStackedInit() {
 
 /* flotchart-pie.init.js */
 function flotchartPieInit() {
-    (function($)
-    {
-        if($("#chart_pie").length) {
+    (function($) {
+        if ( $("#chart_pie").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_pie =
-                {
+            charts.chart_pie = {
                     // chart data
                     data: [
                         { label: "USA",  data: 38 },
@@ -3695,105 +4894,118 @@ function flotchartPieInit() {
 
             charts.chart_pie.init();
         }
-
     })(jQuery);
 }
 
 /* flotchart-donut.init.js */
 function flotchartDonutInit() {
-
-    (function($)
-    {
-        if($("#chart_donut").length) {
-            if (typeof charts == 'undefined')
+    (function($) {
+        if( $("#chart_donut").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_donut =
-                {
-                    // chart data
-                    data: [
-                        { label: "USA",  data: 38 },
-                        { label: "Brazil",  data: 23 },
-                        { label: "India",  data: 15 },
-                        { label: "Turkey",  data: 9 },
-                        { label: "France",  data: 7 },
-                        { label: "China",  data: 5 },
-                        { label: "Germany",  data: 3 }
-                    ],
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            series: {
-                                pie: {
-                                    show: true,
-                                    innerRadius: 0.4,
-                                    highlight: {
-                                        opacity: 0.1
-                                    },
-                                    radius: 1,
-                                    stroke: {
-                                        color: '#fff',
-                                        width: 8
-                                    },
-                                    startAngle: 2,
-                                    combine: {
-                                        color: '#EEE',
-                                        threshold: 0.05
-                                    },
-                                    label: {
-                                        show: true,
-                                        radius: 1,
-                                        formatter: function(label, series){
-                                            return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                        }
-                                    }
-                                },
-                                grow: { active: false}
-                            },
-                            legend:{show:false},
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                backgroundColor : { }
-                            },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.1"+"%",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
-                        },
-
-                    placeholder: "#chart_donut",
-
-                    // initialize
-                    init: function()
+            charts.chart_donut = {
+                // chart data
+                data: [
+                    { 
+                        label: "USA",
+                        data: 38 
+                    },
+                    { 
+                        label: "Brazil",
+                        data: 23
+                    },
+                    { 
+                        label: "India",
+                        data: 15
+                    },
                     {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                        label: "Turkey",
+                        data: 9 
+                    },
+                    {
+                        label: "France",
+                        data: 7
+                    },
+                    {
+                        label: "China",
+                        data: 5
+                    },
+                    {
+                        label: "Germany",
+                        data: 3
                     }
-                };
+                ],
+
+                // will hold the chart object
+                plot: null,
+
+                // chart options
+                options: {
+                        series: {
+                            pie: {
+                                show: true,
+                                innerRadius: 0.4,
+                                highlight: {
+                                    opacity: 0.1
+                                },
+                                radius: 1,
+                                stroke: {
+                                    color: '#fff',
+                                    width: 8
+                                },
+                                startAngle: 2,
+                                combine: {
+                                    color: '#EEE',
+                                    threshold: 0.05
+                                },
+                                label: {
+                                    show: true,
+                                    radius: 1,
+                                    formatter: function(label, series){
+                                        return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+                                    }
+                                }
+                            },
+                            grow: { active: false}
+                        },
+                        legend:{show:false},
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            backgroundColor : { }
+                        },
+                        colors: [],
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "%s : %y.1"+"%",
+                            shifts: {
+                                x: -30,
+                                y: -50
+                            },
+                            defaultTheme: false
+                        }
+                },
+
+                placeholder: "#chart_donut",
+
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_donut.init();
         }
-
     })(jQuery);
 }
 
 /* flotchart-bars-horizontal.init.js */
 function flotchartBarsHorizontalInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_horizontal_bars").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -3907,8 +5119,7 @@ function flotchartBarsHorizontalInit() {
 
 /* flotchart-autoupdating.init.js */
 function flotchartAutoUpdatingInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_live").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -4021,8 +5232,7 @@ function flotchartAutoUpdatingInit() {
 
 /* flotchart-finances-simple.init.js */
 function flotchartFinancesSimpleInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_finances_simple").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -4140,14 +5350,13 @@ function flotchartFinancesSimpleInit() {
 }
 
 /* datepicker.init.js */
-function datepickerInit() {
+/* function datepickerInit() {
 
     $.fn.bdatepicker = $.fn.datepicker.noConflict();
 
-    $(function()
-    {
+    $(function() {
 
-        /* DatePicker */
+        // DatePicker
         // default
         $("#datepicker1").bdatepicker({
             format: 'yyyy-mm-dd',
@@ -4188,19 +5397,15 @@ function datepickerInit() {
         if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
 
 
-        /*      window.initDatepicker = function(){
+        //window.initDatepicker = function(){
          // other
          // if ($('#datepicker').length) $("#datepicker").bdatepicker({ showOtherMonths:true });
-         if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
-         }
+         // if ($('#datepicker-box').length) $('#datepicker-box').bdatepicker({ inline: true, showOtherMonths:true });
+        //}
 
-         initDatepicker();*/
-
-
-
-
+        //initDatepicker();
     });
-}
+} */
 
 /* uniform.init.js */
 function uniformInit() {
@@ -4212,8 +5417,7 @@ function uniformInit() {
 
 /* calendar.init.js */
 function calendarInit() {
-    $(function()
-    {
+    $(function() {
         /* initialize the external events
          -----------------------------------------------------------------*/
 
@@ -4664,20 +5868,16 @@ function switchBootstrap() {
 /* bootstrap-switch.init.js */
 function bootstrapSwitchInit() {
     (function($){
-
         if (typeof $.fn.bootstrapSwitch != 'undefined' && $('.make-switch').length)
             $('.make-switch:not(.has-switch)').bootstrapSwitch();
-
     })(jQuery);
 }
 
 /* form-validator.init.js */
 function formValidatorInit() {
-    $.validator.setDefaults(
-        {
+    $.validator.setDefaults({
             submitHandler: function() { alert("submitted!"); },
-            showErrors: function(map, list)
-            {
+            showErrors: function(map, list) {
                 this.currentElements.parents('label:first, div:first').find('.has-error').remove();
                 this.currentElements.parents('.form-group:first').removeClass('has-error');
 
@@ -4770,8 +5970,7 @@ function formValidatorInit() {
 
 /* dropzone.init.js */
 function dropzoneInit() {
-    (function($)
-    {
+    (function($) {
         if (typeof Dropzone != 'undefined')
             Dropzone.autoDiscover = false;
 
@@ -4782,8 +5981,7 @@ function dropzoneInit() {
 
 /* plupload.init.js */
 function plUploadInit() {
-    $(function()
-    {
+    $(function() {
         /* Plupload */
         $("#pluploadUploader").pluploadQueue({
             // General settings
@@ -4838,8 +6036,7 @@ function coreInit() {
     if (window.location != window.parent.location)
         top.location.href = document.location.href;
 
-    (function($, window)
-    {
+    (function($, window) {
 
         window.onunload = function(){};
 
@@ -4918,7 +6115,9 @@ function coreInit() {
         });
 
         // carousels
-        $('.carousel').carousel();
+        $('.carousel').each(function() {
+            $(this).carousel();
+        });
 
         // Google Code Prettify
         if ($('.prettyprint').length && typeof prettyPrint != 'undefined')
@@ -5111,8 +6310,7 @@ function coreInit() {
 
 /* medical.init.js */
 function medicalInit() {
-    (function($)
-    {
+    (function($) {
         if (typeof charts == 'undefined')
             return;
 
@@ -5415,8 +6613,7 @@ function medicalInit() {
 
 /* tables-responsive-footable.init.js */
 function tablesResponsiveFootableInit() {
-    $(function()
-    {
+    $(function() {
         /* FooTable */
         if ($('.footable').length)
             $('.footable').footable();
@@ -5521,7 +6718,7 @@ $(function() {
 /* tables.init.js */
 function tablesInit() {
     jQueryDataTables();
-    // tableTools();
+    //tableTools();
     colVis();
     dtBootstrap();
     dataTablesInit();
@@ -5585,7 +6782,6 @@ function initCalendar() {
     uniformInit();
     calendarInit();
     bootstrapDatepickerInit();
-
 }
 
 $(function() {
@@ -5613,10 +6809,37 @@ $(function() {
     initFormWizards();
 });
 
+function colorPickerInit() {
+    var $colorPicker = $("#colorpickerColor");
+
+        $colorPicker.colorpicker();
+
+        $colorPicker.on('colorpickerChange', function(event) {
+            $colorPicker.css('background-color', event.color.toString());
+        });
+}
+
+function inputMaskInit() {
+    $("#inputmask-date").inputmask("99/99/9999");
+    $("#inputmask-date-1").inputmask("99/99/9999");
+    $("#inputmask-date-2").inputmask("dd/mm/yyyy");
+    $("#inputmask-currency").inputmask("€ 999.999.999,99");
+    $("#inputmask-phone").inputmask("(999) 999-9999");
+    $("#inputmask-tax").inputmask("99-9999999");
+    $("#inputmask-decimal").inputmask("999.99");
+    $("#inputmask-ssn").inputmask("999-99-9999");
+}
+
 /* form-elements.init.js */
 function initFormElements() {
     switchBootstrap();
     bootstrapSwitchInit();
+    fueluxCheckBoxInit();
+    formWizardsInit();
+    bootstrapDatepickerInit();
+    bootstrapTimePickerInit();
+    colorPickerInit();
+    inputMaskInit();
 }
 
 $(function() {
@@ -5751,9 +6974,14 @@ function initRatings() {
     tablesResponsiveFootableInit();
 }
 
-$(function() {
-    initRatings();
-});
+/* remove body style */
+function removeStyleAttr() {
+    var $body = $("body");
+
+        setTimeout(function() {
+            $body.removeAttr("style");
+        }, 1000);
+}
 
 /* charts.init.js */
 function initCharts() {
@@ -5766,3 +6994,44 @@ function initCharts() {
     flotchartBarsHorizontalInit();
     flotchartAutoUpdatingInit();
 }
+
+$(function() {
+    var $body       = $("body"),
+        $document   = $("document");
+
+        initRatings();
+
+        $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
+
+        $body.on("click", "#blueimp-gallery .close.no-ajaxify", function() {
+            removeStyleAttr();
+        });
+
+        $document.keyup(function(e) {
+            if ( e.keyCode === 27 ) {
+                removeStyleAttr();
+            }
+        });
+
+        // spinner/loading button
+        $body.on("click", ".spinner-border-btn", function() {
+            var $this       = $(this),
+                $spinner    = $(".spinner-border"),
+                spinnerHtml = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+                if ( $spinner.length === 0 ) {
+                    $this.prepend( spinnerHtml );
+                }
+        });
+
+        // disable tooltip when hovered on element with attribute title other than [.melis-core-dashboard-plugin-snippets]
+        /* $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
+            var $this = $(this);
+                $this.tooltip({ disabled: true });
+        });
+
+        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
+            var $this = $(this);
+                $this.tooltip({ disabled: true });
+        }); */
+});

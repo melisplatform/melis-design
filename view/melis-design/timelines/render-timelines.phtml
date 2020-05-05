@@ -10,10 +10,8 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-
-	<div id="content">
+	<div id="content" class="render-timelines">
 	    <h1 class="content-heading bg-white border-bottom">Timelines <span>multiple styles</span></h1>
-
 	    <div class="innerAll spacing-x2">
 	        <div class="widget widget-inverse">
 	            <div class="widget-head">
@@ -37,7 +35,7 @@
 	                                        <div class="widget widget-heading-simple widget-body-white margin-none">
 	                                            <div class="widget-body">
 	                                                <div class="media">
-	                                                    <div class="media-object pull-left thumb"><img src="MelisDesign/images/avatar-51x51.jpg" alt="Image" />
+	                                                    <div class="media-object float-left thumb"><img src="/MelisDesign/images/avatar-51x51.jpg" alt="Image" />
 	                                                    </div>
 	                                                    <div class="media-body">
 	                                                        <a class="author">John Doe</a>
@@ -69,7 +67,7 @@
 	                                        <div class="widget widget-heading-simple widget-body-white margin-none">
 	                                            <div class="widget-body">
 	                                                <div class="media">
-	                                                    <div class="media-object pull-left thumb"><img src="MelisDesign/images/avatar-51x51.jpg" alt="Image" />
+	                                                    <div class="media-object float-left thumb"><img src="/MelisDesign/images/avatar-51x51.jpg" alt="Image" />
 	                                                    </div>
 	                                                    <div class="media-body">
 	                                                        <a class="author">John Doe</a>
@@ -85,27 +83,27 @@
 	                                                    <div class="gallery gallery-2 separator top">
 	                                                        <ul class="row" data-toggle="modal-gallery" data-target="#modal-gallery" id="gallery-4" data-delegate="#gallery-4">
 	                                                            <li class="col-md-4 hidden-phone">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/6.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/6.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/6.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/6.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                            <li class="col-md-4 hidden-phone">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/5.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/5.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/5.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/5.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                            <li class="col-md-4 hidden-phone">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/4.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/4.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/4.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/4.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                            <li class="col-md-4">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/3.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/3.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/3.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/3.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                            <li class="col-md-4">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/2.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/2.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/2.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/2.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                            <li class="col-md-4">
-	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/1.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/1.jpg" alt="photo" class="img-responsive" />
+	                                                                <a class="thumb" href="MelisDesign/images/gallery-2/1.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/1.jpg" alt="photo" class="img-fluid" />
 	                                                                </a>
 	                                                            </li>
 	                                                        </ul>
@@ -142,14 +140,18 @@
 
 	                            <div class="row margin-none innerT">
 	                                <div class="col-md-7">
-	                                    <ul class="nav nav-pills nav-stacked nav-timeline">
-	                                        <li class="active"><a href="">Now</a>
+	                                    <ul class="nav nav-pills nav-fill nav-stacked nav-timeline">
+	                                        <li class="nav-item active">
+												<a class="nav-link" href="">Now</a>
 	                                        </li>
-	                                        <li><a href="">Yesterday</a>
+	                                        <li class="nav-item">
+												<a class="nav-link" href="">Yesterday</a>
 	                                        </li>
-	                                        <li><a href="">2 Weeks Ago</a>
+	                                        <li class="nav-item">
+												<a class="nav-link" href="">2 Weeks Ago</a>
 	                                        </li>
-	                                        <li><a href="" class="glyphicons calendar">Custom<i></i></a>
+	                                        <li class="nav-item">
+												<a href="" class="nav-link glyphicons calendar">Custom<i></i></a>
 	                                        </li>
 	                                    </ul>
 	                                </div>
@@ -159,7 +161,6 @@
 	                    </div>
 	                    <div class="col-md-8">
 	                        <div class="innerAll">
-
 	                            <ul class="timeline">
 	                                <li class="active">
 	                                    <div class="separator bottom">
@@ -170,7 +171,7 @@
 	                                    <div class="widget widget-heading-simple widget-body-white margin-none">
 	                                        <div class="widget-body">
 	                                            <div class="media">
-	                                                <div class="media-object pull-left thumb"><img src="MelisDesign/images/avatar-51x51.jpg" alt="Image" />
+	                                                <div class="media-object float-left thumb"><img src="/MelisDesign/images/avatar-51x51.jpg" alt="Image" />
 	                                                </div>
 	                                                <div class="media-body">
 	                                                    <a class="author">John Doe</a>
@@ -191,7 +192,7 @@
 	                                    <div class="widget widget-heading-simple widget-body-white margin-none">
 	                                        <div class="widget-body">
 	                                            <div class="media">
-	                                                <div class="media-object pull-left thumb"><img src="MelisDesign/images/avatar-51x51.jpg" alt="Image" />
+	                                                <div class="media-object float-left thumb"><img src="/MelisDesign/images/avatar-51x51.jpg" alt="Image" />
 	                                                </div>
 	                                                <div class="media-body">
 	                                                    <a class="author">John Doe</a>
@@ -223,7 +224,7 @@
 	                                    <div class="widget widget-heading-simple widget-body-white margin-none">
 	                                        <div class="widget-body">
 	                                            <div class="media">
-	                                                <div class="media-object pull-left thumb"><img src="MelisDesign/images/avatar-51x51.jpg" alt="Image" />
+	                                                <div class="media-object float-left thumb"><img src="/MelisDesign/images/avatar-51x51.jpg" alt="Image" />
 	                                                </div>
 	                                                <div class="media-body">
 	                                                    <a class="author">John Doe</a>
@@ -239,27 +240,27 @@
 	                                                <div class="gallery gallery-2 separator top">
 	                                                    <ul class="row" data-toggle="modal-gallery" data-target="#modal-gallery" id="gallery-4" data-delegate="#gallery-4">
 	                                                        <li class="col-md-3 hidden-phone">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/6.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/6.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/6.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/6.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                        <li class="col-md-3 hidden-phone">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/5.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/5.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/5.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/5.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                        <li class="col-md-3 hidden-phone">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/4.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/4.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/4.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/4.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                        <li class="col-md-3">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/3.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/3.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/3.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/3.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                        <li class="col-md-3">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/2.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/2.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/2.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/2.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                        <li class="col-md-3">
-	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/1.jpg" data-gallery="gallery"><img src="MelisDesign/images/gallery-2/1.jpg" alt="photo" class="img-responsive" />
+	                                                            <a class="thumb" href="MelisDesign/images/gallery-2/1.jpg" data-gallery="gallery"><img src="/MelisDesign/images/gallery-2/1.jpg" alt="photo" class="img-fluid" />
 	                                                            </a>
 	                                                        </li>
 	                                                    </ul>
@@ -272,26 +273,15 @@
 	                                    </div>
 	                                </li>
 	                            </ul>
-
 	                        </div>
 	                    </div>
 	                </div>
-
 	            </div>
 	        </div>
-
-
-
 	    </div>
-
-
 	</div>
 	<!-- // Content END -->
-
-
-
     <div class="clearfix"></div>
     <!-- // Sidebar menu & content wrapper END -->
-
 </div>
 <!-- // Tab END -->

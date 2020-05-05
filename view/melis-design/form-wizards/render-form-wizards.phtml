@@ -10,26 +10,27 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-    <div id="content">
+    <div id="content" class="render-form-wizards form-wizards">
         <h1 class="content-heading bg-white border-bottom">Form Wizards</h1>
         <div class="innerAll spacing-x2">
-
-
-
             <!-- Form Wizard / Widget Tabs / Vertical -->
             <div class="wizard wizard-design">
                 <div class="widget widget-tabs widget-tabs-double widget-tabs-vertical row row-merge widget-tabs-gray">
 
                     <!-- Widget heading -->
                     <div class="widget-head col-md-3">
-                        <ul>
-                            <li class="active"><a href="#tab1-4" class="glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active">
+                                <a href="#tab1-4" class="nav-link glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
                             </li>
-                            <li><a href="#tab2-4" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+                            <li class="nav-item">
+                                <a href="#tab2-4" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
                             </li>
-                            <li><a href="#tab3-4" class="glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+                            <li class="nav-item">
+                                <a href="#tab3-4" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
                             </li>
-                            <li><a href="#tab4-4" class="glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+                            <li class="nav-item">
+                                <a href="#tab4-4" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
                             </li>
                         </ul>
                     </div>
@@ -84,23 +85,32 @@
                             <!-- // Step 4 END -->
 
                             <!-- Wizard pagination controls -->
-                            <div class="margin-bottom-none pull-left">
-                                <ul class="pagination">
-                                    <li class="primary previous first"><a href="#">First</a>
-                                    </li>
-                                    <li class="last primary"><a href="#">Last</a>
-                                    </li>
-                                </ul>
+                            <div class="margin-bottom-none float-left">
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item primary previous first">
+                                            <a class="page-link" href="#">First</a>
+                                        </li>
+                                        <li class="page-item last primary">
+                                            <a class="page-link" href="#">Last</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
-                            <div class="margin-bottom-none pull-right">
-                                <ul class="pagination">
-                                    <li class="primary previous"><a href="#">Previous</a>
-                                    </li>
-                                    <li class="next primary"><a href="#">Next</a>
-                                    </li>
-                                    <li class="next finish primary" style="display:none;"><a href="#">Finish</a>
-                                    </li>
-                                </ul>
+                            <div class="margin-bottom-none float-right">
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item primary previous">
+                                            <a class="page-link" href="#">Previous</a>
+                                        </li>
+                                        <li class="page-item next primary">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                        <li class="page-item next finish primary" style="display:none;">
+                                            <a class="page-link" href="#">Finish</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                             <div class="clearfix"></div>
                             <!-- // Wizard pagination controls END -->
@@ -120,20 +130,27 @@
 
                     <!-- Widget heading -->
                     <div class="widget-head">
-                        <ul>
-                            <li class="active"><a href="#tab1-1" class="glyphicons home" data-toggle="tab"><i></i>First</a>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active">
+                                <a href="#tab1-1" class="nav-link glyphicons home" data-toggle="tab"><i></i>First</a>
                             </li>
-                            <li><a href="#tab2-1" class="glyphicons umbrella" data-toggle="tab"><i></i>Second</a>
+                            <li class="nav-item">
+                                <a href="#tab2-1" class="nav-link glyphicons umbrella" data-toggle="tab"><i></i>Second</a>
                             </li>
-                            <li><a href="#tab3-1" class="glyphicons fishes" data-toggle="tab"><i></i>Third</a>
+                            <li class="nav-item">
+                                <a href="#tab3-1" class="nav-link glyphicons fishes" data-toggle="tab"><i></i>Third</a>
                             </li>
-                            <li><a href="#tab4-1" class="glyphicons car" data-toggle="tab"><i></i>Fourth</a>
+                            <li class="nav-item">
+                                <a href="#tab4-1" class="nav-link glyphicons car" data-toggle="tab"><i></i>Fourth</a>
                             </li>
-                            <li><a href="#tab5-1" class="glyphicons leaf" data-toggle="tab"><i></i>Fifth</a>
+                            <li class="nav-item">
+                                <a href="#tab5-1" class="nav-link glyphicons leaf" data-toggle="tab"><i></i>Fifth</a>
                             </li>
-                            <li><a href="#tab6-1" class="glyphicons cup" data-toggle="tab"><i></i>Sixth</a>
+                            <li class="nav-item">
+                                <a href="#tab6-1" class="nav-link glyphicons cup" data-toggle="tab"><i></i>Sixth</a>
                             </li>
-                            <li><a href="#tab7-1" class="glyphicons tie" data-toggle="tab"><i></i>Seventh</a>
+                            <li class="nav-item">
+                                <a href="#tab7-1" class="nav-link glyphicons tie" data-toggle="tab"><i></i>Seventh</a>
                             </li>
                         </ul>
                     </div>
@@ -211,18 +228,25 @@
                         </div>
 
                         <!-- Wizard pagination controls -->
-                        <ul class="pagination margin-bottom-none">
-                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                            </li>
-                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                            </li>
-                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                            </li>
-                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                            </li>
-                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                            </li>
-                        </ul>
+                        <nav>
+                            <ul class="pagination margin-bottom-none">
+                                <li class="page-item primary previous first">
+                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                </li>
+                                <li class="page-item primary previous">
+                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                </li>
+                                <li class="page-item last primary">
+                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                </li>
+                                <li class="page-item next primary">
+                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                </li>
+                                <li class="page-item next finish primary" style="display:none;">
+                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <!-- // Wizard pagination controls END -->
 
                     </div>
@@ -238,14 +262,18 @@
 
                     <!-- Widget heading -->
                     <div class="widget-head">
-                        <ul>
-                            <li class="active"><a href="#tab1-2" class="glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active">
+                                <a href="#tab1-2" class="nav-link glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
                             </li>
-                            <li><a href="#tab2-2" class="glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+                            <li class="nav-item">
+                                <a href="#tab2-2" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
                             </li>
-                            <li><a href="#tab3-2" class="glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+                            <li class="nav-item">
+                                <a href="#tab3-2" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
                             </li>
-                            <li><a href="#tab4-2" class="glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+                            <li class="nav-item">
+                                <a href="#tab4-2" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
                             </li>
                         </ul>
                     </div>
@@ -302,18 +330,25 @@
                         </div>
 
                         <!-- Wizard pagination controls -->
-                        <ul class="pagination margin-bottom-none">
-                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                            </li>
-                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                            </li>
-                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                            </li>
-                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                            </li>
-                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                            </li>
-                        </ul>
+                        <nav>
+                            <ul class="pagination margin-bottom-none">
+                                <li class="page-item primary previous first">
+                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                </li>
+                                <li class="page-item primary previous">
+                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                </li>
+                                <li class="page-item last primary">
+                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                </li>
+                                <li class="page-item next primary">
+                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                </li>
+                                <li class="page-item next finish primary" style="display:none;">
+                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <!-- // Wizard pagination controls END -->
 
                     </div>
@@ -325,19 +360,23 @@
             <!-- Form Wizard / Widget Pills -->
             <div class="wizard wizard-design">
                 <div class="widget widget-tabs widget-wizard-pills widget-tabs-gray">
-
                     <!-- Widget heading -->
                     <div class="widget-head widget-steps-head">
-                        <ul>
-                            <li class="status"><span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
+                        <ul class="nav nav-tabs">
+                            <li class="status">
+                                <span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
                             </li>
-                            <li class="active no-padding"><a href="#tab1-3" data-toggle="tab">1</a>
+                            <li class="nav-item active no-padding">
+                                <a class="nav-link" href="#tab1-3" data-toggle="tab">1</a>
                             </li>
-                            <li><a href="#tab2-3" data-toggle="tab">2</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab2-3" data-toggle="tab">2</a>
                             </li>
-                            <li><a href="#tab3-3" data-toggle="tab">3</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab3-3" data-toggle="tab">3</a>
                             </li>
-                            <li><a href="#tab4-3" data-toggle="tab">4</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tab4-3" data-toggle="tab">4</a>
                             </li>
                         </ul>
                     </div>
@@ -394,20 +433,29 @@
                         </div>
 
                         <!-- Wizard pagination controls -->
-                        <ul class="pagination margin-bottom-none pull-left">
-                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                            </li>
-                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                            </li>
-                        </ul>
-                        <ul class="pagination margin-bottom-none pull-right">
-                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                            </li>
-                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                            </li>
-                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                            </li>
-                        </ul>
+                        <nav>
+                            <ul class="pagination margin-bottom-none float-left">
+                                <li class="page-item primary previous first">
+                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                </li>
+                                <li class="page-item last primary">
+                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <ul class="pagination margin-bottom-none float-right">
+                                <li class="page-item primary previous">
+                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                </li>
+                                <li class="page-item next primary">
+                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                </li>
+                                <li class="page-item next finish primary" style="display:none;">
+                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <div class="clearfix"></div>
                         <!-- // Wizard pagination controls END -->
 
@@ -423,20 +471,27 @@
 
                 <!-- Wizard heading -->
                 <div class="wizard-head">
-                    <ul>
-                        <li><a href="#tab1" data-toggle="tab">First</a>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab1" data-toggle="tab">First</a>
                         </li>
-                        <li><a href="#tab2" data-toggle="tab">Second</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab2" data-toggle="tab">Second</a>
                         </li>
-                        <li><a href="#tab3" data-toggle="tab">Third</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab3" data-toggle="tab">Third</a>
                         </li>
-                        <li><a href="#tab4" data-toggle="tab">Fourth</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab4" data-toggle="tab">Fourth</a>
                         </li>
-                        <li><a href="#tab5" data-toggle="tab">Fifth</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab5" data-toggle="tab">Fifth</a>
                         </li>
-                        <li><a href="#tab6" data-toggle="tab">Sixth</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab6" data-toggle="tab">Sixth</a>
                         </li>
-                        <li><a href="#tab7" data-toggle="tab">Seventh</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tab7" data-toggle="tab">Seventh</a>
                         </li>
                     </ul>
                 </div>
@@ -523,18 +578,25 @@
                         </div>
 
                         <!-- Wizard pagination controls -->
-                        <ul class="pagination margin-bottom-none">
-                            <li class="primary previous first"><a href="#" class="no-ajaxify">First</a>
-                            </li>
-                            <li class="primary previous"><a href="#" class="no-ajaxify">Previous</a>
-                            </li>
-                            <li class="last primary"><a href="#" class="no-ajaxify">Last</a>
-                            </li>
-                            <li class="next primary"><a href="#" class="no-ajaxify">Next</a>
-                            </li>
-                            <li class="next finish primary" style="display:none;"><a href="#" class="no-ajaxify">Finish</a>
-                            </li>
-                        </ul>
+                        <nav>
+                            <ul class="pagination margin-bottom-none">
+                                <li class="page-item primary previous first">
+                                    <a href="#" class="page-link no-ajaxify">First</a>
+                                </li>
+                                <li class="page-item primary previous">
+                                    <a href="#" class="page-link no-ajaxify">Previous</a>
+                                </li>
+                                <li class="page-item last primary">
+                                    <a href="#" class="page-link no-ajaxify">Last</a>
+                                </li>
+                                <li class="page-item next primary">
+                                    <a href="#" class="page-link no-ajaxify">Next</a>
+                                </li>
+                                <li class="page-item next finish primary" style="display:none;">
+                                    <a href="#" class="page-link no-ajaxify">Finish</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <!-- // Wizard pagination controls END -->
 
                     </div>

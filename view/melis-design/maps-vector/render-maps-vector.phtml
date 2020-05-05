@@ -10,11 +10,11 @@
 
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-	<div id="content">
+	<div id="content" class="render-maps-vector">
 	    <h1 class="content-heading bg-white border-bottom">Vector maps</h1>
 	    <div class="innerAll bg-white border-bottom">
 	        <ul class="menubar">
-	            <li class="active"><a href="">Vector Maps</a>
+	            <li class="active"><a href="#">Vector Maps</a>
 	            </li>
 	        </ul>
 	    </div>
@@ -26,22 +26,30 @@
 
 	            <!-- Tabs Heading -->
 	            <div class="widget-head col-md-3">
-	                <ul>
-	                    <li class="active"><a href="#tab1" data-toggle="tab" data-init="1">GDP by country</a>
+	                <ul class="nav nav-tabs">
+	                    <li class="nav-item active">
+							<a class="nav-link" href="#tab1" data-toggle="tab" data-init="1">GDP by country</a>
 	                    </li>
-	                    <li><a href="#tab2" data-toggle="tab">Markers on the world map</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab2" data-toggle="tab">Markers on the world map</a>
 	                    </li>
-	                    <li><a href="#tab3" data-toggle="tab">USA unemployment</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab3" data-toggle="tab">USA unemployment</a>
 	                    </li>
-	                    <li><a href="#tab4" data-toggle="tab">Regions selection</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab4" data-toggle="tab">Regions selection</a>
 	                    </li>
-	                    <li><a href="#tab5" data-toggle="tab">France elections</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab5" data-toggle="tab">France elections</a>
 	                    </li>
-	                    <li><a href="#tab6" data-toggle="tab">Random colors</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab6" data-toggle="tab">Random colors</a>
 	                    </li>
-	                    <li><a href="#tab7" data-toggle="tab">Map of the mall</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab7" data-toggle="tab">Map of the mall</a>
 	                    </li>
-	                    <li><a href="#tab8" data-toggle="tab">Reverse projection</a>
+	                    <li class="nav-item">
+							<a class="nav-link" href="#tab8" data-toggle="tab">Reverse projection</a>
 	                    </li>
 	                </ul>
 	            </div>
@@ -71,7 +79,7 @@
 	                        <div class="separator bottom"></div>
 	                        <p class="lead" id="usa-unemployment-slider-year">Data for <strong>2009</strong>
 	                        </p>
-	                        <div id="usa-unemployment-slider" class="slider-single slider-primary"></div>
+	                        <div id="usa-unemployment-slider"></div>
 	                        <div class="separator bottom"></div>
 	                        <p>The following example demonstrates the visualization of unemployment statistics in the USA by states and metropolitan areas in a 5-years time-period. The step-by-step process of creation of such a map is described in the <a href="/tutorials/data-visualization/">tutorial</a>. The code in Ruby used to convert data could be found in <a href="https://github.com/bjornd/jvectormap-examples/tree/master/us-unemployment">this repository</a>.</p>
 	                    </div>

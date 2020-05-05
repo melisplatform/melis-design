@@ -10,14 +10,13 @@
         
 ?>
 <div data-melisKey='<?= $data_melisKey; ?>'<?= $id; ?> class="tab-pane container-level-a page-elements">
-
-    <div id="content">
-
+    <div id="content" class="render-dashboard">
         <h1 class="bg-white content-heading border-bottom">Dashboard</h1>
         <div class="bg-white innerAll border-bottom">
             <ul class="menubar">
-                <li class="active"><a href="index.html?lang=en">Dashboard</a></li>
-                <li><a href="#"><span class="badge badge-primary pull-right">30</span> Button</a></li>
+                <!-- index.html?lang=en -->
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#"><span class="badge badge-primary float-right">30</span> Button</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -54,7 +53,7 @@
 
                             <div class="widget widget-inverse widget-scroll" data-scroll-height="165px">
                                 <div class="widget-head">
-                                    <button class="btn btn-xs btn-default pull-right"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default float-right"><i class="fa fa-times"></i></button>
                                     <h4 class="heading">Statistics</h4>
                                 </div>
                                 <div class="widget-body padding-none">
@@ -155,7 +154,7 @@
                         <div class="back">
                             <div class="widget widget-inverse widget-scroll" data-scroll-height="165px">
                                 <div class="widget-head">
-                                    <button class="btn btn-xs btn-default pull-right"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default float-right"><i class="fa fa-times"></i></button>
                                     <h4 class="heading">Orders</h4>
                                 </div>
                                 <div class="widget-body padding-none">
@@ -192,14 +191,14 @@
                         <div class="back">
                             <div class="widget widget-inverse widget-scroll" data-scroll-height="165px">
                                 <div class="widget-head">
-                                    <button class="btn btn-xs btn-default pull-right"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default float-right"><i class="fa fa-times"></i></button>
                                     <h4 class="heading">Meetings</h4>
                                 </div>
                                 <div class="widget-body padding-none">
                                     <div>
                                         <div class="media innerAll half margin-none">
-                                            <a class="pull-left" href="#">
-                                                <img src="/MelisDesign/images/people/50/15.jpg" alt="" class="img-circle media-object"> 
+                                            <a class="float-left" href="#">
+                                                <img src="/MelisDesign/images/people/50/15.jpg" alt="" class="rounded-circle media-object"> 
                                             </a>
                                             <div class="media-body ">
                                                 <a href="" class="strong text-success"> <i class="fa fa-circle"></i> Jane Smith</a> 
@@ -210,8 +209,8 @@
                                         <hr class="margin-none"/>
 
                                         <div class="media innerAll half margin-none">
-                                            <a class="pull-left" href="#">
-                                                <img src="/MelisDesign/images/people/50/19.jpg" alt="" class="img-circle media-object"> 
+                                            <a class="float-left" href="#">
+                                                <img src="/MelisDesign/images/people/50/19.jpg" alt="" class="rounded-circle media-object"> 
                                             </a>
                                             <div class="media-body ">
                                                 <a href="" class="strong text-primary"> <i class="fa fa-circle"></i> Mary Deidre</a> 
@@ -247,16 +246,16 @@
 
                             <div class="widget widget-inverse widget-scroll" data-scroll-height="165px">
                                 <div class="widget-head">
-                                    <button class="btn btn-xs btn-default pull-right"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default float-right"><i class="fa fa-times"></i></button>
                                     <h4 class="heading">Messages</h4>
                                 </div>
                                 <div class="widget-body padding-none">
                                     
                                     <div>
                                         <div class="media innerAll">
-                                            <i class="fa fa-chat fa-2x pull-left disabled"></i>
+                                            <i class="fa fa-chat fa-2x float-left disabled"></i>
                                             <div class="media-body">
-                                                <div class="pull-right label label-default">2 days</div>
+                                                <div class="float-right label label-default">2 days</div>
                                                 <a href="" class="text-info">John Doe</a> <em>wrote: </em>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
                                                 <a href="" class="btn btn-info btn-xs">read message</a>
@@ -305,7 +304,7 @@
                                 <div class="col-sm-8 bg-white">
 
                                     <div class="widget-head bg-gray">
-                                        <div class="btn-group pull-right btn-group-xs">
+                                        <div class="btn-group float-right btn-group-xs">
                                             <a href="#chart-simple-lines-001" class="btn btn-default active" data-toggle="tab"><i class="fa fa-bars"></i></a>
                                             <a href="#chart-simple-bars-001" class="btn btn-default" data-toggle="tab"><i class="fa fa-bar-chart-o"></i></a>
                                         </div>
@@ -348,7 +347,7 @@
                                                 <!-- Table row -->
                                                 <tr>
                                                     <td class="center">1</td>
-                                                    <td> <img src="/MelisDesign/images/people/35/8.jpg" width="20" class="img-circle"> <span >John Doe</span></td>
+                                                    <td> <img src="/MelisDesign/images/people/35/8.jpg" width="20" class="rounded-circle"> <span >John Doe</span></td>
                                                     <td>MI, USA </td>
                                                     <td>Senior UI Designer</td>
                                                     <td class="center">
@@ -366,7 +365,7 @@
                                                 <!-- Table row -->
                                                 <tr>
                                                     <td class="center">3</td>
-                                                    <td> <img src="/MelisDesign/images/people/35/3.jpg" width="20" class="img-circle"> <span >Mary Dawson</span></td>
+                                                    <td> <img src="/MelisDesign/images/people/35/3.jpg" width="20" class="rounded-circle"> <span >Mary Dawson</span></td>
                                                     <td>DUBLIN, IE </td>
                                                     <td>Project Manager</td>
                                                     <td class="center">
@@ -384,7 +383,7 @@
                                                 <!-- Table row -->
                                                 <tr>
                                                     <td class="center">1</td>
-                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="img-circle"> <span >Laza Bogdan</span></td>
+                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="rounded-circle"> <span >Laza Bogdan</span></td>
                                                     <td>MI, USA </td>
                                                     <td>Evangelist Developer</td>
                                                     <td class="center">
@@ -402,7 +401,7 @@
                                                 <!-- Table row -->
                                                 <tr>
                                                     <td class="center">1</td>
-                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="img-circle"> <span >Laza Bogdan</span></td>
+                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="rounded-circle"> <span >Laza Bogdan</span></td>
                                                     <td>MI, USA </td>
                                                     <td>Evangelist Developer</td>
                                                     <td class="center">
@@ -420,7 +419,7 @@
                                                 <!-- Table row -->
                                                 <tr>
                                                     <td class="center">1</td>
-                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="img-circle"> <span >Laza Bogdan</span></td>
+                                                    <td> <img src="/MelisDesign/images/people/35/2.jpg" width="20" class="rounded-circle"> <span >Laza Bogdan</span></td>
                                                     <td>MI, USA </td>
                                                     <td>Evangelist Developer</td>
                                                     <td class="center">
@@ -446,19 +445,19 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="" class="widget widget-inverse innerAll text-center text-regular">
+                            <a href="" class="widget widget-inverse innerAll text-center text-regular widget-alerts-link">
                                 <i class="display-block icon-alarm-clock text-xlarge"></i>
                                 <span class="lead">3 Alerts</span>
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="" class="widget widget-primary innerAll text-center">
+                            <a href="" class="widget widget-primary innerAll text-center widget-sign-ups-link">
                                 <i class="display-block fa fa-group text-xlarge"></i>
                                 <span class="lead">7 Sign Ups</span>
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="" class="widget widget-info innerAll text-center">
+                            <a href="" class="widget widget-info innerAll text-center widget-visits-link">
                                 <i class="display-block icon-lab-beaker text-xlarge"></i>
                                 <span class="lead">5,412 Visits</span>
                             </a>
@@ -477,12 +476,12 @@
 
                                 <!-- Tabs Heading -->
                                 <div class="widget-head">
-                                    <ul>
-                                        <li class="active"><a class="glyphicons user_add" data-toggle="tab" href="#filterUsersTab"><i></i>Users</a></li>
-                                        <li><a class="glyphicons shopping_cart" data-toggle="tab" href="#filterOrdersTab"><i></i>Orders</a></li>
-                                        <li><a class="glyphicons envelope" data-toggle="tab" href="#filterMessagesTab"><i></i></a></li>
-                                        <li><a class="glyphicons link" data-toggle="tab" href="#filterLinksTab"><i></i></a></li>
-                                        <li><a class="glyphicons camera" data-toggle="tab" href="#filterPhotosTab"><i></i></a></li>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item active"><a class="nav-link glyphicons user_add" data-toggle="tab" href="#filterUsersTab"><i></i>Users</a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons shopping_cart" data-toggle="tab" href="#filterOrdersTab"><i></i>Orders</a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons envelope" data-toggle="tab" href="#filterMessagesTab"><i></i></a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons link" data-toggle="tab" href="#filterLinksTab"><i></i></a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons camera" data-toggle="tab" href="#filterPhotosTab"><i></i></a></li>
                                     </ul>
                                 </div>
                                 <!-- // Tabs Heading END -->
@@ -760,7 +759,7 @@
                                 <!-- Media item -->
                                 <div class="media innerAll border-bottom">
                                     <small class="author"><a href="#" title="" class="strong">Martin</a></small>
-                                    <img src="/MelisDesign/images/people/50/2.jpg" alt="" class="img-circle media-object pull-left">
+                                    <img src="/MelisDesign/images/people/50/2.jpg" alt="" class="rounded-circle media-object float-left">
                                     <div class="media-body">
                                         <small class="date"><cite>just now</cite></small>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae accumsan mauris. Donec vitae nibh felis, facilisis bibendum sapien.</p>
@@ -771,7 +770,7 @@
                                 <!-- Media item -->
                                 <div class="media innerAll border-bottom right">
                                     <small class="author"><a href="#" title="" class="strong">John Doe</a></small>
-                                    <img src="/MelisDesign/images/people/50/5.jpg" alt="" class="img-circle media-object pull-right" > 
+                                    <img src="/MelisDesign/images/people/50/5.jpg" alt="" class="rounded-circle media-object float-right" > 
                                     <div class="media-body">
                                         <small class="date"><cite>15 seconds ago</cite></small>
                                         <p>In ultricies ante eget tortor euismod vitae molestie eros hendrerit. Cras tristique, orci ac lacinia aliquet, velit risus laoreet lectus, eget sollicitudin metus orci non nulla.</p>
@@ -782,7 +781,7 @@
                                 <!-- Media item -->
                                 <div class="media innerAll">
                                     <small class="author"><a href="#" title="" class="strong">Ricky</a></small>
-                                    <img src="/MelisDesign/images/people/50/7.jpg" alt="" class="img-circle media-object pull-left" > 
+                                    <img src="/MelisDesign/images/people/50/7.jpg" alt="" class="rounded-circle media-object float-left" > 
                                     <div class="media-body">
                                         <small class="date"><cite>5 minutes ago</cite></small>
                                         <p>Pellentesque ac turpis turpis. Aliquam erat volutpat. Proin semper auctor mauris vel tempor. Ut eget turpis neque. Nam ultricies tortor eu odio ultricies euismod.</p>
@@ -801,7 +800,7 @@
                                     <div class="input-group">
                                         <input type="text" name="message" class="form-control" placeholder="Type your message .." />
                                         <div class="input-group-btn">
-                                            <a type="submit" class="btn btn-primary"><i class="fa fa-comments-o"></i></a>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-comments-o"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -837,8 +836,8 @@
 
                     <div class="widget widget-profile">
                         <div class="widget-head bg-primary">
-                            <a href="" class="pull-right"><i class="fa fa-cog pull-right"></i></a>
-                            <img src="/MelisDesign/images/people/100/8.jpg" alt="" class="img-circle">
+                            <a href="" class="float-right"><i class="fa fa-cog float-right"></i></a>
+                            <img src="/MelisDesign/images/people/100/8.jpg" alt="" class="rounded-circle">
                             <div class="clearfix"></div>
                              <a href=""> John Doe <i class="fa fa-arrow-right"></i></a>
                         </div>
@@ -857,7 +856,7 @@
                         </div>
                         <div class="widget-body padding-none">
                             <div class="media innerAll border-bottom margin-none half">
-                                <a class="pull-left" href="#"><img src="/MelisDesign/images/people/50/8.jpg" alt="" class="img-circle media-object"></a>
+                                <a class="float-left" href="#"><img src="/MelisDesign/images/people/50/8.jpg" alt="" class="rounded-circle media-object"></a>
                                 <div class="media-body">
                                     <a href="" class="strong text-primary"> John Doe</a> 
                                     <div class="clearfix"></div>
@@ -865,7 +864,7 @@
                                 </div>
                             </div>
                             <div class="media innerAll border-bottom margin-none half">
-                                <a class="pull-left" href="#"><img src="/MelisDesign/images/people/50/3.jpg" alt="" class="img-circle media-object"></a>
+                                <a class="float-left" href="#"><img src="/MelisDesign/images/people/50/3.jpg" alt="" class="rounded-circle media-object"></a>
                                 <div class="media-body">
                                     <a href="" class="strong text-primary"> Jane Millbury</a> 
                                     <div class="clearfix"></div>
@@ -873,7 +872,7 @@
                                 </div>
                             </div>
                             <div class="media innerAll margin-none half">
-                                <a class="pull-left" href="#"><img src="/MelisDesign/images/people/50/18.jpg" alt="" class="img-circle media-object"></a>
+                                <a class="float-left" href="#"><img src="/MelisDesign/images/people/50/18.jpg" alt="" class="rounded-circle media-object"></a>
                                 <div class="media-body">
                                     <a href="" class="strong text-primary"> Bogdan Laza</a> 
                                     <div class="clearfix"></div>

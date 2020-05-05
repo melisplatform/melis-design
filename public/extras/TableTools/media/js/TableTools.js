@@ -2303,19 +2303,25 @@ TableTools.BUTTONS = {
 		"sButtonText": "Ajax button",
 		"fnClick": function( nButton, oConfig ) {
 			var sData = this.fnGetTableData(oConfig);
-			$.ajax( {
+			$.ajax({
 				"url": oConfig.sAjaxUrl,
 				"data": [
 					{ "name": "tableData", "value": sData }
 				],
-				"success": oConfig.fnAjaxComplete,
+				//"success": oConfig.fnAjaxComplete,
 				"dataType": "json",
 				"type": "POST", 
-				"cache": false,
-				"error": function () {
+				"cache": false
+				/*"error": function () {
 					alert( "Error detected when sending table data to server" );
+				}*/
+			}).done(function(data) {
+				if ( data.success ) {
+					oConfig.fnAjaxComplete;
 				}
-			} );
+			}).fail(function() {
+				alert( "Error detected when sending table data to server" );
+			});
 		},
 		"fnAjaxComplete": function( json ) {
 			alert( 'Ajax complete' );
