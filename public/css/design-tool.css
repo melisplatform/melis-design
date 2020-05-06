@@ -6020,6 +6020,17 @@ table.dataTable.design-table tbody tr.selected {
 .melis-opentools[data-tool-meliskey='melis_maps_vector'] {
     display: none;
 }
+.render-profile-resume i.fa.fa-download {
+    color: #fff;
+}
+.render-profile-resume .btn-info.btn-regular:hover i.fa.fa-download, 
+.render-profile-resume .btn-info.btn-regular:focus i.fa.fa-download {
+    color: #466baf;
+}
+
+.render-my-account .nav-tabs .nav-item.active .nav-link.glyphicons.edit {
+    border-color: transparent;
+}
 /*
  * Tooltip issue
  */

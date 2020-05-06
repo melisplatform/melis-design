@@ -6100,9 +6100,9 @@ function coreInit() {
         }
 
         // $('#content .modal').appendTo('body');
-
+        
         // tooltips
-        $('body').tooltip({ selector: '[data-toggle="tooltip"]' });
+        //$('body').tooltip({ selector: '[data-toggle="tooltip"]' });
 
         // popovers
         $('[data-toggle="popover"]').popover();
