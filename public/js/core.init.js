@@ -70,7 +70,13 @@ function coreInit() {
 		// $('#content .modal').appendTo('body');
 		
 		// tooltips
-		$('body').tooltip({ selector: '[data-toggle="tooltip"]' });
+		$('body').tooltip({ 
+			selector: '[data-toggle="tooltip"]',
+			delay: {
+				"show": 5000,
+				"hide": 0
+			}
+		});
 		
 		// popovers
 		$('[data-toggle="popover"]').popover();

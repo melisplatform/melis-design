@@ -6102,7 +6102,15 @@ function coreInit() {
         // $('#content .modal').appendTo('body');
         
         // tooltips
-        //$('body').tooltip({ selector: '[data-toggle="tooltip"]' });
+        /* $('body').tooltip({ 
+            selector: '[data-toggle="tooltip"]',
+            delay: {
+                "show": 5000,
+                "hide": 0
+            }
+        }); */
+
+        $(".render-my-account [data-toggle='tooltip'], .render-buttons-icons [data-toggle='tooltip']").tooltip();
 
         // popovers
         $('[data-toggle="popover"]').popover();
