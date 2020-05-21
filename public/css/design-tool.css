@@ -245,7 +245,9 @@
 .owl-theme .owl-controls .owl-buttons div {
     color: #FFF;
     display: inline-block;
-    zoom: 1;
+    /* zoom: 1; */
+    transform: scale(1);
+	transform-origin: 0 0;
     *display: inline;/*IE7 life-saver */
     margin: 5px;
     padding: 3px 10px;
@@ -269,7 +271,9 @@
 
 .owl-theme .owl-controls .owl-page{
     display: inline-block;
-    zoom: 1;
+    /* zoom: 1; */
+    transform: scale(1);
+	transform-origin: 0 0;
     *display: inline;/*IE7 life-saver */
 }
 .owl-theme .owl-controls .owl-page span{
@@ -6017,9 +6021,9 @@ table.dataTable.design-table tbody tr.selected {
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
 }
-.melis-opentools[data-tool-meliskey='melis_maps_vector'] {
+/* .melis-opentools[data-tool-meliskey='melis_maps_vector'] {
     display: none;
-}
+} */
 .render-profile-resume i.fa.fa-download {
     color: #fff;
 }
@@ -6087,9 +6091,6 @@ table.dataTable.design-table tbody tr.selected {
 .bs-tooltip-top .arrow {
     bottom: -6px !important;
 }
-/* .tooltip:not(.bs-tooltip-left):not(.bs-tooltip-right):not(.bs-tooltip-top):not(.bs-tooltip-bottom) {
-    left: auto;
-} */
 #demo_popovers .popover-content {
     padding: .5rem .75rem;
 }
