@@ -9,11 +9,11 @@
 
 namespace MelisDesign;
 
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\ModuleManager;
-use Zend\Stdlib\ArrayUtils;
-use Zend\Session\Container;
+use Laminas\Mvc\ModuleRouteListener;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ModuleManager\ModuleManager;
+use Laminas\Stdlib\ArrayUtils;
+use Laminas\Session\Container;
 
 /**
  * Class Module

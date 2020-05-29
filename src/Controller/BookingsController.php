@@ -9,10 +9,10 @@
 
 namespace MelisDesign\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-use Zend\View\Model\JsonModel;
-use Zend\Session\Container;
+use MelisCore\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
+use Laminas\View\Model\JsonModel;
+use Laminas\Session\Container;
 
 class BookingsController extends AbstractActionController
 {
@@ -22,6 +22,7 @@ class BookingsController extends AbstractActionController
         $melisKey = $this->params()->fromRoute('melisKey', '');
         $view = new ViewModel();
         $view->melisKey = $melisKey;
+
         return $view;
     }
     
