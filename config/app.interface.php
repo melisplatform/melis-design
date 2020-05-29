@@ -40,9 +40,18 @@ return [
                     '/MelisDesign/css/tiny-slider.css',
                     '/MelisDesign/css/prettyPhoto.css',
                     '/MelisDesign/css/design-tool.css',
+                    '/MelisDesign/assets/components/plugins/jvectormap/css/jquery-jvectormap-2.0.5.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
+
+                    // gdp by country visualization
+                    '/MelisDesign/assets/components/plugins/jvectormap/js/jquery-jvectormap-2.0.5.min.js',
+                    '/MelisDesign/assets/components/plugins/jvectormap/js/map/jquery-jvectormap-world-mill.js',
+                    '/MelisDesign/assets/components/plugins/jvectormap/js/data/gdp-data.js',
+
+                    '/MelisDesign/assets/components/plugins/jvectormap/js/map/jquery-jvectormap-de-merc.js',
+
                     '/MelisDesign/js/melis-design.concat-init.js',
                 ],
                 /**

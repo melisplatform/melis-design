@@ -938,8 +938,7 @@ function initGoogleMaps() {
     /*
      * JSON
      */
-    if ($('#google-map-json').length)
-    {
+    if ($('#google-map-json').length) {
         $('#google-map-json').gmap({
             'zoomControl' : true,
             'zoomControlOpt': {
@@ -970,8 +969,7 @@ function initGoogleMaps() {
     /*
      * Streetview
      */
-    if ($('#google-map-streetview').length)
-    {
+    if ($('#google-map-streetview').length) {
         $('#google-map-streetview').gmap({ 'disableDefaultUI':true, 'callback': function() {
             var self = this;
             self.microformat('.vevent', function(result, item, index) {
@@ -1001,8 +999,7 @@ function initGoogleMaps() {
      * Fullscreen
      */
 
-    if ($('#google-fs').length)
-    {
+    if ($('#google-fs').length) {
         $('#google-fs').height($(window).height() - $('#footer').height() - $('.navbar.main').height() - $('#menu-top').height());
 
         $('#google-fs').gmap({
@@ -1051,8 +1048,7 @@ function initGoogleMaps() {
      */
 
     var mfsr = $('#google-fs-realestate');
-    if (mfsr.length)
-    {
+    if (mfsr.length) {
         var mfsr_height =   $(window).height() -
                 $('#footer').height() -
                 $('.navbar.main').height() -
@@ -1132,7 +1128,6 @@ function initGoogleMaps() {
                 });
             });
     }
-
 }
 
 /* google maps vector init */
@@ -1184,10 +1179,10 @@ function mapsVectorInit() {
     });
 
     // load this map by default
-    //initWorldMapGDP();
+    initWorldMapGDP();
 
     // GDP by country
-    /* function initWorldMapGDP() {
+    function initWorldMapGDP() {
         $('#world-map-gdp').vectorMap({
             map: 'world_mill',
             series: {
@@ -1201,9 +1196,9 @@ function mapsVectorInit() {
                 el.html(el.html()+' (GDP - '+gdpData[code]+')');
             }
         });
-    } */
+    }
 
-    //initWorldMapMarkers();    
+    initWorldMapMarkers();    
 
     // World map markers
     function initWorldMapMarkers() {
@@ -1250,10 +1245,6 @@ function mapsVectorInit() {
             ]
         });
     }
-
-    /* if ( $('#usa-unemployment').length ) {
-        initUSAUnemployment();
-    } */
     
     // USA unemployment
     function initUSAUnemployment() {
@@ -1324,7 +1315,7 @@ function mapsVectorInit() {
         });
     }
 
-    //initRegionSelection();
+    initRegionSelection();
 
     // regions selection
     function initRegionSelection() {
@@ -1400,7 +1391,7 @@ function mapsVectorInit() {
         map.setSelectedMarkers( JSON.parse( window.localStorage.getItem('jvectormap-selected-markers') || '[]' ) );
     }
 
-    //initFranceElections();
+    initFranceElections();
 
     // France elections
     function initFranceElections() {
@@ -1437,7 +1428,7 @@ function mapsVectorInit() {
         });
     }
 
-    //initRandomColors();
+    initRandomColors();
 
     function initRandomColors() {
         // random colors
@@ -1471,7 +1462,7 @@ function mapsVectorInit() {
             });
     }
 
-    //initMallMap();
+    initMallMap();
 
     // mall map
     function initMallMap() {
@@ -1572,7 +1563,7 @@ function mapsVectorInit() {
         });
     }
 
-    //initProjectionMap();
+    initProjectionMap();
 
     function initProjectionMap() {
         // reverse projection map
@@ -7031,15 +7022,4 @@ $(function() {
                     $this.prepend( spinnerHtml );
                 }
         });
-
-        // disable tooltip when hovered on element with attribute title other than [.melis-core-dashboard-plugin-snippets]
-        /* $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
-            var $this = $(this);
-                $this.tooltip({ disabled: true });
-        });
-
-        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
-            var $this = $(this);
-                $this.tooltip({ disabled: true });
-        }); */
 });
