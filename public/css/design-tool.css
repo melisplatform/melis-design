@@ -6123,6 +6123,7 @@ table.dataTable.design-table tbody tr.selected {
     line-height: 30px;
 }
 .render-dashboard .dropdown-menu > li > a {
+    display: block;
     padding: 0 10px;
     text-decoration: none;
 }
