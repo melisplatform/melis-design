@@ -6104,10 +6104,7 @@ function coreInit() {
         // tooltips
         /* $('body').tooltip({ 
             selector: '[data-toggle="tooltip"]',
-            delay: {
-                "show": 5000,
-                "hide": 0
-            }
+            delay: 0
         }); */
 
         $(".render-my-account [data-toggle='tooltip'], .render-buttons-icons [data-toggle='tooltip']").tooltip();
@@ -7031,15 +7028,4 @@ $(function() {
                     $this.prepend( spinnerHtml );
                 }
         });
-
-        // disable tooltip when hovered on element with attribute title other than [.melis-core-dashboard-plugin-snippets]
-        /* $("*[title]").not(".melis-core-dashboard-plugin-snippets").hover(function() {
-            var $this = $(this);
-                $this.tooltip({ disabled: true });
-        });
-
-        $body.on("mouseover", "#melis-id-nav-bar-tabs li a, #google-map-extend-pagination map area, .gm-ui-hover-effect", function() {
-            var $this = $(this);
-                $this.tooltip({ disabled: true });
-        }); */
 });

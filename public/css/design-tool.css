@@ -6053,36 +6053,40 @@ table.dataTable.design-table tbody tr.selected {
  * Bootstrap tooltip
  */
 .tooltip.fade.bs-tooltip-right.show {
-    left: 10px !important;
+    left: 6px !important;
 }
-.bs-tooltip-auto[x-placement^=right] .arrow,
-.bs-tooltip-right .arrow {
+.tooltip.fade.bs-tooltip-auto[x-placement^=right] .arrow,
+.tooltip.fade.bs-tooltip-right .arrow {
+    left: -6px !important;
+}
+
+.tooltip.fade.bs-tooltip-left {
     left: -6px !important;
 }
 .tooltip.fade.bs-tooltip-left.show {
     left: -6px !important;
 }
-.bs-tooltip-auto[x-placement^=left] .arrow,
-.bs-tooltip-left .arrow {
+.tooltip.fade.bs-tooltip-auto[x-placement^=left] .arrow,
+.tooltip.fade.bs-tooltip-left .arrow {
     right: -6px !important;
 }
+
 .tooltip.fade.bs-tooltip-bottom.show {
     top: 6px !important;
 }
-.bs-tooltip-auto[x-placement^=bottom] .arrow,
-.bs-tooltip-bottom .arrow {
+.tooltip.fade.bs-tooltip-auto[x-placement^=bottom] .arrow,
+.tooltip.fade.bs-tooltip-bottom .arrow {
     top: -6px !important;
 }
+
 .tooltip.fade.bs-tooltip-top.show {
     top: -6px !important;
 }
-.bs-tooltip-auto[x-placement^=top] .arrow,
-.bs-tooltip-top .arrow {
+.tooltip.fade.bs-tooltip-auto[x-placement^=top] .arrow,
+.tooltip.fade.bs-tooltip-top .arrow {
     bottom: -6px !important;
 }
-/* .tooltip:not(.bs-tooltip-left):not(.bs-tooltip-right):not(.bs-tooltip-top):not(.bs-tooltip-bottom) {
-    left: auto;
-} */
+
 #demo_popovers .popover-content {
     padding: .5rem .75rem;
 }
