@@ -9,7 +9,7 @@
 
 namespace MelisDesign\Controller;
 
-use MelisCore\Controller\AbstractActionController;
+use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\Model\JsonModel;
 use Laminas\Session\Container;
