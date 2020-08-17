@@ -9,12 +9,12 @@
 
 namespace MelisDesign\Controller;
 
-use Laminas\Mvc\Controller\AbstractActionController;
+use MelisCore\Controller\MelisAbstractActionController;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\Model\JsonModel;
 use Laminas\Session\Container;
 
-class DesignSidebarController extends AbstractActionController
+class DesignSidebarController extends MelisAbstractActionController
 {
 
     public function renderDesignSidebarAction() {
@@ -25,7 +25,7 @@ class DesignSidebarController extends AbstractActionController
     public function getDomAction()
     {
 
-        $tool = $this->getServiceLocator()->get('MelisCoreTool');
+        $tool = $this->getServiceManager()->get('MelisCoreTool');
         $domContent= $tool->getViewContent(array(
             'module' => 'MelisDesign',
             'controller' => 'DesignSidebar',
@@ -45,7 +45,7 @@ class DesignSidebarController extends AbstractActionController
         
 
         if($this->getRequest()->isXmlHttpRequest()) {
-            $config = $this->getServiceLocator()->get('MelisCoreConfig');
+            $config = $this->getServiceManager()->get('MelisCoreConfig');
             
             $key = $this->params()->fromQuery('key', null);
 
