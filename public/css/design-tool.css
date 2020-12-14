@@ -9690,7 +9690,8 @@ body {
 .tooltip.fade.bs-tooltip-right .arrow {
 	left: -6px !important;
 }
-
+/*
+// fix for over-all tooltip
 .tooltip.fade.bs-tooltip-left {
 	left: -6px !important;
 }
@@ -9701,7 +9702,7 @@ body {
 .tooltip.fade.bs-tooltip-left .arrow {
 	right: -6px !important;
 }
-
+*/
 .tooltip.fade.bs-tooltip-bottom.show {
 	top: 6px !important;
 }
@@ -9709,7 +9710,6 @@ body {
 .tooltip.fade.bs-tooltip-bottom .arrow {
 	top: -6px !important;
 }
-
 .tooltip.fade.bs-tooltip-top.show {
 	top: -6px !important;
 }
