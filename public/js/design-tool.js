@@ -61,9 +61,22 @@ window.loadResources = function(key) {
 		console.log('Shit ', activeTabId);
 	}
 }
-
-
 */
 
 // Popover
-$('[data-toggle="popover"]').popover();
+// $('[data-toggle="popover"]').popover();
+/* var melisDesign = (function(window) {
+	var $body 			= $("body"),
+		$pageElements 	= $("#melis-id-body-content-load .page-elements"),
+		bodyClass 		= 'melis-design';
+
+		// click event for melisCoreTool.addBodyClass on melis-design link
+		$body.on("click", "#sub-load-melisdesign_leftnemu .melis-opentools", function() {
+			console.log('#melis-id-body-content-load melis-design a setTimeout 1000ms');
+			setTimeout(function() {
+				console.log('$pageElements.length: ', $pageElements.length);
+				melisCoreTool.addBodyClass( $pageElements, bodyClass );
+			}, 5000);
+		});
+		
+})(window); */

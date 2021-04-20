@@ -9683,38 +9683,38 @@ body {
 /*
  * Bootstrap tooltip
  */
-.tooltip.fade.bs-tooltip-right.show {
+.melis-design .tooltip.fade.bs-tooltip-right.show {
 	left: 6px !important;
 }
-.tooltip.fade.bs-tooltip-auto[x-placement^="right"] .arrow,
-.tooltip.fade.bs-tooltip-right .arrow {
+.melis-design .tooltip.fade.bs-tooltip-auto[x-placement^="right"] .arrow,
+.melis-design .tooltip.fade.bs-tooltip-right .arrow {
 	left: -6px !important;
 }
 
-.tooltip.fade.bs-tooltip-left {
+.melis-design .tooltip.fade.bs-tooltip-left {
 	left: -6px !important;
 }
-.tooltip.fade.bs-tooltip-left.show {
+.melis-design .tooltip.fade.bs-tooltip-left.show {
 	left: -6px !important;
 }
-.tooltip.fade.bs-tooltip-auto[x-placement^="left"] .arrow,
-.tooltip.fade.bs-tooltip-left .arrow {
+.melis-design .tooltip.fade.bs-tooltip-auto[x-placement^="left"] .arrow,
+.melis-design .tooltip.fade.bs-tooltip-left .arrow {
 	right: -6px !important;
 }
 
-.tooltip.fade.bs-tooltip-bottom.show {
+.melis-design .tooltip.fade.bs-tooltip-bottom.show {
 	top: 6px !important;
 }
-.tooltip.fade.bs-tooltip-auto[x-placement^="bottom"] .arrow,
-.tooltip.fade.bs-tooltip-bottom .arrow {
+.melis-design .tooltip.fade.bs-tooltip-auto[x-placement^="bottom"] .arrow,
+.melis-design .tooltip.fade.bs-tooltip-bottom .arrow {
 	top: -6px !important;
 }
 
-.tooltip.fade.bs-tooltip-top.show {
+.melis-design .tooltip.fade.bs-tooltip-top.show {
 	top: -6px !important;
 }
-.tooltip.fade.bs-tooltip-auto[x-placement^="top"] .arrow,
-.tooltip.fade.bs-tooltip-top .arrow {
+.melis-design .tooltip.fade.bs-tooltip-auto[x-placement^="top"] .arrow,
+.melis-design .tooltip.fade.bs-tooltip-top .arrow {
 	bottom: -6px !important;
 }
 
