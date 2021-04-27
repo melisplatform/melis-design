@@ -16,6 +16,7 @@
             <ul class="menubar">
                 <li class="active"><a>Carousels</a>
                 </li>
+                <li><a>Tiny slider</a></li>
             </ul>
         </div>
         <div class="innerAll spacing-x2">
@@ -155,6 +156,521 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div id="tiny-slider">
+                        <h2 class="content-heading bg-white border-bottom">Tiny Slider</h2>
+                        <div class="tiny-slider">
+                            <div id="fixedWidth_wrapper" class="tns-wrapper">
+                                <h3>Fixedwidth</h3>
+                                <div class="text-content">
+                                    <p>The slide's width is fixed set on js.</p>
+                                </div>
+                                <div class="fixedWidth" id="fixedWidth">
+                                    <div class="item">
+                                        <div class="img img-1">
+                                            <a href="">0</a>
+                                        </div>
+                                        <p>
+                                            Sunt dignissimos distinctio, veniam, tenetur aspernatur nulla!
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-2">
+                                            <a href="">1</a>
+                                        </div>
+                                        <p>
+                                            Corrupti, libero minima nihil expedita officiis? Quo.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-3">
+                                            <a href="">2</a>
+                                        </div>
+                                        <p>
+                                            Alias rem, ab impedit recusandae repellat tempore.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-4">
+                                            <a href="">3</a>
+                                        </div>
+                                        <p>
+                                            Nisi inventore quo delectus perspiciatis voluptatibus, quae.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-5">
+                                            <a href="">4</a>
+                                        </div>
+                                        <p>
+                                            Nisi harum earum consectetur laudantium iusto, laboriosam.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-6">
+                                            <a href="">5</a>
+                                        </div>
+                                        <p>
+                                            Dolores blanditiis neque, quis vitae? Reprehenderit, aliquam.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-7">
+                                            <a href="">6</a>
+                                        </div>
+                                        <p>
+                                            Omnis dolorum eum blanditiis, ratione voluptates quod.
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs" id="markup-fixed-width" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="fixed-width-html-tab" data-toggle="tab" href="#fixed-width-html" role="tab" aria-controls="html" aria-selected="true">HTML</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="fixed-width-js-tab" data-toggle="tab" href="#fixed-width-js" role="tab" aria-controls="js" aria-selected="false">JS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="fixed-width-css-tab" data-toggle="tab" href="#fixed-width-css" role="tab" aria-controls="css" aria-selected="false">CSS</a>
+                                    </li>
+                                </ul>
+<div class="tab-content" id="markup-fixed-width-content">
+<div class="tab-pane fade show active" id="fixed-width-html" role="tabpanel" aria-labelledby="fixed-width-html-tab">
+<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class=" language-markup" tabindex="0"><code class="  language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixedWidth_wrapper<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tns-wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>Fixedwidth<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixedWidth<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixedWidth<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Sunt dignissimos distinctio, veniam, tenetur aspernatur nulla!
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Corrupti, libero minima nihil expedita officiis? Quo.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Alias rem, ab impedit recusandae repellat tempore.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Nisi inventore quo delectus perspiciatis voluptatibus, quae.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Nisi harum earum consectetur laudantium iusto, laboriosam.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-6<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Dolores blanditiis neque, quis vitae? Reprehenderit, aliquam.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Omnis dolorum eum blanditiis, ratione voluptates quod.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag">
+<span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>   
+</div>
+<div class="tab-pane fade" id="fixed-width-js" role="tabpanel" aria-labelledby="fixed-width-js-tab">
+<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class=" language-markup" tabindex="0"><code class="  language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">var</span> fixedWidthslider <span class="token operator">=</span> <span class="token function">tns</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        container<span class="token operator">:</span> <span class="token string">'#fixedWidth'</span><span class="token punctuation">,</span>
+        fixedWidth<span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        swipeAngle<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        speed<span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        <span class="token comment">/**
+         * Added navPosition, controls and controlsPosition
+         * to have it at the bottom of the slider
+         */</span>
+        navPosition<span class="token operator">:</span> <span class="token string">'bottom'</span><span class="token punctuation">,</span>
+        controls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        controlsPosition<span class="token operator">:</span> <span class="token string">'bottom'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+</div>
+<div class="tab-pane fade" id="fixed-width-css" role="tabpanel" aria-labelledby="fixed-width-css-tab">
+<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class="language-markup" tabindex="0">
+<code class="language-css">
+<span class="token comment">/** 
+ * For specific slider, width value long enough than the container wrapper.
+ * Use the default css of tiny slider.
+ * {base_url} /MelisDesign/css/tiny-slider/tiny-slider.css
+ */</span>
+<span class="token selector">#fixedWidth</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 12400px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+</div>
+                                <script type="text/javascript">
+                                    var fixedWidthslider = tns({
+                                        container: '#fixedWidth',
+                                        fixedWidth: 400,
+                                        swipeAngle: false,
+                                        speed: 400,
+                                        /**
+                                         * Added navPosition, controls and controlsPosition
+                                         * to have it at the bottom of the slider
+                                         */
+                                        navPosition: 'bottom',
+                                        controls: true,
+                                        controlsPosition: 'bottom'
+                                    });
+                                </script>
+                            </div><!-- end #fixedWidth_wrapper -->
+                            <div id="autoWidth_wrapper" class="tns-wrapper">
+                                <h3>Autowidth</h3>
+                                <div class="text-content">
+                                    <p>The slide's width is set auto on js. And it slides per item depending on the slides witdth.</p>
+                                </div>
+                                <div class="autoWidth" id="autoWidth">
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/1.jpg" width="432" height="500" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/2.jpg" width="500" height="333" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/3.jpg" width="500" height="333" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/4.jpg" width="500" height="333" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/6.jpg" width="500" height="500" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/8.jpg" width="500" height="329" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/MelisCore/assets/images/gallery/9.jpg" width="500" height="500" alt="">
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs" id="markup-auto-width" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="auto-width-html-tab" data-toggle="tab" href="#auto-width-html" role="tab" aria-controls="html" aria-selected="true">HTML</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="auto-width-js-tab" data-toggle="tab" href="#auto-width-js" role="tab" aria-controls="js" aria-selected="false">JS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="auto-width-css-tab" data-toggle="tab" href="#auto-width-css" role="tab" aria-controls="css" aria-selected="false">CSS</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="markup-auto-width-content">
+                                    <div class="tab-pane fade show active" id="auto-width-html" role="tabpanel" aria-labelledby="auto-width-html-tab">
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class=" language-markup" tabindex="0">
+<code class="  language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>autoWidth<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>autoWidth<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/1.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>432<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/2.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>333<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/3.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>333<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/4.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>333<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/6.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/8.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>329<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/MelisCore/assets/images/gallery/9.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>500<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+                                    </div>
+                                    <div class="tab-pane fade" id="auto-width-js" role="tabpanel" aria-labelledby="auto-width-js-tab"> 
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class=" language-markup" tabindex="0">
+<code class="language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">var</span> autoWidthSlider <span class="token operator">=</span> <span class="token function">tns</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        container<span class="token operator">:</span> <span class="token string">'#autoWidth'</span><span class="token punctuation">,</span>
+        autoWidth<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        gutter<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        mouseDrag<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        swipeAngle<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        speed<span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        <span class="token comment">/**
+        * Added navPosition, controls and controlsPosition
+        * to have it at the bottom of the slider
+        */</span>
+        navPosition<span class="token operator">:</span> <span class="token string">'bottom'</span><span class="token punctuation">,</span>
+        controls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        controlsPosition<span class="token operator">:</span> <span class="token string">'bottom'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+                                    </div>
+                                    <div class="tab-pane fade" id="auto-width-css" role="tabpanel" aria-labelledby="auto-width-css-tab">
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class="language-markup" tabindex="0"><code class="language-markup">
+<span class="token comment">/**
+ * Use the default css of tiny slider.
+ * {base_url} /MelisDesign/css/tiny-slider/tiny-slider.css
+ */</span></code></pre>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    var autoWidthSlider = tns({
+                                        container: '#autoWidth',
+                                        autoWidth: true,
+                                        gutter: 10,
+                                        mouseDrag: true,
+                                        swipeAngle: false,
+                                        speed: 400,
+                                        /**
+                                         * Added navPosition, controls and controlsPosition
+                                         * to have it at the bottom of the slider
+                                         */
+                                        navPosition: 'bottom',
+                                        controls: true,
+                                        controlsPosition: 'bottom'
+                                    });
+                                </script>
+                            </div><!-- end #autoWidth_wrapper -->
+                            <div id="responsive_wrapper" class="tns-wrapper">
+                                <h3>Responsive</h3>
+                                <div class="text-content">
+                                    <p>Responsiveness based on the breakpoint options as to how many items shows per breakpoint.</p>
+                                </div>
+                                <div class="responsive" id="responsive">
+                                    <div class="item">
+                                        <div class="img img-1">
+                                        <a href="">0</a>
+                                        </div>
+                                        <p>
+                                        Sunt dignissimos distinctio, veniam, tenetur aspernatur nulla!
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-2">
+                                        <a href="">1</a>
+                                        </div>
+                                        <p>
+                                        Corrupti, libero minima nihil expedita officiis? Quo.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-3">
+                                        <a href="">2</a>
+                                        </div>
+                                        <p>
+                                        Alias rem, ab impedit recusandae repellat tempore.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-4">
+                                        <a href="">3</a>
+                                        </div>
+                                        <p>
+                                        Nisi inventore quo delectus perspiciatis voluptatibus, quae.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-5">
+                                        <a href="">4</a>
+                                        </div>
+                                        <p>
+                                        Nisi harum earum consectetur laudantium iusto, laboriosam.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-6">
+                                        <a href="">5</a>
+                                        </div>
+                                        <p>
+                                        Dolores blanditiis neque, quis vitae? Reprehenderit, aliquam.
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img img-7">
+                                        <a href="">6</a>
+                                        </div>
+                                        <p>
+                                        Omnis dolorum eum blanditiis, ratione voluptates quod.
+                                        </p>
+                                    </div>
+                                </div>
+                                <ul class="nav nav-tabs" id="markup-res" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="res-html-tab" data-toggle="tab" href="#res-html" role="tab" aria-controls="html" aria-selected="true">HTML</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="res-js-tab" data-toggle="tab" href="#res-js" role="tab" aria-controls="js" aria-selected="false">JS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="res-css-tab" data-toggle="tab" href="#res-css" role="tab" aria-controls="css" aria-selected="false">CSS</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="markup-res-content">
+                                    <div class="tab-pane fade show active" id="res-html" role="tabpanel" aria-labelledby="res-html-tab">
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class="language-markup" tabindex="0">
+<code class="language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>responsive_wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Responsive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>responsive<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>responsive<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Sunt dignissimos distinctio, veniam, tenetur aspernatur nulla!
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Corrupti, libero minima nihil expedita officiis? Quo.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Alias rem, ab impedit recusandae repellat tempore.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Nisi inventore quo delectus perspiciatis voluptatibus, quae.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Nisi harum earum consectetur laudantium iusto, laboriosam.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-6<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Dolores blanditiis neque, quis vitae? Reprehenderit, aliquam.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img img-7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+                Omnis dolorum eum blanditiis, ratione voluptates quod.
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+                                    </div>
+                                    <div class="tab-pane fade" id="res-js" role="tabpanel" aria-labelledby="res-js-tab"> 
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class=" language-markup" tabindex="0">
+<code class="  language-markup"><span class="token tag">
+<span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">var</span> responsiveSlider <span class="token operator">=</span> <span class="token function">tns</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        container<span class="token operator">:</span> <span class="token string">"#responsive"</span><span class="token punctuation">,</span>
+        items<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        responsive<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token number">350</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                items<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                edgePadding<span class="token operator">:</span> <span class="token number">30</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token number">500</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                items<span class="token operator">:</span> <span class="token number">4</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">/**
+         * Added navPosition, controls and controlsPosition
+         * to have it at the bottom of the slider
+         */</span>
+        navPosition<span class="token operator">:</span> <span class="token string">'bottom'</span><span class="token punctuation">,</span>
+        controls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        controlsPosition<span class="token operator">:</span> <span class="token string">'bottom'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+                                    </div>
+                                    <div class="tab-pane fade" id="res-css" role="tabpanel" aria-labelledby="res-css-tab">
+                                        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>
+<pre class="language-markup" tabindex="0"><code class="language-markup">
+<span class="token comment">/**
+ * Use the default css of tiny slider.
+ * {base_url} /MelisDesign/css/tiny-slider/tiny-slider.css
+ */</span></code></pre>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    var responsiveSlider = tns({
+                                        container: "#responsive",
+                                        items: 2,
+                                        responsive: {
+                                            350: {
+                                                items: 3,
+                                                edgePadding: 30
+                                            },
+                                            500: {
+                                                items: 4
+                                            }
+                                        },
+                                        /**
+                                         * Added navPosition, controls and controlsPosition
+                                         * to have it at the bottom of the slider
+                                         */
+                                        navPosition: 'bottom',
+                                        controls: true,
+                                        controlsPosition: 'bottom'
+                                    });
+                                </script>
+                            </div><!-- end #responsive_wrapper -->
+                        </div><!-- end .tiny-slider -->
+                    </div><!-- end #tiny-slider -->
+                </div><!-- end .col -->
+            </div><!-- end .row -->
         </div>
     </div>
     <!-- // Content END -->

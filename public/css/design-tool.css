@@ -2068,6 +2068,9 @@ div.radio.default input {
 	text-decoration: underline;
 	color: #000;
 }
+.carousel .carousel-inner .carousel-item img {
+	width: inherit;
+}
 
 /* Mixitup */
 .mixitup .mix {

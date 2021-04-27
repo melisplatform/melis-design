@@ -1610,10 +1610,6 @@ function mapsVectorInit() {
     }
 }
 
-$(function() {
-    mapsVectorInit();
-});
-
 /* ColVis.min.js */
 function colVis() {
     /*! ColVis 1.1.2
@@ -6102,7 +6098,7 @@ function coreInit() {
         // $('#content .modal').appendTo('body');
 
         // tooltips
-        /* $('body').tooltip({ 
+        /* $('body.melis-design').tooltip({ 
             selector: '[data-toggle="tooltip"]',
             delay: 0
         }); */
@@ -6641,55 +6637,31 @@ function initPortfolio() {
     mixItUpInit();
 }
 
-$(function() {
-    initPortfolio();
-});
-
 /* support-tickets.init.js */
 function initSupportTickets() {
     bootstrapDatepickerInit();
     fueluxCheckBoxInit();
 }
 
-$(function() {
-    initSupportTickets();
-});
-
 /* support-questions.init.js */
 function initSupportQuestions() {
     fueluxCheckBoxInit();
 }
-
-$(function() {
-    initSupportQuestions();
-});
 
 /* support-answers.init.js */
 function initSupportAnswers() {
     fueluxCheckBoxInit();
 }
 
-$(function() {
-    initSupportAnswers();
-});
-
 /* events.init.js */
 function initEvents() {
     eventsCarouselInit();
 }
 
-$(function() {
-    initEvents();
-});
-
 /* photo-gallery.init.js */
 function initPhotoGallery() {
     gridaliciousInit();
 }
-
-$(function() {
-    initPhotoGallery();
-});
 
 /* gallery-video.init.js */
 function initGalleryVideo() {
@@ -6697,28 +6669,16 @@ function initGalleryVideo() {
     prettyPhotoInit();
 }
 
-$(function() {
-    initGalleryVideo();
-});
-
 /* carousel.init.js */
 function initCarousel() {
     gridaliciousInit();
 }
-
-$(function() {
-    initCarousel();
-});
 
 /* buttons.init.js */
 function initButtons() {
     jqueryBootpagInit();
     uiInit();
 }
-
-$(function() {
-    initButtons();
-});
 
 /* tables.init.js */
 function tablesInit() {
@@ -6732,29 +6692,17 @@ function tablesInit() {
     tablesClassicInit();
 }
 
-$(function() {
-    tablesInit();
-});
-
 /* tables-responsive.init.js */
 function tablesResponsiveInit() {
     footableJQuery();
     tablesResponsiveFootableInit();
 }
 
-$(function() {
-    tablesResponsiveInit();
-});
-
 /* notifications.init.js */
 function initNotifications() {
     notyfyInit();
     gritterInit();
 }
-
-$(function() {
-    initNotifications();
-});
 
 /* modals.init.js */
 function initModals() {
@@ -6765,10 +6713,6 @@ function initModals() {
     formWizardsInit();
 }
 
-$(function() {
-    initModals();
-});
-
 /* widgets.init.js */
 function initWidgets() {
     holderInit();
@@ -6778,20 +6722,12 @@ function initWidgets() {
     widgetScrollableInit();
 }
 
-$(function() {
-    initWidgets();
-});
-
 /* calendar.render.init.js */
 function initCalendar() {
     uniformInit();
     calendarInit();
     bootstrapDatepickerInit();
 }
-
-$(function() {
-    initCalendar();
-});
 
 /* sliders.init.js */
 function initSliders() {
@@ -6800,19 +6736,11 @@ function initSliders() {
     rangeSlidersInit();
 }
 
-$(function() {
-    initSliders();
-});
-
 /* form-wizards.render.init.js */
 function initFormWizards() {
     wysiHTML5();
     formWizardsInit();
 }
-
-$(function() {
-    initFormWizards();
-});
 
 function colorPickerInit() {
     var $colorPicker = $("#colorpickerColor");
@@ -6847,18 +6775,10 @@ function initFormElements() {
     inputMaskInit();
 }
 
-$(function() {
-    initFormElements();
-});
-
 /* form-validator.render.init.js */
 function initFormValidator() {
     formValidatorInit();
 }
-
-$(function() {
-    initFormValidator();
-});
 
 /* file-manager.init.js */
 function initFileManger() {
@@ -6866,18 +6786,10 @@ function initFileManger() {
     dropzoneInit();
 }
 
-$(function() {
-    initFileManger();
-});
-
 /* inbox.init.js */
 function initInbox() {
     coreInit();
 }
-
-$(function() {
-    initInbox();
-});
 
 /* finances.init.js */
 function initFinances() {
@@ -6885,14 +6797,9 @@ function initFinances() {
 }
 
 /* invoice.init.js */
-
 function initInvoice() {
     coreInit();
 }
-
-$(function() {
-    initInvoice();
-});
 
 /* bookings.init.js */
 function initBookings() {
@@ -6900,28 +6807,16 @@ function initBookings() {
     bootstrapSelectInit();
 }
 
-$(function() {
-    initBookings();
-});
-
 /* medical-overview.init.js */
 function initMedicalOverview() {
     easyPieInit();
     medicalInit();
 }
 
-$(function() {
-    initMedicalOverview();
-});
-
 /* medical-appointments.init.js */
 function initMedicalAppointments() {
     bootstrapDatepickerInit();
 }
-
-$(function() {
-    initMedicalAppointments();
-});
 
 /* medical-metrics.init.js */
 function initMedicalMetrics() {
@@ -6929,27 +6824,15 @@ function initMedicalMetrics() {
 
 }
 
-$(function() {
-    initMedicalMetrics();
-});
-
 /* social.init.js */
 function initSocial() {
     holderInit();
 }
 
-$(function() {
-    initSocial();
-});
-
 /* shop-edit-products.init.js */
 function initShopEditProductsInit() {
     wysiHTML5();
 }
-
-$(function() {
-    initShopEditProductsInit();
-});
 
 /* shop-products.init.js */
 function initShopProductsInit() {
@@ -6959,19 +6842,11 @@ function initShopProductsInit() {
     tablesClassicInit();
 }
 
-$(function() {
-    initShopProductsInit();
-});
-
 /* my-account.init.js */
 function initMyAccountInit() {
     holderInit();
     wysiHTML5();
 }
-
-$(function() {
-    initMyAccountInit();
-});
 
 /* ratings.init.js */
 function initRatings() {
@@ -7000,11 +6875,77 @@ function initCharts() {
     flotchartAutoUpdatingInit();
 }
 
+/**
+ * Organize running of functions
+ */
 $(function() {
     var $body       = $("body"),
         $document   = $("document");
 
+        /* ratings.init.js */
         initRatings();
+        /* my-account.init.js */
+        initMyAccountInit();
+        /* shop-products.init.js */
+        initShopProductsInit();
+        /* shop-edit-products.init.js */
+        initShopEditProductsInit();
+        /* social.init.js */
+        initSocial();
+        /* medical-metrics.init.js */
+        initMedicalMetrics();
+        /* medical-appointments.init.js */
+        initMedicalAppointments();
+        /* medical-overview.init.js */
+        initMedicalOverview();
+        /* bookings.init.js */
+        initBookings();
+        /* invoice.init.js */
+        initInvoice();
+        /* inbox.init.js */
+        initInbox();
+        /* file-manager.init.js */
+        initFileManger();
+        /* form-validator.render.init.js */
+        initFormValidator();
+        /* form-elements.init.js */
+        initFormElements();
+        /* form-wizards.render.init.js */
+        initFormWizards();
+        /* sliders.init.js */
+        initSliders();
+        /* calendar.render.init.js */
+        initCalendar();
+        /* widgets.init.js */
+        initWidgets();
+        /* modals.init.js */
+        initModals();
+        /* notifications.init.js */
+        initNotifications();
+        /* tables-responsive.init.js */
+        tablesResponsiveInit();
+        /* tables.init.js */
+        tablesInit();
+        /* buttons.init.js */
+        initButtons();
+        /* carousel.init.js */
+        initCarousel();
+        /* gallery-video.init.js */
+        initGalleryVideo();
+        /* photo-gallery.init.js */
+        initPhotoGallery();
+        /* events.init.js */
+        initEvents();
+        /* support-answers.init.js */
+        initSupportAnswers();
+        /* support-questions.init.js */
+        initSupportQuestions();
+        /* support-tickets.init.js */
+        initSupportTickets();
+        /* portfolio.init.js */
+        initPortfolio();
+        /* google maps vector init */
+        mapsVectorInit();
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 
@@ -7012,8 +6953,8 @@ $(function() {
             removeStyleAttr();
         });
 
-        $document.keyup(function(e) {
-            if ( e.keyCode === 27 ) {
+        $document.on("keyup", function(e) {
+            if ( e.key === 'Escape' ) {
                 removeStyleAttr();
             }
         });

@@ -37,13 +37,17 @@ return [
             ],
             'ressources' => [
                 'css' => [
-                    '/MelisDesign/css/tiny-slider.css',
                     '/MelisDesign/css/prettyPhoto.css',
                     '/MelisDesign/css/design-tool.css',
+                    '/MelisDesign/css/tiny-slider/prism.css',
+                    '/MelisDesign/css/tiny-slider/tiny-slider.css',
+                    '/MelisDesign/css/tiny-slider/custom-tiny-slider.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
+                    '/MelisDesign/js/tiny-slider/prism.js',
+                    '/MelisDesign/js/tiny-slider/tiny-slider.init.js'
                 ],
                 /**
                  * the "build" configuration compiles all assets into one file to make
