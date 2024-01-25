@@ -445,7 +445,7 @@
 }
 
 /* Dashboard Chart */
-.flotchart-holder {
+.flotchart-holder.flotchart-fullwidth {
 	width: 100%;
 }
 .page-elements .innerAll.spacing-x2 .widget.widget-primary {
