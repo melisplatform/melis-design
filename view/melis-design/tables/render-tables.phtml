@@ -19,15 +19,14 @@
 	        </ul>
 	    </div>
 	    <div class="innerAll spacing-x2">
-
 	        <!-- Widget -->
 	        <div class="widget widget-inverse widget-table widget-data-tables">
 	            <div class="widget-head">
-	                <h4 class="heading">DataTable with TableTools</h4>
+	                <h4 class="heading">DataTable with Buttons and Select (TableTools)</h4>
 	            </div>
 	            <div class="widget-body padding-bottom-none">
 	                <!-- Table -->
-	                <table class="design-table dynamicTable tableTools table table-striped checkboxs">
+	                <table class="design-table dynamicTable tableTools table checkboxs">
 	                    <thead>
 	                        <tr>
 	                            <th class="text-center">
@@ -917,8 +916,16 @@
 	                <h4 class="heading">DataTable with Show/Hide columns</h4>
 	            </div>
 	            <div class="widget-body padding-bottom-none">
+					<select name="select-toggle-vis" id="select-toggle-vis">
+						<option value="">Toggle column:</option>
+						<option class="toggle-vis" data-column="0" value="Rendering eng.">Rendering eng.</option>
+						<option class="toggle-vis" data-column="1" value="Browser">Browser</option>
+						<option class="toggle-vis" data-column="2" value="Platform(s)">Platform(s)</option>
+						<option class="toggle-vis" data-column="3" value="Eng. vers.">Eng. vers.</option>
+						<option class="toggle-vis" data-column="4" value="CSS grade">CSS grade</option>
+					</select>
 	                <!-- Table -->
-	                <table class="design-table dynamicTable colVis table">
+	                <table class="design-table dynamicTable hiddenColumns table">
 
 	                    <!-- Table heading -->
 	                    <thead class="bg-gray">
@@ -1511,8 +1518,6 @@
 
 	                </table>
 	                <!-- // Table END -->
-
-
 	            </div>
 	        </div>
 	        <!-- // Widget END -->

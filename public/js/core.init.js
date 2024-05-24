@@ -6,9 +6,9 @@ function coreInit() {
 	(function($, window)
 	{
 
-		window.onunload = function(){};
+		//window.onunload = function(){};
 
-		$.expr[':'].scrollable = function( elem ) 
+		$.expr.pseudos.scrollable = function( elem ) 
 	    {
 	      var scrollable = false,
 	          props = [ '', '-x', '-y' ],
@@ -270,8 +270,7 @@ function coreInit() {
 			});
 		}
 		
-		$(window).on('load', function()
-		{
+		$(window).on('load', function() {
 			if ($(window).width() < 992)
 				$('.hasNiceScroll').getNiceScroll().stop();
 
@@ -283,10 +282,18 @@ function coreInit() {
 			if (typeof animations == 'undefined' && typeof $.fn.niceScroll !== 'undefined')
 				$('.hasNiceScroll, #menu_kis, #menu').getNiceScroll().show().resize();
 
-			if (typeof Holder != 'undefined')
-			{
-				Holder.add_theme("dark", {background:"#424242", foreground:"#aaa", size:9}).run();
-				Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9}).run();
+			if (typeof Holder != 'undefined') {
+				Holder.addTheme("dark", {
+                    bg: "#424242",
+                    fg: "#aaa",
+                    size: 9
+                });
+
+                Holder.addTheme("dark", {
+                    bg: "#fff",
+                    fg: "#c9c9c9",
+                    size: 9
+                });
 			}
 		});
 

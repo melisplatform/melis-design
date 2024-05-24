@@ -39,14 +39,14 @@ return [
                 'css' => [
                     '/MelisDesign/css/prettyPhoto.css',
                     '/MelisDesign/css/design-tool.css',
-                    '/MelisDesign/css/tiny-slider/prism.css',
+                    '/MelisDesign/css/datatables/datatables.min.css',
                     '/MelisDesign/css/tiny-slider/tiny-slider.css',
                     '/MelisDesign/css/tiny-slider/custom-tiny-slider.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
-                    '/MelisDesign/js/tiny-slider/prism.js',
+                    '/MelisDesign/assets/components/library/jquery/jquery-migrate.min.js',
                     '/MelisDesign/js/tiny-slider/tiny-slider.init.js'
                 ],
                 /**
@@ -54,7 +54,7 @@ return [
                  * lesser requests
                  */
                 'build' => [
-                    'disable_bundle' => true,
+                    'disable_bundle' => false,
                     // lists of assets that will be loaded in the layout
                     'css' => [
                         '/MelisDesign/build/css/bundle.css',

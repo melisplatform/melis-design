@@ -12,8 +12,7 @@ function animationsInit() {
     });
 
     // disable animations on touch devices
-    if (Modernizr.touch)
-    {
+    if (Modernizr.touch) {
         $('.panel-3d')
             .css('visibility', 'visible')
             .find('[class*="icon-"]')
@@ -493,17 +492,14 @@ function holderInit() {
 /* easy pie init */
 function easyPieInit() {
     // generate easy-pie-charts
-    if ($('.easy-pie').length && $.fn.easyPieChart)
-    {
-        $.each($('.easy-pie'), function(k,v)
-        {
+    if ( $('.easy-pie').length && $.fn.easyPieChart ) {
+        $.each($('.easy-pie'), function(k,v) {
             var color = primaryColor;
             if ($(this).is('.info')) color = infoColor;
             if ($(this).is('.danger')) color = dangerColor;
             if ($(this).is('.success')) color = successColor;
             if ($(this).is('.warning')) color = warningColor;
             if ($(this).is('.inverse')) color = inverseColor;
-
 
             $(v).easyPieChart({
                 barColor: color,
@@ -518,8 +514,8 @@ function easyPieInit() {
 /* Widget Scrollable */
 function widgetScrollableInit() {
     /* Slim Scroll Widgets */
-    $('.widget-scroll').each(function(){
-        $(this).find('.widget-body > div').height($(this).attr('data-scroll-height')).niceScroll({
+    $('.widget-scroll').each(function() {
+        $(this).find('.widget-body > div').height( $(this).attr('data-scroll-height') ).niceScroll({
             cursorwidth: 3,
             zindex: 2,
             cursorborder: "none",
@@ -657,11 +653,11 @@ function initScripts() {
                 }
             });
             self.get('pagination')(true, 0);
-            $el.find('.back-btn').click(function(e) {
+            $el.find('.back-btn').on("click", function(e) {
                 e.preventDefault();
                 self.get('pagination')((i > 0), -1, this);
             });
-            $el.find('.fwd-btn').click(function(e) {
+            $el.find('.fwd-btn').on("click", function(e) {
                 e.preventDefault();
                 self.get('pagination')((i < self.get('markers').length - 1), 1, this);
             });
@@ -696,10 +692,9 @@ function initGoogleMaps() {
     /*
      * Clustering
      */
-    if ($('#google-map-clustering').length)
-    {
-        // We need to bind the map with the "init" event otherwise bounds will be null
-        $('#google-map-clustering').gmap({'zoom': 2, 'disableDefaultUI':true}).bind('init', function(evt, map) {
+    if ($('#google-map-clustering').length)     {
+        // We need to bind the map with the "init" event otherwise bounds will be null, bind('init')
+        $('#google-map-clustering').gmap({'zoom': 2, 'disableDefaultUI':true}).on('init', function(evt, map) {
             var bounds = map.getBounds();
             var southWest = bounds.getSouthWest();
             var northEast = bounds.getNorthEast();
@@ -710,7 +705,7 @@ function initGoogleMaps() {
                 var lng = southWest.lng() + lngSpan * Math.random();
                 $('#google-map-clustering').gmap('addMarker', {
                     'position': new google.maps.LatLng(lat, lng)
-                }).click(function() {
+                }).on("click", function() {
                     $('#google-map-clustering').gmap('openInfoWindow', { content : 'Hello world!' }, this);
                 });
             }
@@ -728,8 +723,7 @@ function initGoogleMaps() {
     /*
      * Extend with pagination
      */
-    if ($('#google-map-extend-pagination').length)
-    {
+    if ($('#google-map-extend-pagination').length) {
         var markers = [
             {'position': '59.32893000000001,18.064910000000054', 'title': 'Stockholm, Sweden' },
             {'position': '35.6894875,139.69170639999993', 'title': 'Tokyo, Japan' },
@@ -754,12 +748,12 @@ function initGoogleMaps() {
     /*
      * Filtering
      */
-    if ($('#google-map-filters').length)
-    {
+    if ($('#google-map-filters').length) {
         // format
         String.prototype.format = function() { a = this; for ( k in arguments ) { a = a.replace("{" + k + "}", arguments[k]); } return a; };
 
-        $('#google-map-filters').gmap({'disableDefaultUI':true}).bind('init', function(evt, map) {
+        // bind('init')
+        $('#google-map-filters').gmap({'disableDefaultUI':true}).on('init', function(evt, map) {
             //$('#google-map-filters').gmap('addControl', 'tags-control', google.maps.ControlPosition.TOP_LEFT);
             $('#google-map-filters').gmap('addControl', 'radios', google.maps.ControlPosition.TOP_LEFT);
             var southWest = map.getBounds().getSouthWest();
@@ -784,7 +778,7 @@ function initGoogleMaps() {
                     $('#google-map-filters').gmap('openInfoWindow', { 'content': $(this)[0].tags + '<br/>' +visibleInViewport }, this);
                 });
             }
-            $('input:checkbox').click(function() {
+            $('input:checkbox').on("click", function() {
                 $('#google-map-filters').gmap('closeInfoWindow');
                 $('#google-map-filters').gmap('set', 'bounds', null);
                 var filters = [];
@@ -828,8 +822,7 @@ function initGoogleMaps() {
     /*
      * Geocoding
      */
-    if ($('#google-map-geocoding').length)
-    {
+    if ($('#google-map-geocoding').length) {
         $('#google-map-geocoding').gmap({
             'zoomControl' : true,
             'zoomControlOpt': {
@@ -842,8 +835,9 @@ function initGoogleMaps() {
             'overviewMapControl': false,
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
-        }).bind('init', function(event, map)
-        {
+        })
+        // bind('init')
+        .on('init', function(event, map) {
             var gmgLatLng = new google.maps.LatLng(53.29463136870075, -6.15019965916872);
             $('#google-map-geocoding').gmap('addMarker', {
                 'position': gmgLatLng,
@@ -862,15 +856,14 @@ function initGoogleMaps() {
                     '</div>');
             }).dragend( function(event) {
                 findLocation(event.latLng, this);
-            }).click( function(event) {
+            }).on("click", function(event) {
                 findLocation(event.latLng, this);
             });
 
             $('#google-map-geocoding').gmap('option', 'center', gmgLatLng );
             $('#google-map-geocoding').gmap('option', 'zoom', 16 );
 
-            $(map).click( function(event)
-            {
+            $(map).on("click", function(event) {
                 $('#google-map-geocoding').gmap('addMarker', {
                     'position': event.latLng,
                     'draggable': true,
@@ -889,7 +882,7 @@ function initGoogleMaps() {
                     findLocation(marker.getPosition(), marker);
                 }).dragend( function(event) {
                     findLocation(event.latLng, this);
-                }).click( function() {
+                }).on("click", function() {
                     openDialog(this);
                 });
             });
@@ -938,8 +931,7 @@ function initGoogleMaps() {
     /*
      * JSON
      */
-    if ($('#google-map-json').length)
-    {
+    if ($('#google-map-json').length) {
         $('#google-map-json').gmap({
             'zoomControl' : true,
             'zoomControlOpt': {
@@ -952,12 +944,14 @@ function initGoogleMaps() {
             'overviewMapControl': false,
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
-        }).bind('init', function() {
+        })
+        // bind('init')
+        .on('init', function() { 
             $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data) {
                 $.each( data.markers, function(i, marker) {
                     $('#google-map-json').gmap('addMarker', {
                         'position': new google.maps.LatLng(marker.latitude, marker.longitude)
-                    }).click(function() {
+                    }).on("click", function() {
                         $('#google-map-json').gmap('openInfoWindow', { 'content': marker.content }, this);
                     });
                 });
@@ -970,8 +964,7 @@ function initGoogleMaps() {
     /*
      * Streetview
      */
-    if ($('#google-map-streetview').length)
-    {
+    if ($('#google-map-streetview').length) {
         $('#google-map-streetview').gmap({ 'disableDefaultUI':true, 'callback': function() {
             var self = this;
             self.microformat('.vevent', function(result, item, index) {
@@ -980,14 +973,14 @@ function initGoogleMaps() {
                 var latlng = new google.maps.LatLng(result.location[0].geo[0].latitude['value-title'], result.location[0].geo[0].longitude['value-title']);
                 // self.addMarker( { 'bounds':true, 'position': latlng, 'title': result.summary, 'icon': 'http://google-maps-icons.googlecode.com/files/music-rock.png' }, function(map, marker) {
                 self.addMarker( { 'bounds':true, 'position': latlng, 'title': result.summary }, function(map, marker) {
-                    $(item).find('.summary').click( function() {
+                    $(item).find('.summary').on("click", function() {
                         $(marker).triggerEvent('click');
                         return false;
                     });
-                    $(item).mouseover(function() {
+                    $(item).on("mouseover", function() {
                         self.get('map').panTo(marker.getPosition());
                     });
-                }).click(function() {
+                }).on("click", function() {
                     self.get('map').panTo( $(this)[0].getPosition());
                     //$(clone).dialog({ 'modal': true, 'width': 530, 'title': result.summary, 'resizable': false, 'draggable': false });
                     bootbox.alert($(clone).html());
@@ -1001,8 +994,7 @@ function initGoogleMaps() {
      * Fullscreen
      */
 
-    if ($('#google-fs').length)
-    {
+    if ($('#google-fs').length) {
         $('#google-fs').height($(window).height() - $('#footer').height() - $('.navbar.main').height() - $('#menu-top').height());
 
         $('#google-fs').gmap({
@@ -1018,32 +1010,30 @@ function initGoogleMaps() {
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
         })
-            .bind('init', function()
-            {
-                $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data)
-                {
-                    $.each( data.markers, function(i, marker)
-                    {
-                        $('#google-fs').gmap('addMarker',
-                            {
-                                'position': new google.maps.LatLng(marker.latitude, marker.longitude),
-                                'bounds': true,
-                                'animation': google.maps.Animation.DROP
-                            })
-                            .click(function()
-                            {
-                                $('#google-fs').gmap('openInfoWindow', { 'content': marker.content }, this);
-                            });
-                    });
-
-                    $('#google-fs').gmap('option', 'center', new google.maps.LatLng(data.markers[1].latitude, data.markers[1].longitude) );
-                    $('#google-fs').gmap('option', 'zoom', 16 );
-
-                    setTimeout(function(){
-                        $('#google-fs').gmap('openInfoWindow', { 'content': data.markers[1].content }, $('#google-fs').gmap('get', 'markers')[1]);
-                    }, 1000);
+        // bind('init')
+        .on('init', function() {
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data) {
+                $.each( data.markers, function(i, marker) {
+                    $('#google-fs').gmap('addMarker',
+                        {
+                            'position': new google.maps.LatLng(marker.latitude, marker.longitude),
+                            'bounds': true,
+                            'animation': google.maps.Animation.DROP
+                        })
+                        .on("click", function()
+                        {
+                            $('#google-fs').gmap('openInfoWindow', { 'content': marker.content }, this);
+                        });
                 });
+
+                $('#google-fs').gmap('option', 'center', new google.maps.LatLng(data.markers[1].latitude, data.markers[1].longitude) );
+                $('#google-fs').gmap('option', 'zoom', 16 );
+
+                setTimeout(function(){
+                    $('#google-fs').gmap('openInfoWindow', { 'content': data.markers[1].content }, $('#google-fs').gmap('get', 'markers')[1]);
+                }, 1000);
             });
+        });
     }
 
     /*
@@ -1051,83 +1041,74 @@ function initGoogleMaps() {
      */
 
     var mfsr = $('#google-fs-realestate');
-    if (mfsr.length)
-    {
-        var mfsr_height =   $(window).height() -
+    if (mfsr.length) {
+        var mfsr_height = $(window).height() -
                 $('#footer').height() -
                 $('.navbar.main').height() -
                 $('#menu-top').height(),
+                mfsr_module = mfsr.data('module') || 'admin',
+                mfsr_url = rootPath + mfsr_module + '/ajax/maps_google_realestate.json',
+                mfsr_info_width = 'auto';
 
-            mfsr_module = mfsr.data('module') || 'admin',
-            mfsr_url = rootPath + mfsr_module + '/ajax/maps_google_realestate.json',
-            mfsr_info_width = 'auto';
+            switch (mfsr_module) {
+                default:
+                case 'admin':
+                    mfsr_info_width = 240;
+                    break;
+                case 'realestate':
+                    mfsr_info_width = 330;
+                    break;
+            }
 
-        switch (mfsr_module) {
-            default:
-            case 'admin':
-                mfsr_info_width = 240;
-                break;
-            case 'realestate':
-                mfsr_info_width = 330;
-                break;
-        }
+            function msfr_info ( marker ) {
+                var content = $('<div/>');
+                content.addClass('innerAll inner-2x').html('<div></div>');
 
-        function msfr_info ( marker )
-        {
-            var content = $('<div/>');
-            content.addClass('innerAll inner-2x').html('<div></div>');
+                if (mfsr_module == 'admin')
+                    content.prepend('<h4></h4>').find(':header').text(marker.title);
+
+                content.find('> div').addClass('msfr_info_content').html(marker.content);
+
+                return content.html();
+            }
 
             if (mfsr_module == 'admin')
-                content.prepend('<h4></h4>').find(':header').text(marker.title);
+                mfsr.height(mfsr_height);
 
-            content.find('> div').addClass('msfr_info_content').html(marker.content);
+            mfsr.gmap({
+                'zoomControl' : true,
+                'zoomControlOptions': {
+                    'style' : google.maps.ZoomControlStyle.SMALL,
+                    'position' : google.maps.ControlPosition.TOP_RIGHT
+                },
+                'panControl' : false,
+                'streetViewControl' : false,
+                'mapTypeControl': false,
+                'overviewMapControl': false,
+                'scrollwheel': false,
+                'mapTypeId': google.maps.MapTypeId.ROADMAP,
+                'zoom': 16
+            })
+            // bind('init')
+            .on('init', function() {
+                $.getJSON( mfsr_url, function(data) {
+                    $.each( data.markers, function(i, marker) {
+                        setTimeout(function() {
+                            mfsr.gmap('addMarker', {
+                                    'position': new google.maps.LatLng(marker.latitude, marker.longitude),
+                                    'draggable': true,
+                                    'animation': google.maps.Animation.DROP
+                                })
+                                .on("click", function() {
+                                    mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, this);
+                                });
 
-            return content.html();
-        }
-
-        if (mfsr_module == 'admin')
-            mfsr.height(mfsr_height);
-
-        mfsr.gmap({
-            'zoomControl' : true,
-            'zoomControlOptions': {
-                'style' : google.maps.ZoomControlStyle.SMALL,
-                'position' : google.maps.ControlPosition.TOP_RIGHT
-            },
-            'panControl' : false,
-            'streetViewControl' : false,
-            'mapTypeControl': false,
-            'overviewMapControl': false,
-            'scrollwheel': false,
-            'mapTypeId': google.maps.MapTypeId.ROADMAP,
-            'zoom': 16
-        })
-            .bind('init', function()
-            {
-                $.getJSON( mfsr_url, function(data)
-                {
-                    $.each( data.markers, function(i, marker)
-                    {
-                        setTimeout(function()
-                            {
-                                mfsr.gmap('addMarker',
-                                    {
-                                        'position': new google.maps.LatLng(marker.latitude, marker.longitude),
-                                        'draggable': true,
-                                        'animation': google.maps.Animation.DROP
-                                    })
-                                    .click(function()
-                                    {
-                                        mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, this);
-                                    });
-
-                                if (i == 1)
-                                {
-                                    mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, mfsr.gmap('get', 'markers')[i]);
-                                    mfsr.gmap('option', 'center', new google.maps.LatLng(marker.latitude, marker.longitude) );
-                                }
-                            },
-                            300*i);
+                            if (i == 1) {
+                                mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, mfsr.gmap('get', 'markers')[i]);
+                                mfsr.gmap('option', 'center', new google.maps.LatLng(marker.latitude, marker.longitude) );
+                            }
+                        },
+                        300*i);
                     });
                 });
             });
@@ -1258,70 +1239,70 @@ function mapsVectorInit() {
     // USA unemployment
     function initUSAUnemployment() {
         var componentsPath = '';
-        $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
-            // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
-            var val = 2009;
-                statesValues = jvm.values.apply({}, jvm.values(data.states)),
-                metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
-                metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
+                // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
+                var val = 2009;
+                    statesValues = jvm.values.apply({}, jvm.values(data.states)),
+                    metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
+                    metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
 
-            $('#usa-unemployment').vectorMap({
-                map: 'us_aea',
-                markers: data.metro.coords,
-                series: {
-                    markers: [{
-                        attribute: 'fill',
-                        scale: ['#FEE5D9', '#A50F15'],
-                        values: data.metro.unemployment[val],
-                        min: jvm.min(metroUnemplValues),
-                        max: jvm.max(metroUnemplValues)
-                    },{
-                        attribute: 'r',
-                        scale: [5, 20],
-                        values: data.metro.population[val],
-                        min: jvm.min(metroPopValues),
-                        max: jvm.max(metroPopValues)
-                    }],
-                    regions: [{
-                        scale: ['#DEEBF7', '#08519C'],
-                        attribute: 'fill',
-                        values: data.states[val],
-                        min: jvm.min(statesValues),
-                        max: jvm.max(statesValues)
-                    }]
-                },
-                onMarkerLabelShow: function(event, label, index){
-                    label.html(
-                        '<b>'+data.metro.names[index]+'</b><br/>'+
-                        '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
-                        '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
-                    );
-                },
-                onRegionLabelShow: function(event, label, code){
-                    label.html(
-                        '<b>'+label.html()+'</b></br>'+
-                        '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
-                    );
-                }
+                $('#usa-unemployment').vectorMap({
+                    map: 'us_aea',
+                    markers: data.metro.coords,
+                    series: {
+                        markers: [{
+                            attribute: 'fill',
+                            scale: ['#FEE5D9', '#A50F15'],
+                            values: data.metro.unemployment[val],
+                            min: jvm.min(metroUnemplValues),
+                            max: jvm.max(metroUnemplValues)
+                        },{
+                            attribute: 'r',
+                            scale: [5, 20],
+                            values: data.metro.population[val],
+                            min: jvm.min(metroPopValues),
+                            max: jvm.max(metroPopValues)
+                        }],
+                        regions: [{
+                            scale: ['#DEEBF7', '#08519C'],
+                            attribute: 'fill',
+                            values: data.states[val],
+                            min: jvm.min(statesValues),
+                            max: jvm.max(statesValues)
+                        }]
+                    },
+                    onMarkerLabelShow: function(event, label, index){
+                        label.html(
+                            '<b>'+data.metro.names[index]+'</b><br/>'+
+                            '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
+                            '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
+                        );
+                    },
+                    onRegionLabelShow: function(event, label, code){
+                        label.html(
+                            '<b>'+label.html()+'</b></br>'+
+                            '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
+                        );
+                    }
+                });
+
+                var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
+
+                $("#usa-unemployment-slider").slider({
+                    value: val,
+                    min: 2005,
+                    max: 2009,
+                    step: 1,
+                    //create: JQSliderCreate,
+                    slide: function( event, ui ) {
+                        //$('#usa-unemployment-slider-year strong').html(ui.value);
+                        val = ui.value;
+                        mapObject.series.regions[0].setValues(data.states[ui.value]);
+                        mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
+                        mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+                    }
+                });
             });
-
-            var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
-
-            $("#usa-unemployment-slider").slider({
-                value: val,
-                min: 2005,
-                max: 2009,
-                step: 1,
-                //create: JQSliderCreate,
-                slide: function( event, ui ) {
-                    //$('#usa-unemployment-slider-year strong').html(ui.value);
-                    val = ui.value;
-                    mapObject.series.regions[0].setValues(data.states[ui.value]);
-                    mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-                    mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
-                }
-            });
-        });
     }
 
     //initRegionSelection();
@@ -1597,7 +1578,7 @@ function mapsVectorInit() {
                 }
             });
 
-            mapProjection.container.click(function(e){
+            mapProjection.container.on("click", function(e){
                 var latLng = mapProjection.pointToLatLng(e.offsetX, e.offsetY),
                     targetCls = $(e.target).attr('class');
 
@@ -2899,150 +2880,40 @@ function dataTablesInit() {
                 $("#"+dtId).find(".bootstrap-select .dropdown-toggle").append("<span class='caret'></span>");
         }
 
-        /* DataTables */
-        componentsPath = "";
-        if ( $('.design-table').length > 0 ) {
-            $('.design-table').each(function() {
-                // DataTables with TableTools, render-tables.phtml
-                if ( $(this).is('.tableTools') ) {
-                    var oTableTools = $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ Show"
-                        },
-                        "oTableTools": {
-                            // "sSwfPath": componentsPath + "/media/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
-                            // "sSwfPath": "/MelisDesign/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
-                            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
-                            // "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf",
-                            // "sSwfPath": "http://www.melis-develop.local/MelisDesign/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+        $(".tableTools").DataTable({
+            "searching": true,
+            "ordering": true,
+            "processing": true,
+            "responsive": true,
+            "paging": true,
+            "select": true,
+            "dom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-4'B><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
+            "pageLength": 10,
+            "columnDefs": [
+                { 'bSortable': false, 'aTargets': [ 0 ] }
+            ],
+            "buttons": [
+                'copy', 'excel', 'pdf'
+            ],
+            "fnInitComplete": function () {
+                fnInitCompleteCallback(this);
+            }
+        });
 
-                        },
-                        "aoColumnDefs": [
-                            { 'bSortable': false, 'aTargets': [ 0 ] }
-                        ],
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "stateSave": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
+        var hiddenColumnsTable = $(".hiddenColumns").DataTable({
+            "scrollY": "500px",
+            "paging": false,
+            "info": false
+        });
 
-                    var $body    = $("body"),
-                        allPages = oTableTools.fnGetNodes();
+        $("#select-toggle-vis").on("change", function() {
+            // get the column API object
+            var column = hiddenColumnsTable.column( $(this).attr("data-column") );
+                
+                // toggle the visibility
+                column.visible( ! column.visible() );
+        });
 
-                        $body.on("click", ".sorting_disabled .checkbox-custom .fa", function() {
-                            var $this           = $(this);
-
-                                if ( $this.hasClass("allChecked") ) {
-                                    $("input[type='checkbox']", allPages).prop("checked", false);
-                                } else {
-                                    $("input[type='checkbox']", allPages).prop("checked", true);
-                                }
-
-                                $this.toggleClass("allChecked");                                
-                        });
-
-                        $body.on("click", ".tableTools thead tr th:not('.sorting_disabled')", function(e) {
-                            var $this           = $(this),
-                                $allChecked     = $(".tableTools thead tr th.sorting_disabled").find(".checkbox .checkbox-custom .fa"),
-                                $tableTools     = $(".tableTools tbody tr"),
-                                $customCheckBox = $tableTools.find("td .checkbox .checkbox-custom");
-
-                                $tableTools.addClass("selectable");
-
-                                if ( $allChecked.hasClass("allChecked") ) {
-                                    $customCheckBox.addClass("checked");
-                                    $customCheckBox.find(".fa").addClass("checked");
-                                    $tableTools.addClass("selected");
-                                }
-                        });
-
-                }
-                // colVis extras initialization
-                else if ($(this).is('.colVis')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ per page"
-                        },
-                        "oColVis": {
-                            "buttonText": "Show / Hide Columns",
-                            "sAlign": "right"
-                        },
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.scrollVertical')) {
-                    $(this).dataTable({
-                        "bPaginate": false,
-                        "sScrollY": "200px",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.ajax')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "bProcessing": true,
-                        "sAjaxSource": rootPath + 'admin/ajax/DataTables.json',
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.fixedHeaderColReorder')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "R<'clear'><'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                            var t = this;
-                            setTimeout(function(){
-                                new FixedHeader( t );
-                            }, 1000);
-                        }
-                    });
-                }
-                // default initialization
-                else {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ per page"
-                        },
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-            });
-        }
     })(jQuery, window);
 }
 
@@ -3270,16 +3141,10 @@ function gridaliciousInit() {
 /* prettyphoto.init.js */
 function prettyPhotoInit() {
     (function($) {
-        /* if ($('[data-toggle="prettyPhoto"]').length)
-            $('[data-toggle="prettyPhoto"]').prettyPhoto(); */
-
-            /* if ( $("a[rel^='prettyPhoto']").length )
-                $("a[rel^='prettyPhoto']").prettyPhoto(); */
-            
-            $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
-                e.preventDefault();
-                $("a[rel^='prettyPhoto']").prettyPhoto();
-            });
+        $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
+            e.preventDefault();
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
     })(jQuery);
 }
 
@@ -3288,7 +3153,6 @@ function jqueryBootpagInit() {
     /*
      * JQuery Pagination Examples
      */
-
     $('.jquery-bootpag-pagination').bootpag({
         total: 23,
         page: 2,
@@ -3308,7 +3172,7 @@ function bootstrapSelectInit() {
 function tablesClassicInit() {
     (function($) {
         /* Table select / checkboxes utility */
-        $('.checkboxs thead :checkbox').change(function() {
+        $('.checkboxs thead :checkbox').on("change", function() {
             if ( $(this).is(':checked') ) {
                 $('.checkboxs tbody :checkbox').prop('checked', true).trigger('change').parent().addClass('checked');
                 $('.checkboxs tbody :checkbox').prop('checked', true).closest(".checkbox-custom.checked").find(".fa").addClass("checked");
@@ -3371,7 +3235,7 @@ function tablesClassicInit() {
         if ($('.checkboxs tbody :checked').length)
             $('.checkboxs_actions').removeClass('hide').show();
 
-        $('.radioboxs tbody tr.selectable').click(function(e){
+        $('.radioboxs tbody tr.selectable').on("click", function(e){
             var c = $(this).find(':radio');
             if (e.srcElement.nodeName == 'INPUT')
             {
@@ -3432,7 +3296,7 @@ function uiInit() {
 
 /* notify.init.js */
 function notyfyInit() {
-    $('[data-toggle="notyfy"]').click(function() {
+    $('[data-toggle="notyfy"]').on("click", function() {
         var self = $(this);
         if(self.data('layout') == 'inline')
         {
@@ -3511,14 +3375,11 @@ function notyfyInit() {
     notification['information'] = 'This alert needs your attention, but it\'s not super <strong>important</strong>.';
     notification['warning'] = '<strong>Warning!</strong> Best check yo self, you\'re not looking too good.';
     notification['confirm'] = 'Do you want to continue?';
-
-
 }
 
 /* gritter.init.js */
 function gritterInit() {
-    $('.gritter-add-sticky').click(function()
-    {
+    $('.gritter-add-sticky').on("click", function() {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a sticky notice!',
@@ -3548,8 +3409,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-regular').click(function()
-    {
+    $('.gritter-add-regular').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a regular notice!',
@@ -3567,8 +3427,7 @@ function gritterInit() {
 
     });
 
-    $('.gritter-add-primary').click(function()
-    {
+    $('.gritter-add-primary').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a primary notice!',
@@ -3588,8 +3447,7 @@ function gritterInit() {
 
     });
 
-    $('.gritter-add-max').click(function()
-    {
+    $('.gritter-add-max').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a notice with a max of 3 on screen at one time!',
@@ -3611,8 +3469,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-without-image').click(function()
-    {
+    $('.gritter-add-without-image').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a notice without an image!',
@@ -3622,8 +3479,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-white').click(function()
-    {
+    $('.gritter-add-white').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a light notification',
@@ -3633,15 +3489,11 @@ function gritterInit() {
         });
         return false;
     });
-
-
-
-
 }
 
 /* modals.bootbox.init.js */
 function modalsBootBoxInit() {
-    $('#modals-bootbox-alert').click(function()
+    $('#modals-bootbox-alert').on("click", function()
     {
         bootbox.alert("Hello World!", function(result)
         {
@@ -3651,7 +3503,7 @@ function modalsBootBoxInit() {
             });
         });
     });
-    $('#modals-bootbox-confirm').click(function()
+    $('#modals-bootbox-confirm').on("click", function()
     {
         bootbox.confirm("Are you sure?", function(result)
         {
@@ -3661,7 +3513,7 @@ function modalsBootBoxInit() {
             });
         });
     });
-    $('#modals-bootbox-prompt').click(function()
+    $('#modals-bootbox-prompt').on("click", function()
     {
         bootbox.prompt("What is your name?", function(result)
         {
@@ -3678,7 +3530,7 @@ function modalsBootBoxInit() {
             }
         });
     });
-    $('#modals-bootbox-custom').click(function()
+    $('#modals-bootbox-custom').on("click", function()
     {
         bootbox.dialog({
             message: "I am a custom dialog",
@@ -3753,7 +3605,7 @@ function formWizardsInit() {
                             // Make sure we entered the title
                             if(!wiz.find('#inputTitle').val()) {
                                 alert('You must enter the product title');
-                                wiz.find('#inputTitle').focus();
+                                wiz.find('#inputTitle').trigger("focus");
                                 return false;
                             }
                         }
@@ -3763,7 +3615,7 @@ function formWizardsInit() {
                         // Make sure we entered the title
                         if(!wiz.find('#inputTitle').val()) {
                             alert('You must enter the product title');
-                            wiz.find('#inputTitle').focus();
+                            wiz.find('#inputTitle').trigger("focus");
                             return false;
                         }
                     },
@@ -3772,7 +3624,7 @@ function formWizardsInit() {
                         // Make sure we entered the title
                         if(!wiz.find('#inputTitle').val()) {
                             alert('You must enter the product title');
-                            wiz.find('#inputTitle').focus();
+                            wiz.find('#inputTitle').trigger("focus");
                             return false;
                         }
                     },
@@ -3817,7 +3669,7 @@ function formWizardsInit() {
                     lastSelector: '.last'
                 });
 
-            wiz.find('.finish').click(function()
+            wiz.find('.finish').on("click", function()
             {
                 alert('Finished!, Starting over!');
                 wiz.find("a[data-toggle*='tab']:first").trigger('click');
@@ -3834,7 +3686,7 @@ function widgetCollapsibleInit() {
                 $(this).parents('.widget:first').attr('data-collapse-closed', "false");
             })
             .on('shown.bs.collapse', function(){
-                setTimeout(function(){ $(window).resize(); }, 500);
+                setTimeout(function(){ $(window).on("resize"); }, 500);
             })
             .on('hidden.bs.collapse', function(){
                 $(this).parents('.widget:first').attr('data-collapse-closed', "true");
@@ -3863,8 +3715,7 @@ function widgetCollapsibleInit() {
 
 /* widget-progress.init.js */
 function widgetProgressInit() {
-    (function($)
-    {
+    (function($) {
         $('#widget-progress-bar .progress-bar').width("50%");
         setInterval(function(){
             var w = mt_rand(30, 100);
@@ -4281,9 +4132,7 @@ function flotchartSimpleInit() {
 
 /* flotchart-simple-bars.init.js */
 function flotchartSimpleBarsInit() {
-
-    (function($)
-    {
+    (function($) {
         if($("#chart_simple_bars_001").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -4395,15 +4244,12 @@ function flotchartSimpleBarsInit() {
                 $(this).addClass('active');
             });
         }
-
-
     })(jQuery);
 }
 
 /* flotchart-simple-02.init.js */
 function flotchartSimple02Init() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_simple_02").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -4514,16 +4360,12 @@ function flotchartSimple02Init() {
             //  $(this).addClass('active');
             // });
         }
-
-
     })(jQuery);
-
 }
 
 /* flotchart-line.init.js */
 function flotChartLineInit() {
-    (function($)
-    {
+    (function($) {
         if($("#chart_lines_fill_nopoints").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -4616,9 +4458,7 @@ function flotChartLineInit() {
 
 /* flotchart-bars-ordered.init.js */
 function flotchartBarsOrderedInit() {
-
-    (function($)
-    {
+    (function($) {
         if($("#chart_ordered_bars").length) {
             if (typeof charts == 'undefined')
                 return;
@@ -5342,7 +5182,6 @@ function flotchartFinancesSimpleInit() {
 
 
     })(jQuery);
-
 }
 
 /* datepicker.init.js */
@@ -5417,8 +5256,7 @@ function calendarInit() {
         /* initialize the external events
          -----------------------------------------------------------------*/
 
-        $('#external-events ul li').each(function()
-        {
+        $('#external-events ul li').each(function() {
 
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
@@ -5430,15 +5268,13 @@ function calendarInit() {
             $(this).data('eventObject', eventObject);
 
             // make the event draggable using jQuery UI
-            $(this).draggable(
-                {
-                    zIndex: 999,
-                    revert: true,      // will cause the event to go back to its
-                    revertDuration: 0,  //  original position after the drag,
-                    start: function() { if (typeof mainYScroller != 'undefined') mainYScroller.disable(); },
-                    stop: function() { if (typeof mainYScroller != 'undefined') mainYScroller.enable(); }
-                });
-
+            $(this).draggable({
+                zIndex: 999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0,  //  original position after the drag,
+                start: function() { if (typeof mainYScroller != 'undefined') mainYScroller.disable(); },
+                stop: function() { if (typeof mainYScroller != 'undefined') mainYScroller.enable(); }
+            });
         });
 
         /* initialize the calendar
@@ -5453,8 +5289,7 @@ function calendarInit() {
             editable: true,
             droppable: true,
             events: '/html/admin/ajax/calendarEvents.json',
-            drop: function(date, allDay)
-            {
+            drop: function(date, allDay) {
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
 
@@ -5498,7 +5333,6 @@ function switchBootstrap() {
 
     !function ($) {
         "use strict";
-
         $.fn['bootstrapSwitch'] = function (method) {
             var inputSelector = 'input[type!="hidden"]';
             var methods = {
@@ -5647,9 +5481,9 @@ function switchBootstrap() {
                                 $this.closest('div').removeClass('switch-animate');
 
                                 if ($this.closest('.has-switch').is('.deactivate')) {
-                                    $this.unbind('click');
+                                    $this.off('click');
                                 } else if ($this.closest('.switch-on').parent().is('.radio-no-uncheck')) {
-                                    $this.unbind('click');
+                                    $this.off('click');
                                 } else {
                                     $this.on('mousemove touchmove', function (e) {
                                         var $element = $(this).closest('.make-switch')
@@ -5676,7 +5510,7 @@ function switchBootstrap() {
                                         e.stopImmediatePropagation();
                                         e.preventDefault();
 
-                                        $this.unbind('mouseleave');
+                                        $this.off('mouseleave');
 
                                         if (moving)
                                             $myRadioCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
@@ -5694,7 +5528,7 @@ function switchBootstrap() {
                                         e.preventDefault();
                                         e.stopImmediatePropagation();
 
-                                        $this.unbind('mouseleave');
+                                        $this.off('mouseleave');
                                         $this.trigger('mouseup');
 
                                         $myInputBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
@@ -5704,13 +5538,13 @@ function switchBootstrap() {
                                         e.stopImmediatePropagation();
                                         e.preventDefault();
 
-                                        $(this).unbind('mousemove');
+                                        $(this).off('mousemove');
                                     });
                                 }
                             });
 
                             if ($form.data('bootstrapSwitch') !== 'injected') {
-                                $form.bind('reset', function () {
+                                $form.on('reset', function () {
                                     setTimeout(function () {
                                         $form.find('.make-switch').each(function () {
                                             var $input = $(this).find(inputSelector);
@@ -5840,10 +5674,10 @@ function switchBootstrap() {
                     $inputbox = $div.children();
                     $inputbox.unwrap().unwrap();
 
-                    $inputbox.unbind('change');
+                    $inputbox.off('change');
 
                     if ($form) {
-                        $form.unbind('reset');
+                        $form.off('reset');
                         $form.removeData('bootstrapSwitch');
                     }
 
@@ -5872,26 +5706,24 @@ function bootstrapSwitchInit() {
 /* form-validator.init.js */
 function formValidatorInit() {
     $.validator.setDefaults({
-            submitHandler: function() { alert("submitted!"); },
-            showErrors: function(map, list) {
-                this.currentElements.parents('label:first, div:first').find('.has-error').remove();
-                this.currentElements.parents('.form-group:first').removeClass('has-error');
+        submitHandler: function() { alert("submitted!"); },
+        showErrors: function(map, list) {
+            this.currentElements.parents('label:first, div:first').find('.has-error').remove();
+            this.currentElements.parents('.form-group:first').removeClass('has-error');
 
-                $.each(list, function(index, error)
-                {
-                    var ee = $(error.element);
-                    var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('div:first');
+            $.each(list, function(index, error) {
+                var ee = $(error.element);
+                var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('div:first');
 
-                    ee.parents('.form-group:first').addClass('has-error');
-                    eep.find('.has-error').remove();
-                    eep.append('<p class="has-error help-block">' + error.message + '</p>');
-                });
-                //refreshScrollers();
-            }
-        });
+                ee.parents('.form-group:first').addClass('has-error');
+                eep.find('.has-error').remove();
+                eep.append('<p class="has-error help-block">' + error.message + '</p>');
+            });
+            //refreshScrollers();
+        }
+    });
 
-    $(function()
-    {
+    $(function() {
         // validate signup form on keyup and submit
         $("#validateSubmitForm").validate({
             rules: {
@@ -5942,7 +5774,7 @@ function formValidatorInit() {
         });
 
         // propose username by combining first- and lastname
-        $("#username").focus(function() {
+        $("#username").on("focus", function() {
             var firstname = $("#firstname").val();
             var lastname = $("#lastname").val();
             if(firstname && lastname && !this.value) {
@@ -5957,7 +5789,7 @@ function formValidatorInit() {
         var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
         var topicInputs = topics.find("input").attr("disabled", !inital);
         // show when newsletter is checked
-        newsletter.click(function() {
+        newsletter.on("click", function() {
             topics[this.checked ? "removeClass" : "addClass"]("gray");
             topicInputs.attr("disabled", !this.checked);
         });
@@ -6004,15 +5836,15 @@ function plUploadInit() {
         });
 
         // Client side form validation
-        $('#pluploadForm').submit(function(e) {
+        $('#pluploadForm').on("submit", function(e) {
             var uploader = $('#pluploadUploader').pluploadQueue();
 
             // Files in queue upload them first
             if (uploader.files.length > 0) {
-                // When all files are uploaded submit form
-                uploader.bind('StateChanged', function() {
+                // When all files are uploaded submit form, uploader.bind()
+                uploader.on('StateChanged', function() {
                     if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
-                        $('#pluploadForm').submit();
+                        $('#pluploadForm').trigger("submit");
                     }
                 });
 
@@ -6033,11 +5865,9 @@ function coreInit() {
         top.location.href = document.location.href;
 
     (function($, window) {
+        //window.onunload = function(){};
 
-        window.onunload = function(){};
-
-        $.expr[':'].scrollable = function( elem )
-        {
+        $.expr.pseudos.scrollable = function( elem ) {
             var scrollable = false,
                 props = [ '', '-x', '-y' ],
                 re = /^(?:auto|scroll)$/i,
@@ -6053,8 +5883,7 @@ function coreInit() {
         if (!Modernizr.touch && $('[href="#template-options"][data-auto-open]').length)
             $('#template-options').collapse('show');
 
-        window.beautify = function (source)
-        {
+        window.beautify = function (source) {
             var output,
                 opts = {};
 
@@ -6064,8 +5893,7 @@ function coreInit() {
         }
 
         // generate a random number within a range (PHP's mt_rand JavaScript implementation)
-        window.mt_rand = function (min, max)
-        {
+        window.mt_rand = function (min, max) {
             var argc = arguments.length;
             if (argc === 0) {
                 min = 0;
@@ -6082,14 +5910,12 @@ function coreInit() {
         }
 
         // scroll to element animation
-        function scrollTo(id)
-        {
+        function scrollTo(id) {
             if ($(id).length)
                 $('html,body').animate({scrollTop: $(id).offset().top},'slow');
         }
 
-        window.resizeNiceScroll = function()
-        {
+        window.resizeNiceScroll = function() {
             setTimeout(function(){
                 $('.hasNiceScroll, #menu_kis, #menu').getNiceScroll().show().resize();
             }, 100);
@@ -6109,8 +5935,7 @@ function coreInit() {
         $('[data-toggle="popover"]').popover();
 
         // print
-        $('[data-toggle="print"]').click(function(e)
-        {
+        $('[data-toggle="print"]').on("click", function(e) {
             e.preventDefault();
             window.print();
         });
@@ -6125,8 +5950,7 @@ function coreInit() {
             prettyPrint();
 
         // show/hide toggle buttons
-        $('[data-toggle="hide"]').click(function()
-        {
+        $('[data-toggle="hide"]').on("click", function() {
             if ($(this).is('.bootboxTarget'))
                 bootbox.alert($($(this).attr('data-target')).html());
             else {
@@ -6137,13 +5961,11 @@ function coreInit() {
         });
 
         $('ul.collapse')
-            .on('show.bs.collapse', function(e)
-            {
+            .on('show.bs.collapse', function(e) {
                 e.stopPropagation();
                 $(this).closest('li').addClass('active');
             })
-            .on('hidden.bs.collapse', function(e)
-            {
+            .on('hidden.bs.collapse', function(e){
                 e.stopPropagation();
                 $(this).closest('li').removeClass('active');
             });
@@ -6160,8 +5982,7 @@ function coreInit() {
             $(this).addClass('active');
         });
 
-        window.enableContentNiceScroll = function(hide)
-        {
+        window.enableContentNiceScroll = function(hide) {
             if ($('html').is('.ie') || Modernizr.touch)
                 return;
 
@@ -6178,8 +5999,7 @@ function coreInit() {
                     return !$(this).find('> .col-table').length;
                 })
                 .addClass('hasNiceScroll')
-                .each(function()
-                {
+                .each(function() {
                     $(this).niceScroll({
                         horizrailenabled: false,
                         zindex: 2,
@@ -6195,8 +6015,7 @@ function coreInit() {
                 });
         }
 
-        window.disableContentNiceScroll = function()
-        {
+        window.disableContentNiceScroll = function() {
             $('#content .hasNiceScroll').getNiceScroll().remove();
         }
 
@@ -6206,16 +6025,15 @@ function coreInit() {
             $('html').removeClass('app');
 
         $('body')
-            .on('mouseenter', '[data-toggle="dropdown"].dropdown-hover', function()
-            {
+            .on('mouseenter', '[data-toggle="dropdown"].dropdown-hover', function() {
                 if (!$(this).parent('.dropdown').is('.open'))
-                    $(this).click();
+                    $(this).trigger("click");
             });
 
         $('.navbar.main')
             .add('#menu-top')
             .on('mouseleave', function(){
-                $(this).find('.dropdown.open').find('> [data-toggle="dropdown"]').click();
+                $(this).find('.dropdown.open').find('> [data-toggle="dropdown"]').trigger("click");
             });
 
         $('[data-height]').each(function(){
@@ -6223,12 +6041,11 @@ function coreInit() {
         });
 
         $('.app [data-toggle="tab"]')
-            .on('shown.bs.tab', function(e)
-            {
+            .on('shown.bs.tab', function(e) {
                 $('.hasNiceScroll').getNiceScroll().resize();
             });
 
-        window.enableNavbarMenusHover = function(){
+        window.enableNavbarMenusHover = function() {
             $('.navbar.main [data-toggle="dropdown"]')
                 .add('#menu-top [data-toggle="dropdown"]')
                 .addClass('dropdown-hover');
@@ -6255,8 +6072,7 @@ function coreInit() {
                 .removeClass('open');
         }
 
-        if (typeof $.fn.setBreakpoints !== 'undefined')
-        {
+        if (typeof $.fn.setBreakpoints !== 'undefined') {
             $(window).setBreakpoints({
                 distinct: false,
                 breakpoints: [
@@ -6264,30 +6080,30 @@ function coreInit() {
                     992
                 ]
             });
-
-            $(window).bind('exitBreakpoint768',function() {
+            
+            // bind
+            $(window).on('exitBreakpoint768',function() {
                 $('.container-fluid').addClass('menu-hidden');
                 disableNavbarMenusHover();
                 enableResponsiveNavbarSubmenus();
             });
 
-            $(window).bind('enterBreakpoint768',function() {
+            $(window).on('enterBreakpoint768',function() {
                 $('.container-fluid').removeClass('menu-hidden');
                 enableNavbarMenusHover();
                 disableResponsiveNavbarSubmenus();
             });
 
-            $(window).bind('exitBreakpoint992',function() {
+            $(window).on('exitBreakpoint992',function() {
                 disableContentNiceScroll();
             });
 
-            $(window).bind('enterBreakpoint992',function() {
+            $(window).on('enterBreakpoint992',function() {
                 enableContentNiceScroll(false);
             });
         }
 
-        $(window).on('load', function()
-        {
+        $(window).on('load', function() {
             if ($(window).width() < 992)
                 $('.hasNiceScroll').getNiceScroll().stop();
 
@@ -6299,10 +6115,18 @@ function coreInit() {
             if (typeof animations == 'undefined' && typeof $.fn.niceScroll !== 'undefined')
                 $('.hasNiceScroll, #menu_kis, #menu').getNiceScroll().show().resize();
 
-            if (typeof Holder != 'undefined')
-            {
-                Holder.add_theme("dark", {background:"#424242", foreground:"#aaa", size:9}).run();
-                Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9}).run();
+            if (typeof Holder != 'undefined') {
+                Holder.addTheme("dark", {
+                    bg: "#424242",
+                    fg: "#aaa",
+                    size: 9
+                });
+
+                Holder.addTheme("dark", {
+                    bg: "#fff",
+                    fg: "#c9c9c9",
+                    size: 9
+                });
             }
         });
 
@@ -6315,8 +6139,7 @@ function medicalInit() {
         if (typeof charts == 'undefined')
             return;
 
-        charts.metricsDrawHook = function (plot, canvascontext)
-        {
+        charts.metricsDrawHook = function (plot, canvascontext) {
             var t = $('#metrics table');
 
             if (!t.length)
@@ -6329,287 +6152,281 @@ function medicalInit() {
             t.find('tr').append('<td class="legendSelect"><input type="checkbox" checked="checked"></td>');
         }
 
-        charts.chart_gender =
-            {
-                // chart data
-                data: null,
+        charts.chart_gender = {
+            // chart data
+            data: null,
 
-                // will hold the chart object
-                plot: null,
+            // will hold the chart object
+            plot: null,
 
-                // chart options
-                options:
-                    {
-                        bars: {
-                            show:true,
-                            barWidth: 0.3,
-                            fill:1
-                        },
-                        grid: {
-                            show: true,
-                            aboveData: false,
-                            color: "#3f3f3f",
-                            labelMargin: 5,
-                            axisMargin: 0,
-                            borderWidth: 0,
-                            borderColor:null,
-                            minBorderMargin: 5,
-                            clickable: true,
-                            hoverable: true,
-                            autoHighlight: false,
-                            mouseActiveRadius: 20,
-                            backgroundColor : { }
-                        },
-                        legend: { show: false, position: "ne", backgroundColor: null, backgroundOpacity: 0 },
-                        colors: []
-                    },
-
-                placeholder: "#chart_gender",
-
-                // initialize
-                init: function()
+            // chart options
+            options:
                 {
-                    if (!$(this.placeholder).length)
-                        return;
+                    bars: {
+                        show:true,
+                        barWidth: 0.3,
+                        fill:1
+                    },
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    legend: { show: false, position: "ne", backgroundColor: null, backgroundOpacity: 0 },
+                    colors: []
+                },
 
-                    // apply styling
-                    this.options.colors = ["#D67FB0", "#4193d0"];
-                    this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
-                    this.options.grid.borderColor = primaryColor;
-                    this.options.grid.color = primaryColor;
+            placeholder: "#chart_gender",
 
-                    //some data
-                    var d1 = [];
-                    for (var i = 0; i <= 10; i += 1)
-                        d1.push([i, parseInt(Math.random() * 30)]);
+            // initialize
+            init: function()
+            {
+                if (!$(this.placeholder).length)
+                    return;
 
-                    var d2 = [];
-                    for (var i = 0; i <= 10; i += 1)
-                        d2.push([i, parseInt(Math.random() * 30)]);
+                // apply styling
+                this.options.colors = ["#D67FB0", "#4193d0"];
+                this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
+                this.options.grid.borderColor = primaryColor;
+                this.options.grid.color = primaryColor;
 
-                    var ds = new Array();
+                //some data
+                var d1 = [];
+                for (var i = 0; i <= 10; i += 1)
+                    d1.push([i, parseInt(Math.random() * 30)]);
 
-                    ds.push({
-                        label: "Data One",
-                        data:d1,
-                        bars: {order: 1}
-                    });
-                    ds.push({
-                        label: "Data Two",
-                        data:d2,
-                        bars: {order: 2}
-                    });
-                    this.data = ds;
+                var d2 = [];
+                for (var i = 0; i <= 10; i += 1)
+                    d2.push([i, parseInt(Math.random() * 30)]);
 
-                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                var ds = new Array();
+
+                ds.push({
+                    label: "Data One",
+                    data:d1,
+                    bars: {order: 1}
+                });
+                ds.push({
+                    label: "Data Two",
+                    data:d2,
+                    bars: {order: 2}
+                });
+                this.data = ds;
+
+                this.plot = $.plot($(this.placeholder), this.data, this.options);
+            }
+        };
+
+        charts.chart_metrics = {
+            // chart data
+            data:
+                {
+                    d: []
+                },
+
+            // will hold the chart object
+            plot: null,
+
+            // chart options
+            options:
+                {
+                    grid: {
+                        show: true,
+                        aboveData: true,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: true,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    series: {
+                        grow: { active:true, duration: 200 },
+                        lines: {
+                            show: true,
+                            fill: .07,
+                            lineWidth: 2
+                        },
+                        points: {show:false}
+                    },
+                    legend: {
+                        backgroundColor: null,
+                        backgroundOpacity: 0,
+                        container: $('#metrics'),
+                        labelFormatter: function(label, series) {
+                            return '<a href="#" data-toggle="charts-metrics-toggle" data-series-idx="' + series.idx + '">' + label + '</a>';
+                        }
+                    },
+                    yaxis: { min: 0 },
+                    xaxis: {ticks:11, tickDecimals: 0},
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
+                    },
+                    hooks: { draw: [charts.metricsDrawHook] }
+                },
+
+            placeholder: "#chart_metrics",
+
+            toggle: function(id) {
+                var d = this.plot.getData(),
+                    show = d[id].grow.growings[0].stepDirection == 'down',
+                    nd = [];
+
+                if (show)
+                {
+                    d[id].grow.growings[0].stepDirection = 'up';
+                    d[id].data = this.data.d[id];
                 }
-            };
-
-        charts.chart_metrics =
-            {
-                // chart data
-                data:
-                    {
-                        d: []
-                    },
-
-                // will hold the chart object
-                plot: null,
-
-                // chart options
-                options:
-                    {
-                        grid: {
-                            show: true,
-                            aboveData: true,
-                            color: "#3f3f3f",
-                            labelMargin: 5,
-                            axisMargin: 0,
-                            borderWidth: 0,
-                            borderColor:null,
-                            minBorderMargin: 5 ,
-                            clickable: true,
-                            hoverable: true,
-                            autoHighlight: true,
-                            mouseActiveRadius: 20,
-                            backgroundColor : { }
-                        },
-                        series: {
-                            grow: { active:true, duration: 200 },
-                            lines: {
-                                show: true,
-                                fill: .07,
-                                lineWidth: 2
-                            },
-                            points: {show:false}
-                        },
-                        legend: {
-                            backgroundColor: null,
-                            backgroundOpacity: 0,
-                            container: $('#metrics'),
-                            labelFormatter: function(label, series) {
-                                return '<a href="#" data-toggle="charts-metrics-toggle" data-series-idx="' + series.idx + '">' + label + '</a>';
-                            }
-                        },
-                        yaxis: { min: 0 },
-                        xaxis: {ticks:11, tickDecimals: 0},
-                        colors: [],
-                        shadowSize:1,
-                        tooltip: true,
-                        tooltipOpts: {
-                            content: "%s : %y.0",
-                            shifts: {
-                                x: -30,
-                                y: -50
-                            },
-                            defaultTheme: false
-                        },
-                        hooks: { draw: [charts.metricsDrawHook] }
-                    },
-
-                placeholder: "#chart_metrics",
-
-                toggle: function(id)
+                else
                 {
-                    var d = this.plot.getData(),
-                        show = d[id].grow.growings[0].stepDirection == 'down',
-                        nd = [];
+                    var max = d[id].data.length;
+                    d[id].data = [];
 
-                    if (show)
+                    for (var i=1;i<=max;i++)
+                        d[id].data.push([i, 0]);
+
+                    d[id].grow.growings[0].stepDirection = 'down';
+                }
+
+                this.plot.setData(d);
+                this.plot.draw();
+            },
+
+            changeData: function() {
+                var d = this.plot.getData(),
+                    that = this;
+
+                this.data.d = [];
+
+                // generate some data
+                for (var i=0;i<=5;i++)
+                {
+                    this.data.d.push([]);
+                    for (var j=1;j<=30;j++)
+                        this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
+                }
+
+                $.each(d, function(index, value){
+                    var a = $('[data-series-idx="'+index+'"]'),
+                        c = a.closest('tr').find(':checked').length;
+
+                    d[index].data = c ? that.data.d[index] : [];
+                });
+
+                this.plot.setData(d);
+                this.plot.draw();
+            },
+
+            // initialize
+            init: function()
+            {
+                if (!$(this.placeholder).length)
+                    return;
+
+                var that = this;
+
+                $('body')
+                    .on('click', '[data-toggle="charts-metrics-toggle"]', function(e)
                     {
-                        d[id].grow.growings[0].stepDirection = 'up';
-                        d[id].data = this.data.d[id];
-                    }
-                    else
-                    {
-                        var max = d[id].data.length;
-                        d[id].data = [];
+                        e.preventDefault();
+                        charts.chart_metrics.toggle($(this).attr('data-series-idx'));
+                    })
+                    .on('change', '.legendSelect :checkbox', function(){
+                        var idx = $(this).closest('tr').find('[data-toggle="charts-metrics-toggle"]').attr('data-series-idx');
+                        charts.chart_metrics.toggle(idx);
+                    })
+                    .on('click', '#metrics table tr', function(e){
+                        if ($(e.target).is('a') || $(e.target).is(':checkbox'))
+                            return;
 
-                        for (var i=1;i<=max;i++)
-                            d[id].data.push([i, 0]);
-
-                        d[id].grow.growings[0].stepDirection = 'down';
-                    }
-
-                    this.plot.setData(d);
-                    this.plot.draw();
-                },
-
-                changeData: function(){
-                    var d = this.plot.getData(),
-                        that = this;
-
-                    this.data.d = [];
-
-                    // generate some data
-                    for (var i=0;i<=5;i++)
-                    {
-                        this.data.d.push([]);
-                        for (var j=1;j<=30;j++)
-                            this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
-                    }
-
-                    $.each(d, function(index, value){
-                        var a = $('[data-series-idx="'+index+'"]'),
-                            c = a.closest('tr').find(':checked').length;
-
-                        d[index].data = c ? that.data.d[index] : [];
+                        var c = $(this).find(':checkbox');
+                        c.prop('checked', !c.prop('checked')).trigger('change');
+                    })
+                    .on('click', '[data-toggle="charts-metrics-changedata"] .btn', function(){
+                        if ($(this).is('.active')) return;
+                        $('[data-toggle="charts-metrics-changedata"] .btn.active').removeClass('active');
+                        $(this).addClass('active');
+                        charts.chart_metrics.changeData();
                     });
 
-                    this.plot.setData(d);
-                    this.plot.draw();
-                },
+                // apply styling
+                this.options.colors = [primaryColor, "#cc6666", "#cca366", "#b7cc66", "#7acc66", "#66cccc"];
+                this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
+                this.options.grid.borderColor = primaryColor;
+                this.options.grid.color = primaryColor;
 
-                // initialize
-                init: function()
+                // generate some data
+                for (var i=0;i<=5;i++)
                 {
-                    if (!$(this.placeholder).length)
-                        return;
+                    this.data.d.push([]);
+                    for (var j=1;j<=30;j++)
+                        this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
+                }
 
-                    var that = this;
-
-                    $('body')
-                        .on('click', '[data-toggle="charts-metrics-toggle"]', function(e)
+                // make chart
+                this.plot = $.plot(
+                    this.placeholder,
+                    [{
+                        label: "Hypertension",
+                        data: this.data.d[0],
+                        idx: 0,
+                        grow: { growings:[ { stepMode: "linear" } ] }
+                    },
                         {
-                            e.preventDefault();
-                            charts.chart_metrics.toggle($(this).attr('data-series-idx'));
-                        })
-                        .on('change', '.legendSelect :checkbox', function(){
-                            var idx = $(this).closest('tr').find('[data-toggle="charts-metrics-toggle"]').attr('data-series-idx');
-                            charts.chart_metrics.toggle(idx);
-                        })
-                        .on('click', '#metrics table tr', function(e){
-                            if ($(e.target).is('a') || $(e.target).is(':checkbox'))
-                                return;
-
-                            var c = $(this).find(':checkbox');
-                            c.prop('checked', !c.prop('checked')).trigger('change');
-                        })
-                        .on('click', '[data-toggle="charts-metrics-changedata"] .btn', function(){
-                            if ($(this).is('.active')) return;
-                            $('[data-toggle="charts-metrics-changedata"] .btn.active').removeClass('active');
-                            $(this).addClass('active');
-                            charts.chart_metrics.changeData();
-                        });
-
-                    // apply styling
-                    this.options.colors = [primaryColor, "#cc6666", "#cca366", "#b7cc66", "#7acc66", "#66cccc"];
-                    this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
-                    this.options.grid.borderColor = primaryColor;
-                    this.options.grid.color = primaryColor;
-
-                    // generate some data
-                    for (var i=0;i<=5;i++)
-                    {
-                        this.data.d.push([]);
-                        for (var j=1;j<=30;j++)
-                            this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
-                    }
-
-                    // make chart
-                    this.plot = $.plot(
-                        this.placeholder,
-                        [{
-                            label: "Hypertension",
-                            data: this.data.d[0],
-                            idx: 0,
-                            grow: { growings:[ { stepMode: "linear" } ] }
+                            label: "Blood Pressure",
+                            data: this.data.d[1],
+                            idx: 1
                         },
-                            {
-                                label: "Blood Pressure",
-                                data: this.data.d[1],
-                                idx: 1
-                            },
-                            {
-                                label: "Blood Sugar",
-                                data: this.data.d[2],
-                                idx: 2
-                            },
-                            {
-                                label: "Alergy",
-                                data: this.data.d[3],
-                                idx: 3
-                            },
-                            {
-                                label: "Macrobacterium",
-                                data: this.data.d[4],
-                                idx: 4
-                            },
-                            {
-                                label: "Quadrigeminy",
-                                data: this.data.d[5],
-                                idx: 5
-                            }],
-                        this.options);
-                }
-            };
+                        {
+                            label: "Blood Sugar",
+                            data: this.data.d[2],
+                            idx: 2
+                        },
+                        {
+                            label: "Alergy",
+                            data: this.data.d[3],
+                            idx: 3
+                        },
+                        {
+                            label: "Macrobacterium",
+                            data: this.data.d[4],
+                            idx: 4
+                        },
+                        {
+                            label: "Quadrigeminy",
+                            data: this.data.d[5],
+                            idx: 5
+                        }],
+                    this.options);
+            }
+        };
 
         charts.chart_gender.init();
         charts.chart_metrics.init();
-
-
     })(jQuery);
-
 }
 
 /* tables-responsive-footable.init.js */
@@ -6684,8 +6501,8 @@ function initButtons() {
 function tablesInit() {
     jQueryDataTables();
     //tableTools();
-    colVis();
-    dtBootstrap();
+    //colVis();
+    //dtBootstrap();
     dataTablesInit();
     fueluxCheckBoxInit();
     bootstrapSelectInit();
@@ -6821,7 +6638,6 @@ function initMedicalAppointments() {
 /* medical-metrics.init.js */
 function initMedicalMetrics() {
     medicalInit();
-
 }
 
 /* social.init.js */
@@ -6857,9 +6673,8 @@ function initRatings() {
 /* remove body style */
 function removeStyleAttr() {
     var $body = $("body");
-
         setTimeout(function() {
-            $body.removeAttr("style");
+            $body.prop("style", null);
         }, 1000);
 }
 
@@ -6968,5 +6783,9 @@ $(function() {
                 if ( $spinner.length === 0 ) {
                     $this.prepend( spinnerHtml );
                 }
+        });
+
+        $body.on("click", ".page-elements a", function(e) {
+            e.preventDefault();
         });
 });

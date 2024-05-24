@@ -2,8 +2,8 @@
 function tablesInit() {
 	jQueryDataTables();
 	// tableTools();
-	colVis();
-	dtBootstrap();
+	//colVis();
+	//dtBootstrap();
 	dataTablesInit();
 	fueluxCheckBoxInit();
 	bootstrapSelectInit();
