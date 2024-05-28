@@ -42,12 +42,14 @@ return [
                     '/MelisDesign/css/datatables/datatables.min.css',
                     '/MelisDesign/css/tiny-slider/tiny-slider.css',
                     '/MelisDesign/css/tiny-slider/custom-tiny-slider.css',
+                    '/MelisDesign/assets/components/plugins/prism/css/prism.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
                     '/MelisDesign/assets/components/library/jquery/jquery-migrate.min.js',
-                    '/MelisDesign/js/tiny-slider/tiny-slider.init.js'
+                    '/MelisDesign/js/tiny-slider/tiny-slider.init.js',
+                    '/MelisDesign/assets/components/plugins/prism/js/prism.js',
                 ],
                 /**
                  * the "build" configuration compiles all assets into one file to make

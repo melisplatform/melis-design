@@ -2,7 +2,7 @@ function mapsVectorInit() {
 	$(function()
 	{
 		
-		$('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e)
+		$('#maps_vector_tabs a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e)
 		{
 			if ($(this).attr('data-init'))
 				return;

@@ -9792,3 +9792,112 @@ body {
 .page-elements a {
 	text-decoration: none;
 }
+.page-elements a:hover {
+	text-decoration: underline;
+}
+.page-elements a.close:hover,
+.page-elements a.prev:hover,
+.page-elements a.next:hover,
+.page-elements li a:hover,
+.page-elements a.btn:hover {
+	text-decoration: none;
+}
+.panel-flip .back .widget .widget-head .btn {
+	padding: 1px 5px !important;
+	font-size: 12px !important;
+}
+.scroll-div {
+	max-height: 170px;
+    overflow: auto;
+}
+.slim-scroll {
+	max-height: 235px;
+    overflow: auto !important;
+}
+.back .widget-scroll {
+	border: 1px solid #e6e6e6;
+	height: 214px;
+}
+.media .float-left,
+.back .widget-scroll .media .float-left {
+	float: none;
+	display: inline-block;
+
+	position: relative;
+	top: -8px;
+}
+.media .media-body,
+.back .widget-scroll .media .media-body {
+	display: inline-block;
+}
+.strike {
+	text-decoration: line-through;
+}
+label .text {
+	margin-top: -2px;
+}
+.media.right .media-body {
+	margin-top: 1rem;
+	margin-left: 0;
+}
+.media-list li.media {
+	list-style: none;
+}
+#id_melis_survey .media {
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+#id_melis_survey .media.innerAll .float-left {
+	top: 0;
+}
+#id_melis_survey .media.innerAll .float-left img {
+	margin-bottom: -14px;
+}
+#id_melis_events .col-md-10 .col-md-2,
+#id_melis_events .col-md-10 .innerAll.half.media .col-md-4 {
+	position: relative;
+}
+#id_melis_events .col-md-10 .col-md-2 .float-right.innerAll.half,
+#id_melis_events .float-left.innerLR.half {
+	position: absolute;
+	top: 22%;
+}
+#id_melis_events .media.innerAll.half .col-md-2 .float-left {
+	display: block;
+	top: 20%;
+}
+#id_melis_events .media.innerAll.half .col-md-2 .float-left img {
+	text-align: center;
+	display: block !important;
+	margin: 0 auto;
+}
+.carousel-indicators .active {
+	width: 30px;
+    height: 3px;
+}
+.slider-code {
+	display: none;
+}
+.slider-code.shown {
+	display: block;
+}
+.dropdown-menu > li > a {
+	display: block;
+	padding: 0 10px;
+}
+.dropdown-menu>li>a:focus, 
+.dropdown-menu>li>a:hover {
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.alert .btn-close {
+	float: right;
+}
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before, 
+.bs-tooltip-end .tooltip-arrow::before {
+	
+}
