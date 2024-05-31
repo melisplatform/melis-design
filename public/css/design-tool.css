@@ -9893,3 +9893,169 @@ label .text {
 .alert .btn-close {
 	float: right;
 }
+#select-toggle-vis {
+	padding: .375rem 2.25rem .375rem .75rem;
+    font-size: .875rem;
+    border-radius: var(--bs-border-radius-sm);
+}
+.footable-details tbody tr th {
+	color: #5f5f5f;
+}
+.btn-cc-bcc {
+	padding: 0.26rem 1rem;
+}
+.bootbox .modal-content {
+	display: block;
+}
+.bootbox.bootbox-custom .modal-content .modal-body,
+.bootbox.bootbox-custom .modal-content .modal-header,
+.bootbox.bootbox-prompt .modal-content .modal-body,
+.bootbox.bootbox-prompt .modal-content .modal-header {
+	float: none;
+}
+.bootbox .modal-content .modal-header {
+	float: right;
+}
+.bootbox .modal-content .modal-body {
+	float: left;
+}
+.bootbox .modal-content .modal-footer {
+	display: block;
+	clear: both;
+	justify-content: unset;
+}
+.bootbox.bootbox-alert .modal-content .modal-footer .bootbox-accept {
+	float: right;
+}
+.bootbox.bootbox-custom .modal-content .modal-footer,
+.bootbox.bootbox-prompt .modal-content .modal-footer,
+.bootbox.bootbox-confirm .modal-content .modal-footer {
+	display: flex;
+	justify-content: end;
+}
+.bootbox.bootbox-confirm .modal-content .modal-footer button {
+	float: none;
+}
+#modal-simple .modal-footer,
+.modal-inline .modal-footer {
+	justify-content: end;
+}
+.page-elements .breadcrumb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+.collapsible:hover {
+	background: #535151;
+}
+.collapsible a[data-bs-toggle=collapse] {
+	text-decoration: none;
+	position: relative;
+	width: 100%;
+}
+[data-bs-toggle=collapse] .collapse-toggle {
+    position: relative;
+    height: 35px;
+    width: 30px;
+    display: block;
+    cursor: pointer;
+    float: right;
+    margin-right: -10px;
+}
+[data-bs-toggle=collapse] .collapse-toggle:before {
+    font-family: "Glyphicons Regular";
+    font-size: 17px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 34px;
+    text-align: center;
+    color: #ccc;
+    content: "\e191";
+}
+[data-bs-toggle=collapse][aria-expanded=true] .collapse-toggle:before {
+	content: "\e192";
+}
+.accordion-button:not(.collapsed),
+.accordion-button {
+	color: #212529;
+	background-color: #f5f5f5;
+	box-shadow: none;
+}
+.accordion-button:focus {
+	box-shadow: none;
+}
+[data-toggle="source-code"] .widget-head {
+    margin-bottom: 0.6rem;
+}
+.accordion.accordion-2 .panel-heading {
+	background: #f5f5f5;
+}
+.box-generic .slim-scroll {
+	max-height: 275px;
+}
+.page-elements .row-merge>[class*="col-"]~[class*="col-"]:after {
+	display: none;
+}
+/* Vertical widget tabs */
+.widget.widget-tabs-double .widget-head {
+    background: #fff;
+    border-color: #e5e5e5;
+    overflow: visible;
+}
+.widget.widget-tabs-double .widget-head .nav-tabs .nav-item.active .nav-link,
+.widget.widget-tabs-double .widget-head .nav-tabs .nav-item .nav-link,
+.widget.widget-tabs-double .widget-head .nav-tabs {
+	border-radius: 0;
+	box-shadow: none;
+	--bs-nav-tabs-border-radius: 0;
+}
+.widget.widget-tabs-double .widget-head,
+.widget.widget-tabs-double .widget-head ul,
+.widget.widget-tabs-double .widget-head ul li a,
+.widget.widget-tabs-double .widget-head ul li.active a {
+	height: 40px;
+}
+.widget.widget-tabs-double .widget-head ul li, 
+.widget.widget-tabs-double .widget-head ul li.active {
+    height: 40px;
+	line-height: 20px;
+}
+.widget.widget-tabs-double .widget-head ul li a.glyphicons {
+	padding: 5px 15px 0 38px;
+	width: 100%;
+	border-right: 1px solid #e5e5e5;
+}
+.widget.widget-tabs-double .widget-head ul li a.glyphicons, 
+.widget.widget-tabs-double .widget-head ul li a.glyphicons i:before {
+    color: #a5a5a5;
+}
+.widget.widget-tabs-double .widget-head ul li a.glyphicons i:before, 
+.widget.widget-tabs-double .widget-head ul li.active a.glyphicons i:before {
+    left: 9px;
+    top: 9px;
+    font-size: 20px;
+}
+.widget.widget-tabs-double .widget-head ul li.active a.glyphicons,
+.widget.widget-tabs-double .widget-head ul li a.glyphicons:hover, 
+.widget.widget-tabs-double .widget-head ul li.active a.glyphicons:hover, 
+.widget-tabs .nav-tabs > li.active > a.glyphicons:hover, 
+.widget-tabs .nav-tabs > li > a.glyphicons:hover {
+	color: #E61C23;
+    background: #fff;
+}
+.widget.widget-tabs-double .widget-head ul li a span, 
+.widget.widget-tabs-double .widget-head ul li.active a span {
+    display: block;
+    line-height: 15px;
+}
+.wizard-design .nav-link {
+	color: #7c7c7c;
+}

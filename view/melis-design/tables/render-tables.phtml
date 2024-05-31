@@ -916,14 +916,17 @@
 	                <h4 class="heading">DataTable with Show/Hide columns</h4>
 	            </div>
 	            <div class="widget-body padding-bottom-none">
-					<select name="select-toggle-vis" id="select-toggle-vis">
-						<option value="">Toggle column:</option>
-						<option class="toggle-vis" data-column="0" value="Rendering eng.">Rendering eng.</option>
-						<option class="toggle-vis" data-column="1" value="Browser">Browser</option>
-						<option class="toggle-vis" data-column="2" value="Platform(s)">Platform(s)</option>
-						<option class="toggle-vis" data-column="3" value="Eng. vers.">Eng. vers.</option>
-						<option class="toggle-vis" data-column="4" value="CSS grade">CSS grade</option>
-					</select>
+					<div class="select-toggle-column">
+						<label for="select-toggle-vis">Select column to hide:</label>
+						<select name="select-toggle-vis" id="select-toggle-vis">
+							<option value="">- Select -</option>
+							<option class="toggle-vis" data-column="0" value="Rendering eng.">Rendering eng.</option>
+							<option class="toggle-vis" data-column="1" value="Browser">Browser</option>
+							<option class="toggle-vis" data-column="2" value="Platform(s)">Platform(s)</option>
+							<option class="toggle-vis" data-column="3" value="Eng. vers.">Eng. vers.</option>
+							<option class="toggle-vis" data-column="4" value="CSS grade">CSS grade</option>
+						</select>
+					</div>
 	                <!-- Table -->
 	                <table class="design-table dynamicTable hiddenColumns table">
 

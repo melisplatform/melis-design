@@ -2470,18 +2470,28 @@ function dataTablesInit() {
         });
 
         var hiddenColumnsTable = $(".hiddenColumns").DataTable({
-            "scrollY": "500px",
-            "paging": false,
-            "info": false
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "searching": true,
+            "pageLength": 10,
+            "dom": "<'row d-flex flex-row justify-content-between separator bottom'<'col-md-4 select-column'><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
         });
 
-        $("#select-toggle-vis").on("change", function() {
-            // get the column API object
-            var column = hiddenColumnsTable.column( $(this).attr("data-column") );
-                
-                // toggle the visibility
-                column.visible( ! column.visible() );
-        });
+        var $selectColumn = $(".select-column"),
+            $toggleColumn = $(".select-toggle-column");
+
+            if ( $selectColumn.length ) {
+                $selectColumn.append( $toggleColumn );
+            }
+
+            $("#select-toggle-vis").on("change", function() {
+                // get the column API object
+                var column = hiddenColumnsTable.column( $(this).attr("data-column") );
+                    
+                    // toggle the visibility
+                    column.visible( ! column.visible() );
+            });
 
     })(jQuery, window);
 }
@@ -3064,30 +3074,24 @@ function gritterInit() {
 
 /* modals.bootbox.init.js */
 function modalsBootBoxInit() {
-    $('#modals-bootbox-alert').on("click", function()
-    {
-        bootbox.alert("Hello World!", function(result)
-        {
+    $('#modals-bootbox-alert').on("click", function() {
+        bootbox.alert("Hello World!", function(result) {
             $.gritter.add({
                 title: 'Callback!',
                 text: "I'm just a BootBox Alert callback!"
             });
         });
     });
-    $('#modals-bootbox-confirm').on("click", function()
-    {
-        bootbox.confirm("Are you sure?", function(result)
-        {
+    $('#modals-bootbox-confirm').on("click", function() {
+        bootbox.confirm("Are you sure?", function(result) {
             $.gritter.add({
                 title: 'Callback!',
                 text: "BootBox Confirm Callback with result: "+ result
             });
         });
     });
-    $('#modals-bootbox-prompt').on("click", function()
-    {
-        bootbox.prompt("What is your name?", function(result)
-        {
+    $('#modals-bootbox-prompt').on("click", function() {
+        bootbox.prompt("What is your name?", function(result) {
             if (result === null) {
                 $.gritter.add({
                     title: 'Callback!',
@@ -3101,8 +3105,7 @@ function modalsBootBoxInit() {
             }
         });
     });
-    $('#modals-bootbox-custom').on("click", function()
-    {
+    $('#modals-bootbox-custom').on("click", function() {
         bootbox.dialog({
             message: "I am a custom dialog",
             title: "Custom title",
@@ -3137,9 +3140,14 @@ function modalsBootBoxInit() {
                         });
                     }
                 }
+            },
+            onShown: function(e) {
+                $(e.currentTarget).addClass("bootbox-custom");
             }
         });
     });
+
+    
 }
 
 /* wysihtml5.init.js */
@@ -3368,30 +3376,30 @@ function rangeSlidersInit() {
                     },
                     stop: function(val){ return false; },
                     label: function(){ return null; }
-                }]
+                }
+            ]
         });
 
         // Date Range Slider Ruler
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-        $("#rangeSliderRulerDate").dateRangeSlider(
-            {
-                bounds: {min: new Date(2012, 0, 1), max: new Date(2012, 11, 31, 12, 59, 59)},
-                defaultValues: {min: new Date(2012, 1, 10), max: new Date(2012, 4, 22)},
-                scales: [{
-                    first: function(value){ return value; },
-                    end: function(value) {return value; },
-                    next: function(value){
-                        var next = new Date(value);
-                        return new Date(next.setMonth(value.getMonth() + 1));
-                    },
-                    label: function(value){
-                        return months[value.getMonth()];
-                    },
-                    format: function(tickContainer, tickStart, tickEnd){
-                        tickContainer.addClass("myCustomClass");
-                    }
-                }]
-            });
+        $("#rangeSliderRulerDate").dateRangeSlider({
+            bounds: {min: new Date(2012, 0, 1), max: new Date(2012, 11, 31, 12, 59, 59)},
+            defaultValues: {min: new Date(2012, 1, 10), max: new Date(2012, 4, 22)},
+            scales: [{
+                first: function(value){ return value; },
+                end: function(value) {return value; },
+                next: function(value){
+                    var next = new Date(value);
+                    return new Date(next.setMonth(value.getMonth() + 1));
+                },
+                label: function(value){
+                    return months[value.getMonth()];
+                },
+                format: function(tickContainer, tickStart, tickEnd){
+                    tickContainer.addClass("myCustomClass");
+                }
+            }]
+        });
 
         // Range Slider Step
         $("#rangeSliderStep").rangeSlider({step: 10});
@@ -3401,7 +3409,6 @@ function rangeSlidersInit() {
 
         // Range Slider Wheel Scroll
         $("#rangeSliderWheelScroll").rangeSlider({wheelMode: "scroll", wheelSpeed: 30});
-
     });
 }
 
@@ -4832,7 +4839,7 @@ function calendarInit() {
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
             var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
+                title: $(this).text().trim() // use the element's text as the event title
             };
 
             // store the Event Object in the DOM element so we can get to it later
@@ -4859,7 +4866,8 @@ function calendarInit() {
             },
             editable: true,
             droppable: true,
-            events: '/html/admin/ajax/calendarEvents.json',
+            //'/html/admin/ajax/calendarEvents.json'
+            events: '/MelisDesign/js/calendar/calendarEvents.json',
             drop: function(date, allDay) {
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
@@ -6006,7 +6014,7 @@ function medicalInit() {
 function tablesResponsiveFootableInit() {
     $(function() {
         /* FooTable */
-        if ($('.footable').length)
+        if ( $('.footable').length )
             $('.footable').footable();
     });
 }
