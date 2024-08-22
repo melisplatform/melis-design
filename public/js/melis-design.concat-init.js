@@ -2469,29 +2469,39 @@ function dataTablesInit() {
             }
         });
 
-        var hiddenColumnsTable = $(".hiddenColumns").DataTable({
+        //var hiddenColumnsTable = $(".hiddenColumns").DataTable({
+        $(".hiddenColumns").DataTable({
             "paging": true,
             "searching": true,
             "ordering": true,
             "searching": true,
             "pageLength": 10,
-            "dom": "<'row d-flex flex-row justify-content-between separator bottom'<'col-md-4 select-column'><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
+            "dom": "<'row d-flex flex-row justify-content-between separator bottom'<'col-md-4'B><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
+            "buttons": ['colvis']
         });
-
-        var $selectColumn = $(".select-column"),
+        
+        // select-column on B
+        /* var $selectColumn = $(".select-column"),
             $toggleColumn = $(".select-toggle-column");
 
             if ( $selectColumn.length ) {
                 $selectColumn.append( $toggleColumn );
             }
 
-            $("#select-toggle-vis").on("change", function() {
-                // get the column API object
-                var column = hiddenColumnsTable.column( $(this).attr("data-column") );
-                    
-                    // toggle the visibility
-                    column.visible( ! column.visible() );
-            });
+            $("body").on("change", "#select-toggle-vis", function() {
+                var $this          = $(this),
+                    columnSelected = $this.find(":selected").data("column");
+
+                    // get the column API object
+                    var column = hiddenColumnsTable.column( columnSelected );
+                        
+                        // toggle the visibility
+                        column.visible( ! column.visible() );
+                        if ( typeof columnSelected === "undefined" ) {
+                            hiddenColumnsTable.columns.adjust().draw();
+                            //hiddenColumnsTable.ajax.reload({}, false);
+                        }
+            }); */
 
     })(jQuery, window);
 }
@@ -3583,101 +3593,93 @@ function jqueryUiSlidersInit() {
 /* flotchart-simple-01.init.js */
 function flotchartSimpleInit() {
     $(function() {
-        if($("#chart_simple_001").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_simple_001").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple_001 =
-                {
-                    // data
-                    data:
+            charts.chart_simple_001 = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: false,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_simple_001",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                        points: {
+                            show:true,
+                            radius: 5,
+                            lineWidth: 3,
+                            fill: true,
+                            fillColor: "#000"
                         }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_simple_001",
+                // initialize
+                init: function() {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var that = this;
+
+                    if (this.plot == null)
+                    {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                            {
+                                label: "Data 2",
+                                data: this.data.d2,
+                                lines: { fill: 0.1 },
+                                points: { fillColor: that.options.colors[1] }
+                            }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple_001.init();
@@ -3711,97 +3713,88 @@ function flotchartSimpleInit() {
 /* flotchart-simple-bars.init.js */
 function flotchartSimpleBarsInit() {
     (function($) {
-        if($("#chart_simple_bars_001").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_simple_bars_001").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple_bars_001 =
-                {
-                    // data
-                    data:
+            charts.chart_simple_bars_001 = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                bars: {
-                                    show: true,
-                                    barWidth: .65,
-                                    fill: 1,
-                                    align: 'center'
-                                },
-                                shadowSize: 0
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: .65,
+                            fill: 1,
+                            align: 'center'
                         },
-
-                    placeholder: "#chart_simple_bars_001",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
-                        }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                // bars: { lineWidth: 0 }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    // bars: { lineWidth: 0 }
-                                }], this.options);
+                        shadowSize: 0
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_simple_bars_001",
+                // initialize
+                init: function() {
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
 
+                    if (this.plot == null)
+                    {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            // bars: { lineWidth: 0 }
+                        },
+                            {
+                                label: "Data 2",
+                                data: this.data.d2,
+                                // bars: { lineWidth: 0 }
+                            }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple_bars.init();
 
             // use with tabs
-            /*          $('a[href="#chart-simple-bars-001"]').on('shown.bs.tab', function(){
+            /* $('a[href="#chart-simple-bars-001"]').on('shown.bs.tab', function(){
              if (charts.chart_simple_bars_001.plot == null)
              charts.chart_simple_bars_001.init();
              });
@@ -3828,115 +3821,114 @@ function flotchartSimpleBarsInit() {
 /* flotchart-simple-02.init.js */
 function flotchartSimple02Init() {
     (function($) {
-        if($("#chart_simple_02").length) {
+        if ( $("#chart_simple_02").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_simple =
-                {
-                    // data
-                    data:
-                        {
-                            d1: [],
-                            d2: []
-                        },
+            charts.chart_simple ={
+                // data
+                data:
+                    {
+                        d1: [],
+                        d2: []
+                    },
 
-                    // will hold the chart object
-                    plot: null,
+                // will hold the chart object
+                plot: null,
 
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
+                // chart options
+                options:
+                    {
+                        grid:
+                            {
+                                color: "#dedede",
+                                borderWidth: 1,
+                                borderColor: "transparent",
+                                clickable: true,
+                                hoverable: true
                             },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
+                        series: {
+                            lines: {
+                                show: true,
+                                fill: false,
+                                lineWidth: 2,
+                                steps: false
                             },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
+                            points: {
+                                show:true,
+                                radius: 5,
+                                lineWidth: 3,
+                                fill: true,
+                                fillColor: "#000"
                             }
                         },
-
-                    placeholder: "#chart_simple_02",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
-                        }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
+                        xaxis: {
+                            tickColor: 'transparent',
+                            tickDecimals: 2,
+                            tickSize: 2
+                        },
+                        yaxis: {
+                            tickSize: 1000
+                        },
+                        legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                        shadowSize: 0,
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "%s : %y.3",
+                            shifts: {
+                                x: -30,
+                                y: -50
                             },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                            defaultTheme: false
+                        }
+                    },
+
+                placeholder: "#chart_simple_02",
+
+                // initialize
+                init: function()
+                {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var that = this;
+
+                    if (this.plot == null)
+                    {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
                     }
-                };
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                            {
+                                label: "Data 2",
+                                data: this.data.d2,
+                                lines: { fill: 0.1 },
+                                points: { fillColor: that.options.colors[1] }
+                            }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple.init();
 
             // use with tabs
-            // $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
-            //  if (charts.chart_simple.plot == null)
-            //      charts.chart_simple.init();
-            // });
+            /* $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
+             if (charts.chart_simple.plot == null)
+                 charts.chart_simple.init();
+            });
 
-            // $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
-            //  $(this).parent().find('[data-toggle]').removeClass('active');
-            //  $(this).addClass('active');
-            // });
+            $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
+             $(this).parent().find('[data-toggle]').removeClass('active');
+             $(this).addClass('active');
+            }); */
         }
     })(jQuery);
 }
@@ -3944,89 +3936,81 @@ function flotchartSimple02Init() {
 /* flotchart-line.init.js */
 function flotChartLineInit() {
     (function($) {
-        if($("#chart_lines_fill_nopoints").length) {
+        if( $("#chart_lines_fill_nopoints").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_lines_fill_nopoints =
-                {
-                    // chart data
-                    data:
+            charts.chart_lines_fill_nopoints = {
+                // chart data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false},
-                                lines: {
-                                    show: true,
-                                    fill: true,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {show:false}
-                            },
-                            legend: { position: "nw", backgroundColor: null, backgroundOpacity: 0, noColumns: 2 },
-                            yaxis: { tickSize:25 },
-                            xaxis: { tickColor: 'transparent', tickSize:5, tickDecimals: 0},
-                            colors: [],
-                            shadowSize:1,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        grow: {active:false},
+                        lines: {
+                            show: true,
+                            fill: true,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_lines_fill_nopoints",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        // generate some data
-                        this.data.d1 = [[1, 3+charts.utility.randNum()], [2, 6+charts.utility.randNum()], [3, 9+charts.utility.randNum()], [4, 12+charts.utility.randNum()],[5, 15+charts.utility.randNum()],[6, 18+charts.utility.randNum()],[7, 21+charts.utility.randNum()],[8, 15+charts.utility.randNum()],[9, 18+charts.utility.randNum()],[10, 21+charts.utility.randNum()],[11, 24+charts.utility.randNum()],[12, 27+charts.utility.randNum()],[13, 30+charts.utility.randNum()],[14, 33+charts.utility.randNum()],[15, 24+charts.utility.randNum()],[16, 27+charts.utility.randNum()],[17, 30+charts.utility.randNum()],[18, 33+charts.utility.randNum()],[19, 36+charts.utility.randNum()],[20, 39+charts.utility.randNum()],[21, 42+charts.utility.randNum()],[22, 45+charts.utility.randNum()],[23, 36+charts.utility.randNum()],[24, 39+charts.utility.randNum()],[25, 42+charts.utility.randNum()],[26, 45+charts.utility.randNum()],[27,38+charts.utility.randNum()],[28, 51+charts.utility.randNum()],[29, 55+charts.utility.randNum()], [30, 60+charts.utility.randNum()]];
-                        this.data.d2 = [[1, charts.utility.randNum()-5], [2, charts.utility.randNum()-4], [3, charts.utility.randNum()-4], [4, charts.utility.randNum()],[5, 4+charts.utility.randNum()],[6, 4+charts.utility.randNum()],[7, 5+charts.utility.randNum()],[8, 5+charts.utility.randNum()],[9, 6+charts.utility.randNum()],[10, 6+charts.utility.randNum()],[11, 6+charts.utility.randNum()],[12, 2+charts.utility.randNum()],[13, 3+charts.utility.randNum()],[14, 4+charts.utility.randNum()],[15, 4+charts.utility.randNum()],[16, 4+charts.utility.randNum()],[17, 5+charts.utility.randNum()],[18, 5+charts.utility.randNum()],[19, 2+charts.utility.randNum()],[20, 2+charts.utility.randNum()],[21, 3+charts.utility.randNum()],[22, 3+charts.utility.randNum()],[23, 3+charts.utility.randNum()],[24, 2+charts.utility.randNum()],[25, 4+charts.utility.randNum()],[26, 4+charts.utility.randNum()],[27,5+charts.utility.randNum()],[28, 2+charts.utility.randNum()],[29, 2+charts.utility.randNum()], [30, 3+charts.utility.randNum()]];
-
-                        // make chart
-                        this.plot = $.plot(
-                            this.placeholder,
-                            [{
-                                label: "Visits",
-                                data: this.data.d1,
-                                lines: {fillColor: "rgba(0,0,0,0.01)"},
-                                points: {fillColor: "#88bbc8"}
-                            },
-                                {
-                                    label: "Unique Visits",
-                                    data: this.data.d2,
-                                    lines: {fill: 0.05},
-                                    points: {fillColor: "#ed7a53"}
-                                }],
-                            this.options);
+                        points: {show:false}
+                    },
+                    legend: { position: "nw", backgroundColor: null, backgroundOpacity: 0, noColumns: 2 },
+                    yaxis: { tickSize:25 },
+                    xaxis: { tickColor: 'transparent', tickSize:5, tickDecimals: 0},
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_lines_fill_nopoints",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    // generate some data
+                    this.data.d1 = [[1, 3+charts.utility.randNum()], [2, 6+charts.utility.randNum()], [3, 9+charts.utility.randNum()], [4, 12+charts.utility.randNum()],[5, 15+charts.utility.randNum()],[6, 18+charts.utility.randNum()],[7, 21+charts.utility.randNum()],[8, 15+charts.utility.randNum()],[9, 18+charts.utility.randNum()],[10, 21+charts.utility.randNum()],[11, 24+charts.utility.randNum()],[12, 27+charts.utility.randNum()],[13, 30+charts.utility.randNum()],[14, 33+charts.utility.randNum()],[15, 24+charts.utility.randNum()],[16, 27+charts.utility.randNum()],[17, 30+charts.utility.randNum()],[18, 33+charts.utility.randNum()],[19, 36+charts.utility.randNum()],[20, 39+charts.utility.randNum()],[21, 42+charts.utility.randNum()],[22, 45+charts.utility.randNum()],[23, 36+charts.utility.randNum()],[24, 39+charts.utility.randNum()],[25, 42+charts.utility.randNum()],[26, 45+charts.utility.randNum()],[27,38+charts.utility.randNum()],[28, 51+charts.utility.randNum()],[29, 55+charts.utility.randNum()], [30, 60+charts.utility.randNum()]];
+                    this.data.d2 = [[1, charts.utility.randNum()-5], [2, charts.utility.randNum()-4], [3, charts.utility.randNum()-4], [4, charts.utility.randNum()],[5, 4+charts.utility.randNum()],[6, 4+charts.utility.randNum()],[7, 5+charts.utility.randNum()],[8, 5+charts.utility.randNum()],[9, 6+charts.utility.randNum()],[10, 6+charts.utility.randNum()],[11, 6+charts.utility.randNum()],[12, 2+charts.utility.randNum()],[13, 3+charts.utility.randNum()],[14, 4+charts.utility.randNum()],[15, 4+charts.utility.randNum()],[16, 4+charts.utility.randNum()],[17, 5+charts.utility.randNum()],[18, 5+charts.utility.randNum()],[19, 2+charts.utility.randNum()],[20, 2+charts.utility.randNum()],[21, 3+charts.utility.randNum()],[22, 3+charts.utility.randNum()],[23, 3+charts.utility.randNum()],[24, 2+charts.utility.randNum()],[25, 4+charts.utility.randNum()],[26, 4+charts.utility.randNum()],[27,5+charts.utility.randNum()],[28, 2+charts.utility.randNum()],[29, 2+charts.utility.randNum()], [30, 3+charts.utility.randNum()]];
+
+                    // make chart
+                    this.plot = $.plot(
+                        this.placeholder,
+                        [{
+                            label: "Visits",
+                            data: this.data.d1,
+                            lines: {fillColor: "rgba(0,0,0,0.01)"},
+                            points: {fillColor: "#88bbc8"}
+                        },
+                            {
+                                label: "Unique Visits",
+                                data: this.data.d2,
+                                lines: {fill: 0.05},
+                                points: {fillColor: "#ed7a53"}
+                            }],
+                        this.options);
+                }
+            };
 
             charts.chart_lines_fill_nopoints.init();
         }
@@ -4037,94 +4021,87 @@ function flotChartLineInit() {
 /* flotchart-bars-ordered.init.js */
 function flotchartBarsOrderedInit() {
     (function($) {
-        if($("#chart_ordered_bars").length) {
+        if ( $("#chart_ordered_bars").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_ordered_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
+            charts.chart_ordered_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    bars: {
+                        show:true,
+                        barWidth: 0.2,
+                        fill:1
+                    },
+                    grid:
                         {
-                            bars: {
-                                show:true,
-                                barWidth: 0.2,
-                                fill:1
-                            },
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false}
-                            },
-                            yaxis: { tickSize: 10 },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    placeholder: "#chart_ordered_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = ["#cc6666", "#cca366", "#b7cc66"];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        //some data
-                        var d1 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d1.push([i, parseInt(Math.random() * 30)]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d2.push([i, parseInt(Math.random() * 30)]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d3.push([i, parseInt(Math.random() * 30)]);
-
-                        var ds = new Array();
-
-                        ds.push({
-                            label: "Data One",
-                            data:d1,
-                            bars: {order: 1}
-                        });
-                        ds.push({
-                            label: "Data Two",
-                            data:d2,
-                            bars: {order: 2}
-                        });
-                        ds.push({
-                            label: "Data Three",
-                            data:d3,
-                            bars: {order: 3}
-                        });
-                        this.data = ds;
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                    series: {
+                        grow: {active:false}
+                    },
+                    yaxis: { tickSize: 10 },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_ordered_bars",
+                // initialize
+                init: function() {
+                    this.options.colors = ["#cc6666", "#cca366", "#b7cc66"];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    //some data
+                    var d1 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d1.push([i, parseInt(Math.random() * 30)]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d2.push([i, parseInt(Math.random() * 30)]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d3.push([i, parseInt(Math.random() * 30)]);
+
+                    var ds = new Array();
+
+                    ds.push({
+                        label: "Data One",
+                        data:d1,
+                        bars: {order: 1}
+                    });
+                    ds.push({
+                        label: "Data Two",
+                        data:d2,
+                        bars: {order: 2}
+                    });
+                    ds.push({
+                        label: "Data Three",
+                        data:d3,
+                        bars: {order: 3}
+                    });
+                    this.data = ds;
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_ordered_bars.init();
         }
@@ -4135,89 +4112,82 @@ function flotchartBarsOrderedInit() {
 /* flotchart-bars-stacked.init.js */
 function flotchartBarsStackedInit() {
     (function($) {
-        if($("#chart_stacked_bars").length) {
+        if ( $("#chart_stacked_bars").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_stacked_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
+            charts.chart_stacked_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false},
-                                stack: 0,
-                                lines: { show: false, fill: true, steps: false },
-                                bars: { show: true, barWidth: 0.5, fill:1}
-                            },
-                            yaxis: { tickSize: 10 },
-                            xaxis: { tickColor: 'transparent', tickSize:2 },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
-                            colors: [],
-                            shadowSize:1,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    placeholder: "#chart_stacked_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = ["#7acc66", "#66cccc", "#77b7c5"];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var d1 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d1.push([i, parseInt(Math.random() * 30)]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d2.push([i, parseInt(Math.random() * 20)]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d3.push([i, parseInt(Math.random() * 20)]);
-
-                        this.data = new Array();
-
-                        this.data.push({
-                            label: "Data One",
-                            data: d1
-                        });
-                        this.data.push({
-                            label: "Data Two",
-                            data: d2
-                        });
-                        this.data.push({
-                            label: "Data Tree",
-                            data: d3
-                        });
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                    series: {
+                        grow: {active:false},
+                        stack: 0,
+                        lines: { show: false, fill: true, steps: false },
+                        bars: { show: true, barWidth: 0.5, fill:1}
+                    },
+                    yaxis: { tickSize: 10 },
+                    xaxis: { tickColor: 'transparent', tickSize:2 },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
+                },
+                placeholder: "#chart_stacked_bars",
+                // initialize
+                init: function() {
+                    this.options.colors = ["#7acc66", "#66cccc", "#77b7c5"];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var d1 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d1.push([i, parseInt(Math.random() * 30)]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d2.push([i, parseInt(Math.random() * 20)]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d3.push([i, parseInt(Math.random() * 20)]);
+
+                    this.data = new Array();
+
+                    this.data.push({
+                        label: "Data One",
+                        data: d1
+                    });
+                    this.data.push({
+                        label: "Data Two",
+                        data: d2
+                    });
+                    this.data.push({
+                        label: "Data Tree",
+                        data: d3
+                    });
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
                 }
+            };
 
             charts.chart_stacked_bars.init();
         }
@@ -4233,78 +4203,72 @@ function flotchartPieInit() {
                 return;
 
             charts.chart_pie = {
-                    // chart data
-                    data: [
-                        { label: "USA",  data: 38 },
-                        { label: "Brazil",  data: 23 },
-                        { label: "India",  data: 15 },
-                        { label: "Turkey",  data: 9 },
-                        { label: "France",  data: 7 },
-                        { label: "China",  data: 5 },
-                        { label: "Germany",  data: 3 }
-                    ],
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            series: {
-                                pie: {
-                                    show: true,
-                                    highlight: {
-                                        opacity: 0.1
-                                    },
-                                    radius: 1,
-                                    stroke: {
-                                        color: '#fff',
-                                        width: 2
-                                    },
-                                    startAngle: 2,
-                                    combine: {
-                                        color: '#353535',
-                                        threshold: 0.05
-                                    },
-                                    label: {
-                                        show: true,
-                                        radius: 1,
-                                        formatter: function(label, series){
-                                            return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                        }
-                                    }
-                                },
-                                grow: { active: false}
+                // chart data
+                data: [
+                    { label: "USA",  data: 38 },
+                    { label: "Brazil",  data: 23 },
+                    { label: "India",  data: 15 },
+                    { label: "Turkey",  data: 9 },
+                    { label: "France",  data: 7 },
+                    { label: "China",  data: 5 },
+                    { label: "Germany",  data: 3 }
+                ],
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    series: {
+                        pie: {
+                            show: true,
+                            highlight: {
+                                opacity: 0.1
                             },
-                            colors: [],
-                            legend:{show:false},
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                backgroundColor : { }
+                            radius: 1,
+                            stroke: {
+                                color: '#fff',
+                                width: 2
                             },
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.1"+"%",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
+                            startAngle: 2,
+                            combine: {
+                                color: '#353535',
+                                threshold: 0.05
+                            },
+                            label: {
+                                show: true,
+                                radius: 1,
+                                formatter: function(label, series){
+                                    return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+                                }
                             }
                         },
-
-                    placeholder: "#chart_pie",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                        grow: { active: false}
+                    },
+                    colors: [],
+                    legend:{show:false},
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        backgroundColor : { }
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.1"+"%",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_pie",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_pie.init();
         }
@@ -4350,59 +4314,55 @@ function flotchartDonutInit() {
                         data: 3
                     }
                 ],
-
                 // will hold the chart object
                 plot: null,
-
                 // chart options
                 options: {
-                        series: {
-                            pie: {
+                    series: {
+                        pie: {
+                            show: true,
+                            innerRadius: 0.4,
+                            highlight: {
+                                opacity: 0.1
+                            },
+                            radius: 1,
+                            stroke: {
+                                color: '#fff',
+                                width: 8
+                            },
+                            startAngle: 2,
+                            combine: {
+                                color: '#EEE',
+                                threshold: 0.05
+                            },
+                            label: {
                                 show: true,
-                                innerRadius: 0.4,
-                                highlight: {
-                                    opacity: 0.1
-                                },
                                 radius: 1,
-                                stroke: {
-                                    color: '#fff',
-                                    width: 8
-                                },
-                                startAngle: 2,
-                                combine: {
-                                    color: '#EEE',
-                                    threshold: 0.05
-                                },
-                                label: {
-                                    show: true,
-                                    radius: 1,
-                                    formatter: function(label, series){
-                                        return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                    }
+                                formatter: function(label, series){
+                                    return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
                                 }
-                            },
-                            grow: { active: false}
+                            }
                         },
-                        legend:{show:false},
-                        grid: {
-                            hoverable: true,
-                            clickable: true,
-                            backgroundColor : { }
+                        grow: { active: false}
+                    },
+                    legend:{show:false},
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        backgroundColor : { }
+                    },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.1"+"%",
+                        shifts: {
+                            x: -30,
+                            y: -50
                         },
-                        colors: [],
-                        tooltip: true,
-                        tooltipOpts: {
-                            content: "%s : %y.1"+"%",
-                            shifts: {
-                                x: -30,
-                                y: -50
-                            },
-                            defaultTheme: false
-                        }
+                        defaultTheme: false
+                    }
                 },
-
                 placeholder: "#chart_donut",
-
                 // initialize
                 init: function() {
                     // apply styling
@@ -4420,110 +4380,103 @@ function flotchartDonutInit() {
 /* flotchart-bars-horizontal.init.js */
 function flotchartBarsHorizontalInit() {
     (function($) {
-        if($("#chart_horizontal_bars").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_horizontal_bars").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_horizontal_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid: {
-                                show: true,
-                                aboveData: false,
-                                color: "#3f3f3f" ,
-                                labelMargin: 5,
-                                axisMargin: 0,
-                                borderWidth: 0,
-                                borderColor:null,
-                                minBorderMargin: 5 ,
-                                clickable: true,
-                                hoverable: true,
-                                autoHighlight: false,
-                                mouseActiveRadius: 20,
-                                backgroundColor : { }
-                            },
-                            series: {
-                                grow: {active:false},
-                                bars: {
-                                    show:true,
-                                    horizontal: true,
-                                    barWidth:0.2,
-                                    fill:1
-                                }
-                            },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0 },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+            charts.chart_horizontal_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f" ,
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    series: {
+                        grow: {active:false},
+                        bars: {
+                            show:true,
+                            horizontal: true,
+                            barWidth:0.2,
+                            fill:1
+                        }
+                    },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0 },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
                         },
-
-                    placeholder: "#chart_horizontal_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        var d1 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d1.push([parseInt(Math.random() * 30),i ]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d2.push([parseInt(Math.random() * 30),i ]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d3.push([ parseInt(Math.random() * 30),i]);
-
-                        this.data = new Array();
-                        this.data.push({
-                            data: d1,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 1
-                            }
-                        });
-                        this.data.push({
-                            data: d2,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 2
-                            }
-                        });
-                        this.data.push({
-                            data: d3,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 3
-                            }
-                        });
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_horizontal_bars",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    var d1 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d1.push([parseInt(Math.random() * 30),i ]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d2.push([parseInt(Math.random() * 30),i ]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d3.push([ parseInt(Math.random() * 30),i]);
+
+                    this.data = new Array();
+                    this.data.push({
+                        data: d1,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 1
+                        }
+                    });
+                    this.data.push({
+                        data: d2,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 2
+                        }
+                    });
+                    this.data.push({
+                        data: d3,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 3
+                        }
+                    });
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_horizontal_bars.init();
         }
@@ -4534,109 +4487,98 @@ function flotchartBarsHorizontalInit() {
 /* flotchart-autoupdating.init.js */
 function flotchartAutoUpdatingInit() {
     (function($) {
-        if($("#chart_live").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_live").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_live =
-                {
-                    // chart data
-                    data: [],
-                    totalPoints: 300,
-                    updateInterval: 200,
+            charts.chart_live = {
+                // chart data
+                data: [],
+                totalPoints: 300,
+                updateInterval: 200,
+                // we use an inline data source in the example, usually data would
+                // be fetched from a server
+                getRandomData: function() {
+                    if (this.data.length > 0)
+                        this.data = this.data.slice(1);
 
-                    // we use an inline data source in the example, usually data would
-                    // be fetched from a server
-                    getRandomData: function()
-                    {
-                        if (this.data.length > 0)
-                            this.data = this.data.slice(1);
-
-                        // do a random walk
-                        while (this.data.length < this.totalPoints)
-                        {
-                            var prev = this.data.length > 0 ? this.data[this.data.length - 1] : 50;
-                            var y = prev + Math.random() * 10 - 5;
-                            if (y < 0)
-                                y = 0;
-                            if (y > 100)
-                                y = 100;
-                            this.data.push(y);
-                        }
-
-                        // zip the generated y values with the x values
-                        var res = [];
-                        for (var i = 0; i < this.data.length; ++i)
-                            res.push([i, this.data[i]])
-                        return res;
-                    },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            series: {
-                                grow: { active: false },
-                                shadowSize: 0,
-                                lines: {
-                                    show: true,
-                                    fill: true,
-                                    lineWidth: 2,
-                                    steps: false
-                                }
-                            },
-                            grid: {
-                                show: true,
-                                aboveData: false,
-                                color: "#3f3f3f",
-                                labelMargin: 5,
-                                axisMargin: 0,
-                                borderWidth: 0,
-                                borderColor:null,
-                                minBorderMargin: 5 ,
-                                clickable: true,
-                                hoverable: true,
-                                autoHighlight: false,
-                                mouseActiveRadius: 20,
-                                backgroundColor : { }
-                            },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "Value is : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            },
-                            yaxis: { min: 0, max: 100 },
-                            xaxis: { show: true}
-                        },
-
-                    placeholder: "#chart_live",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), [ this.getRandomData() ], this.options);
-                        setTimeout(this.update, charts.chart_live.updateInterval);
-                    },
-
-                    // update
-                    update: function()
-                    {
-                        charts.chart_live.plot.setData([ charts.chart_live.getRandomData() ]);
-                        charts.chart_live.plot.draw();
-
-                        setTimeout(charts.chart_live.update, charts.chart_live.updateInterval);
+                    // do a random walk
+                    while (this.data.length < this.totalPoints) {
+                        var prev = this.data.length > 0 ? this.data[this.data.length - 1] : 50;
+                        var y = prev + Math.random() * 10 - 5;
+                        if (y < 0)
+                            y = 0;
+                        if (y > 100)
+                            y = 100;
+                        this.data.push(y);
                     }
-                };
+
+                    // zip the generated y values with the x values
+                    var res = [];
+                    for (var i = 0; i < this.data.length; ++i)
+                        res.push([i, this.data[i]])
+
+                    return res;
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    series: {
+                        grow: { active: false },
+                        shadowSize: 0,
+                        lines: {
+                            show: true,
+                            fill: true,
+                            lineWidth: 2,
+                            steps: false
+                        }
+                    },
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "Value is : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
+                    },
+                    yaxis: { min: 0, max: 100 },
+                    xaxis: { show: true}
+                },
+                placeholder: "#chart_live",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), [ this.getRandomData() ], this.options);
+                    setTimeout(this.update, charts.chart_live.updateInterval);
+                },
+                // update
+                update: function() {
+                    charts.chart_live.plot.setData([ charts.chart_live.getRandomData() ]);
+                    charts.chart_live.plot.draw();
+
+                    setTimeout(charts.chart_live.update, charts.chart_live.updateInterval);
+                }
+            };
 
             charts.chart_live.init();
         }
@@ -4647,115 +4589,106 @@ function flotchartAutoUpdatingInit() {
 /* flotchart-finances-simple.init.js */
 function flotchartFinancesSimpleInit() {
     (function($) {
-        if($("#chart_finances_simple").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_finances_simple").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple =
-                {
-                    // data
-                    data:
+            charts.chart_simple = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: false,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_finances_simple",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                        points: {
+                            show:true,
+                            radius: 5,
+                            lineWidth: 3,
+                            fill: true,
+                            fillColor: "#000"
                         }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_finances_simple",
+                // initialize
+                init: function() {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var that = this;
+
+                    if (this.plot == null) {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                        {
+                            label: "Data 2",
+                            data: this.data.d2,
+                            lines: { fill: 0.1 },
+                            points: { fillColor: that.options.colors[1] }
+                        }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple.init();
 
             // use with tabs
-            // $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
-            //  if (charts.chart_simple.plot == null)
-            //      charts.chart_simple.init();
-            // });
+            /* $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
+             if (charts.chart_simple.plot == null)
+                 charts.chart_simple.init();
+            });
 
-            // $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
-            //  $(this).parent().find('[data-toggle]').removeClass('active');
-            //  $(this).addClass('active');
-            // });
+            $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
+             $(this).parent().find('[data-toggle]').removeClass('active');
+             $(this).addClass('active');
+            }); */
         }
 
 
@@ -5378,11 +5311,46 @@ function formValidatorInit() {
 /* dropzone.init.js */
 function dropzoneInit() {
     (function($) {
-        if (typeof Dropzone != 'undefined')
-            Dropzone.autoDiscover = false;
+        if (typeof Dropzone != 'undefined') {
+            
+            Dropzone.discover();
 
-        if ($.fn.dropzone != 'undefined')
-            $('.dropzone').dropzone();
+            Dropzone.options.demoUpload = {
+                paramName: "file",
+                maxFilesize: 20,
+                addRemoveLinks: true,
+                dictRemoveFileConfirmation: "Are you sure you want to remove the file?"
+            };
+
+            /* 
+            //dictRemoveFileConfirmation: "Are you sure you want to remove the file?"
+            var removeCallback  = undefined,
+                $body           = $("body");
+
+                $body.on("click", ".btn-remove-all-files", function() {
+                    var $demoUpload = Dropzone.forElement("#demo-upload");
+                        if ( $demoUpload.files.length ) {
+                            $demoUpload.removeAllFiles();
+                            $demoUpload.removeAllFiles(true);
+                        }
+                });
+
+                // listen to click .remove-all, remove the item by calling removeCallback and hide modal
+                $body.on("click", ".remove-all", function() {
+                    if ( removeCallback ) {
+                        removeCallback();
+                    }
+
+                    melisCoreTool.hideModal('remove-all-modal');
+                });
+
+                demoDropzone.confirm = function(question, accepted, rejected) {
+                    // retain the callback to invoke to accept the removal
+                    removeCallback = accepted;
+                    // launch custom modal
+                    melisCoreTool.showModal('remove-all-modal');
+                }; */
+        }
     })(jQuery);
 }
 
@@ -5682,7 +5650,8 @@ function coreInit() {
             });
         }
 
-        $(window).on('load', function() {
+        //$(window).on('load', function() {
+        $(function() {
             if ($(window).width() < 992)
                 $('.hasNiceScroll').getNiceScroll().stop();
 
@@ -6310,6 +6279,8 @@ $(function() {
         initFormWizards();
         /* sliders.init.js */
         initSliders();
+        /* charts.init.js */
+        initCharts();
         /* calendar.render.init.js */
         initCalendar();
         /* widgets.init.js */
@@ -6371,6 +6342,14 @@ $(function() {
         });
 
         $body.on("click", ".show-code", function() {
-            $(".slider-code").toggleClass("shown");
+            var $sliderCode = $(".slider-code");
+                $sliderCode.toggleClass("shown");
+
+                if ( $sliderCode.hasClass("shown") ) {
+                    $sliderCode.fadeIn("slow");
+                }
+                else {
+                    $sliderCode.fadeOut("slow");
+                }
         });
 });

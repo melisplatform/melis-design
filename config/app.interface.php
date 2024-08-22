@@ -47,7 +47,7 @@ return [
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
-                    '/MelisDesign/assets/components/library/jquery/jquery-migrate.min.js',
+                    //'/MelisDesign/assets/components/library/jquery/jquery-migrate.min.js',
                     '/MelisDesign/js/tiny-slider/tiny-slider.init.js',
                     '/MelisDesign/assets/components/plugins/prism/js/prism.js',
                 ],
