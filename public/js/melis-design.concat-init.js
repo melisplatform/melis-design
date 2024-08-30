@@ -156,32 +156,105 @@ function bootstrapDatepickerInit() {
 }
 
 /* bootstrap-timepicker */
-function bootstrapTimePickerInit() {
-    //$.fn.btimepicker = $.fn.timepicker;
-    $('#timepicker1').timepicker();
-    $('#timepicker2').timepicker({
-        minuteStep: 1,
-        template: 'modal',
-        showSeconds: true,
-        showMeridian: false,
-        modalBackdrop: true
+function bootstrapTimePickerInit() {    
+    // https://getdatepicker.com/6/repl.html
+    var $timepicker1 = new tempusDominus.TempusDominus(document.getElementById('timepicker1'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: false
+            }
+        },
+        localization: {
+            hourCycle: 'h12',
+            format: 'hh:mm T'
+        }
     });
-    $('#timepicker3').timepicker({
-        minuteStep: 5,
-        showInputs: false,
-        disableFocus: true
+
+    var $timepicker2_1 = new tempusDominus.TempusDominus(document.getElementById('timepicker2_1'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: true,
+            }
+        },
+        localization: {
+            hourCycle: 'h24',
+            format: 'HH:mm:ss'
+        }
     });
-    $('#timepicker4').timepicker({
-        minuteStep: 1,
-        secondStep: 5,
-        showInputs: false,
-        showSeconds: true,
-        showMeridian: false
+
+    $timepicker2_1.dates.formatInput = function(date) { 
+        { return moment(date).format('HH:mm:ss') } 
+    }
+
+    $("#timepicker2Modal-btn").on("click", function() {
+        var viewDate    = $timepicker2_1.actions.optionsStore._viewDate,
+            hours       = viewDate.hours,
+            mins        = viewDate.minutesFormatted,
+            secs        = viewDate.secondsFormatted;
+
+            $("#timepicker2").val( hours + ":" + mins + ":" + secs );
     });
-    $('#timepicker5').timepicker({
-        template: false,
-        showInputs: false,
-        minuteStep: 5
+
+    var $timepicker4 = new tempusDominus.TempusDominus(document.getElementById('timepicker4'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: false
+            }
+        },
+        localization: {
+            format: 'HH:mm T'
+        }
+    });
+
+    $("#timepicker1Input").on("click", function() {
+        $(".timepicker1 .input-group-addon").trigger("click");
+    });
+
+    const linkedPicker1Element = document.getElementById('linkedPickers1');
+
+    const linked1 = new tempusDominus.TempusDominus(linkedPicker1Element);
+
+    const linked2 = new tempusDominus.TempusDominus(document.getElementById('linkedPickers2'), {
+        useCurrent: false,
+    });
+
+    //using event listeners
+    linkedPicker1Element.addEventListener(Namespace.events.change, (e) => {
+        linked2.updateOptions({
+            restrictions: {
+                minDate: e.detail.date,
+            },
+        });
+    });
+
+    //using subscribe method
+    const subscription = linked2.subscribe(Namespace.events.change, (e) => {
+        linked1.updateOptions({
+            restrictions: {
+            maxDate: e.date,
+            },
+        });
     });
 }
 
@@ -3659,43 +3732,31 @@ function flotchartSimpleInit() {
 
                     var that = this;
 
-                    if (this.plot == null)
-                    {
+                    if (this.plot == null) {
                         this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
                         this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
                     }
                     this.plot = $.plot(
-                        $(this.placeholder),
+                        $(placeholder),
                         [{
                             label: "Data 1",
                             data: this.data.d1,
                             lines: { fill: 0.05 },
                             points: { fillColor: "#fff" }
                         },
-                            {
-                                label: "Data 2",
-                                data: this.data.d2,
-                                lines: { fill: 0.1 },
-                                points: { fillColor: that.options.colors[1] }
-                            }], this.options);
+                        {
+                            label: "Data 2",
+                            data: this.data.d2,
+                            lines: { fill: 0.1 },
+                            points: { fillColor: that.options.colors[1] }
+                        }], this.options
+                    );
                 }
             };
 
-            // uncomment to init on load
-            charts.chart_simple_001.init();
+            // uncomment to init on load, commented to suppress console error
+            // charts.chart_simple_001.init();
         }
-
-
-        // use with tabs
-        /*        $('a[href="#chart-simple-lines-001"]').on('shown.bs.tab', function(){
-         if (charts.chart_simple_001.plot == null)
-         charts.chart_simple_001.init();
-         });
-
-         $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
-         $(this).parent().find('[data-toggle]').removeClass('active');
-         $(this).addClass('active');
-         });*/
 
         // use with tabs
         $('a[href="#chart-simple-lines-001"]').on('shown.bs.tab', function(){
@@ -3704,7 +3765,7 @@ function flotchartSimpleInit() {
         });
 
         $('body').on('click', '.btn-group a[href="#chart-simple-lines-001"]', function(){
-            $(this).parent().find('[data-toggle]').removeClass('active');
+            $(this).parent().find('[data-bs-toggle]').removeClass('active');
             $(this).addClass('active');
         });
     });
@@ -5686,6 +5747,7 @@ function coreInit() {
 /* medical.init.js */
 function medicalInit() {
     (function($) {
+
         if (typeof charts == 'undefined')
             return;
 
@@ -6110,13 +6172,38 @@ function initFormWizards() {
 }
 
 function colorPickerInit() {
-    var $colorPicker = $("#colorpickerColor");
+    var $minicolor = $(".minicolor");
+        if ( $minicolor.length ) {
+            $minicolor.each(function() {
+                var $this = $(this);
+                    $this.minicolors({
+                        inline: true,
+                        control: $this.attr("data-control") || 'hue',
+                        defaultValue: $this.attr("data-defaultValue") || '',
+                        format: $this.attr('data-format') || 'hex',
+                        keywords: $this.attr('data-keywords') || '',
+                        inline: $this.attr('data-inline') === 'true',
+                        letterCase: $this.attr('data-letterCase') || 'lowercase',
+                        opacity: $this.attr('data-opacity'),
+                        position: $this.attr('data-position') || 'bottom',
+                        swatches: $this.attr('data-swatches') ? $this.attr('data-swatches').split('|') : [],
+                        change: function(hex, opacity) {
+                            var log;
+                                try {
+                                    log = hex ? hex : 'transparent';
 
-        $colorPicker.colorpicker();
-
-        $colorPicker.on('colorpickerChange', function(event) {
-            $colorPicker.css('background-color', event.color.toString());
-        });
+                                    if( opacity ) 
+                                        log += ', ' + opacity;
+                                    
+                                    if ( $this.closest(".osta_color_code").find(".minicolor-hex").length ) {
+                                        $this.closest(".osta_color_code").find(".minicolor-hex").val(hex);
+                                    }
+                                } catch(e) {}
+                        },
+                        theme: 'default'
+                    });
+            });
+        }
 }
 
 function inputMaskInit() {
@@ -6274,7 +6361,12 @@ $(function() {
         /* form-validator.render.init.js */
         initFormValidator();
         /* form-elements.init.js */
-        initFormElements();
+        if ( typeof melisUserTabs != 'undefined' && activeTabId === 'id_melis_form_elements' ) {
+            initFormElements();
+        }
+        /* else {
+            initFormElements();
+        } */
         /* form-wizards.render.init.js */
         initFormWizards();
         /* sliders.init.js */
@@ -6342,7 +6434,9 @@ $(function() {
         });
 
         $body.on("click", ".show-code", function() {
-            var $sliderCode = $(".slider-code");
+            var $this = $(this),
+                $sliderCode = $this.closest(".tns-wrapper").find(".slider-code");
+
                 $sliderCode.toggleClass("shown");
 
                 if ( $sliderCode.hasClass("shown") ) {
