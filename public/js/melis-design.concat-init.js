@@ -1,6 +1,4 @@
-/**
- * Created by conta on 8/17/2017.
- */
+// Created by conta on 8/17/2017.
 
 /* Animations Init */
 function animationsInit() {
