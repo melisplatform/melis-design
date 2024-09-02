@@ -175,6 +175,10 @@ function bootstrapTimePickerInit() {
         }
     });
 
+    $("#timepicker1Input").on("click", function() {
+        $(".timepicker1 .input-group-addon").trigger("click");
+    });
+
     var $timepicker2_1 = new tempusDominus.TempusDominus(document.getElementById('timepicker2_1'), {
         display: {
             viewMode: 'clock',
@@ -221,12 +225,13 @@ function bootstrapTimePickerInit() {
             }
         },
         localization: {
+            hourCycle: 'h12',
             format: 'HH:mm T'
         }
-    });
-
-    $("#timepicker1Input").on("click", function() {
-        $(".timepicker1 .input-group-addon").trigger("click");
+    }); 
+    
+    $("#timepicker4Input").on("click", function() {
+        $("#timepicker4 .input-group-addon").trigger("click");
     });
 
     const linkedPicker1Element = document.getElementById('linkedPickers1');
