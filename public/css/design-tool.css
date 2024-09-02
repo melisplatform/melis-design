@@ -9398,6 +9398,7 @@ body {
 .render-dashboard .dropdown-menu li a {
 	line-height: 30px;
 }
+.render-inbox .dropdown-menu > li > a,
 .render-dashboard .dropdown-menu > li > a {
 	display: block;
 	color: #262626 !important;
