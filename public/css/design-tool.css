@@ -9400,7 +9400,7 @@ body {
 }
 .render-dashboard .dropdown-menu > li > a {
 	display: block;
-	color: #262626;
+	color: #262626 !important;
 	padding: 0 10px;
 	text-decoration: none;
 }
