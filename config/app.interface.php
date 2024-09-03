@@ -60,7 +60,6 @@ return [
                     // lists of assets that will be loaded in the layout
                     'css' => [
                         '/MelisDesign/build/css/bundle.css',
-
                     ],
                     'js' => [
                         '/MelisDesign/build/js/bundle.js',
@@ -75,8 +74,7 @@ return [
                 'bundle_all_needed_files' => [
                     //will be put inside css folder
                     'css' => [
-                        '/assets/components/library/bootstrap-icons/font/fonts/bootstrap-icons.woff',
-                        '/assets/components/library/bootstrap-icons/font/fonts/bootstrap-icons.woff2'
+                        '/assets/components/library/bootstrap-icons/font/fonts'
                     ],
                     //will be put inside js folder
                     'js' => [
