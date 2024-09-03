@@ -67,7 +67,24 @@ return [
                     ]
                 ]
             ],
-            'datas' => '',
+            'datas' => [
+                /**
+                 * Used to copy necessary file to
+                 * main public/bundles-generated folder
+                 */
+                'bundle_all_needed_files' => [
+                    //will be put inside css folder
+                    'css' => [
+                        '/assets/components/library/bootstrap-icons/font/fonts/bootstrap-icons.woff',
+                        '/assets/components/library/bootstrap-icons/font/fonts/bootstrap-icons.woff2'
+                    ],
+                    //will be put inside js folder
+                    'js' => [
+
+                    ]
+                ]
+            ]
+            ,
             'interface' => [
 
                 'melisdesign_cof' => [
