@@ -2831,7 +2831,7 @@ function jqueryBootpagInit() {
 
 /* bootstrap-select.init.js */
 function bootstrapSelectInit() {
-    if ( $('.selectpicker').length)
+    if ( $('.selectpicker').length )
         $('.selectpicker').selectpicker();
 }
 

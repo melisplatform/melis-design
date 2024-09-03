@@ -38,6 +38,7 @@ return [
             'ressources' => [
                 'css' => [
                     '/MelisDesign/css/prettyPhoto.css',
+                    '/MelisDesign/assets/components/library/bootstrap-icons/font/bootstrap-icons.min.css',
                     '/MelisDesign/css/design-tool.css',
                     '/MelisDesign/css/datatables/datatables.min.css',
                     '/MelisDesign/css/tiny-slider/tiny-slider.css',

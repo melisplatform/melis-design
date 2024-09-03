@@ -9844,3 +9844,12 @@ label .text {
 .wizard-design .nav-tabs .nav-link {
 	border-radius: 0;
 }
+.bootstrap-select button {
+	display: none;
+}
+.selectpicker {
+	margin-bottom: 0.5rem;
+}
+.selectpicker.form-control {
+	border-radius: 0;
+}
