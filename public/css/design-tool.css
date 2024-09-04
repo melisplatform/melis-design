@@ -832,6 +832,7 @@
 .pricing-table.primary h2 {
 	color: #fff;
 }
+.pricing-table.primary .list-group-item,
 .pricing-table.primary h2 span {
 	color: #fff;
 }
@@ -9853,4 +9854,10 @@ label .text {
 }
 .render-support-answers .tickets .media-list .media .media-body {
 	display: block;
+}
+.pricing-table.default .list-group .btn-primary:hover .fa-download {
+	color: #E61C23;
+}
+.pricing-table.default .list-group .btn-primary .fa-download {
+	color: #fff;
 }
