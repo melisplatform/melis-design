@@ -7150,10 +7150,11 @@ table.fc-border-separate {
 	float: right;
 	color: #dadada;
 	position: absolute;
-	right: 0;
-	top: 0;
+	right: 2px;
+	top: 2px;
 	background: #932e2a;
 	border-radius: inherit;
+	z-index: 99;
 }
 .event-icon i {
 	padding: 3px 3px;
@@ -8512,34 +8513,8 @@ table.fc-border-separate {
 	_overflow: hidden;
 }
 
-.event-icon {
-	float: right;
-	color: #dadada;
-	position: absolute;
-	right: 0;
-	top: 0;
-	background: #932e2a;
-	border-radius: inherit;
-}
-.event-icon i {
-	padding: 3px 3px;
-	margin-top: 2px;
-	margin-right: 2px;
-	border-radius: 5px;
-}
-
-.delete-event:hover {
-	color: #fff;
-	background-color: #932e2a;
-}
-
 .bg-primary {
 	background: #932e2a !important;
-}
-
-.update-event:hover {
-	color: #fff;
-	background-color: #932e2a;
 }
 
 .dropdown-menu li.active a,
@@ -9860,4 +9835,31 @@ label .text {
 }
 .pricing-table.default .list-group .btn-primary .fa-download {
 	color: #fff;
+}
+#maps_google_tabs .widget-head ul li a {
+	color: #e61c23;
+}
+#calendar .fc-button {
+	height: 36px;
+}
+#calendar .fc-daygrid-event-dot,
+#calendar .fc-event-time,
+#calendar .fc-event-title {
+	color: #fff;
+	display: inline-block;
+	text-shadow: none;
+	font-weight: normal;
+}
+#calendar .fc-event-time,
+#calendar .fc-event-title {
+	line-height: 10px;
+}
+#calendar .fc-event-title.fc-sticky {
+	line-height: 15px;
+}
+#calendar .fc-daygrid-event-dot {
+	border-color: #fff;
+}
+#external-events-list .move {
+	cursor: move;
 }

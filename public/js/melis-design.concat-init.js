@@ -321,10 +321,10 @@ function checkAPIMaps() {
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.async = "async";
-        script.async = "defeer";
+        script.async = "defer";
         // script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=handleApiReady";
-        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"
-        if (!$('script[src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"]').length > 0) {
+        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps&libraries=marker"
+        if (!$('script[src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps&libraries=marker"]').length > 0) {
             //script exists
             document.body.appendChild(script);
         }
@@ -590,13 +590,16 @@ function initGoogleMaps() {
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
         })
-        // bind('init')
         .on('init', function() { 
+            //console.log(`#google-map-json on 'init' `);
             $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data) {
+                /* console.log(`#google-map-json $.getJSON() data: `, data);
+                console.log(`#google-map-json $.getJSON() componentsPath: `, componentsPath); */
                 $.each( data.markers, function(i, marker) {
                     $('#google-map-json').gmap('addMarker', {
                         'position': new google.maps.LatLng(marker.latitude, marker.longitude)
                     }).on("click", function() {
+                        //console.log(`#google-map-json addMarker .on('click', function(){}) event`);
                         $('#google-map-json').gmap('openInfoWindow', { 'content': marker.content }, this);
                     });
                 });
@@ -4829,65 +4832,56 @@ function uniformInit() {
 function calendarInit() {
     $(function() {
         /* initialize the external events
-         -----------------------------------------------------------------*/
+         -----------------------------------------------------------------*/       
+        var containerEl = document.getElementById("external-events-list");
 
-        $('#external-events ul li').each(function() {
-
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $(this).text().trim() // use the element's text as the event title
-            };
-
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
-
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 999,
-                revert: true,      // will cause the event to go back to its
-                revertDuration: 0,  //  original position after the drag,
-                start: function() { if (typeof mainYScroller != 'undefined') mainYScroller.disable(); },
-                stop: function() { if (typeof mainYScroller != 'undefined') mainYScroller.enable(); }
+        if ( $(containerEl).length ) {
+            new FullCalendar.Draggable(containerEl, {
+                itemSelector: '.fc-event-list',
+                eventData: function(eventEl) {
+                    let eventTitle = eventEl.innerText.trim();
+                        return {
+                            title: eventTitle
+                            //create: false
+                        }
+                }
             });
-        });
+        }
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
+        var calendarEl = document.getElementById('calendar');
 
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            droppable: true,
-            //'/html/admin/ajax/calendarEvents.json'
-            events: '/MelisDesign/js/calendar/calendarEvents.json',
-            drop: function(date, allDay) {
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
+            if ( $(calendarEl).length ) {
+                var calendarInstance = new FullCalendar.Calendar(calendarEl, {
+                    themeSystem: 'bootstrap5',
+                    initialView: 'dayGridMonth',
+                    nowIndicator: true,
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title'
+                    },
+                    editable: true,
+                    droppable: true,
+                    events: '/MelisDesign/js/calendar/calendarEvents.json',
+                    drop: function(dropInfo) {
+                        // is the "remove after drop" checkbox checked?
+                        if ( $('#drop-remove').is(':checked') ) {
+                            // if so, remove the element from the "Draggable Events" list
+                            $(this).remove();
+                        }
 
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
+                    }
+                });
 
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
+                calendarInstance.render();
 
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-
+                // clicking on calendar tool tab
+                $("body").on("shown.bs.tab", "#id_melis_calendar", function() {
+                    console.log("#id_melis_calendar shown.bs.tab!!!");
+                    calendarInstance.render();
+                });
             }
-        });
     });
 }
 

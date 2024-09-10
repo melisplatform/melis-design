@@ -38,6 +38,7 @@ return [
             'ressources' => [
                 'css' => [
                     '/MelisDesign/css/prettyPhoto.css',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/dist/fullcalendar.min.css',
                     '/MelisDesign/assets/components/library/bootstrap-icons/font/bootstrap-icons.min.css',
                     '/MelisDesign/css/design-tool.css',
                     '/MelisDesign/css/datatables/datatables.min.css',
@@ -47,6 +48,8 @@ return [
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/dist/index.global.min.js',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/packages/bootstrap5/index.global.min.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
                     '/MelisDesign/js/tiny-slider/tiny-slider.init.js',
                     '/MelisDesign/assets/components/plugins/prism/js/prism.js',

@@ -102,12 +102,12 @@
         var jQueryChecker = setTimeout(function(){
             if(window.jQuery !== "undefined") {
 
-                loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps");
+                loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps&libraries=marker");
                 clearTimeout(jQueryChecker);
             }
 
         }, 300);
     })();
 
-$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps");
+	$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps&libraries=marker");
 </script> -->
