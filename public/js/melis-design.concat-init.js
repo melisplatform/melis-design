@@ -4878,7 +4878,6 @@ function calendarInit() {
 
                 // clicking on calendar tool tab
                 $("body").on("shown.bs.tab", "#id_melis_calendar", function() {
-                    console.log("#id_melis_calendar shown.bs.tab!!!");
                     calendarInstance.render();
                 });
             }
