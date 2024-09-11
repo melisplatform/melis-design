@@ -84,8 +84,7 @@ return [
 
                     ]
                 ]
-            ]
-            ,
+            ],
             'interface' => [
 
                 'melisdesign_cof' => [
