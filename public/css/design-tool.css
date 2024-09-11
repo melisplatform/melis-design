@@ -9863,3 +9863,12 @@ label .text {
 #external-events-list .move {
 	cursor: move;
 }
+/* google maps display: none for the mean time */
+.melis-opentools[data-tool-meliskey="melis_maps_google"],
+.melis-opentools[data-tool-meliskey="melis_maps_clustering"],
+.melis-opentools[data-tool-meliskey="melis_maps_extend_pagination"],
+.melis-opentools[data-tool-meliskey="melis_maps_filtering"],
+.melis-opentools[data-tool-meliskey="melis_maps_geo_search"],
+.melis-opentools[data-tool-meliskey="melis_maps_json"] {
+	display: none;
+}

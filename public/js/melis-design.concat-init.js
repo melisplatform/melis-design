@@ -6360,9 +6360,6 @@ $(function() {
         if ( typeof melisUserTabs != 'undefined' && activeTabId === 'id_melis_form_elements' ) {
             initFormElements();
         }
-        /* else {
-            initFormElements();
-        } */
         /* form-wizards.render.init.js */
         initFormWizards();
         /* sliders.init.js */
@@ -6400,7 +6397,8 @@ $(function() {
         /* portfolio.init.js */
         initPortfolio();
         /* google maps vector init */
-        mapsVectorInit();
+        // removed google maps for the meantime
+        // mapsVectorInit();
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 
