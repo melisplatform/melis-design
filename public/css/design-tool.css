@@ -9208,7 +9208,7 @@ label .text {
 	width: 40px;
 }
 .bi::before {
-	color: #333 !important;
+	color: #333;
 }
 .bi::before, 
 [class*=" bi-"]::before, 
