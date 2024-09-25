@@ -38,16 +38,21 @@ return [
             'ressources' => [
                 'css' => [
                     '/MelisDesign/css/prettyPhoto.css',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/dist/fullcalendar.min.css',
+                    '/MelisDesign/assets/components/library/bootstrap-icons/font/bootstrap-icons.min.css',
                     '/MelisDesign/css/design-tool.css',
-                    '/MelisDesign/css/tiny-slider/prism.css',
+                    '/MelisDesign/css/datatables/datatables.min.css',
                     '/MelisDesign/css/tiny-slider/tiny-slider.css',
                     '/MelisDesign/css/tiny-slider/custom-tiny-slider.css',
+                    '/MelisDesign/assets/components/plugins/prism/css/prism.css',
                 ],
                 'js' => [
                     '/MelisDesign/js/melis-design.concat-plugins.js',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/dist/index.global.min.js',
+                    '/MelisDesign/assets/components/plugins/fullcalendar/packages/bootstrap5/index.global.min.js',
                     '/MelisDesign/js/melis-design.concat-init.js',
-                    '/MelisDesign/js/tiny-slider/prism.js',
-                    '/MelisDesign/js/tiny-slider/tiny-slider.init.js'
+                    '/MelisDesign/js/tiny-slider/tiny-slider.init.js',
+                    '/MelisDesign/assets/components/plugins/prism/js/prism.js',
                 ],
                 /**
                  * the "build" configuration compiles all assets into one file to make
@@ -58,14 +63,28 @@ return [
                     // lists of assets that will be loaded in the layout
                     'css' => [
                         '/MelisDesign/build/css/bundle.css',
-
                     ],
                     'js' => [
                         '/MelisDesign/build/js/bundle.js',
                     ]
                 ]
             ],
-            'datas' => '',
+            'datas' => [
+                /**
+                 * Used to copy necessary file to
+                 * main public/bundles-generated folder
+                 */
+                'bundle_all_needed_files' => [
+                    //will be put inside css folder
+                    'css' => [
+                        '/assets/components/library/bootstrap-icons/font/fonts'
+                    ],
+                    //will be put inside js folder
+                    'js' => [
+
+                    ]
+                ]
+            ],
             'interface' => [
 
                 'melisdesign_cof' => [

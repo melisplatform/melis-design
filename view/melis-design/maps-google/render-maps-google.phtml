@@ -19,85 +19,76 @@
 	            </li>
 	        </ul>
 	    </div>
-
 	    <div class="innerAll spacing-x2">
-
 	        <!-- Tabs -->
-	        <div class="widget widget-tabs widget-tabs-vertical row row-merge" id="maps_google_tabs">
-	            <!-- Tabs Heading -->
-	            <div class="widget-head col-md-3">
-	                <ul>
-	                    <li class="active"><a>Streetview with microformats</a>
-	                </ul>
-	            </div>
-	            <!-- // Tabs Heading END -->
+	        <div class="widget widget-tabs widget-tabs-vertical" id="maps_google_tabs">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-3">
+							<!-- Tabs Heading -->
+							<div class="widget-head">
+								<ul>
+									<li class="active"><a href="#">Streetview with microformats</a>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<!-- // Tabs Heading END -->
+							<div class="widget-body">
 
-	            <div class="widget-body col-md-9">
+								<!-- Tab content -->
+								<div class="tab-content">
 
-	                <!-- Tab content -->
-	                <div class="tab-content">
+									<!-- Streetview -->
+									<h4 class="separator bottom">Streetview with microformats <span>Click on marker or "Spinal Tap" title to open Street View</span></h4>
+									<div class="thumbnail">
+										<div class="map_canvas" id="google-map-streetview" style="height: 400px"></div>
+									</div>
+									<div class="separator bottom"></div>
+									<div class="vevent well">
+										<a href="#spinaltap"><h3 class="url summary">Spinal Tap</h3></a>
+										<p class="innerT">After their highly-publicized search for a new drummer, Spinal Tap kicks off their latest comeback tour with a San Francisco show.</p>
 
-	                    <!-- Streetview -->
-	                    <h4 class="separator bottom">Streetview with microformats <span>Click on marker or "Spinal Tap" title to open Street View</span></h4>
-	                    <div class="thumbnail">
-	                        <div class="map_canvas" id="google-map-streetview" style="height: 400px"></div>
-	                    </div>
-	                    <div class="separator bottom"></div>
-	                    <div class="vevent well">
-	                        <a href="#spinaltap"><h3 class="url summary">Spinal Tap</h3></a>
-	                        <p class="innerT">After their highly-publicized search for a new drummer, Spinal Tap kicks off their latest comeback tour with a San Francisco show.</p>
+										<p><strong>When:</strong>
+											<span class="dtstart"> Oct 15, 7:00PM <span class="value-title" title="2015-10-15T19:00-08:00"></span></span> -
+											<span class="dtend"> 9:00PM<span class="value-title" title="2015-10-15T21:00-08:00"></span></span>
+											<br/>
 
-	                        <p><strong>When:</strong>
-	                            <span class="dtstart"> Oct 15, 7:00PM <span class="value-title" title="2015-10-15T19:00-08:00"></span></span> -
-	                            <span class="dtend"> 9:00PM<span class="value-title" title="2015-10-15T21:00-08:00"></span></span>
-	                            <br/>
+											<strong>Where:</strong>
+											<span class="location vcard">
+										<span class="fn org">Warfield Theatre</span>,
+											<span class="adr"> 
+											<span class="street-address">982 Market St</span>,
+											<span class="locality">San Francisco</span>,
+											<span class="region">CA</span>
+											</span>
+											<span class="geo"> 
+											<span class="latitude"><span class="value-title" title="37.774929"></span></span>
+											<span class="longitude"><span class="value-title" title="-122.419416"></span></span>
+											</span>
+											</span>
+										</p>
+									</div>
+									<!-- // Streetview END -->
+								</div>
+								<!-- // Tab content END -->
 
-	                            <strong>Where:</strong>
-	                            <span class="location vcard">
-							<span class="fn org">Warfield Theatre</span>,
-	                            <span class="adr"> 
-								<span class="street-address">982 Market St</span>,
-	                            <span class="locality">San Francisco</span>,
-	                            <span class="region">CA</span>
-	                            </span>
-	                            <span class="geo"> 
-								<span class="latitude"><span class="value-title" title="37.774929"></span></span>
-	                            <span class="longitude"><span class="value-title" title="-122.419416"></span></span>
-	                            </span>
-	                            </span>
-	                        </p>
-	                    </div>
-	                    <!-- // Streetview END -->
-
-
-
-
-
-	                </div>
-	                <!-- // Tab content END -->
-
-	            </div>
+							</div>
+						</div>
+					</div>
+				</div>
 	        </div>
 	        <!-- // Tabs END -->
-
 	    </div>
-
-
-
-
 	</div>
 	<!-- // Content END -->
-
-
     <div class="clearfix"></div>
     <!-- // Sidebar menu & content wrapper END -->
-
 </div>
 <!-- // Tab END -->
-<script type="text/javascript">
-/*    var jQueryChecker = null;
-    function loadScript(url)
-    {
+<!-- <script type="text/javascript">
+   var jQueryChecker = null;
+    function loadScript(url) {
         var body = document.getElementsByTagName('body')[0];
         var script = document.createElement('script');
         script.async = "async";
@@ -107,16 +98,16 @@
         body.appendChild(script);
     }
 
-    (function()
-    {
+    (function() {
         var jQueryChecker = setTimeout(function(){
             if(window.jQuery !== "undefined") {
 
-                loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps");
+                loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps&libraries=marker");
                 clearTimeout(jQueryChecker);
             }
 
         }, 300);
-    })();*/
+    })();
 
-// $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps");
+	$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCk8p7DbdHKMBh8rt3Wd9rLEjmo0fUXOhM&callback=initGoogleMaps&libraries=marker");
+</script> -->

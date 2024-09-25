@@ -33,13 +33,16 @@
                         </form>
                     </div>
 
-                    <div class="separator bottom"></div>
+                    <div class="separator top d-flex flex-row justify-content-between">
+                        <!-- <button type="button" class="btn btn-primary btn-remove-all-files">Remove all files</button> -->
+                        <small>* Maximum filesize per file is 20MB</small>
+                    </div>
                     <!-- // Dropzone END -->
 
                 </div>
             </div>
             <!-- // Widget END -->
-
+            
             <!-- Widget -->
             <div class="widget widget-inverse">
 
@@ -73,3 +76,23 @@
 
 </div>
 <!-- // Tab END -->
+
+<!-- <div id="remove-all-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dropzone</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to remove the file?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="remove-all" type="button" class="btn btn-danger">Remove</button>
+            </div>
+        </div>
+    </div>
+</div> -->

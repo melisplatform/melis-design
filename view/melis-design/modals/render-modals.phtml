@@ -20,21 +20,20 @@
 	            </div>
 	            <div class="widget-body">
 	                <!-- Form Modal 1 -->
-	                <a href="#modal-login" data-toggle="modal" class="btn btn-primary"><i class="fa fa-fw fa-user"></i> Modal Login Form</a>
+	                <a href="#modal-login" data-bs-toggle="modal" class="btn btn-primary"><i class="fa fa-fw fa-user"></i> Modal Login Form</a>
 
 	                <!-- Modal -->
-	                <div class="modal fade" id="modal-login">
-
+	                <div class="modal fade" id="modal-login" tabindex="-1">
 	                    <div class="modal-dialog">
 	                        <div class="modal-content">
-
 	                            <!-- Modal heading -->
 	                            <div class="modal-header">
-	                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                                <h3 class="modal-title">Login</h3>
+									<h3 class="modal-title" id="modal-login-label">Login</h3>
+									<!-- &times; -->
+	                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+									<!-- aria-hidden="true" -->
 	                            </div>
 	                            <!-- // Modal heading END -->
-
 	                            <!-- Modal body -->
 	                            <div class="modal-body">
 	                                <div class="innerAll">
@@ -78,16 +77,10 @@
 	                                </div>
 	                            </div>
 	                            <!-- // Modal body END -->
-
 	                        </div>
 	                    </div>
-
 	                </div>
 	                <!-- // Modal END -->
-
-
-
-
 	            </div>
 	        </div>
 
@@ -97,21 +90,17 @@
 	            </div>
 	            <div class="widget-body">
 	                <!-- Form Modal 1 -->
-	                <a href="#modal-compose" data-toggle="modal" class="btn btn-success btn-regular"><i class="fa fa-fw fa-envelope"></i> Compose Email Modal</a>
-
+	                <a href="#modal-compose" data-bs-toggle="modal" class="btn btn-success btn-regular"><i class="fa fa-fw fa-envelope"></i> Compose Email Modal</a>
 	                <!-- Modal -->
 	                <div class="modal fade" id="modal-compose">
-
 	                    <div class="modal-dialog">
 	                        <div class="modal-content">
-
 	                            <!-- Modal heading -->
 	                            <!-- <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 class="modal-title">Login</h3>
-				</div> -->
+									<button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+									<h3 class="modal-title">Login</h3>
+								</div> -->
 	                            <!-- // Modal heading END -->
-
 	                            <div class="innerAll border-bottom">
 	                                <div class="float-left">
 	                                    <a href="" class=" btn btn-default btn-sm"><i class="fa fa-fw fa-arrow-left"></i> back</a>
@@ -122,10 +111,8 @@
 	                                <a href="" class="float-right btn btn-primary btn-sm strong"><i class="fa fa-fw icon-outbox-fill"></i> Send Email</a>
 	                                <div class="clearfix"></div>
 	                            </div>
-
 	                            <!-- Modal body -->
 	                            <div class="modal-body padding-none">
-
 	                                <form class="form-horizontal composer-email" role="form">
 	                                    <div class="bg-gray innerAll border-bottom">
 	                                        <div class="innerLR">
@@ -138,7 +125,7 @@
 															<div class="input-group">
 																<input type="text" class="form-control" id="to">
 																<div class="input-group-btn">
-																	<button type="button" data-toggle="collapse" data-target="#cc" class="btn btn-default">CC/BCC <span class="caret"></span>
+																	<button type="button" data-bs-toggle="collapse" data-bs-target="#cc" class="btn btn-default btn-cc-bcc">CC/BCC <span class="caret"></span>
 																	</button>
 																</div>
 															</div>
@@ -193,61 +180,49 @@
 	                                        <div class="clearfix"></div>
 	                                    </div>
 	                                </form>
-
 	                            </div>
 	                            <!-- // Modal body END -->
-
 	                            <div class="innerAll text-center border-top">
-	                                <a href="" class="btn btn-default"><i class="fa fa-fw icon-crossing"></i> Cancel</a>
+	                                <a href="" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-fw icon-crossing"></i> Cancel</a>
 	                                <a href="" class="btn btn-primary"><i class="fa fa-fw icon-outbox-fill"></i> Send email</a>
 	                            </div>
-
 	                        </div>
 	                    </div>
-
 	                </div>
 	                <!-- // Modal END -->
-
-
 	            </div>
 	        </div>
-
-
 	        <div class="widget widget-inverse">
 	            <div class="widget-head">
 	                <h4 class="heading">Form Wizards <span>Modal Examples</span></h4>
 	            </div>
 	            <div class="widget-body">
 	                <!-- Form Modal 2 -->
-	                <a href="#modal-2" data-toggle="modal" class="btn btn-info btn-regular"><i class="fa fa-fw fa-magic"></i> Modal Wizard Example 1</a>
+	                <a href="#modal-2" data-bs-toggle="modal" class="btn btn-info btn-regular"><i class="fa fa-fw fa-magic"></i> Modal Wizard Example 1</a>
 
 	                <!-- Modal -->
 	                <div class="modal fade" id="modal-2">
-
 	                    <div class="modal-dialog">
 	                        <div class="modal-content">
-
 	                            <!-- Modal body -->
 	                            <div class="modal-body padding-none">
-
 	                                <!-- Form Wizard / Widget Tabs / Double Style -->
 	                                <div class="wizard wizard-design">
 	                                    <div class="widget widget-tabs widget-tabs-double widget-tabs-responsive margin-none border-none">
-
 	                                        <!-- Widget heading -->
 	                                        <div class="widget-head bg-gray">
 	                                            <ul class="nav nav-tabs">
 	                                                <li class="nav-item active">
-														<a href="#tab1-2" class="nav-link glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+														<a href="#tab1-2" class="nav-link glyphicons user" data-bs-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a href="#tab2-2" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+														<a href="#tab2-2" class="nav-link glyphicons calculator" data-bs-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a href="#tab3-2" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+														<a href="#tab3-2" class="nav-link glyphicons credit_card" data-bs-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a href="#tab4-2" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+														<a href="#tab4-2" class="nav-link glyphicons circle_ok" data-bs-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
 	                                                </li>
 	                                            </ul>
 	                                        </div>
@@ -264,8 +239,8 @@
 	                                                            <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 	                                                        </div>
 	                                                        <div class="col-md-9">
-	                                                            <label for="inputTitle">Title</label>
-	                                                            <input type="text" id="inputTitle" class="col-md-6 form-control" value="" placeholder="Enter product title ..." />
+	                                                            <label for="enterProductTitle">Title</label>
+	                                                            <input type="text" id="enterProductTitle" class="col-md-6 form-control" value="" placeholder="Enter product title ..." />
 	                                                            <div class="separator"></div>
 	                                                        </div>
 	                                                    </div>
@@ -331,7 +306,7 @@
 	                            </div>
 	                            <!-- // Modal body END -->
 	                            <div class="modal-footer center margin-none">
-	                                <a href="#" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+	                                <a href="#" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</a>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -339,26 +314,18 @@
 	                </div>
 	                <!-- // Modal END -->
 
-
-
-
-
 	                <!-- Form Modal 3 -->
-	                <a href="#modal-3" data-toggle="modal" class="btn btn-inverse"><i class="fa fa-fw fa-magic"></i> Modal Wizard Example 2</a>
+	                <a href="#modal-3" data-bs-toggle="modal" class="btn btn-inverse"><i class="fa fa-fw fa-magic"></i> Modal Wizard Example 2</a>
 
 	                <!-- Modal -->
 	                <div class="modal fade" id="modal-3">
-
 	                    <div class="modal-dialog">
 	                        <div class="modal-content">
-
 	                            <!-- Modal body -->
 	                            <div class="modal-body padding-none">
-
 	                                <!-- Form Wizard / Widget Pills -->
 	                                <div class="wizard wizard-design">
 	                                    <div class="widget margin-none border-none widget-tabs widget-wizard-pills widget-tabs-responsive">
-
 	                                        <!-- Widget heading -->
 	                                        <div class="widget-head bg-gray widget-steps-head">
 	                                            <ul class="nav nav-tabs">
@@ -366,16 +333,16 @@
 														<span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
 	                                                </li>
 	                                                <li class="nav-item active no-padding">
-														<a class="nav-link" href="#tab1-3" data-toggle="tab">1</a>
+														<a class="nav-link" href="#tab1-3" data-bs-target="#tab1-3" data-bs-toggle="tab">1</a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a class="nav-link" href="#tab2-3" data-toggle="tab">2</a>
+														<a class="nav-link" href="#tab2-3" data-bs-target="#tab2-3" data-bs-toggle="tab">2</a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a class="nav-link" href="#tab3-3" data-toggle="tab">3</a>
+														<a class="nav-link" href="#tab3-3" data-bs-target="#tab3-3" data-bs-toggle="tab">3</a>
 	                                                </li>
 	                                                <li class="nav-item">
-														<a class="nav-link" href="#tab4-3" data-toggle="tab">4</a>
+														<a class="nav-link" href="#tab4-3" data-bs-toggle="tab">4</a>
 	                                                </li>
 	                                            </ul>
 	                                        </div>
@@ -476,33 +443,30 @@
 	            </div>
 	            <div class="widget-body">
 	                <!-- Form Modal 1 -->
-	                <a href="#modal-credit-card" data-toggle="modal" class="btn btn-success btn-regular"> <i class="fa fa-fw fa-credit-card"></i> Modal Credit Card</a>
+	                <a href="#modal-credit-card" data-bs-toggle="modal" class="btn btn-success btn-regular"> <i class="fa fa-fw fa-credit-card"></i> Modal Credit Card</a>
 
 	                <!-- Modal -->
 	                <div class="modal fade" id="modal-credit-card">
-
 	                    <div class="modal-dialog">
 	                        <div class="modal-content">
-
 	                            <!-- Modal heading -->
 	                            <div class="modal-header">
-	                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                                <h3 class="modal-title">Payment</h3>
+									<h3 class="modal-title">Payment</h3>
+									<!-- &times; -->
+	                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	                            </div>
 	                            <!-- // Modal heading END -->
-
 	                            <!-- Modal body -->
 	                            <div class="modal-body">
-
 	                                <div class="innerAll">
 	                                    <form class="margin-none innerLR inner-2x">
 	                                        <div class="form-group">
-	                                            <label for="exampleInputEmail1">Cardholder Name</label>
-	                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name on Card">
+	                                            <label for="emailNameOnCard">Cardholder Name</label>
+	                                            <input type="text" class="form-control" id="emailNameOnCard" placeholder="Name on Card">
 	                                        </div>
 	                                        <div class="form-group">
-	                                            <label for="exampleInputEmail1">Card Number</label>
-	                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Card Number">
+	                                            <label for="emailEnterCardNumber">Card Number</label>
+	                                            <input type="email" class="form-control" id="emailEnterCardNumber" placeholder="Enter Card Number">
 	                                        </div>
 	                                        <div class="form-group">
 	                                            <label for="exampleInputPassword1">Expiry Date</label>
@@ -544,23 +508,16 @@
 	                                            </div>
 	                                        </div>
 	                                        <div class="text-center innerAll">
-	                                            <a href="" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Make Payment</a>
+	                                            <a href="" class="btn btn-primary" data-bs-dismiss="modal">Make Payment</a>
 	                                        </div>
 	                                    </form>
 	                                </div>
-
 	                            </div>
 	                            <!-- // Modal body END -->
-
 	                        </div>
 	                    </div>
-
 	                </div>
 	                <!-- // Modal END -->
-
-
-
-
 	            </div>
 	        </div>
 
@@ -575,19 +532,15 @@
 	                <button id="modals-bootbox-custom" class="btn btn-primary">Custom Dialog</button>
 	            </div>
 	        </div>
-
-
-
-
 	        <!-- Modal inline -->
 	        <div class="modal modal-inline">
 	            <div class="modal-dialog">
 	                <div class="modal-content">
-
 	                    <!-- Modal heading -->
 	                    <div class="modal-header">
-	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                        <h4 class="modal-title">Modal header</h4>
+							<!-- &times; -->
+							<h4 class="modal-title">Modal header</h4>
+	                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	                    </div>
 	                    <!-- // Modal heading END -->
 
@@ -600,25 +553,22 @@
 	                    <!-- Modal footer -->
 	                    <div class="modal-footer">
 	                        <a href="#" class="btn btn-default btn-regular">Just a button</a>
-	                        <a href="#modal-simple" data-toggle="modal" class="btn btn-primary">Open Live Modal</a>
+	                        <a href="#modal-simple" data-bs-target="#modal-simple" data-bs-toggle="modal" class="btn btn-primary">Open Live Modal</a>
 	                    </div>
 	                    <!-- // Modal footer END -->
-
 	                </div>
 	            </div>
-
 	        </div>
 
 	        <!-- Modal -->
-	        <div class="modal fade" id="modal-simple">
-
+	        <div class="modal fade modal-simple" id="modal-simple">
 	            <div class="modal-dialog">
 	                <div class="modal-content">
-
 	                    <!-- Modal heading -->
 	                    <div class="modal-header">
-	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                        <h3 class="modal-title">Modal header</h3>
+							<!-- &times; -->
+							<h3 class="modal-title">Modal header</h3>
+	                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	                    </div>
 	                    <!-- // Modal heading END -->
 
@@ -630,8 +580,8 @@
 
 	                    <!-- Modal footer -->
 	                    <div class="modal-footer">
-	                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-	                        <a href="#" data-dismiss="modal" class="btn btn-primary">Save changes</a>
+	                        <a href="#" class="btn btn-default" data-bs-dismiss="modal">Close</a>
+	                        <a href="#" data-bs-dismiss="modal" class="btn btn-primary">Save changes</a>
 	                    </div>
 	                    <!-- // Modal footer END -->
 
@@ -640,18 +590,10 @@
 
 	        </div>
 	        <!-- // Modal END -->
-
-
-
-
 	    </div>
-
-
 	</div>
 	<!-- // Content END -->
-
     <div class="clearfix"></div>
     <!-- // Sidebar menu & content wrapper END -->
-
 </div>
 <!-- // Tab END -->

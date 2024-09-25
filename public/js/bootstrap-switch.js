@@ -255,7 +255,7 @@ function switchBootstrap() {
 
           if (active) {
             $this.removeClass('deactivate');
-            $this.find(inputSelector).removeAttr('disabled');
+            $this.find(inputSelector).prop('disabled', false);
           }
           else {
             $this.addClass('deactivate');

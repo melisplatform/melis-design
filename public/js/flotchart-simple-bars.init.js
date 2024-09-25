@@ -97,7 +97,7 @@ function flotchartSimpleBarsInit() {
 								charts.chart_simple_bars_001.init();
 						});
 
-						$('.btn-group [data-toggle="tab"]').on('show.bs.tab', function(){
+						$('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
 							$(this).parent().find('[data-toggle]').removeClass('active');
 							$(this).addClass('active');
 						});*/

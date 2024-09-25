@@ -18,7 +18,7 @@
                 <li class="active"><a href="#">Dashboard</a></li>
                 <li><a href="#"><span class="badge badge-primary float-right">30</span> Button</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Dropdown Link #1</a></li>
                         <li><a href="#">Dropdown Link #2</a></li>
@@ -27,14 +27,11 @@
                 </li>
             </ul>
         </div>
-    
         <div class="innerAll spacing-x2">
-
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="panel-3d">
                         <div class="front">
-
                             <div class="widget text-center">
                                 <div class="widget-body padding-none">
                                     <div>
@@ -47,23 +44,19 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="back">
-
                             <div class="widget widget-inverse widget-scroll" data-scroll-height="165px">
                                 <div class="widget-head">
                                     <button class="btn btn-xs btn-default float-right"><i class="fa fa-times"></i></button>
                                     <h4 class="heading">Statistics</h4>
                                 </div>
                                 <div class="widget-body padding-none">
-                                    
-                                    <div>
+                                    <div class="scroll-div">
                                         <table class="table table-condensed">
                                             <!-- Table body -->
                                             <tbody>
-                                                
-                                                                                        <!-- Table row -->
+                                                <!-- Table row -->
                                                 <tr>
                                                     <td class="center">Oct</td>
                                                     <td><strong>27,340</strong></td>
@@ -253,7 +246,7 @@
                                     
                                     <div>
                                         <div class="media innerAll">
-                                            <i class="fa fa-chat fa-2x float-left disabled"></i>
+                                            <!-- <i class="fa fa-chat fa-2x float-left disabled"></i> -->
                                             <div class="media-body">
                                                 <div class="float-right label label-default">2 days</div>
                                                 <a href="" class="text-info">John Doe</a> <em>wrote: </em>
@@ -305,8 +298,8 @@
 
                                     <div class="widget-head bg-gray">
                                         <div class="btn-group float-right btn-group-xs">
-                                            <a href="#chart-simple-lines-001" class="btn btn-default active" data-toggle="tab"><i class="fa fa-bars"></i></a>
-                                            <a href="#chart-simple-bars-001" class="btn btn-default" data-toggle="tab"><i class="fa fa-bar-chart-o"></i></a>
+                                            <a href="#chart-simple-lines-001" class="btn btn-default active" data-bs-toggle="tab"><i class="fa fa-bars"></i></a>
+                                            <a href="#chart-simple-bars-001" class="btn btn-default" data-bs-toggle="tab"><i class="fa fa-bar-chart-o"></i></a>
                                         </div>
                                         <h3 class="heading text-regular"><i class="icon-stocks-up"></i> Statistics</h3>
                                     </div>
@@ -477,11 +470,11 @@
                                 <!-- Tabs Heading -->
                                 <div class="widget-head">
                                     <ul class="nav nav-tabs">
-                                        <li class="nav-item active"><a class="nav-link glyphicons user_add" data-toggle="tab" href="#filterUsersTab"><i></i>Users</a></li>
-                                        <li class="nav-item"><a class="nav-link glyphicons shopping_cart" data-toggle="tab" href="#filterOrdersTab"><i></i>Orders</a></li>
-                                        <li class="nav-item"><a class="nav-link glyphicons envelope" data-toggle="tab" href="#filterMessagesTab"><i></i></a></li>
-                                        <li class="nav-item"><a class="nav-link glyphicons link" data-toggle="tab" href="#filterLinksTab"><i></i></a></li>
-                                        <li class="nav-item"><a class="nav-link glyphicons camera" data-toggle="tab" href="#filterPhotosTab"><i></i></a></li>
+                                        <li class="nav-item active"><a class="nav-link glyphicons user_add" data-bs-toggle="tab" href="#filterUsersTab"><i></i>Users</a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons shopping_cart" data-bs-toggle="tab" href="#filterOrdersTab"><i></i>Orders</a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons envelope" data-bs-toggle="tab" href="#filterMessagesTab"><i></i></a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons link" data-bs-toggle="tab" href="#filterLinksTab"><i></i></a></li>
+                                        <li class="nav-item"><a class="nav-link glyphicons camera" data-bs-toggle="tab" href="#filterPhotosTab"><i></i></a></li>
                                     </ul>
                                 </div>
                                 <!-- // Tabs Heading END -->
@@ -898,16 +891,16 @@
                             </div>
                             <div class="innerLR half">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="1">Client Meeting</label>
+                                    <label><input type="checkbox" value="1"><div class="text">Client Meeting</div></label>
                                 </div>
                                 <div class="checkbox">
-                                    <label class="done"><input type="checkbox" checked="checked" value="1"><strike>Find new Developer</strike></label>
+                                    <label class="done"><input type="checkbox" checked="checked" value="1"><div class="strike">Find new Developer</div></label>
                                 </div>
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="1">Create a Quote!</label>
+                                    <label><input type="checkbox" value="1"><div class="text">Create a Quote!</div></label>
                                 </div>
                                 <div class="checkbox check-success">
-                                    <label><input type="checkbox" value="1">This will be your next task</label>
+                                    <label><input type="checkbox" value="1"><div class="text">This will be your next task</div></label>
                                 </div>
                             </div>
                         </div>
@@ -935,9 +928,7 @@
         </div>
     </div>
     <!-- // Content END -->
-        
-<div class="clearfix"></div>
-<!-- // Sidebar menu & content wrapper END -->
-
+    <div class="clearfix"></div>
+    <!-- // Sidebar menu & content wrapper END -->
 </div>
 <!-- // Tab END -->

@@ -162,7 +162,7 @@
                     <!-- // Widget END -->
 
                     <!-- Widget -->
-                    <div class="widget widget-inverse" data-toggle="collapse-widget">
+                    <div class="widget widget-inverse" data-bs-toggle="collapse-widget">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -258,18 +258,18 @@
                         <div class="widget-body">
 
                             <!-- Form Modal 1 -->
-                            <a href="#modal-1" data-toggle="modal" class="btn btn-primary"> Modal Example 1</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-1" class="btn btn-primary"> Modal Example 1</button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modal-1">
+                            <div class="modal fade" id="modal-1" tabindex="-1">
 
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
                                         <!-- Modal heading -->
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <div class="modal-header d-flex flex-row justify-content-between">
                                             <h3 class="modal-title">Login</h3>
+                                            <a href="#" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</a>
                                         </div>
                                         <!-- // Modal heading END -->
 
@@ -323,15 +323,11 @@
                             </div>
                             <!-- // Modal END -->
 
-
-
-
-
                             <!-- Form Modal 2 -->
-                            <a href="#modal-2" data-toggle="modal" class="btn btn-info btn-regular"> Modal Example 2</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-2" class="btn btn-info btn-regular"> Modal Example 2</button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modal-2">
+                            <div class="modal fade" id="modal-2" tabindex="-1">
 
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -347,16 +343,16 @@
                                                     <div class="widget-head bg-gray">
                                                         <ul class="nav nav-tabs">
                                                             <li class="nav-item active">
-                                                                <a href="#tab1-2" class="nav-link glyphicons user" data-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
+                                                                <a href="#tab1-2" class="nav-link glyphicons user" data-bs-toggle="tab"><i></i><span class="strong">Step 1</span><span>Personal details</span></a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a href="#tab2-2" class="nav-link glyphicons calculator" data-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
+                                                                <a href="#tab2-2" class="nav-link glyphicons calculator" data-bs-toggle="tab"><i></i><span class="strong">Step 2</span><span>Billing details</span></a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a href="#tab3-2" class="nav-link glyphicons credit_card" data-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
+                                                                <a href="#tab3-2" class="nav-link glyphicons credit_card" data-bs-toggle="tab"><i></i><span class="strong">Step 3</span><span>Payment</span></a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a href="#tab4-2" class="nav-link glyphicons circle_ok" data-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
+                                                                <a href="#tab4-2" class="nav-link glyphicons circle_ok" data-bs-toggle="tab"><i></i><span class="strong">Step 4</span><span>Confirmation</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -441,7 +437,7 @@
                                         </div>
                                         <!-- // Modal body END -->
                                         <div class="modal-footer center">
-                                            <a href="#" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
+                                            <a href="#" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</a>
                                         </div>
                                     </div>
                                 </div>
@@ -449,15 +445,11 @@
                             </div>
                             <!-- // Modal END -->
 
-
-
-
-
                             <!-- Form Modal 3 -->
-                            <a href="#modal-3" data-toggle="modal" class="btn btn-inverse"> Modal Example 3</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-3" class="btn btn-inverse"> Modal Example 3</button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modal-3">
+                            <div class="modal fade" id="modal-3" tabindex="-1">
 
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -475,16 +467,16 @@
                                                             <li class="status"><span class="r">Step <span class="step-current">2</span> of <span class="steps-total">5</span></span><span class="r text-primary">Completed: <span class="steps-complete">1</span></span>
                                                             </li>
                                                             <li class="nav-item active no-padding">
-                                                                <a class="nav-link" href="#tab1-3" data-toggle="tab">1</a>
+                                                                <a class="nav-link" href="#tab1-3" data-bs-toggle="tab">1</a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a class="nav-link" href="#tab2-3" data-toggle="tab">2</a>
+                                                                <a class="nav-link" href="#tab2-3" data-bs-toggle="tab">2</a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a class="nav-link" href="#tab3-3" data-toggle="tab">3</a>
+                                                                <a class="nav-link" href="#tab3-3" data-bs-toggle="tab">3</a>
                                                             </li>
                                                             <li class="nav-item">
-                                                                <a class="nav-link" href="#tab4-3" data-toggle="tab">4</a>
+                                                                <a class="nav-link" href="#tab4-3" data-bs-toggle="tab">4</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -579,19 +571,9 @@
 
                             </div>
                             <!-- // Modal END -->
-
-
-
-
-
                         </div>
-
                     </div>
                     <!-- // Widget END -->
-
-
-
-
 
                     <!-- Widget -->
                     <div class="widget widget-inverse">
@@ -632,7 +614,7 @@
                                 <input class="form-control" id="appendedDropdownButton" type="text" />
                                 <div class="input-group-btn">
                                     <div class="dropup">
-                                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown">
                                             Action <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu float-right">
@@ -670,7 +652,7 @@
                                     <button class="btn btn-default" tabindex="-1">Action</button>
                                 </div>
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                    <button class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" tabindex="-1">
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu float-right">
@@ -692,7 +674,7 @@
                     <!-- // Widget END -->
 
                     <!-- Widget -->
-                    <div class="widget widget-inverse" data-toggle="collapse-widget">
+                    <div class="widget widget-inverse" data-bs-toggle="collapse-widget">
 
                         <!-- Widget heading -->
                         <div class="widget-head">
@@ -812,7 +794,7 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <button type="button" class="btn btn-primary btn-single-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">Single Toggle</button>
+                            <button type="button" class="btn btn-primary btn-single-toggle" data-bs-toggle="button" aria-pressed="false" autocomplete="off">Single Toggle</button>
                         </div>
 
                     </div>
@@ -834,7 +816,7 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                                 <label class="btn btn-primary active">
                                     <input type="checkbox" checked autocomplete="off"> Option 1
                                 </label>
@@ -861,7 +843,7 @@
                         <!-- // Widget heading END -->
 
                         <div class="widget-body center">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                                 <label class="btn btn-primary active">
                                     <input type="radio" name="options" id="option1" autocomplete="off" checked>Left
                                 </label>
@@ -899,7 +881,7 @@
                             <h5>Default</h5>
                             <div class="row">
                                 <div class="innerLR innerB select-group">
-                                    <select class="col-md-12 form-control">
+                                    <select class="selectpicker form-control">
                                         <optgroup label="Picnic">
                                             <option>Mustard</option>
                                             <option>Ketchup</option>
@@ -915,96 +897,122 @@
                             </div>
                             <h5>Extended</h5>
                             <div class="row">
-                                <select class="selectpicker col-md-12">
-                                    <optgroup label="Picnic">
-                                        <option>Mustard</option>
-                                        <option>Ketchup</option>
-                                        <option>Relish</option>
-                                    </optgroup>
-                                    <optgroup label="Camping">
-                                        <option>Tent</option>
-                                        <option>Flashlight</option>
-                                        <option>Toilet Paper</option>
-                                    </optgroup>
-                                </select>
+                                <div class="innerLR innerB select-group">
+                                    <select class="selectpicker form-control">
+                                        <optgroup label="Picnic">
+                                            <option>Mustard</option>
+                                            <option>Ketchup</option>
+                                            <option>Relish</option>
+                                        </optgroup>
+                                        <optgroup label="Camping">
+                                            <option>Tent</option>
+                                            <option>Flashlight</option>
+                                            <option>Toilet Paper</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <h5>Styles</h5>
                             <div class="row">
-                                <select class="selectpicker col-md-6" data-style="btn-primary">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-6" data-style="btn-default">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-primary">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-default">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
-                                <select class="selectpicker col-md-6" data-style="btn-info">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-6" data-style="btn-success">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-info">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-success">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
-                                <select class="selectpicker col-md-6" data-style="btn-warning">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-6" data-style="btn-inverse">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-warning">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-style="btn-inverse">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h5>Grid</h5>
                             <div class="row">
-                                <select class="selectpicker col-md-3">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-9">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-3">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-9">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
-                                <select class="selectpicker col-md-4">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-8">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-4">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
-                                <select class="selectpicker col-md-6">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
-                                <select class="selectpicker col-md-6">
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
-                                </select>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1581,52 +1589,98 @@
                     <div class="row row-merge">
                         <div class="col-md-6">
                             <div class="innerAll">
-                                <p>Default timepicker.</p>
-                                <div class="input-group bootstrap-timepicker">
-                                    <input id="timepicker1" type="text" class="form-control">
-                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                <p>Simple - Time Only Picker.</p>
+                                <div id="htmlTarget">
+                                    <label for="timepicker1Input" class="form-label d-none">Time Only Picker</label>
+                                    <div class="input-group log-event timepicker1 d-flex flex-row justify-content-between" id="timepicker1" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                                        <input id="timepicker1Input" type="text" class="form-control" data-td-target="#imepicker1">
+                                        <span class="input-group-text input-group-addon" data-td-target="#timepicker1" data-td-toggle="datetimepicker">
+                                            <i class="bi bi-clock-fill"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="separator bottom"></div>
-                                <p>Without component markup and keyboard input disabled.</p>
-                                <div class="bootstrap-timepicker">
-                                    <input id="timepicker3" type="text" class="form-control" />
+
+                                <p>Linked Date with Time Pickers</p>
+                                <div class="row">
+                                    <div class="col-md-12" id="htmlTarget">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="linkedPickers1Input" class="form-label">From</label>
+                                                <div class="input-group log-event linkedpickers" id="linkedPickers1" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                                                    <input id="linkedPickers1Input" type="text" class="form-control" data-td-target="#linkedPickers1">
+                                                    <span class="input-group-text input-group-addon" data-td-target="#linkedPickers1" data-td-toggle="datetimepicker">
+                                                        <span class="bi bi-calendar-fill"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="linkedPickers2Input" class="form-label">To</label>
+                                                <div class="input-group log-event linkedpickers" id="linkedPickers2" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                                                    <input id="linkedPickers2Input" type="text" class="form-control" data-td-target="#linkedPickers2">
+                                                    <span class="input-group-text input-group-addon" data-td-target="#linkedPickers2" data-td-toggle="datetimepicker">
+                                                        <span class="bi bi-calendar-fill"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="separator bottom"></div>
-                                <p>Without a template.</p>
-                                <input id="timepicker5" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="innerAll">
                                 <p>Inside a modal with 24hr mode and seconds enabled.</p>
-                                <div class="input-group bootstrap-timepicker">
-                                    <input id="timepicker2" type="text" class="form-control" />
-                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                <div class="input-group">
+                                    <input id="timepicker2" type="text" class="form-control" data-bs-target="#timepicker2Modal" data-bs-toggle="modal" value="13:01:45" />
+                                    <span class="input-group-addon"><i class="bi bi-clock-fill"></i></span>
+                                </div>
+                                <div class="separator bottom"></div>
+                                <div id="timepicker2Modal" class="modal fade" tabindex="-1" aria-labelledby="timepicker2Modal" aria-modal="true" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Pick a time</h3>
+                                            </div>
+                                            <div class="modal-body" style="overflow: visible;">
+                                                <div class="input-group log-event timepicker2_1 d-flex flex-row justify-content-between" id="timepicker2_1" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                                                    <input id="timepicker2_1Input" type="text" class="form-control" data-td-target="#timepicker2_1">
+                                                    <span class="input-group-text input-group-addon" data-td-target="#timepicker2_1" data-td-toggle="datetimepicker">
+                                                        <i class="bi bi-clock-fill"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="timepicker2Modal-btn" data-bs-dismiss="modal">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="separator bottom"></div>
-
                                 <p>Inside a modal with backdrop enabled, inputs disabled and with a preset value.</p>
-                                <div id="timepicker4Modal" class="modal fade">
+                                <button type="button" class="btn btn-primary" data-bs-target="#timepicker4Modal" data-bs-toggle="modal">Open Modal</button>
+                                <div id="timepicker4Modal" class="modal fade" tabindex="-1" aria-labelledby="timepicker4Modal" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h3 class="modal-title">A Timepicker Inside A Modal</h3>
                                             </div>
-                                            <div class="modal-body" style="overflow: visible;">
-                                                <div class="bootstrap-timepicker relativeWrapp" style="vertical-align: middle;">
-                                                    <input id="timepicker4" class="form-control" value="10:35 AM" type="text" />
+                                            <div class="modal-body">
+                                                <label for="timepicker4Input" class="form-label d-none">Picker</label>
+                                                <div class="input-group log-event timepicker4 d-flex flex-row justify-content-between" id="timepicker4" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                                                    <input id="timepicker4Input" type="text" class="form-control" data-td-target="#timepicker4" value="10:35 AM">
+                                                    <span class="input-group-text input-group-addon" data-td-target="#timepicker4" data-td-toggle="datetimepicker">
+                                                        <i class="bi bi-clock-fill"></i>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-primary" href="#timepicker4Modal" data-toggle="modal">Open Modal</a>
-
-
                             </div>
                         </div>
                     </div>
@@ -1648,13 +1702,18 @@
                         </div>
                         <!-- // Widget heading END -->
 
-                        <div class="widget-body center">
+                        <div class="widget-body center minicolor-div">
                             <label class="control-label">Color picker</label>
-                            <input type="text" id="colorpickerColor" class="form-control" value="#5a6a87" />
-                            <div class="separator bottom"></div>
-                            <div id="colorpicker"></div>
+                            <div class="input-group osta_color_code">
+                                <input type="text" name="melis-design-minicolor" id="melis-design-minicolor" class="form-control minicolor-hex" data-control="hue" value="#e61c23">
+                                <span class="input-group-addon">
+                                    <input type="hidden" class="minicolor minicolors-input" value="#e61c23" />
+                                </span>
+                            </div>
                         </div>
-
+                        <script type="text/javascript">
+                            colorPickerInit();
+                        </script>
                     </div>
                     <!-- // Widget END -->
 

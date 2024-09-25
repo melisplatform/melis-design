@@ -1,6 +1,4 @@
-/**
- * Created by conta on 8/17/2017.
- */
+// Created by conta on 8/17/2017.
 
 /* Animations Init */
 function animationsInit() {
@@ -12,8 +10,7 @@ function animationsInit() {
     });
 
     // disable animations on touch devices
-    if (Modernizr.touch)
-    {
+    if (Modernizr.touch) {
         $('.panel-3d')
             .css('visibility', 'visible')
             .find('[class*="icon-"]')
@@ -43,467 +40,32 @@ function animationsInit() {
 
 /* Holder Init */
 function holderInit() {
-    /*
-
-     Holder - 1.9 - client side image placeholders
-     (c) 2012-2013 Ivan Malopinsky / http://imsky.co
-
-     Provided under the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
-     Commercial use requires attribution.
-
-     */
-
-    var Holder = Holder || {};
-    (function (app, win) {
-
-        var preempted = false,
-            fallback = false,
-            canvas = document.createElement('canvas');
-
-        //getElementsByClassName polyfill
-        document.getElementsByClassName||(document.getElementsByClassName=function(e){var t=document,n,r,i,s=[];if(t.querySelectorAll)return t.querySelectorAll("."+e);if(t.evaluate){r=".//*[contains(concat(' ', @class, ' '), ' "+e+" ')]",n=t.evaluate(r,t,null,0,null);while(i=n.iterateNext())s.push(i)}else{n=t.getElementsByTagName("*"),r=new RegExp("(^|\\s)"+e+"(\\s|$)");for(i=0;i<n.length;i++)r.test(n[i].className)&&s.push(n[i])}return s})
-
-        //getComputedStyle polyfill
-        window.getComputedStyle||(window.getComputedStyle=function(e,t){return this.el=e,this.getPropertyValue=function(t){var n=/(\-([a-z]){1})/g;return t=="float"&&(t="styleFloat"),n.test(t)&&(t=t.replace(n,function(){return arguments[2].toUpperCase()})),e.currentStyle[t]?e.currentStyle[t]:null},this})
-
-        //http://javascript.nwbox.com/ContentLoaded by Diego Perini with modifications
-        function contentLoaded(n,t){var l="complete",s="readystatechange",u=!1,h=u,c=!0,i=n.document,a=i.documentElement,e=i.addEventListener?"addEventListener":"attachEvent",v=i.addEventListener?"removeEventListener":"detachEvent",f=i.addEventListener?"":"on",r=function(e){(e.type!=s||i.readyState==l)&&((e.type=="load"?n:i)[v](f+e.type,r,u),!h&&(h=!0)&&t.call(n,null))},o=function(){try{a.doScroll("left")}catch(n){setTimeout(o,50);return}r("poll")};if(i.readyState==l)t.call(n,"lazy");else{if(i.createEventObject&&a.doScroll){try{c=!n.frameElement}catch(y){}c&&o()}i[e](f+"DOMContentLoaded",r,u),i[e](f+s,r,u),n[e](f+"load",r,u)}};
-
-        //https://gist.github.com/991057 by Jed Schmidt with modifications
-        function selector(a){
-            a=a.match(/^(\W)?(.*)/);var b=document["getElement"+(a[1]?a[1]=="#"?"ById":"sByClassName":"sByTagName")](a[2]);
-            var ret=[]; b!=null&&(b.length?ret=b:b.length==0?ret=b:ret=[b]);    return ret;
-        }
-
-        //shallow object property extend
-        function extend(a,b){var c={};for(var d in a)c[d]=a[d];for(var e in b)c[e]=b[e];return c}
-
-        //hasOwnProperty polyfill
-        if (!Object.prototype.hasOwnProperty)
-            Object.prototype.hasOwnProperty = function(prop) {
-                var proto = this.__proto__ || this.constructor.prototype;
-                return (prop in this) && (!(prop in proto) || proto[prop] !== this[prop]);
-            }
-
-        function text_size(width, height, template) {
-            var dimension_arr = [height, width].sort();
-            var maxFactor = Math.round(dimension_arr[1] / 16),
-                minFactor = Math.round(dimension_arr[0] / 16);
-            var text_height = Math.max(template.size, maxFactor);
-            return {
-                height: text_height
-            }
-        }
-
-        function draw(ctx, dimensions, template, ratio) {
-            var ts = text_size(dimensions.width, dimensions.height, template);
-            var text_height = ts.height;
-            var width = dimensions.width * ratio,
-                height = dimensions.height * ratio;
-            var font = template.font ? template.font : "sans-serif";
-            canvas.width = width;
-            canvas.height = height;
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillStyle = template.background;
-            ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = template.foreground;
-            ctx.font = "bold " + text_height + "px " + font;
-            var text = template.text ? template.text : (dimensions.width + "x" + dimensions.height);
-            if (ctx.measureText(text).width / width > 1) {
-                text_height = template.size / (ctx.measureText(text).width / width);
-            }
-            //Resetting font size if necessary
-            ctx.font = "bold " + (text_height * ratio) + "px " + font;
-            ctx.fillText(text, (width / 2), (height / 2), width);
-            return canvas.toDataURL("image/png");
-        }
-
-        function render(mode, el, holder, src) {
-            var dimensions = holder.dimensions,
-                theme = holder.theme,
-                text = holder.text ? decodeURIComponent(holder.text) : holder.text;
-            var dimensions_caption = dimensions.width + "x" + dimensions.height;
-
-            theme = (text ? extend(theme, {
-                    text: text
-                }) : theme);
-            theme = (holder.font ? extend(theme, {
-                    font: holder.font
-                }) : theme);
-
-            if (mode == "image") {
-                el.setAttribute("data-src", src);
-                el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
-
-                if (fallback || !holder.auto) {
-                    el.style.width = dimensions.width + "px";
-                    el.style.height = dimensions.height + "px";
-                }
-
-                if (fallback) {
-                    el.style.backgroundColor = theme.background;
-
-                } else {
-                    el.setAttribute("src", draw(ctx, dimensions, theme, ratio));
-                }
-            } else {
-                if (!fallback) {
-                    el.style.backgroundImage = "url(" + draw(ctx, dimensions, theme, ratio) + ")";
-                    el.style.backgroundSize = dimensions.width + "px " + dimensions.height + "px";
-                }
-            }
-        };
-
-        function fluid(el, holder, src) {
-            var dimensions = holder.dimensions,
-                theme = holder.theme,
-                text = holder.text;
-            var dimensions_caption = dimensions.width + "x" + dimensions.height;
-            theme = (text ? extend(theme, {
-                    text: text
-                }) : theme);
-
-            var fluid = document.createElement("div");
-
-            if (el.fluidRef) {
-                fluid = el.fluidRef;
-            }
-
-            fluid.style.backgroundColor = theme.background;
-            fluid.style.color = theme.foreground;
-            fluid.className = el.className + " holderjs-fluid";
-            fluid.style.width = holder.dimensions.width + (holder.dimensions.width.indexOf("%") > 0 ? "" : "px");
-            fluid.style.height = holder.dimensions.height + (holder.dimensions.height.indexOf("%") > 0 ? "" : "px");
-            fluid.id = el.id;
-
-            el.style.width = 0;
-            el.style.height = 0;
-
-            if (!el.fluidRef) {
-
-                if (theme.text) {
-                    fluid.appendChild(document.createTextNode(theme.text))
-                } else {
-                    fluid.appendChild(document.createTextNode(dimensions_caption))
-                    fluid_images.push(fluid);
-                    setTimeout(fluid_update, 0);
-                }
-
-            }
-
-            el.fluidRef = fluid;
-            el.parentNode.insertBefore(fluid, el.nextSibling)
-
-            if (window.jQuery) {
-                jQuery(function ($) {
-                    $(el).on("load", function () {
-                        el.style.width = fluid.style.width;
-                        el.style.height = fluid.style.height;
-                        $(el).show();
-                        $(fluid).remove();
-                    });
-                })
-            }
-        }
-
-        function fluid_update() {
-            for (i in fluid_images) {
-                if (!fluid_images.hasOwnProperty(i)) continue;
-                var el = fluid_images[i],
-                    label = el.firstChild;
-
-                el.style.lineHeight = el.offsetHeight + "px";
-                label.data = el.offsetWidth + "x" + el.offsetHeight;
-            }
-        }
-
-        function parse_flags(flags, options) {
-
-            var ret = {
-                theme: settings.themes.gray
-            }, render = false;
-
-            for (sl = flags.length, j = 0; j < sl; j++) {
-                var flag = flags[j];
-                if (app.flags.dimensions.match(flag)) {
-                    render = true;
-                    ret.dimensions = app.flags.dimensions.output(flag);
-                } else if (app.flags.fluid.match(flag)) {
-                    render = true;
-                    ret.dimensions = app.flags.fluid.output(flag);
-                    ret.fluid = true;
-                } else if (app.flags.colors.match(flag)) {
-                    ret.theme = app.flags.colors.output(flag);
-                } else if (options.themes[flag]) {
-                    //If a theme is specified, it will override custom colors
-                    ret.theme = options.themes[flag];
-                } else if (app.flags.text.match(flag)) {
-                    ret.text = app.flags.text.output(flag);
-                } else if (app.flags.font.match(flag)) {
-                    ret.font = app.flags.font.output(flag);
-                } else if (app.flags.auto.match(flag)) {
-                    ret.auto = true;
-                }
-            }
-
-            return render ? ret : false;
-
-        };
-
-
-
-        if (!canvas.getContext) {
-            fallback = true;
-        } else {
-            if (canvas.toDataURL("image/png")
-                    .indexOf("data:image/png") < 0) {
-                //Android doesn't support data URI
-                fallback = true;
-            } else {
-                var ctx = canvas.getContext("2d");
-            }
-        }
-
-        var dpr = 1, bsr = 1;
-
-        if(!fallback){
-            dpr = window.devicePixelRatio || 1,
-                bsr = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
-        }
-
-        var ratio = dpr / bsr;
-
-        var fluid_images = [];
-
-        var settings = {
-            domain: "holder.js",
-            images: "img",
-            bgnodes: ".holderjs",
-            themes: {
-                "gray": {
-                    background: "#eee",
-                    foreground: "#aaa",
-                    size: 12
-                },
-                "social": {
-                    background: "#3a5a97",
-                    foreground: "#fff",
-                    size: 12
-                },
-                "industrial": {
-                    background: "#434A52",
-                    foreground: "#C2F200",
-                    size: 12
-                }
-            },
-            stylesheet: ".holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}"
-        };
-
-
-        app.flags = {
-            dimensions: {
-                regex: /^(\d+)x(\d+)$/,
-                output: function (val) {
-                    var exec = this.regex.exec(val);
-                    return {
-                        width: +exec[1],
-                        height: +exec[2]
-                    }
-                }
-            },
-            fluid: {
-                regex: /^([0-9%]+)x([0-9%]+)$/,
-                output: function (val) {
-                    var exec = this.regex.exec(val);
-                    return {
-                        width: exec[1],
-                        height: exec[2]
-                    }
-                }
-            },
-            colors: {
-                regex: /#([0-9a-f]{3,})\:#([0-9a-f]{3,})/i,
-                output: function (val) {
-                    var exec = this.regex.exec(val);
-                    return {
-                        size: settings.themes.gray.size,
-                        foreground: "#" + exec[2],
-                        background: "#" + exec[1]
-                    }
-                }
-            },
-            text: {
-                regex: /text\:(.*)/,
-                output: function (val) {
-                    return this.regex.exec(val)[1];
-                }
-            },
-            font: {
-                regex: /font\:(.*)/,
-                output: function (val) {
-                    return this.regex.exec(val)[1];
-                }
-            },
-            auto: {
-                regex: /^auto$/
-            }
-        }
-
-        for (var flag in app.flags) {
-            if (!app.flags.hasOwnProperty(flag)) continue;
-            app.flags[flag].match = function (val) {
-                return val.match(this.regex)
-            }
-        }
-
-        app.add_theme = function (name, theme) {
-            name != null && theme != null && (settings.themes[name] = theme);
-            return app;
-        };
-
-        app.add_image = function (src, el) {
-            var node = selector(el);
-            if (node.length) {
-                for (var i = 0, l = node.length; i < l; i++) {
-                    var img = document.createElement("img")
-                    img.setAttribute("data-src", src);
-                    node[i].appendChild(img);
-                }
-            }
-            return app;
-        };
-
-        app.run = function (o) {
-            var options = extend(settings, o),
-                images = [], imageNodes = [], bgnodes = [];
-
-            if(typeof(options.images) == "string"){
-                imageNodes = selector(options.images);
-            }
-            else if (window.NodeList && options.images instanceof window.NodeList) {
-                imageNodes = options.images;
-            } else if (window.Node && options.images instanceof window.Node) {
-                imageNodes = [options.images];
-            }
-
-            if(typeof(options.bgnodes) == "string"){
-                bgnodes = selector(options.bgnodes);
-            } else if (window.NodeList && options.elements instanceof window.NodeList) {
-                bgnodes = options.bgnodes;
-            } else if (window.Node && options.bgnodes instanceof window.Node) {
-                bgnodes = [options.bgnodes];
-            }
-
-            preempted = true;
-
-            for (i = 0, l = imageNodes.length; i < l; i++) images.push(imageNodes[i]);
-
-            var holdercss = document.getElementById("holderjs-style");
-            if (!holdercss) {
-                holdercss = document.createElement("style");
-                holdercss.setAttribute("id", "holderjs-style");
-                holdercss.type = "text/css";
-                document.getElementsByTagName("head")[0].appendChild(holdercss);
-            }
-
-            if (!options.nocss) {
-                if (holdercss.styleSheet) {
-                    holdercss.styleSheet.cssText += options.stylesheet;
-                } else {
-                    holdercss.appendChild(document.createTextNode(options.stylesheet));
-                }
-            }
-
-
-
-            var cssregex = new RegExp(options.domain + "\/(.*?)\"?\\)");
-
-            for (var l = bgnodes.length, i = 0; i < l; i++) {
-                var src = window.getComputedStyle(bgnodes[i], null)
-                    .getPropertyValue("background-image");
-                var flags = src.match(cssregex);
-                var bgsrc = bgnodes[i].getAttribute("data-background-src");
-
-                if (flags) {
-                    var holder = parse_flags(flags[1].split("/"), options);
-                    if (holder) {
-                        render("background", bgnodes[i], holder, src);
-                    }
-                }
-                else if(bgsrc != null){
-                    var holder = parse_flags(bgsrc.substr(bgsrc.lastIndexOf(options.domain) + options.domain.length + 1)
-                        .split("/"), options);
-                    if(holder){
-                        render("background", bgnodes[i], holder, src);
-                    }
-                }
-            }
-
-            for (l = images.length, i = 0; i < l; i++) {
-
-                var attr_src = attr_data_src = src = null;
-
-                try{
-                    attr_src = images[i].getAttribute("src");
-                    attr_datasrc = images[i].getAttribute("data-src");
-                }catch(e){}
-
-                if (attr_datasrc == null && !! attr_src && attr_src.indexOf(options.domain) >= 0) {
-                    src = attr_src;
-                } else if ( !! attr_datasrc && attr_datasrc.indexOf(options.domain) >= 0) {
-                    src = attr_datasrc;
-                }
-
-                if (src) {
-                    var holder = parse_flags(src.substr(src.lastIndexOf(options.domain) + options.domain.length + 1)
-                        .split("/"), options);
-                    if (holder) {
-                        if (holder.fluid) {
-                            fluid(images[i], holder, src);
-                        } else {
-                            render("image", images[i], holder, src);
-                        }
-                    }
-                }
-            }
-            return app;
-        };
-
-        contentLoaded(win, function () {
-            if (window.addEventListener) {
-                window.addEventListener("resize", fluid_update, false);
-                window.addEventListener("orientationchange", fluid_update, false);
-            } else {
-                window.attachEvent("onresize", fluid_update)
-            }
-            preempted || app.run();
-        });
-
-        if (typeof define === "function" && define.amd) {
-            define("Holder", [], function () {
-                return app;
-            });
-        }
-
-    })(Holder, window);
-
+/*!
+Holder - client side image placeholders
+Version 2.9.9+jl7z
+© 2021 Ivan Malopinsky - https://imsky.co
+
+Site:     http://holderjs.com
+Issues:   https://github.com/imsky/holder/issues
+License:  MIT
+
+*/
+!function(e){if(e.document){var t=e.document;t.querySelectorAll||(t.querySelectorAll=function(n){var r,i=t.createElement("style"),o=[];for(t.documentElement.firstChild.appendChild(i),t._qsa=[],i.styleSheet.cssText=n+"{x-qsa:expression(document._qsa && document._qsa.push(this))}",e.scrollBy(0,0),i.parentNode.removeChild(i);t._qsa.length;)r=t._qsa.shift(),r.style.removeAttribute("x-qsa"),o.push(r);return t._qsa=null,o}),t.querySelector||(t.querySelector=function(e){var n=t.querySelectorAll(e);return n.length?n[0]:null}),t.getElementsByClassName||(t.getElementsByClassName=function(e){return e=String(e).replace(/^|\s+/g,"."),t.querySelectorAll(e)}),Object.keys||(Object.keys=function(e){if(e!==Object(e))throw TypeError("Object.keys called on non-object");var t,n=[];for(t in e)Object.prototype.hasOwnProperty.call(e,t)&&n.push(t);return n}),Array.prototype.forEach||(Array.prototype.forEach=function(e){if(void 0===this||null===this)throw TypeError();var t=Object(this),n=t.length>>>0;if("function"!=typeof e)throw TypeError();var r,i=arguments[1];for(r=0;n>r;r++)r in t&&e.call(i,t[r],r,t)}),function(e){var t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";e.atob=e.atob||function(e){e=String(e);var n,r=0,i=[],o=0,a=0;if(e=e.replace(/\s/g,""),e.length%4===0&&(e=e.replace(/=+$/,"")),e.length%4===1)throw Error("InvalidCharacterError");if(/[^+\/0-9A-Za-z]/.test(e))throw Error("InvalidCharacterError");for(;r<e.length;)n=t.indexOf(e.charAt(r)),o=o<<6|n,a+=6,24===a&&(i.push(String.fromCharCode(o>>16&255)),i.push(String.fromCharCode(o>>8&255)),i.push(String.fromCharCode(255&o)),a=0,o=0),r+=1;return 12===a?(o>>=4,i.push(String.fromCharCode(255&o))):18===a&&(o>>=2,i.push(String.fromCharCode(o>>8&255)),i.push(String.fromCharCode(255&o))),i.join("")},e.btoa=e.btoa||function(e){e=String(e);var n,r,i,o,a,s,l,u=0,c=[];if(/[^\x00-\xFF]/.test(e))throw Error("InvalidCharacterError");for(;u<e.length;)n=e.charCodeAt(u++),r=e.charCodeAt(u++),i=e.charCodeAt(u++),o=n>>2,a=(3&n)<<4|r>>4,s=(15&r)<<2|i>>6,l=63&i,u===e.length+2?(s=64,l=64):u===e.length+1&&(l=64),c.push(t.charAt(o),t.charAt(a),t.charAt(s),t.charAt(l));return c.join("")}}(e),Object.prototype.hasOwnProperty||(Object.prototype.hasOwnProperty=function(e){var t=this.__proto__||this.constructor.prototype;return e in this&&(!(e in t)||t[e]!==this[e])}),function(){if("performance"in e==!1&&(e.performance={}),Date.now=Date.now||function(){return(new Date).getTime()},"now"in e.performance==!1){var t=Date.now();performance.timing&&performance.timing.navigationStart&&(t=performance.timing.navigationStart),e.performance.now=function(){return Date.now()-t}}}(),e.requestAnimationFrame||(e.webkitRequestAnimationFrame&&e.webkitCancelAnimationFrame?!function(e){e.requestAnimationFrame=function(t){return webkitRequestAnimationFrame(function(){t(e.performance.now())})},e.cancelAnimationFrame=e.webkitCancelAnimationFrame}(e):e.mozRequestAnimationFrame&&e.mozCancelAnimationFrame?!function(e){e.requestAnimationFrame=function(t){return mozRequestAnimationFrame(function(){t(e.performance.now())})},e.cancelAnimationFrame=e.mozCancelAnimationFrame}(e):!function(e){e.requestAnimationFrame=function(t){return e.setTimeout(t,1e3/60)},e.cancelAnimationFrame=e.clearTimeout}(e))}}(this),function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.Holder=t():e.Holder=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var i=n[r]={exports:{},id:r,loaded:!1};return e[r].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){(function(t){function r(e,t,n,r){var a=i(n.substr(n.lastIndexOf(e.domain)),e);a&&o({mode:null,el:r,flags:a,engineSettings:t})}function i(e,t){var n={theme:j(z.settings.themes.gray,null),stylesheets:t.stylesheets,instanceOptions:t},r=e.indexOf("?"),i=[e];-1!==r&&(i=[e.slice(0,r),e.slice(r+1)]);var o=i[0].split("/");n.holderURL=e;var a=o[1],s=a.match(/([\d]+p?)x([\d]+p?)/);if(!s)return!1;if(n.fluid=-1!==a.indexOf("p"),n.dimensions={width:s[1].replace("p","%"),height:s[2].replace("p","%")},2===i.length){var l=y.parse(i[1]);if(b.truthy(l.ratio)){n.fluid=!0;var u=parseFloat(n.dimensions.width.replace("%","")),c=parseFloat(n.dimensions.height.replace("%",""));c=Math.floor(100*(c/u)),u=100,n.dimensions.width=u+"%",n.dimensions.height=c+"%"}if(n.auto=b.truthy(l.auto),l.bg&&(n.theme.bg=b.parseColor(l.bg)),l.fg&&(n.theme.fg=b.parseColor(l.fg)),l.bg&&!l.fg&&(n.autoFg=!0),l.theme&&Object.prototype.hasOwnProperty.call(n.instanceOptions.themes,l.theme)&&(n.theme=j(n.instanceOptions.themes[l.theme],null)),l.text&&(n.text=l.text),l.textmode&&(n.textmode=l.textmode),l.size&&parseFloat(l.size)&&(n.size=parseFloat(l.size)),null!=l.fixedSize&&(n.fixedSize=b.truthy(l.fixedSize)),l.font&&(n.font=l.font),l.align&&(n.align=l.align),l.lineWrap&&(n.lineWrap=l.lineWrap),n.nowrap=b.truthy(l.nowrap),n.outline=b.truthy(l.outline),b.truthy(l.random)){z.vars.cache.themeKeys=z.vars.cache.themeKeys||Object.keys(n.instanceOptions.themes);var f=z.vars.cache.themeKeys[0|Math.random()*z.vars.cache.themeKeys.length];n.theme=j(n.instanceOptions.themes[f],null)}}return n}function o(e){var t=e.mode,n=e.el,r=e.flags,i=e.engineSettings,o=r.dimensions,s=r.theme,l=o.width+"x"+o.height;t=null==t?r.fluid?"fluid":"image":t;var f=/holder_([a-z]+)/g,d=!1;if(null!=r.text&&(s.text=r.text,"object"===n.nodeName.toLowerCase())){for(var h=s.text.split("\\n"),p=0;p<h.length;p++)h[p]=b.encodeHtmlEntity(h[p]);s.text=h.join("\\n")}if(s.text){var g=s.text.match(f);null!==g&&g.forEach(function(e){"holder_dimensions"===e&&(s.text=s.text.replace(e,l))})}var m=r.holderURL,y=j(i,null);if(r.font&&(s.font=r.font,!y.noFontFallback&&"img"===n.nodeName.toLowerCase()&&z.setup.supportsCanvas&&"svg"===y.renderer&&(y=j(y,{renderer:"canvas"}))),r.font&&"canvas"==y.renderer&&(y.reRender=!0),"background"==t)null==n.getAttribute("data-background-src")&&x.setAttr(n,{"data-background-src":m});else{var v={};v[z.vars.dataAttr]=m,x.setAttr(n,v)}r.theme=s,n.holderData={flags:r,engineSettings:y},("image"==t||"fluid"==t)&&x.setAttr(n,{alt:s.text?d?s.text:s.text+" ["+l+"]":l});var w={mode:t,el:n,holderSettings:{dimensions:o,theme:s,flags:r},engineSettings:y};"image"==t?(r.auto||(n.style.width=o.width+"px",n.style.height=o.height+"px"),"html"==y.renderer?n.style.backgroundColor=s.bg:(a(w),"exact"==r.textmode&&(n.holderData.resizeUpdate=!0,z.vars.resizableImages.push(n),u(n)))):"background"==t&&"html"!=y.renderer?a(w):"fluid"==t&&(n.holderData.resizeUpdate=!0,"%"==o.height.slice(-1)?n.style.height=o.height:null!=r.auto&&r.auto||(n.style.height=o.height+"px"),"%"==o.width.slice(-1)?n.style.width=o.width:null!=r.auto&&r.auto||(n.style.width=o.width+"px"),("inline"==n.style.display||""===n.style.display||"none"==n.style.display)&&(n.style.display="block"),c(n),"html"==y.renderer?n.style.backgroundColor=s.bg:(z.vars.resizableImages.push(n),u(n)))}function a(e){function n(){var t=null;switch(l.renderer){case"canvas":t=E(c,e);break;case"svg":t=A(c,e);break;default:throw"Holder: invalid renderer: "+l.renderer}return t}var r=null,i=e.mode,o=e.el,a=e.holderSettings,l=e.engineSettings;switch(l.renderer){case"svg":if(!z.setup.supportsSVG)return;break;case"canvas":if(!z.setup.supportsCanvas)return;break;default:return}var u={width:a.dimensions.width,height:a.dimensions.height,theme:a.theme,flags:a.flags},c=s(u);if(r=n(),null==r)throw"Holder: couldn't render placeholder";"background"==i?(o.style.backgroundImage="url("+r+")",l.noBackgroundSize||(o.style.backgroundSize=u.width+"px "+u.height+"px")):("img"===o.nodeName.toLowerCase()?x.setAttr(o,{src:r}):"object"===o.nodeName.toLowerCase()&&x.setAttr(o,{data:r,type:"image/svg+xml"}),l.reRender&&t.setTimeout(function(){var e=n();if(null==e)throw"Holder: couldn't render placeholder";"img"===o.nodeName.toLowerCase()?x.setAttr(o,{src:e}):"object"===o.nodeName.toLowerCase()&&x.setAttr(o,{data:e,type:"image/svg+xml"})},150)),x.setAttr(o,{"data-holder-rendered":!0})}function s(e){function t(e,t,n,r){t.width=n,t.height=r,e.width=Math.max(e.width,t.width),e.height+=t.height}var n=z.defaults.size,r=null!=e.flags.fixedSize?e.flags.fixedSize:e.theme.fixedSize;switch(parseFloat(e.theme.size)?n=e.theme.size:parseFloat(e.flags.size)&&(n=e.flags.size),e.font={family:e.theme.font?e.theme.font:"Arial, Helvetica, Open Sans, sans-serif",size:r?n:l(e.width,e.height,n,z.defaults.scale),units:e.theme.units?e.theme.units:z.defaults.units,weight:e.theme.fontweight?e.theme.fontweight:"bold"},e.text=e.theme.text||Math.floor(e.width)+"x"+Math.floor(e.height),e.noWrap=e.theme.nowrap||e.flags.nowrap,e.align=e.theme.align||e.flags.align||"center",e.flags.textmode){case"literal":e.text=e.flags.dimensions.width+"x"+e.flags.dimensions.height;break;case"exact":if(!e.flags.exactDimensions)break;e.text=Math.floor(e.flags.exactDimensions.width)+"x"+Math.floor(e.flags.exactDimensions.height)}var i=e.flags.lineWrap||z.setup.lineWrapRatio,o=e.width*i,a=o,s=new v({width:e.width,height:e.height}),u=s.Shape,c=new u.Rect("holderBg",{fill:e.theme.bg});if(c.resize(e.width,e.height),s.root.add(c),e.flags.outline){var f=new S(c.properties.fill);f=f.lighten(f.lighterThan("7f7f7f")?-.1:.1),c.properties.outline={fill:f.toHex(!0),width:2}}var d=e.theme.fg;if(e.flags.autoFg){var h=new S(c.properties.fill),p=new S("fff"),g=new S("000",{alpha:.285714});d=h.blendAlpha(h.lighterThan("7f7f7f")?g:p).toHex(!0)}var m=new u.Group("holderTextGroup",{text:e.text,align:e.align,font:e.font,fill:d});m.moveTo(null,null,1),s.root.add(m);var y=m.textPositionData=M(s);if(!y)throw"Holder: staging fallback not supported yet.";m.properties.leading=y.boundingBox.height;var b=null,w=null;if(y.lineCount>1){var x,O=0,A=0,E=0;w=new u.Group("line"+E),("left"===e.align||"right"===e.align)&&(a=e.width*(1-2*(1-i)));for(var j=0;j<y.words.length;j++){var T=y.words[j];b=new u.Text(T.text);var C="\\n"==T.text;!e.noWrap&&(O+T.width>=a||C===!0)&&(t(m,w,O,m.properties.leading),m.add(w),O=0,A+=m.properties.leading,E+=1,w=new u.Group("line"+E),w.y=A),C!==!0&&(b.moveTo(O,0),O+=y.spaceWidth+T.width,w.add(b))}if(t(m,w,O,m.properties.leading),m.add(w),"left"===e.align)m.moveTo(e.width-o,null,null);else if("right"===e.align){for(x in m.children)w=m.children[x],w.moveTo(e.width-w.width,null,null);m.moveTo(0-(e.width-o),null,null)}else{for(x in m.children)w=m.children[x],w.moveTo((m.width-w.width)/2,null,null);m.moveTo((e.width-m.width)/2,null,null)}m.moveTo(null,(e.height-m.height)/2,null),(e.height-m.height)/2<0&&m.moveTo(null,0,null)}else b=new u.Text(e.text),w=new u.Group("line0"),w.add(b),m.add(w),"left"===e.align?m.moveTo(e.width-o,null,null):"right"===e.align?m.moveTo(0-(e.width-o),null,null):m.moveTo((e.width-y.boundingBox.width)/2,null,null),m.moveTo(null,(e.height-y.boundingBox.height)/2,null);return s}function l(e,t,n,r){var i=parseInt(e,10),o=parseInt(t,10),a=Math.max(i,o),s=Math.min(i,o),l=.8*Math.min(s,a*r);return Math.round(Math.max(n,l))}function u(e){var t;t=null==e||null==e.nodeType?z.vars.resizableImages:[e];for(var n=0,r=t.length;r>n;n++){var i=t[n];if(i.holderData){var o=i.holderData.flags,s=T(i);if(s){if(!i.holderData.resizeUpdate)continue;if(o.fluid&&o.auto){var l=i.holderData.fluidConfig;switch(l.mode){case"width":s.height=s.width/l.ratio;break;case"height":s.width=s.height*l.ratio}}var u={mode:"image",holderSettings:{dimensions:s,theme:o.theme,flags:o},el:i,engineSettings:i.holderData.engineSettings};"exact"==o.textmode&&(o.exactDimensions=s,u.holderSettings.dimensions=o.dimensions),a(u)}else h(i)}}}function c(e){if(e.holderData){var t=T(e);if(t){var n=e.holderData.flags,r={fluidHeight:"%"==n.dimensions.height.slice(-1),fluidWidth:"%"==n.dimensions.width.slice(-1),mode:null,initialDimensions:t};r.fluidWidth&&!r.fluidHeight?(r.mode="width",r.ratio=r.initialDimensions.width/parseFloat(n.dimensions.height)):!r.fluidWidth&&r.fluidHeight&&(r.mode="height",r.ratio=parseFloat(n.dimensions.width)/r.initialDimensions.height),e.holderData.fluidConfig=r}else h(e)}}function f(){var e,n=[],r=Object.keys(z.vars.invisibleImages);r.forEach(function(t){e=z.vars.invisibleImages[t],T(e)&&"img"==e.nodeName.toLowerCase()&&(n.push(e),delete z.vars.invisibleImages[t])}),n.length&&k.run({images:n}),setTimeout(function(){t.requestAnimationFrame(f)},10)}function d(){z.vars.visibilityCheckStarted||(t.requestAnimationFrame(f),z.vars.visibilityCheckStarted=!0)}function h(e){e.holderData.invisibleId||(z.vars.invisibleId+=1,z.vars.invisibleImages["i"+z.vars.invisibleId]=e,e.holderData.invisibleId=z.vars.invisibleId)}function p(e){z.vars.debounceTimer||e.call(this),z.vars.debounceTimer&&t.clearTimeout(z.vars.debounceTimer),z.vars.debounceTimer=t.setTimeout(function(){z.vars.debounceTimer=null,e.call(this)},z.setup.debounce)}function g(){p(function(){u(null)})}var m=n(2),y=n(3),v=n(6),b=n(7),w=n(8),x=n(9),S=n(10),O=n(11),A=n(12),E=n(27),j=b.extend,T=b.dimensionCheck,C=O.svg_ns,k={version:O.version,addTheme:function(e,t){return null!=e&&null!=t&&(z.settings.themes[e]=t),delete z.vars.cache.themeKeys,this},addImage:function(e,t){var n=x.getNodeArray(t);return n.forEach(function(t){var n=x.newEl("img"),r={};r[z.setup.dataAttr]=e,x.setAttr(n,r),t.appendChild(n)}),this},setResizeUpdate:function(e,t){e.holderData&&(e.holderData.resizeUpdate=!!t,e.holderData.resizeUpdate&&u(e))},run:function(e){e=e||{};var n={},a=j(z.settings,e);z.vars.preempted=!0,z.vars.dataAttr=a.dataAttr||z.setup.dataAttr,n.renderer=a.renderer?a.renderer:z.setup.renderer,-1===z.setup.renderers.join(",").indexOf(n.renderer)&&(n.renderer=z.setup.supportsSVG?"svg":z.setup.supportsCanvas?"canvas":"html");var s=x.getNodeArray(a.images),l=x.getNodeArray(a.bgnodes),u=x.getNodeArray(a.stylenodes),c=x.getNodeArray(a.objects);return n.stylesheets=[],n.svgXMLStylesheet=!0,n.noFontFallback=!!a.noFontFallback,n.noBackgroundSize=!!a.noBackgroundSize,u.forEach(function(e){if(e.attributes.rel&&e.attributes.href&&"stylesheet"==e.attributes.rel.value){var t=e.attributes.href.value,r=x.newEl("a");r.href=t;var i=r.protocol+"//"+r.host+r.pathname+r.search;n.stylesheets.push(i)}}),l.forEach(function(e){if(t.getComputedStyle){var r=t.getComputedStyle(e,null).getPropertyValue("background-image"),s=e.getAttribute("data-background-src"),l=s||r,u=null,c=a.domain+"/",f=l.indexOf(c);if(0===f)u=l;else if(1===f&&"?"===l[0])u=l.slice(1);else{var d=l.substr(f).match(/([^"]*)"?\)/);if(null!==d)u=d[1];else if(0===l.indexOf("url("))throw"Holder: unable to parse background URL: "+l}if(u){var h=i(u,a);h&&o({mode:"background",el:e,flags:h,engineSettings:n})}}}),c.forEach(function(e){var t={};try{t.data=e.getAttribute("data"),t.dataSrc=e.getAttribute(z.vars.dataAttr)}catch(i){t.error=i}var o=null!=t.data&&0===t.data.indexOf(a.domain),s=null!=t.dataSrc&&0===t.dataSrc.indexOf(a.domain);o?r(a,n,t.data,e):s&&r(a,n,t.dataSrc,e)}),s.forEach(function(e){var t={};try{t.src=e.getAttribute("src"),t.dataSrc=e.getAttribute(z.vars.dataAttr),t.rendered=e.getAttribute("data-holder-rendered")}catch(i){t.error=i}var o=null!=t.src,s=null!=t.dataSrc&&0===t.dataSrc.indexOf(a.domain),l=null!=t.rendered&&"true"==t.rendered;o?0===t.src.indexOf(a.domain)?r(a,n,t.src,e):s&&(l?r(a,n,t.dataSrc,e):!function(e,t,n,i,o){b.imageExists(e,function(e){e||r(t,n,i,o)})}(t.src,a,n,t.dataSrc,e)):s&&r(a,n,t.dataSrc,e)}),this}},z={settings:{domain:"holder.js",images:"img",objects:"object",bgnodes:"body .holderjs",stylenodes:"head link.holderjs",themes:{gray:{bg:"#EEEEEE",fg:"#AAAAAA"},social:{bg:"#3a5a97",fg:"#FFFFFF"},industrial:{bg:"#434A52",fg:"#C2F200"},sky:{bg:"#0D8FDB",fg:"#FFFFFF"},vine:{bg:"#39DBAC",fg:"#1E292C"},lava:{bg:"#F8591A",fg:"#1C2846"}}},defaults:{size:10,units:"pt",scale:1/16}},M=function(){var e=null,t=null,n=null;return function(r){var i=r.root;if(z.setup.supportsSVG){var o=!1,a=function(e){return document.createTextNode(e)};(null==e||e.parentNode!==document.body)&&(o=!0),e=w.initSVG(e,i.properties.width,i.properties.height),e.style.display="block",o&&(t=x.newEl("text",C),n=a(null),x.setAttr(t,{x:0}),t.appendChild(n),e.appendChild(t),document.body.appendChild(e),e.style.visibility="hidden",e.style.position="absolute",e.style.top="-100%",e.style.left="-100%");var s=i.children.holderTextGroup,l=s.properties;x.setAttr(t,{y:l.font.size,style:b.cssProps({"font-weight":l.font.weight,"font-size":l.font.size+l.font.units,"font-family":l.font.family})});var u=x.newEl("textarea");u.innerHTML=l.text,n.nodeValue=u.value;var c=t.getBBox(),f=Math.ceil(c.width/i.properties.width),d=l.text.split(" "),h=l.text.match(/\\n/g);f+=null==h?0:h.length,n.nodeValue=l.text.replace(/[ ]+/g,"");var p=t.getComputedTextLength(),g=c.width-p,m=Math.round(g/Math.max(1,d.length-1)),y=[];if(f>1){n.nodeValue="";for(var v=0;v<d.length;v++)if(0!==d[v].length){n.nodeValue=b.decodeHtmlEntity(d[v]);var S=t.getBBox();y.push({text:d[v],width:S.width})}}return e.style.display="none",{spaceWidth:m,lineCount:f,boundingBox:c,words:y}}return!1}}();for(var D in z.flags)Object.prototype.hasOwnProperty.call(z.flags,D)&&(z.flags[D].match=function(e){return e.match(this.regex)});z.setup={renderer:"html",debounce:100,ratio:1,supportsCanvas:!1,supportsSVG:!1,lineWrapRatio:.9,dataAttr:"data-src",renderers:["html","canvas","svg"]},z.vars={preempted:!1,resizableImages:[],invisibleImages:{},invisibleId:0,visibilityCheckStarted:!1,debounceTimer:null,cache:{}},function(){var e=x.newEl("canvas");e.getContext&&-1!=e.toDataURL("image/png").indexOf("data:image/png")&&(z.setup.renderer="canvas",z.setup.supportsCanvas=!0),document.createElementNS&&document.createElementNS(C,"svg").createSVGRect&&(z.setup.renderer="svg",z.setup.supportsSVG=!0)}(),d(),m&&m(function(){z.vars.preempted||k.run(),t.addEventListener?(t.addEventListener("resize",g,!1),t.addEventListener("orientationchange",g,!1)):t.attachEvent("onresize",g),"object"==typeof t.Turbolinks&&t.document.addEventListener("page:change",function(){k.run()})}),e.exports=k}).call(t,function(){return this}())},function(e,t){function n(e){function t(e){if(!x){if(!a.body)return i(t);for(x=!0;e=S.shift();)i(e)}}function n(e){(b||e.type===l||a[d]===f)&&(r(),t())}function r(){b?(a[v](m,n,u),e[v](l,n,u)):(a[p](y,n),e[p](c,n))}function i(e,t){setTimeout(e,+t>=0?t:1)}function o(e){x?i(e):S.push(e)}null==document.readyState&&document.addEventListener&&(document.addEventListener("DOMContentLoaded",function A(){document.removeEventListener("DOMContentLoaded",A,!1),document.readyState="complete"},!1),document.readyState="loading");var a=e.document,s=a.documentElement,l="load",u=!1,c="on"+l,f="complete",d="readyState",h="attachEvent",p="detachEvent",g="addEventListener",m="DOMContentLoaded",y="onreadystatechange",v="removeEventListener",b=g in a,w=u,x=u,S=[];if(a[d]===f)i(t);else if(b)a[g](m,n,u),e[g](l,n,u);else{a[h](y,n),e[h](c,n);try{w=null==e.frameElement&&s}catch(O){}w&&w.doScroll&&!function E(){if(!x){try{w.doScroll("left")}catch(e){return i(E,50)}r(),t()}}()}return o.version="1.4.0",o.isReady=function(){return x},o}e.exports="undefined"!=typeof window&&n(window)},function(e,t,n){var r=encodeURIComponent,i=decodeURIComponent,o=n(4),a=n(5),s=/(\w+)\[(\d+)\]/,l=/\w+\.\w+/;t.parse=function(e){if("string"!=typeof e)return{};if(e=o(e),""===e)return{};"?"===e.charAt(0)&&(e=e.slice(1));for(var t={},n=e.split("&"),r=0;r<n.length;r++){var a,u,c,f=n[r].split("="),d=i(f[0]);if(a=s.exec(d))t[a[1]]=t[a[1]]||[],t[a[1]][a[2]]=i(f[1]);else if(a=l.test(d)){for(a=d.split("."),u=t;a.length;)if(c=a.shift(),c.length){if(u[c]){if(u[c]&&"object"!=typeof u[c])break}else u[c]={};a.length||(u[c]=i(f[1])),u=u[c]}}else t[f[0]]=null==f[1]?"":i(f[1])}return t},t.stringify=function(e){if(!e)return"";var t=[];for(var n in e){var i=e[n];if("array"!=a(i))t.push(r(n)+"="+r(e[n]));else for(var o=0;o<i.length;++o)t.push(r(n+"["+o+"]")+"="+r(i[o]))}return t.join("&")}},function(e,t){function n(e){return e.replace(/^\s*|\s*$/g,"")}t=e.exports=n,t.left=function(e){return e.replace(/^\s*/,"")},t.right=function(e){return e.replace(/\s*$/,"")}},function(e,t){var n=Object.prototype.toString;e.exports=function(e){switch(n.call(e)){case"[object Date]":return"date";case"[object RegExp]":return"regexp";case"[object Arguments]":return"arguments";case"[object Array]":return"array";case"[object Error]":return"error"}return null===e?"null":void 0===e?"undefined":e!==e?"nan":e&&1===e.nodeType?"element":(e=e.valueOf?e.valueOf():Object.prototype.valueOf.apply(e),typeof e)}},function(e,t){var n=function(e){function t(e,t){for(var n in t)e[n]=t[n];return e}var n=1,r=function(e){n++,this.parent=null,this.children={},this.id=n,this.name="n"+n,"undefined"!=typeof e&&(this.name=e),this.x=this.y=this.z=0,this.width=this.height=0};r.prototype.resize=function(e,t){null!=e&&(this.width=e),null!=t&&(this.height=t)},r.prototype.moveTo=function(e,t,n){this.x=null!=e?e:this.x,this.y=null!=t?t:this.y,this.z=null!=n?n:this.z},r.prototype.add=function(e){var t=e.name;if("undefined"!=typeof this.children[t])throw"SceneGraph: child already exists: "+t;this.children[t]=e,e.parent=this};var i=function(){r.call(this,"root"),this.properties=e};i.prototype=new r;var o=function(e,n){if(r.call(this,e),this.properties={fill:"#000000"},"undefined"!=typeof n)t(this.properties,n);else if("undefined"!=typeof e&&"string"!=typeof e)throw"SceneGraph: invalid node name"};o.prototype=new r;var a=function(){o.apply(this,arguments),this.type="group"};a.prototype=new o;var s=function(){o.apply(this,arguments),this.type="rect"};s.prototype=new o;var l=function(e){o.call(this),this.type="text",this.properties.text=e};l.prototype=new o;var u=new i;return this.Shape={Rect:s,Text:l,Group:a},this.root=u,this};e.exports=n},function(e,t){(function(e){t.extend=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(n[r]=e[r]);if(null!=t)for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(n[i]=t[i]);return n},t.cssProps=function(e){var t=[];for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&t.push(n+":"+e[n]);return t.join(";")},t.encodeHtmlEntity=function(e){for(var t=[],n=0,r=e.length-1;r>=0;r--)n=e.charCodeAt(r),t.unshift(n>128?["&#",n,";"].join(""):e[r]);return t.join("")},t.imageExists=function(e,t){var n=new Image;n.onerror=function(){t.call(this,!1)},n.onload=function(){t.call(this,!0)},n.src=e},t.decodeHtmlEntity=function(e){return e.replace(/&#(\d+);/g,function(e,t){return String.fromCharCode(t)})},t.dimensionCheck=function(e){var t={height:e.clientHeight,width:e.clientWidth};return t.height&&t.width?t:!1},t.truthy=function(e){return"string"==typeof e?"true"===e||"yes"===e||"1"===e||"on"===e||"✓"===e:!!e},t.parseColor=function(e){var t,n=/(^(?:#?)[0-9a-f]{6}$)|(^(?:#?)[0-9a-f]{3}$)/i,r=/^rgb\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/,i=/^rgba\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(0*\.\d{1,}|1)\)$/,o=e.match(n);if(null!==o)return t=o[1]||o[2],"#"!==t[0]?"#"+t:t;if(o=e.match(r),null!==o)return t="rgb("+o.slice(1).join(",")+")";if(o=e.match(i),null!==o){var a=function(e){return"0."+e.split(".")[1]},s=o.slice(1).map(function(e,t){return 3===t?a(e):e});return t="rgba("+s.join(",")+")"}return null},t.canvasRatio=function(){var t=1,n=1;if(e.document){var r=e.document.createElement("canvas");if(r.getContext){var i=r.getContext("2d");t=e.devicePixelRatio||1,n=i.webkitBackingStorePixelRatio||i.mozBackingStorePixelRatio||i.msBackingStorePixelRatio||i.oBackingStorePixelRatio||i.backingStorePixelRatio||1}}return t/n}}).call(t,function(){return this}())},function(e,t,n){(function(e){var r=n(9),i="http://www.w3.org/2000/svg",o=8;t.initSVG=function(e,t,n){var a,s,l=!1;e&&e.querySelector?(s=e.querySelector("style"),null===s&&(l=!0)):(e=r.newEl("svg",i),l=!0),l&&(a=r.newEl("defs",i),s=r.newEl("style",i),r.setAttr(s,{type:"text/css"}),a.appendChild(s),e.appendChild(a)),e.webkitMatchesSelector&&e.setAttribute("xmlns",i);for(var u=0;u<e.childNodes.length;u++)e.childNodes[u].nodeType===o&&e.removeChild(e.childNodes[u]);for(;s.childNodes.length;)s.removeChild(s.childNodes[0]);return r.setAttr(e,{width:t,height:n,viewBox:"0 0 "+t+" "+n,preserveAspectRatio:"none"}),e},t.svgStringToDataURI=function(){var t="data:image/svg+xml;charset=UTF-8,",n="data:image/svg+xml;charset=UTF-8;base64,";return function(r,i){return i?n+btoa(e.unescape(encodeURIComponent(r))):t+encodeURIComponent(r)}}(),t.serializeSVG=function(t,n){if(e.XMLSerializer){var i=new XMLSerializer,o="",a=n.stylesheets;if(n.svgXMLStylesheet){for(var s=r.createXML(),l=a.length-1;l>=0;l--){var u=s.createProcessingInstruction("xml-stylesheet",'href="'+a[l]+'" rel="stylesheet"');s.insertBefore(u,s.firstChild)}s.removeChild(s.documentElement),o=i.serializeToString(s)}var c=i.serializeToString(t);return c=c.replace(/&amp;(#[0-9]{2,};)/g,"&$1"),o+c}}}).call(t,function(){return this}())},function(e,t){(function(e){t.newEl=function(t,n){return e.document?null==n?e.document.createElement(t):e.document.createElementNS(n,t):void 0},t.setAttr=function(e,t){for(var n in t)e.setAttribute(n,t[n])},t.createXML=function(){return e.DOMParser?(new DOMParser).parseFromString("<xml />","application/xml"):void 0},t.getNodeArray=function(t){var n=null;return"string"==typeof t?n=document.querySelectorAll(t):e.NodeList&&t instanceof e.NodeList?n=t:e.Node&&t instanceof e.Node?n=[t]:e.HTMLCollection&&t instanceof e.HTMLCollection?n=t:t instanceof Array?n=t:null===t&&(n=[]),n=Array.prototype.slice.call(n)}}).call(t,function(){return this}())},function(e,t){var n=function(e,t){"string"==typeof e&&(this.original=e,"#"===e.charAt(0)&&(e=e.slice(1)),/[^a-f0-9]+/i.test(e)||(3===e.length&&(e=e.replace(/./g,"$&$&")),6===e.length&&(this.alpha=1,t&&t.alpha&&(this.alpha=t.alpha),this.set(parseInt(e,16)))))};n.rgb2hex=function(e,t,n){function r(e){var t=(0|e).toString(16);return 16>e&&(t="0"+t),t}return[e,t,n].map(r).join("")},n.hsl2rgb=function(e,t,n){var r=e/60,i=(1-Math.abs(2*n-1))*t,o=i*(1-Math.abs(parseInt(r)%2-1)),a=n-i/2,s=0,l=0,u=0;return r>=0&&1>r?(s=i,l=o):r>=1&&2>r?(s=o,l=i):r>=2&&3>r?(l=i,u=o):r>=3&&4>r?(l=o,u=i):r>=4&&5>r?(s=o,u=i):r>=5&&6>r&&(s=i,u=o),s+=a,l+=a,u+=a,s=parseInt(255*s),l=parseInt(255*l),u=parseInt(255*u),[s,l,u]},n.prototype.set=function(e){this.raw=e;var t=(16711680&this.raw)>>16,n=(65280&this.raw)>>8,r=255&this.raw,i=.2126*t+.7152*n+.0722*r,o=-.09991*t-.33609*n+.436*r,a=.615*t-.55861*n-.05639*r;return this.rgb={r:t,g:n,b:r},this.yuv={y:i,u:o,v:a},this},n.prototype.lighten=function(e){var t=Math.min(1,Math.max(0,Math.abs(e)))*(0>e?-1:1),r=255*t|0,i=Math.min(255,Math.max(0,this.rgb.r+r)),o=Math.min(255,Math.max(0,this.rgb.g+r)),a=Math.min(255,Math.max(0,this.rgb.b+r)),s=n.rgb2hex(i,o,a);return new n(s)},n.prototype.toHex=function(e){return(e?"#":"")+this.raw.toString(16)},n.prototype.lighterThan=function(e){return e instanceof n||(e=new n(e)),this.yuv.y>e.yuv.y},n.prototype.blendAlpha=function(e){e instanceof n||(e=new n(e));var t=e,r=this,i=t.alpha*t.rgb.r+(1-t.alpha)*r.rgb.r,o=t.alpha*t.rgb.g+(1-t.alpha)*r.rgb.g,a=t.alpha*t.rgb.b+(1-t.alpha)*r.rgb.b;return new n(n.rgb2hex(i,o,a))},e.exports=n},function(e,t){e.exports={version:"2.9.9",svg_ns:"http://www.w3.org/2000/svg"}},function(e,t,n){function r(e,t){return f.element({tag:t,width:e.width,height:e.height,fill:e.properties.fill})}function i(e){return u.cssProps({fill:e.fill,"font-weight":e.font.weight,"font-family":e.font.family+", monospace","font-size":e.font.size+e.font.units})}function o(e,t,n){var r=n/2;return["M",r,r,"H",e-r,"V",t-r,"H",r,"V",0,"M",0,r,"L",e,t-r,"M",0,t-r,"L",e,r].join(" ")}var a=n(13)["default"],s=n(8),l=n(11),u=n(7),c=l.svg_ns,f={element:function(e){var t=e.tag,n=e.content||"";return delete e.tag,delete e.content,[t,n,e]}};e.exports=function(e,t){var n=t.engineSettings,l=n.stylesheets,u=l.map(function(e){return'<?xml-stylesheet rel="stylesheet" href="'+e+'"?>'}).join("\n"),d="holder_"+Number(new Date).toString(16),h=e.root,p=h.children.holderTextGroup,g="#"+d+" text { "+i(p.properties)+" } ";p.y+=.8*p.textPositionData.boundingBox.height;var m=[];Object.keys(p.children).forEach(function(e){var t=p.children[e];Object.keys(t.children).forEach(function(e){var n=t.children[e],r=p.x+t.x+n.x,i=p.y+t.y+n.y,o=f.element({tag:"text",content:n.properties.text,x:r,y:i});m.push(o)})});var y=f.element({tag:"g",content:m}),v=null;if(h.children.holderBg.properties.outline){var b=h.children.holderBg.properties.outline;v=f.element({tag:"path",d:o(h.children.holderBg.width,h.children.holderBg.height,b.width),"stroke-width":b.width,stroke:b.fill,fill:"none"})}var w=r(h.children.holderBg,"rect"),x=[];x.push(w),b&&x.push(v),x.push(y);var S=f.element({tag:"g",id:d,content:x}),O=f.element({tag:"style",content:g,type:"text/css"}),A=f.element({tag:"defs",content:O}),E=f.element({tag:"svg",content:[A,S],width:h.properties.width,height:h.properties.height,xmlns:c,viewBox:[0,0,h.properties.width,h.properties.height].join(" "),preserveAspectRatio:"none"}),j=String(a(E));/&amp;(x)?#[0-9A-Fa-f]/.test(j[0])&&(j=j.replace(/&amp;#/gm,"&#")),j=u+j;var T=s.svgStringToDataURI(j,"background"===t.mode);return T}},function(e,t,n){e.exports=n(14)},function(e,t,n){"use strict";function r(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t["default"]=e,t}function i(e){return e&&e.__esModule?e:{"default":e}}function o(e){function t(e){var t=l["default"](e),n={tag:t.tag,attr:{},children:[]};return t.id&&(n.attr.id=t.id,m["default"](!o.returnObject.ids.hasOwnProperty(t.id),'Ids must be unique and "'+t.id+'" is already assigned'),o.returnObject.ids[t.id]=n),t["class"]&&(n.attr["class"]=t["class"]),t.reference&&(m["default"](!o.returnObject.ids.hasOwnProperty(t.reference),'References must be unique and "'+t.id+'" is already assigned'),o.returnObject.references[t.reference]=n),o.escapeHTML=null!=t.escapeHTML?t.escapeHTML:o.escapeHTML,n}function n(e){if(Array.isArray(e)&&0===e.length)return{};var r=1,i=void 0,s=["area","base","br","col","command","embed","hr","img","input","keygen","link","menuitem","meta","param","source","track","wbr"],l=e.slice(0);if("string"==typeof l[0])l[0]=t(l[0]);else{if(!Array.isArray(l[0]))throw new Error("First element of array must be a string, or an array and not "+JSON.stringify(l[0]));r=0}for(;r<l.length;r++){if(l[r]===!1||null===l[r]){l[0]=!1;break}if(void 0!==l[r]&&l[r]!==!0)if("string"==typeof l[r])o.escapeHTML&&(l[r]=c.HTML(l[r])),l[0].children.push(l[r]);else if("number"==typeof l[r])l[0].children.push(l[r]);else if(Array.isArray(l[r])){if(Array.isArray(l[r][0])){if(l[r].reverse().forEach(function(e){l.splice(r+1,0,e)}),0!==r)continue;r++}l[r]=n(l[r]),l[r][0]&&l[0].children.push(l[r][0])}else if("function"==typeof l[r])i=l[r];else{if("object"!==a(l[r]))throw new TypeError('"'+l[r]+'" is not allowed as a value');for(var u in l[r])if(l[r].hasOwnProperty(u)){var f=l[r][u];l[r].hasOwnProperty(u)&&null!==f&&f!==!1&&(l[0].attr[u]=p["default"](u,f))}}}if(l[0]!==!1){var d="<"+l[0].tag;for(var h in l[0].attr)if(l[0].attr.hasOwnProperty(h)){var g=c.attribute(l[0].attr[h]),m=g;(o.quoteAttributes||/[ "'=<>]/.test(g))&&(m=o.quotationMark+g+o.quotationMark),d+=" "+h+"="+m}d+=">",-1===s.indexOf(l[0].tag)&&(l[0].children.forEach(function(e){return d+=e}),d+="</"+l[0].tag+">"),l[0]=d}return o.returnObject[0]=l[0],o.returnObject.rootElement=l[0],o.returnObject.toString=function(){return l[0]},i&&i(l[0]),o.returnObject}var r=Array.isArray(e),i="undefined"==typeof e?"undefined":a(e);if(!r&&"object"!==i)throw new Error("Argument must be either an array or an object and not "+JSON.stringify(e));if(r&&0===e.length)return{};var o={},s=[];return Array.isArray(e)?s=e.slice(0):(s=e.elementArray.slice(0),o=Object.assign(o,e),delete o.elementArray),o=Object.assign({},d["default"],o,{returnObject:{ids:{},references:{}}}),n(s)}Object.defineProperty(t,"__esModule",{value:!0});var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e;
+
+};t["default"]=o;var s=n(15),l=i(s),u=n(16),c=r(u),f=n(17),d=i(f),h=n(18),p=i(h),g=n(21),m=i(g);o.setDefaults=function(e){return Object.assign(d["default"],e),o}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=function(e){var t=e.match(/^[\w-]+/),n={tag:t?t[0]:"div"},r=e.match(/#([\w-]+)/),i=e.match(/\.[\w-]+/g),o=e.match(/\$([\w-]+)/);return r&&(n.id=r[1]),i&&(n["class"]=i.join(" ").replace(/\./g,"")),o&&(n.reference=o[1]),(e.endsWith("&")||e.endsWith("!"))&&(n.escapeHTML=!1),n}},function(e,t){"use strict";function n(e){return e||0===e?String(e).replace(/&/g,"&amp;").replace(/"/g,"&quot;"):""}function r(e){return String(e).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&apos;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}Object.defineProperty(t,"__esModule",{value:!0}),t.attribute=n,t.HTML=r},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t["default"]={namespace:"xhtml",autoNamespacing:!0,escapeHTML:!0,quotationMark:'"',quoteAttributes:!0,convertTransformArray:!0}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o=n(19),a=r(o),s=n(20),l=r(s);t["default"]=function(e,t){return void 0===t?"":"style"===e&&"object"===("undefined"==typeof t?"undefined":i(t))?l["default"](t):"transform"===e&&Array.isArray(t)?a["default"](t):t}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=function(e){return e.map(function(e){var t=[];return"rotate"===e.type&&e.degrees&&t.push(e.degrees),e.x&&t.push(e.x),e.y&&t.push(e.y),e.type+"("+t+")"}).join(" ")}},function(e,t){"use strict";function n(e,t){return null!==t&&t!==!1&&void 0!==t?"string"==typeof t||"object"===("undefined"==typeof t?"undefined":r(t))?t:String(t):void 0}Object.defineProperty(t,"__esModule",{value:!0});var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t["default"]=function(e){return JSON.stringify(e,n).slice(2,-2).replace(/","/g,";").replace(/":"/g,":").replace(/\\"/g,"'")}},function(e,t,n){(function(t){"use strict";function r(e,t){if(e===t)return 0;for(var n=e.length,r=t.length,i=0,o=Math.min(n,r);o>i;++i)if(e[i]!==t[i]){n=e[i],r=t[i];break}return r>n?-1:n>r?1:0}function i(e){return t.Buffer&&"function"==typeof t.Buffer.isBuffer?t.Buffer.isBuffer(e):!(null==e||!e._isBuffer)}function o(e){return Object.prototype.toString.call(e)}function a(e){return i(e)?!1:"function"!=typeof t.ArrayBuffer?!1:"function"==typeof ArrayBuffer.isView?ArrayBuffer.isView(e):e?e instanceof DataView?!0:e.buffer&&e.buffer instanceof ArrayBuffer?!0:!1:!1}function s(e){if(S.isFunction(e)){if(E)return e.name;var t=e.toString(),n=t.match(T);return n&&n[1]}}function l(e,t){return"string"==typeof e?e.length<t?e:e.slice(0,t):e}function u(e){if(E||!S.isFunction(e))return S.inspect(e);var t=s(e),n=t?": "+t:"";return"[Function"+n+"]"}function c(e){return l(u(e.actual),128)+" "+e.operator+" "+l(u(e.expected),128)}function f(e,t,n,r,i){throw new j.AssertionError({message:n,actual:e,expected:t,operator:r,stackStartFunction:i})}function d(e,t){e||f(e,!0,t,"==",j.ok)}function h(e,t,n,s){if(e===t)return!0;if(i(e)&&i(t))return 0===r(e,t);if(S.isDate(e)&&S.isDate(t))return e.getTime()===t.getTime();if(S.isRegExp(e)&&S.isRegExp(t))return e.source===t.source&&e.global===t.global&&e.multiline===t.multiline&&e.lastIndex===t.lastIndex&&e.ignoreCase===t.ignoreCase;if(null!==e&&"object"==typeof e||null!==t&&"object"==typeof t){if(a(e)&&a(t)&&o(e)===o(t)&&!(e instanceof Float32Array||e instanceof Float64Array))return 0===r(new Uint8Array(e.buffer),new Uint8Array(t.buffer));if(i(e)!==i(t))return!1;s=s||{actual:[],expected:[]};var l=s.actual.indexOf(e);return-1!==l&&l===s.expected.indexOf(t)?!0:(s.actual.push(e),s.expected.push(t),g(e,t,n,s))}return n?e===t:e==t}function p(e){return"[object Arguments]"==Object.prototype.toString.call(e)}function g(e,t,n,r){if(null===e||void 0===e||null===t||void 0===t)return!1;if(S.isPrimitive(e)||S.isPrimitive(t))return e===t;if(n&&Object.getPrototypeOf(e)!==Object.getPrototypeOf(t))return!1;var i=p(e),o=p(t);if(i&&!o||!i&&o)return!1;if(i)return e=A.call(e),t=A.call(t),h(e,t,n);var a,s,l=C(e),u=C(t);if(l.length!==u.length)return!1;for(l.sort(),u.sort(),s=l.length-1;s>=0;s--)if(l[s]!==u[s])return!1;for(s=l.length-1;s>=0;s--)if(a=l[s],!h(e[a],t[a],n,r))return!1;return!0}function m(e,t,n){h(e,t,!0)&&f(e,t,n,"notDeepStrictEqual",m)}function y(e,t){if(!e||!t)return!1;if("[object RegExp]"==Object.prototype.toString.call(t))return t.test(e);try{if(e instanceof t)return!0}catch(n){}return Error.isPrototypeOf(t)?!1:t.call({},e)===!0}function v(e){var t;try{e()}catch(n){t=n}return t}function b(e,t,n,r){var i;if("function"!=typeof t)throw new TypeError('"block" argument must be a function');"string"==typeof n&&(r=n,n=null),i=v(t),r=(n&&n.name?" ("+n.name+").":".")+(r?" "+r:"."),e&&!i&&f(i,n,"Missing expected exception"+r);var o="string"==typeof r,a=!e&&S.isError(i),s=!e&&i&&!n;if((a&&o&&y(i,n)||s)&&f(i,n,"Got unwanted exception"+r),e&&i&&n&&!y(i,n)||!e&&i)throw i}function w(e,t){e||f(e,!0,t,"==",w)}var x=n(22),S=n(23),O=Object.prototype.hasOwnProperty,A=Array.prototype.slice,E=function(){return"foo"===function(){}.name}(),j=e.exports=d,T=/\s*function\s+([^\(\s]*)\s*/;j.AssertionError=function(e){this.name="AssertionError",this.actual=e.actual,this.expected=e.expected,this.operator=e.operator,e.message?(this.message=e.message,this.generatedMessage=!1):(this.message=c(this),this.generatedMessage=!0);var t=e.stackStartFunction||f;if(Error.captureStackTrace)Error.captureStackTrace(this,t);else{var n=new Error;if(n.stack){var r=n.stack,i=s(t),o=r.indexOf("\n"+i);if(o>=0){var a=r.indexOf("\n",o+1);r=r.substring(a+1)}this.stack=r}}},S.inherits(j.AssertionError,Error),j.fail=f,j.ok=d,j.equal=function(e,t,n){e!=t&&f(e,t,n,"==",j.equal)},j.notEqual=function(e,t,n){e==t&&f(e,t,n,"!=",j.notEqual)},j.deepEqual=function(e,t,n){h(e,t,!1)||f(e,t,n,"deepEqual",j.deepEqual)},j.deepStrictEqual=function(e,t,n){h(e,t,!0)||f(e,t,n,"deepStrictEqual",j.deepStrictEqual)},j.notDeepEqual=function(e,t,n){h(e,t,!1)&&f(e,t,n,"notDeepEqual",j.notDeepEqual)},j.notDeepStrictEqual=m,j.strictEqual=function(e,t,n){e!==t&&f(e,t,n,"===",j.strictEqual)},j.notStrictEqual=function(e,t,n){e===t&&f(e,t,n,"!==",j.notStrictEqual)},j["throws"]=function(e,t,n){b(!0,e,t,n)},j.doesNotThrow=function(e,t,n){b(!1,e,t,n)},j.ifError=function(e){if(e)throw e},j.strict=x(w,j,{equal:j.strictEqual,deepEqual:j.deepStrictEqual,notEqual:j.notStrictEqual,notDeepEqual:j.notDeepStrictEqual}),j.strict.strict=j.strict;var C=Object.keys||function(e){var t=[];for(var n in e)O.call(e,n)&&t.push(n);return t}}).call(t,function(){return this}())},function(e,t){"use strict";function n(e){if(null===e||void 0===e)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(e)}function r(){try{if(!Object.assign)return!1;var e=new String("abc");if(e[5]="de","5"===Object.getOwnPropertyNames(e)[0])return!1;for(var t={},n=0;10>n;n++)t["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(t).map(function(e){return t[e]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(e){i[e]=e}),"abcdefghijklmnopqrst"!==Object.keys(Object.assign({},i)).join("")?!1:!0}catch(o){return!1}}var i=Object.getOwnPropertySymbols,o=Object.prototype.hasOwnProperty,a=Object.prototype.propertyIsEnumerable;e.exports=r()?Object.assign:function(e,t){for(var r,s,l=n(e),u=1;u<arguments.length;u++){r=Object(arguments[u]);for(var c in r)o.call(r,c)&&(l[c]=r[c]);if(i){s=i(r);for(var f=0;f<s.length;f++)a.call(r,s[f])&&(l[s[f]]=r[s[f]])}}return l}},function(e,t,n){(function(e,r){function i(e,n){var r={seen:[],stylize:a};return arguments.length>=3&&(r.depth=arguments[2]),arguments.length>=4&&(r.colors=arguments[3]),g(n)?r.showHidden=n:n&&t._extend(r,n),x(r.showHidden)&&(r.showHidden=!1),x(r.depth)&&(r.depth=2),x(r.colors)&&(r.colors=!1),x(r.customInspect)&&(r.customInspect=!0),r.colors&&(r.stylize=o),l(r,e,r.depth)}function o(e,t){var n=i.styles[t];return n?"["+i.colors[n][0]+"m"+e+"["+i.colors[n][1]+"m":e}function a(e,t){return e}function s(e){var t={};return e.forEach(function(e,n){t[e]=!0}),t}function l(e,n,r){if(e.customInspect&&n&&j(n.inspect)&&n.inspect!==t.inspect&&(!n.constructor||n.constructor.prototype!==n)){var i=n.inspect(r,e);return b(i)||(i=l(e,i,r)),i}var o=u(e,n);if(o)return o;var a=Object.keys(n),g=s(a);if(e.showHidden&&(a=Object.getOwnPropertyNames(n)),E(n)&&(a.indexOf("message")>=0||a.indexOf("description")>=0))return c(n);if(0===a.length){if(j(n)){var m=n.name?": "+n.name:"";return e.stylize("[Function"+m+"]","special")}if(S(n))return e.stylize(RegExp.prototype.toString.call(n),"regexp");if(A(n))return e.stylize(Date.prototype.toString.call(n),"date");if(E(n))return c(n)}var y="",v=!1,w=["{","}"];if(p(n)&&(v=!0,w=["[","]"]),j(n)){var x=n.name?": "+n.name:"";y=" [Function"+x+"]"}if(S(n)&&(y=" "+RegExp.prototype.toString.call(n)),A(n)&&(y=" "+Date.prototype.toUTCString.call(n)),E(n)&&(y=" "+c(n)),0===a.length&&(!v||0==n.length))return w[0]+y+w[1];if(0>r)return S(n)?e.stylize(RegExp.prototype.toString.call(n),"regexp"):e.stylize("[Object]","special");e.seen.push(n);var O;return O=v?f(e,n,r,g,a):a.map(function(t){return d(e,n,r,g,t,v)}),e.seen.pop(),h(O,y,w)}function u(e,t){if(x(t))return e.stylize("undefined","undefined");if(b(t)){var n="'"+JSON.stringify(t).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return e.stylize(n,"string")}return v(t)?e.stylize(""+t,"number"):g(t)?e.stylize(""+t,"boolean"):m(t)?e.stylize("null","null"):void 0}function c(e){return"["+Error.prototype.toString.call(e)+"]"}function f(e,t,n,r,i){for(var o=[],a=0,s=t.length;s>a;++a)o.push(M(t,String(a))?d(e,t,n,r,String(a),!0):"");return i.forEach(function(i){i.match(/^\d+$/)||o.push(d(e,t,n,r,i,!0))}),o}function d(e,t,n,r,i,o){var a,s,u;if(u=Object.getOwnPropertyDescriptor(t,i)||{value:t[i]},u.get?s=u.set?e.stylize("[Getter/Setter]","special"):e.stylize("[Getter]","special"):u.set&&(s=e.stylize("[Setter]","special")),M(r,i)||(a="["+i+"]"),s||(e.seen.indexOf(u.value)<0?(s=m(n)?l(e,u.value,null):l(e,u.value,n-1),s.indexOf("\n")>-1&&(s=o?s.split("\n").map(function(e){return"  "+e}).join("\n").substr(2):"\n"+s.split("\n").map(function(e){return"   "+e}).join("\n"))):s=e.stylize("[Circular]","special")),x(a)){if(o&&i.match(/^\d+$/))return s;a=JSON.stringify(""+i),a.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(a=a.substr(1,a.length-2),a=e.stylize(a,"name")):(a=a.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),a=e.stylize(a,"string"))}return a+": "+s}function h(e,t,n){var r=0,i=e.reduce(function(e,t){return r++,t.indexOf("\n")>=0&&r++,e+t.replace(/\u001b\[\d\d?m/g,"").length+1},0);return i>60?n[0]+(""===t?"":t+"\n ")+" "+e.join(",\n  ")+" "+n[1]:n[0]+t+" "+e.join(", ")+" "+n[1]}function p(e){return Array.isArray(e)}function g(e){return"boolean"==typeof e}function m(e){return null===e}function y(e){return null==e}function v(e){return"number"==typeof e}function b(e){return"string"==typeof e}function w(e){return"symbol"==typeof e}function x(e){return void 0===e}function S(e){return O(e)&&"[object RegExp]"===C(e)}function O(e){return"object"==typeof e&&null!==e}function A(e){return O(e)&&"[object Date]"===C(e)}function E(e){return O(e)&&("[object Error]"===C(e)||e instanceof Error)}function j(e){return"function"==typeof e}function T(e){return null===e||"boolean"==typeof e||"number"==typeof e||"string"==typeof e||"symbol"==typeof e||"undefined"==typeof e}function C(e){return Object.prototype.toString.call(e)}function k(e){return 10>e?"0"+e.toString(10):e.toString(10)}function z(){var e=new Date,t=[k(e.getHours()),k(e.getMinutes()),k(e.getSeconds())].join(":");return[e.getDate(),L[e.getMonth()],t].join(" ")}function M(e,t){return Object.prototype.hasOwnProperty.call(e,t)}var D=/%[sdj%]/g;t.format=function(e){if(!b(e)){for(var t=[],n=0;n<arguments.length;n++)t.push(i(arguments[n]));return t.join(" ")}for(var n=1,r=arguments,o=r.length,a=String(e).replace(D,function(e){if("%%"===e)return"%";if(n>=o)return e;switch(e){case"%s":return String(r[n++]);case"%d":return Number(r[n++]);case"%j":try{return JSON.stringify(r[n++])}catch(t){return"[Circular]"}default:return e}}),s=r[n];o>n;s=r[++n])a+=m(s)||!O(s)?" "+s:" "+i(s);return a},t.deprecate=function(n,i){function o(){if(!a){if(r.throwDeprecation)throw new Error(i);r.traceDeprecation?console.trace(i):console.error(i),a=!0}return n.apply(this,arguments)}if(x(e.process))return function(){return t.deprecate(n,i).apply(this,arguments)};if(r.noDeprecation===!0)return n;var a=!1;return o};var F,q={};t.debuglog=function(e){if(x(F)&&(F=r.env.NODE_DEBUG||""),e=e.toUpperCase(),!q[e])if(new RegExp("\\b"+e+"\\b","i").test(F)){var n=r.pid;q[e]=function(){var r=t.format.apply(t,arguments);console.error("%s %d: %s",e,n,r)}}else q[e]=function(){};return q[e]},t.inspect=i,i.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]},i.styles={special:"cyan",number:"yellow","boolean":"yellow",undefined:"grey","null":"bold",string:"green",date:"magenta",regexp:"red"},t.isArray=p,t.isBoolean=g,t.isNull=m,t.isNullOrUndefined=y,t.isNumber=v,t.isString=b,t.isSymbol=w,t.isUndefined=x,t.isRegExp=S,t.isObject=O,t.isDate=A,t.isError=E,t.isFunction=j,t.isPrimitive=T,t.isBuffer=n(25);var L=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];t.log=function(){console.log("%s - %s",z(),t.format.apply(t,arguments))},t.inherits=n(26),t._extend=function(e,t){if(!t||!O(t))return e;for(var n=Object.keys(t),r=n.length;r--;)e[n[r]]=t[n[r]];return e}}).call(t,function(){return this}(),n(24))},function(e,t){function n(){throw new Error("setTimeout has not been defined")}function r(){throw new Error("clearTimeout has not been defined")}function i(e){if(c===setTimeout)return setTimeout(e,0);if((c===n||!c)&&setTimeout)return c=setTimeout,setTimeout(e,0);try{return c(e,0)}catch(t){try{return c.call(null,e,0)}catch(t){return c.call(this,e,0)}}}function o(e){if(f===clearTimeout)return clearTimeout(e);if((f===r||!f)&&clearTimeout)return f=clearTimeout,clearTimeout(e);try{return f(e)}catch(t){try{return f.call(null,e)}catch(t){return f.call(this,e)}}}function a(){g&&h&&(g=!1,h.length?p=h.concat(p):m=-1,p.length&&s())}function s(){if(!g){var e=i(a);g=!0;for(var t=p.length;t;){for(h=p,p=[];++m<t;)h&&h[m].run();m=-1,t=p.length}h=null,g=!1,o(e)}}function l(e,t){this.fun=e,this.array=t}function u(){}var c,f,d=e.exports={};!function(){try{c="function"==typeof setTimeout?setTimeout:n}catch(e){c=n}try{f="function"==typeof clearTimeout?clearTimeout:r}catch(e){f=r}}();var h,p=[],g=!1,m=-1;d.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1)for(var n=1;n<arguments.length;n++)t[n-1]=arguments[n];p.push(new l(e,t)),1!==p.length||g||i(s)},l.prototype.run=function(){this.fun.apply(null,this.array)},d.title="browser",d.browser=!0,d.env={},d.argv=[],d.version="",d.versions={},d.on=u,d.addListener=u,d.once=u,d.off=u,d.removeListener=u,d.removeAllListeners=u,d.emit=u,d.prependListener=u,d.prependOnceListener=u,d.listeners=function(e){return[]},d.binding=function(e){throw new Error("process.binding is not supported")},d.cwd=function(){return"/"},d.chdir=function(e){throw new Error("process.chdir is not supported")},d.umask=function(){return 0}},function(e,t){e.exports=function(e){return e&&"object"==typeof e&&"function"==typeof e.copy&&"function"==typeof e.fill&&"function"==typeof e.readUInt8}},function(e,t){e.exports="function"==typeof Object.create?function(e,t){e.super_=t,e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}})}:function(e,t){e.super_=t;var n=function(){};n.prototype=t.prototype,e.prototype=new n,e.prototype.constructor=e}},function(e,t,n){var r=n(9),i=n(7);e.exports=function(){var e=r.newEl("canvas"),t=null;return function(n){null==t&&(t=e.getContext("2d"));var r=i.canvasRatio(),o=n.root;e.width=r*o.properties.width,e.height=r*o.properties.height,t.textBaseline="middle";var a=o.children.holderBg,s=r*a.width,l=r*a.height,u=2,c=u/2;t.fillStyle=a.properties.fill,t.fillRect(0,0,s,l),a.properties.outline&&(t.strokeStyle=a.properties.outline.fill,t.lineWidth=a.properties.outline.width,t.moveTo(c,c),t.lineTo(s-c,c),t.lineTo(s-c,l-c),t.lineTo(c,l-c),t.lineTo(c,c),t.moveTo(0,c),t.lineTo(s,l-c),t.moveTo(0,l-c),t.lineTo(s,c),t.stroke());var f=o.children.holderTextGroup;t.font=f.properties.font.weight+" "+r*f.properties.font.size+f.properties.font.units+" "+f.properties.font.family+", monospace",t.fillStyle=f.properties.fill;for(var d in f.children){var h=f.children[d];for(var p in h.children){var g=h.children[p],m=r*(f.x+h.x+g.x),y=r*(f.y+h.y+g.y+f.properties.leading/2);t.fillText(g.properties.text,m,y)}}return e.toDataURL("image/png")}}()}])}),function(e,t){t&&(Holder=e.Holder)}(this,"undefined"!=typeof Meteor&&"undefined"!=typeof Package);
 }
 
 /* easy pie init */
 function easyPieInit() {
     // generate easy-pie-charts
-    if ($('.easy-pie').length && $.fn.easyPieChart)
-    {
-        $.each($('.easy-pie'), function(k,v)
-        {
+    if ( $('.easy-pie').length && $.fn.easyPieChart ) {
+        $.each($('.easy-pie'), function(k,v) {
             var color = primaryColor;
             if ($(this).is('.info')) color = infoColor;
             if ($(this).is('.danger')) color = dangerColor;
             if ($(this).is('.success')) color = successColor;
             if ($(this).is('.warning')) color = warningColor;
             if ($(this).is('.inverse')) color = inverseColor;
-
 
             $(v).easyPieChart({
                 barColor: color,
@@ -518,8 +80,8 @@ function easyPieInit() {
 /* Widget Scrollable */
 function widgetScrollableInit() {
     /* Slim Scroll Widgets */
-    $('.widget-scroll').each(function(){
-        $(this).find('.widget-body > div').height($(this).attr('data-scroll-height')).niceScroll({
+    $('.widget-scroll').each(function() {
+        $(this).find(".widget-body > .scroll-div").niceScroll({
             cursorwidth: 3,
             zindex: 2,
             cursorborder: "none",
@@ -531,7 +93,8 @@ function widgetScrollableInit() {
 
     /* Other non-widget Slim Scroll areas */
     $('*:not(#menu) .slim-scroll').each(function(){
-        $(this).height($(this).attr('data-scroll-height')).niceScroll({
+        //$(this).height($(this).attr('data-scroll-height'))
+        $(this).niceScroll({
             cursorwidth: 3,
             zindex: 2,
             cursorborder: "none",
@@ -591,32 +154,110 @@ function bootstrapDatepickerInit() {
 }
 
 /* bootstrap-timepicker */
-function bootstrapTimePickerInit() {
-    //$.fn.btimepicker = $.fn.timepicker;
-    $('#timepicker1').timepicker();
-    $('#timepicker2').timepicker({
-        minuteStep: 1,
-        template: 'modal',
-        showSeconds: true,
-        showMeridian: false,
-        modalBackdrop: true
+function bootstrapTimePickerInit() {    
+    // https://getdatepicker.com/6/repl.html
+    var $timepicker1 = new tempusDominus.TempusDominus(document.getElementById('timepicker1'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: false
+            }
+        },
+        localization: {
+            hourCycle: 'h12',
+            format: 'hh:mm T'
+        }
     });
-    $('#timepicker3').timepicker({
-        minuteStep: 5,
-        showInputs: false,
-        disableFocus: true
+
+    $("#timepicker1Input").on("click", function() {
+        $(".timepicker1 .input-group-addon").trigger("click");
     });
-    $('#timepicker4').timepicker({
-        minuteStep: 1,
-        secondStep: 5,
-        showInputs: false,
-        showSeconds: true,
-        showMeridian: false
+
+    var $timepicker2_1 = new tempusDominus.TempusDominus(document.getElementById('timepicker2_1'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: true,
+            }
+        },
+        localization: {
+            hourCycle: 'h24',
+            format: 'HH:mm:ss'
+        }
     });
-    $('#timepicker5').timepicker({
-        template: false,
-        showInputs: false,
-        minuteStep: 5
+
+    $timepicker2_1.dates.formatInput = function(date) { 
+        { return moment(date).format('HH:mm:ss') } 
+    }
+
+    $("#timepicker2Modal-btn").on("click", function() {
+        var viewDate    = $timepicker2_1.actions.optionsStore._viewDate,
+            hours       = viewDate.hours,
+            mins        = viewDate.minutesFormatted,
+            secs        = viewDate.secondsFormatted;
+
+            $("#timepicker2").val( hours + ":" + mins + ":" + secs );
+    });
+
+    var $timepicker4 = new tempusDominus.TempusDominus(document.getElementById('timepicker4'), {
+        display: {
+            viewMode: 'clock',
+            components: {
+                decades: false,
+                year: false,
+                month: false,
+                date: false,
+                hours: true,
+                minutes: true,
+                seconds: false
+            }
+        },
+        localization: {
+            hourCycle: 'h12',
+            format: 'HH:mm T'
+        }
+    }); 
+    
+    $("#timepicker4Input").on("click", function() {
+        $("#timepicker4 .input-group-addon").trigger("click");
+    });
+
+    const linkedPicker1Element = document.getElementById('linkedPickers1');
+
+    const linked1 = new tempusDominus.TempusDominus(linkedPicker1Element);
+
+    const linked2 = new tempusDominus.TempusDominus(document.getElementById('linkedPickers2'), {
+        useCurrent: false,
+    });
+
+    //using event listeners
+    linkedPicker1Element.addEventListener(Namespace.events.change, (e) => {
+        linked2.updateOptions({
+            restrictions: {
+                minDate: e.detail.date,
+            },
+        });
+    });
+
+    //using subscribe method
+    const subscription = linked2.subscribe(Namespace.events.change, (e) => {
+        linked1.updateOptions({
+            restrictions: {
+            maxDate: e.date,
+            },
+        });
     });
 }
 
@@ -657,11 +298,11 @@ function initScripts() {
                 }
             });
             self.get('pagination')(true, 0);
-            $el.find('.back-btn').click(function(e) {
+            $el.find('.back-btn').on("click", function(e) {
                 e.preventDefault();
                 self.get('pagination')((i > 0), -1, this);
             });
-            $el.find('.fwd-btn').click(function(e) {
+            $el.find('.fwd-btn').on("click", function(e) {
                 e.preventDefault();
                 self.get('pagination')((i < self.get('markers').length - 1), 1, this);
             });
@@ -680,10 +321,10 @@ function checkAPIMaps() {
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.async = "async";
-        script.async = "defeer";
+        script.async = "defer";
         // script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=handleApiReady";
-        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"
-        if (!$('script[src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps"]').length > 0) {
+        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps&libraries=marker"
+        if (!$('script[src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBrxUTzqWroARkIZ24zYukk7E43b9F38E4&callback=initGoogleMaps&libraries=marker"]').length > 0) {
             //script exists
             document.body.appendChild(script);
         }
@@ -696,10 +337,9 @@ function initGoogleMaps() {
     /*
      * Clustering
      */
-    if ($('#google-map-clustering').length)
-    {
-        // We need to bind the map with the "init" event otherwise bounds will be null
-        $('#google-map-clustering').gmap({'zoom': 2, 'disableDefaultUI':true}).bind('init', function(evt, map) {
+    if ($('#google-map-clustering').length)     {
+        // We need to bind the map with the "init" event otherwise bounds will be null, bind('init')
+        $('#google-map-clustering').gmap({'zoom': 2, 'disableDefaultUI':true}).on('init', function(evt, map) {
             var bounds = map.getBounds();
             var southWest = bounds.getSouthWest();
             var northEast = bounds.getNorthEast();
@@ -710,7 +350,7 @@ function initGoogleMaps() {
                 var lng = southWest.lng() + lngSpan * Math.random();
                 $('#google-map-clustering').gmap('addMarker', {
                     'position': new google.maps.LatLng(lat, lng)
-                }).click(function() {
+                }).on("click", function() {
                     $('#google-map-clustering').gmap('openInfoWindow', { content : 'Hello world!' }, this);
                 });
             }
@@ -728,8 +368,7 @@ function initGoogleMaps() {
     /*
      * Extend with pagination
      */
-    if ($('#google-map-extend-pagination').length)
-    {
+    if ($('#google-map-extend-pagination').length) {
         var markers = [
             {'position': '59.32893000000001,18.064910000000054', 'title': 'Stockholm, Sweden' },
             {'position': '35.6894875,139.69170639999993', 'title': 'Tokyo, Japan' },
@@ -754,12 +393,12 @@ function initGoogleMaps() {
     /*
      * Filtering
      */
-    if ($('#google-map-filters').length)
-    {
+    if ($('#google-map-filters').length) {
         // format
         String.prototype.format = function() { a = this; for ( k in arguments ) { a = a.replace("{" + k + "}", arguments[k]); } return a; };
 
-        $('#google-map-filters').gmap({'disableDefaultUI':true}).bind('init', function(evt, map) {
+        // bind('init')
+        $('#google-map-filters').gmap({'disableDefaultUI':true}).on('init', function(evt, map) {
             //$('#google-map-filters').gmap('addControl', 'tags-control', google.maps.ControlPosition.TOP_LEFT);
             $('#google-map-filters').gmap('addControl', 'radios', google.maps.ControlPosition.TOP_LEFT);
             var southWest = map.getBounds().getSouthWest();
@@ -784,7 +423,7 @@ function initGoogleMaps() {
                     $('#google-map-filters').gmap('openInfoWindow', { 'content': $(this)[0].tags + '<br/>' +visibleInViewport }, this);
                 });
             }
-            $('input:checkbox').click(function() {
+            $('input:checkbox').on("click", function() {
                 $('#google-map-filters').gmap('closeInfoWindow');
                 $('#google-map-filters').gmap('set', 'bounds', null);
                 var filters = [];
@@ -828,8 +467,7 @@ function initGoogleMaps() {
     /*
      * Geocoding
      */
-    if ($('#google-map-geocoding').length)
-    {
+    if ($('#google-map-geocoding').length) {
         $('#google-map-geocoding').gmap({
             'zoomControl' : true,
             'zoomControlOpt': {
@@ -842,8 +480,9 @@ function initGoogleMaps() {
             'overviewMapControl': false,
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
-        }).bind('init', function(event, map)
-        {
+        })
+        // bind('init')
+        .on('init', function(event, map) {
             var gmgLatLng = new google.maps.LatLng(53.29463136870075, -6.15019965916872);
             $('#google-map-geocoding').gmap('addMarker', {
                 'position': gmgLatLng,
@@ -862,15 +501,14 @@ function initGoogleMaps() {
                     '</div>');
             }).dragend( function(event) {
                 findLocation(event.latLng, this);
-            }).click( function(event) {
+            }).on("click", function(event) {
                 findLocation(event.latLng, this);
             });
 
             $('#google-map-geocoding').gmap('option', 'center', gmgLatLng );
             $('#google-map-geocoding').gmap('option', 'zoom', 16 );
 
-            $(map).click( function(event)
-            {
+            $(map).on("click", function(event) {
                 $('#google-map-geocoding').gmap('addMarker', {
                     'position': event.latLng,
                     'draggable': true,
@@ -889,7 +527,7 @@ function initGoogleMaps() {
                     findLocation(marker.getPosition(), marker);
                 }).dragend( function(event) {
                     findLocation(event.latLng, this);
-                }).click( function() {
+                }).on("click", function() {
                     openDialog(this);
                 });
             });
@@ -938,8 +576,7 @@ function initGoogleMaps() {
     /*
      * JSON
      */
-    if ($('#google-map-json').length)
-    {
+    if ($('#google-map-json').length) {
         $('#google-map-json').gmap({
             'zoomControl' : true,
             'zoomControlOpt': {
@@ -952,12 +589,17 @@ function initGoogleMaps() {
             'overviewMapControl': false,
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
-        }).bind('init', function() {
+        })
+        .on('init', function() { 
+            //console.log(`#google-map-json on 'init' `);
             $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data) {
+                /* console.log(`#google-map-json $.getJSON() data: `, data);
+                console.log(`#google-map-json $.getJSON() componentsPath: `, componentsPath); */
                 $.each( data.markers, function(i, marker) {
                     $('#google-map-json').gmap('addMarker', {
                         'position': new google.maps.LatLng(marker.latitude, marker.longitude)
-                    }).click(function() {
+                    }).on("click", function() {
+                        //console.log(`#google-map-json addMarker .on('click', function(){}) event`);
                         $('#google-map-json').gmap('openInfoWindow', { 'content': marker.content }, this);
                     });
                 });
@@ -970,8 +612,7 @@ function initGoogleMaps() {
     /*
      * Streetview
      */
-    if ($('#google-map-streetview').length)
-    {
+    if ($('#google-map-streetview').length) {
         $('#google-map-streetview').gmap({ 'disableDefaultUI':true, 'callback': function() {
             var self = this;
             self.microformat('.vevent', function(result, item, index) {
@@ -980,14 +621,14 @@ function initGoogleMaps() {
                 var latlng = new google.maps.LatLng(result.location[0].geo[0].latitude['value-title'], result.location[0].geo[0].longitude['value-title']);
                 // self.addMarker( { 'bounds':true, 'position': latlng, 'title': result.summary, 'icon': 'http://google-maps-icons.googlecode.com/files/music-rock.png' }, function(map, marker) {
                 self.addMarker( { 'bounds':true, 'position': latlng, 'title': result.summary }, function(map, marker) {
-                    $(item).find('.summary').click( function() {
+                    $(item).find('.summary').on("click", function() {
                         $(marker).triggerEvent('click');
                         return false;
                     });
-                    $(item).mouseover(function() {
+                    $(item).on("mouseover", function() {
                         self.get('map').panTo(marker.getPosition());
                     });
-                }).click(function() {
+                }).on("click", function() {
                     self.get('map').panTo( $(this)[0].getPosition());
                     //$(clone).dialog({ 'modal': true, 'width': 530, 'title': result.summary, 'resizable': false, 'draggable': false });
                     bootbox.alert($(clone).html());
@@ -1001,8 +642,7 @@ function initGoogleMaps() {
      * Fullscreen
      */
 
-    if ($('#google-fs').length)
-    {
+    if ($('#google-fs').length) {
         $('#google-fs').height($(window).height() - $('#footer').height() - $('.navbar.main').height() - $('#menu-top').height());
 
         $('#google-fs').gmap({
@@ -1018,32 +658,30 @@ function initGoogleMaps() {
             'scrollwheel': false,
             'mapTypeId': google.maps.MapTypeId.ROADMAP
         })
-            .bind('init', function()
-            {
-                $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data)
-                {
-                    $.each( data.markers, function(i, marker)
-                    {
-                        $('#google-fs').gmap('addMarker',
-                            {
-                                'position': new google.maps.LatLng(marker.latitude, marker.longitude),
-                                'bounds': true,
-                                'animation': google.maps.Animation.DROP
-                            })
-                            .click(function()
-                            {
-                                $('#google-fs').gmap('openInfoWindow', { 'content': marker.content }, this);
-                            });
-                    });
-
-                    $('#google-fs').gmap('option', 'center', new google.maps.LatLng(data.markers[1].latitude, data.markers[1].longitude) );
-                    $('#google-fs').gmap('option', 'zoom', 16 );
-
-                    setTimeout(function(){
-                        $('#google-fs').gmap('openInfoWindow', { 'content': data.markers[1].content }, $('#google-fs').gmap('get', 'markers')[1]);
-                    }, 1000);
+        // bind('init')
+        .on('init', function() {
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/google/assets/lib/jquery-ui-map/data/demo.json', function(data) {
+                $.each( data.markers, function(i, marker) {
+                    $('#google-fs').gmap('addMarker',
+                        {
+                            'position': new google.maps.LatLng(marker.latitude, marker.longitude),
+                            'bounds': true,
+                            'animation': google.maps.Animation.DROP
+                        })
+                        .on("click", function()
+                        {
+                            $('#google-fs').gmap('openInfoWindow', { 'content': marker.content }, this);
+                        });
                 });
+
+                $('#google-fs').gmap('option', 'center', new google.maps.LatLng(data.markers[1].latitude, data.markers[1].longitude) );
+                $('#google-fs').gmap('option', 'zoom', 16 );
+
+                setTimeout(function(){
+                    $('#google-fs').gmap('openInfoWindow', { 'content': data.markers[1].content }, $('#google-fs').gmap('get', 'markers')[1]);
+                }, 1000);
             });
+        });
     }
 
     /*
@@ -1051,83 +689,74 @@ function initGoogleMaps() {
      */
 
     var mfsr = $('#google-fs-realestate');
-    if (mfsr.length)
-    {
-        var mfsr_height =   $(window).height() -
+    if (mfsr.length) {
+        var mfsr_height = $(window).height() -
                 $('#footer').height() -
                 $('.navbar.main').height() -
                 $('#menu-top').height(),
+                mfsr_module = mfsr.data('module') || 'admin',
+                mfsr_url = rootPath + mfsr_module + '/ajax/maps_google_realestate.json',
+                mfsr_info_width = 'auto';
 
-            mfsr_module = mfsr.data('module') || 'admin',
-            mfsr_url = rootPath + mfsr_module + '/ajax/maps_google_realestate.json',
-            mfsr_info_width = 'auto';
+            switch (mfsr_module) {
+                default:
+                case 'admin':
+                    mfsr_info_width = 240;
+                    break;
+                case 'realestate':
+                    mfsr_info_width = 330;
+                    break;
+            }
 
-        switch (mfsr_module) {
-            default:
-            case 'admin':
-                mfsr_info_width = 240;
-                break;
-            case 'realestate':
-                mfsr_info_width = 330;
-                break;
-        }
+            function msfr_info ( marker ) {
+                var content = $('<div/>');
+                content.addClass('innerAll inner-2x').html('<div></div>');
 
-        function msfr_info ( marker )
-        {
-            var content = $('<div/>');
-            content.addClass('innerAll inner-2x').html('<div></div>');
+                if (mfsr_module == 'admin')
+                    content.prepend('<h4></h4>').find(':header').text(marker.title);
+
+                content.find('> div').addClass('msfr_info_content').html(marker.content);
+
+                return content.html();
+            }
 
             if (mfsr_module == 'admin')
-                content.prepend('<h4></h4>').find(':header').text(marker.title);
+                mfsr.height(mfsr_height);
 
-            content.find('> div').addClass('msfr_info_content').html(marker.content);
+            mfsr.gmap({
+                'zoomControl' : true,
+                'zoomControlOptions': {
+                    'style' : google.maps.ZoomControlStyle.SMALL,
+                    'position' : google.maps.ControlPosition.TOP_RIGHT
+                },
+                'panControl' : false,
+                'streetViewControl' : false,
+                'mapTypeControl': false,
+                'overviewMapControl': false,
+                'scrollwheel': false,
+                'mapTypeId': google.maps.MapTypeId.ROADMAP,
+                'zoom': 16
+            })
+            // bind('init')
+            .on('init', function() {
+                $.getJSON( mfsr_url, function(data) {
+                    $.each( data.markers, function(i, marker) {
+                        setTimeout(function() {
+                            mfsr.gmap('addMarker', {
+                                    'position': new google.maps.LatLng(marker.latitude, marker.longitude),
+                                    'draggable': true,
+                                    'animation': google.maps.Animation.DROP
+                                })
+                                .on("click", function() {
+                                    mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, this);
+                                });
 
-            return content.html();
-        }
-
-        if (mfsr_module == 'admin')
-            mfsr.height(mfsr_height);
-
-        mfsr.gmap({
-            'zoomControl' : true,
-            'zoomControlOptions': {
-                'style' : google.maps.ZoomControlStyle.SMALL,
-                'position' : google.maps.ControlPosition.TOP_RIGHT
-            },
-            'panControl' : false,
-            'streetViewControl' : false,
-            'mapTypeControl': false,
-            'overviewMapControl': false,
-            'scrollwheel': false,
-            'mapTypeId': google.maps.MapTypeId.ROADMAP,
-            'zoom': 16
-        })
-            .bind('init', function()
-            {
-                $.getJSON( mfsr_url, function(data)
-                {
-                    $.each( data.markers, function(i, marker)
-                    {
-                        setTimeout(function()
-                            {
-                                mfsr.gmap('addMarker',
-                                    {
-                                        'position': new google.maps.LatLng(marker.latitude, marker.longitude),
-                                        'draggable': true,
-                                        'animation': google.maps.Animation.DROP
-                                    })
-                                    .click(function()
-                                    {
-                                        mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, this);
-                                    });
-
-                                if (i == 1)
-                                {
-                                    mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, mfsr.gmap('get', 'markers')[i]);
-                                    mfsr.gmap('option', 'center', new google.maps.LatLng(marker.latitude, marker.longitude) );
-                                }
-                            },
-                            300*i);
+                            if (i == 1) {
+                                mfsr.gmap('openInfoWindow', { 'content': msfr_info(marker), 'maxWidth': mfsr_info_width }, mfsr.gmap('get', 'markers')[i]);
+                                mfsr.gmap('option', 'center', new google.maps.LatLng(marker.latitude, marker.longitude) );
+                            }
+                        },
+                        300*i);
                     });
                 });
             });
@@ -1137,7 +766,7 @@ function initGoogleMaps() {
 
 /* google maps vector init */
 function mapsVectorInit() {
-    $('#maps_vector_tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('#maps_vector_tabs a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
         var $this   = $(this),
             href    = $this.attr("href");
 
@@ -1258,70 +887,70 @@ function mapsVectorInit() {
     // USA unemployment
     function initUSAUnemployment() {
         var componentsPath = '';
-        $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
-            // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
-            var val = 2009;
-                statesValues = jvm.values.apply({}, jvm.values(data.states)),
-                metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
-                metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
+            $.getJSON( componentsPath + '/MelisCore/assets/components/modules/admin/maps/vector/assets/lib/data/us-unemployment.json', function(data) {
+                // $.getJSON('/MelisDesign/ajax/us-unemployment.json', function(data){
+                var val = 2009;
+                    statesValues = jvm.values.apply({}, jvm.values(data.states)),
+                    metroPopValues = Array.prototype.concat.apply([], jvm.values(data.metro.population)),
+                    metroUnemplValues = Array.prototype.concat.apply([], jvm.values(data.metro.unemployment));
 
-            $('#usa-unemployment').vectorMap({
-                map: 'us_aea',
-                markers: data.metro.coords,
-                series: {
-                    markers: [{
-                        attribute: 'fill',
-                        scale: ['#FEE5D9', '#A50F15'],
-                        values: data.metro.unemployment[val],
-                        min: jvm.min(metroUnemplValues),
-                        max: jvm.max(metroUnemplValues)
-                    },{
-                        attribute: 'r',
-                        scale: [5, 20],
-                        values: data.metro.population[val],
-                        min: jvm.min(metroPopValues),
-                        max: jvm.max(metroPopValues)
-                    }],
-                    regions: [{
-                        scale: ['#DEEBF7', '#08519C'],
-                        attribute: 'fill',
-                        values: data.states[val],
-                        min: jvm.min(statesValues),
-                        max: jvm.max(statesValues)
-                    }]
-                },
-                onMarkerLabelShow: function(event, label, index){
-                    label.html(
-                        '<b>'+data.metro.names[index]+'</b><br/>'+
-                        '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
-                        '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
-                    );
-                },
-                onRegionLabelShow: function(event, label, code){
-                    label.html(
-                        '<b>'+label.html()+'</b></br>'+
-                        '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
-                    );
-                }
+                $('#usa-unemployment').vectorMap({
+                    map: 'us_aea',
+                    markers: data.metro.coords,
+                    series: {
+                        markers: [{
+                            attribute: 'fill',
+                            scale: ['#FEE5D9', '#A50F15'],
+                            values: data.metro.unemployment[val],
+                            min: jvm.min(metroUnemplValues),
+                            max: jvm.max(metroUnemplValues)
+                        },{
+                            attribute: 'r',
+                            scale: [5, 20],
+                            values: data.metro.population[val],
+                            min: jvm.min(metroPopValues),
+                            max: jvm.max(metroPopValues)
+                        }],
+                        regions: [{
+                            scale: ['#DEEBF7', '#08519C'],
+                            attribute: 'fill',
+                            values: data.states[val],
+                            min: jvm.min(statesValues),
+                            max: jvm.max(statesValues)
+                        }]
+                    },
+                    onMarkerLabelShow: function(event, label, index){
+                        label.html(
+                            '<b>'+data.metro.names[index]+'</b><br/>'+
+                            '<b>Population: </b>'+data.metro.population[val][index]+'</br>'+
+                            '<b>Unemployment rate: </b>'+data.metro.unemployment[val][index]+'%'
+                        );
+                    },
+                    onRegionLabelShow: function(event, label, code){
+                        label.html(
+                            '<b>'+label.html()+'</b></br>'+
+                            '<b>Unemployment rate: </b>'+data.states[val][code]+'%'
+                        );
+                    }
+                });
+
+                var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
+
+                $("#usa-unemployment-slider").slider({
+                    value: val,
+                    min: 2005,
+                    max: 2009,
+                    step: 1,
+                    //create: JQSliderCreate,
+                    slide: function( event, ui ) {
+                        //$('#usa-unemployment-slider-year strong').html(ui.value);
+                        val = ui.value;
+                        mapObject.series.regions[0].setValues(data.states[ui.value]);
+                        mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
+                        mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
+                    }
+                });
             });
-
-            var mapObject = $('#usa-unemployment').vectorMap('get', 'mapObject');
-
-            $("#usa-unemployment-slider").slider({
-                value: val,
-                min: 2005,
-                max: 2009,
-                step: 1,
-                //create: JQSliderCreate,
-                slide: function( event, ui ) {
-                    //$('#usa-unemployment-slider-year strong').html(ui.value);
-                    val = ui.value;
-                    mapObject.series.regions[0].setValues(data.states[ui.value]);
-                    mapObject.series.markers[0].setValues(data.metro.unemployment[ui.value]);
-                    mapObject.series.markers[1].setValues(data.metro.population[ui.value]);
-                }
-            });
-        });
     }
 
     //initRegionSelection();
@@ -1597,7 +1226,7 @@ function mapsVectorInit() {
                 }
             });
 
-            mapProjection.container.click(function(e){
+            mapProjection.container.on("click", function(e){
                 var latLng = mapProjection.pointToLatLng(e.offsetX, e.offsetY),
                     targetCls = $(e.target).attr('class');
 
@@ -2899,150 +2528,60 @@ function dataTablesInit() {
                 $("#"+dtId).find(".bootstrap-select .dropdown-toggle").append("<span class='caret'></span>");
         }
 
-        /* DataTables */
-        componentsPath = "";
-        if ( $('.design-table').length > 0 ) {
-            $('.design-table').each(function() {
-                // DataTables with TableTools, render-tables.phtml
-                if ( $(this).is('.tableTools') ) {
-                    var oTableTools = $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ Show"
-                        },
-                        "oTableTools": {
-                            // "sSwfPath": componentsPath + "/media/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
-                            // "sSwfPath": "/MelisDesign/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
-                            "sSwfPath": "//cdn.datatables.net/tabletools/2.2.2/swf/copy_csv_xls_pdf.swf"
-                            // "sSwfPath": "http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf",
-                            // "sSwfPath": "http://www.melis-develop.local/MelisDesign/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+        $(".tableTools").DataTable({
+            "searching": true,
+            "ordering": true,
+            "processing": true,
+            "responsive": true,
+            "paging": true,
+            "select": true,
+            "dom": "<'row d-flex flex-row justify-content-between separator bottom table-tools'<'col-md-4'B><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
+            "pageLength": 10,
+            "columnDefs": [
+                { 'bSortable': false, 'aTargets': [ 0 ] }
+            ],
+            "buttons": [
+                'copy', 'excel', 'pdf'
+            ],
+            "fnInitComplete": function () {
+                fnInitCompleteCallback(this);
+            }
+        });
 
-                        },
-                        "aoColumnDefs": [
-                            { 'bSortable': false, 'aTargets': [ 0 ] }
-                        ],
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "stateSave": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
+        //var hiddenColumnsTable = $(".hiddenColumns").DataTable({
+        $(".hiddenColumns").DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "searching": true,
+            "pageLength": 10,
+            "dom": "<'row d-flex flex-row justify-content-between separator bottom'<'col-md-4'B><'col-md-4'l><'col-md-4'f>r>t<'row row-pagination'<'col-md-6'i><'col-md-6'p>>",
+            "buttons": ['colvis']
+        });
+        
+        // select-column on B
+        /* var $selectColumn = $(".select-column"),
+            $toggleColumn = $(".select-toggle-column");
+
+            if ( $selectColumn.length ) {
+                $selectColumn.append( $toggleColumn );
+            }
+
+            $("body").on("change", "#select-toggle-vis", function() {
+                var $this          = $(this),
+                    columnSelected = $this.find(":selected").data("column");
+
+                    // get the column API object
+                    var column = hiddenColumnsTable.column( columnSelected );
+                        
+                        // toggle the visibility
+                        column.visible( ! column.visible() );
+                        if ( typeof columnSelected === "undefined" ) {
+                            hiddenColumnsTable.columns.adjust().draw();
+                            //hiddenColumnsTable.ajax.reload({}, false);
                         }
-                    });
+            }); */
 
-                    var $body    = $("body"),
-                        allPages = oTableTools.fnGetNodes();
-
-                        $body.on("click", ".sorting_disabled .checkbox-custom .fa", function() {
-                            var $this           = $(this);
-
-                                if ( $this.hasClass("allChecked") ) {
-                                    $("input[type='checkbox']", allPages).prop("checked", false);
-                                } else {
-                                    $("input[type='checkbox']", allPages).prop("checked", true);
-                                }
-
-                                $this.toggleClass("allChecked");                                
-                        });
-
-                        $body.on("click", ".tableTools thead tr th:not('.sorting_disabled')", function(e) {
-                            var $this           = $(this),
-                                $allChecked     = $(".tableTools thead tr th.sorting_disabled").find(".checkbox .checkbox-custom .fa"),
-                                $tableTools     = $(".tableTools tbody tr"),
-                                $customCheckBox = $tableTools.find("td .checkbox .checkbox-custom");
-
-                                $tableTools.addClass("selectable");
-
-                                if ( $allChecked.hasClass("allChecked") ) {
-                                    $customCheckBox.addClass("checked");
-                                    $customCheckBox.find(".fa").addClass("checked");
-                                    $tableTools.addClass("selected");
-                                }
-                        });
-
-                }
-                // colVis extras initialization
-                else if ($(this).is('.colVis')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-3'f><'col-md-3'l><'col-md-6'C>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ per page"
-                        },
-                        "oColVis": {
-                            "buttonText": "Show / Hide Columns",
-                            "sAlign": "right"
-                        },
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.scrollVertical')) {
-                    $(this).dataTable({
-                        "bPaginate": false,
-                        "sScrollY": "200px",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.ajax')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "bProcessing": true,
-                        "sAjaxSource": rootPath + 'admin/ajax/DataTables.json',
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-                else if ($(this).is('.fixedHeaderColReorder')) {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "R<'clear'><'row separator bottom d-flex flex-row'<'col-md-12'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                            var t = this;
-                            setTimeout(function(){
-                                new FixedHeader( t );
-                            }, 1000);
-                        }
-                    });
-                }
-                // default initialization
-                else {
-                    $(this).dataTable({
-                        "sPaginationType": "bootstrap",
-                        "sDom": "<'row separator bottom d-flex flex-row'<'col-md-5'T><'col-md-3'l><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-                        "sScrollX": "100%",
-                        "sScrollXInner": "100%",
-                        "bScrollCollapse": true,
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ per page"
-                        },
-                        "fnInitComplete": function () {
-                            fnInitCompleteCallback(this);
-                        }
-                    });
-                }
-            });
-        }
     })(jQuery, window);
 }
 
@@ -3252,7 +2791,8 @@ function eventsCarouselInit() {
 /* gridalicious.init.js */
 function gridaliciousInit() {
     (function($) {
-        $('[data-toggle="gridalicious"]').each(function(){
+        // $('[data-toggle="gridalicious"]')
+        $(".gridalicious").each(function(){
             var $that = $(this);
             
                 $that.removeClass('hide2');
@@ -3270,16 +2810,11 @@ function gridaliciousInit() {
 /* prettyphoto.init.js */
 function prettyPhotoInit() {
     (function($) {
-        /* if ($('[data-toggle="prettyPhoto"]').length)
-            $('[data-toggle="prettyPhoto"]').prettyPhoto(); */
+        $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
+            e.preventDefault();
 
-            /* if ( $("a[rel^='prettyPhoto']").length )
-                $("a[rel^='prettyPhoto']").prettyPhoto(); */
-            
-            $("body").on("click", "a[rel^='prettyPhoto']", function(e) {
-                e.preventDefault();
-                $("a[rel^='prettyPhoto']").prettyPhoto();
-            });
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
     })(jQuery);
 }
 
@@ -3288,7 +2823,6 @@ function jqueryBootpagInit() {
     /*
      * JQuery Pagination Examples
      */
-
     $('.jquery-bootpag-pagination').bootpag({
         total: 23,
         page: 2,
@@ -3300,7 +2834,7 @@ function jqueryBootpagInit() {
 
 /* bootstrap-select.init.js */
 function bootstrapSelectInit() {
-    if ( $('.selectpicker').length)
+    if ( $('.selectpicker').length )
         $('.selectpicker').selectpicker();
 }
 
@@ -3308,7 +2842,7 @@ function bootstrapSelectInit() {
 function tablesClassicInit() {
     (function($) {
         /* Table select / checkboxes utility */
-        $('.checkboxs thead :checkbox').change(function() {
+        $('.checkboxs thead :checkbox').on("change", function() {
             if ( $(this).is(':checked') ) {
                 $('.checkboxs tbody :checkbox').prop('checked', true).trigger('change').parent().addClass('checked');
                 $('.checkboxs tbody :checkbox').prop('checked', true).closest(".checkbox-custom.checked").find(".fa").addClass("checked");
@@ -3371,7 +2905,7 @@ function tablesClassicInit() {
         if ($('.checkboxs tbody :checked').length)
             $('.checkboxs_actions').removeClass('hide').show();
 
-        $('.radioboxs tbody tr.selectable').click(function(e){
+        $('.radioboxs tbody tr.selectable').on("click", function(e){
             var c = $(this).find(':radio');
             if (e.srcElement.nodeName == 'INPUT')
             {
@@ -3432,7 +2966,7 @@ function uiInit() {
 
 /* notify.init.js */
 function notyfyInit() {
-    $('[data-toggle="notyfy"]').click(function() {
+    $('[data-toggle="notyfy"]').on("click", function() {
         var self = $(this);
         if(self.data('layout') == 'inline')
         {
@@ -3511,14 +3045,11 @@ function notyfyInit() {
     notification['information'] = 'This alert needs your attention, but it\'s not super <strong>important</strong>.';
     notification['warning'] = '<strong>Warning!</strong> Best check yo self, you\'re not looking too good.';
     notification['confirm'] = 'Do you want to continue?';
-
-
 }
 
 /* gritter.init.js */
 function gritterInit() {
-    $('.gritter-add-sticky').click(function()
-    {
+    $('.gritter-add-sticky').on("click", function() {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a sticky notice!',
@@ -3548,8 +3079,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-regular').click(function()
-    {
+    $('.gritter-add-regular').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a regular notice!',
@@ -3567,8 +3097,7 @@ function gritterInit() {
 
     });
 
-    $('.gritter-add-primary').click(function()
-    {
+    $('.gritter-add-primary').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a primary notice!',
@@ -3588,8 +3117,7 @@ function gritterInit() {
 
     });
 
-    $('.gritter-add-max').click(function()
-    {
+    $('.gritter-add-max').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a notice with a max of 3 on screen at one time!',
@@ -3611,8 +3139,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-without-image').click(function()
-    {
+    $('.gritter-add-without-image').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a notice without an image!',
@@ -3622,8 +3149,7 @@ function gritterInit() {
         return false;
     });
 
-    $('.gritter-add-white').click(function()
-    {
+    $('.gritter-add-white').on("click", function() {
         $.gritter.add({
             // (string | mandatory) the heading of the notification
             title: 'This is a light notification',
@@ -3633,38 +3159,28 @@ function gritterInit() {
         });
         return false;
     });
-
-
-
-
 }
 
 /* modals.bootbox.init.js */
 function modalsBootBoxInit() {
-    $('#modals-bootbox-alert').click(function()
-    {
-        bootbox.alert("Hello World!", function(result)
-        {
+    $('#modals-bootbox-alert').on("click", function() {
+        bootbox.alert("Hello World!", function(result) {
             $.gritter.add({
                 title: 'Callback!',
                 text: "I'm just a BootBox Alert callback!"
             });
         });
     });
-    $('#modals-bootbox-confirm').click(function()
-    {
-        bootbox.confirm("Are you sure?", function(result)
-        {
+    $('#modals-bootbox-confirm').on("click", function() {
+        bootbox.confirm("Are you sure?", function(result) {
             $.gritter.add({
                 title: 'Callback!',
                 text: "BootBox Confirm Callback with result: "+ result
             });
         });
     });
-    $('#modals-bootbox-prompt').click(function()
-    {
-        bootbox.prompt("What is your name?", function(result)
-        {
+    $('#modals-bootbox-prompt').on("click", function() {
+        bootbox.prompt("What is your name?", function(result) {
             if (result === null) {
                 $.gritter.add({
                     title: 'Callback!',
@@ -3678,8 +3194,7 @@ function modalsBootBoxInit() {
             }
         });
     });
-    $('#modals-bootbox-custom').click(function()
-    {
+    $('#modals-bootbox-custom').on("click", function() {
         bootbox.dialog({
             message: "I am a custom dialog",
             title: "Custom title",
@@ -3714,9 +3229,14 @@ function modalsBootBoxInit() {
                         });
                     }
                 }
+            },
+            onShown: function(e) {
+                $(e.currentTarget).addClass("bootbox-custom");
             }
         });
     });
+
+    
 }
 
 /* wysihtml5.init.js */
@@ -3753,7 +3273,7 @@ function formWizardsInit() {
                             // Make sure we entered the title
                             if(!wiz.find('#inputTitle').val()) {
                                 alert('You must enter the product title');
-                                wiz.find('#inputTitle').focus();
+                                wiz.find('#inputTitle').trigger("focus");
                                 return false;
                             }
                         }
@@ -3763,7 +3283,7 @@ function formWizardsInit() {
                         // Make sure we entered the title
                         if(!wiz.find('#inputTitle').val()) {
                             alert('You must enter the product title');
-                            wiz.find('#inputTitle').focus();
+                            wiz.find('#inputTitle').trigger("focus");
                             return false;
                         }
                     },
@@ -3772,7 +3292,7 @@ function formWizardsInit() {
                         // Make sure we entered the title
                         if(!wiz.find('#inputTitle').val()) {
                             alert('You must enter the product title');
-                            wiz.find('#inputTitle').focus();
+                            wiz.find('#inputTitle').trigger("focus");
                             return false;
                         }
                     },
@@ -3817,7 +3337,7 @@ function formWizardsInit() {
                     lastSelector: '.last'
                 });
 
-            wiz.find('.finish').click(function()
+            wiz.find('.finish').on("click", function()
             {
                 alert('Finished!, Starting over!');
                 wiz.find("a[data-toggle*='tab']:first").trigger('click');
@@ -3834,7 +3354,7 @@ function widgetCollapsibleInit() {
                 $(this).parents('.widget:first').attr('data-collapse-closed', "false");
             })
             .on('shown.bs.collapse', function(){
-                setTimeout(function(){ $(window).resize(); }, 500);
+                setTimeout(function(){ $(window).on("resize"); }, 500);
             })
             .on('hidden.bs.collapse', function(){
                 $(this).parents('.widget:first').attr('data-collapse-closed', "true");
@@ -3863,8 +3383,7 @@ function widgetCollapsibleInit() {
 
 /* widget-progress.init.js */
 function widgetProgressInit() {
-    (function($)
-    {
+    (function($) {
         $('#widget-progress-bar .progress-bar').width("50%");
         setInterval(function(){
             var w = mt_rand(30, 100);
@@ -3946,30 +3465,30 @@ function rangeSlidersInit() {
                     },
                     stop: function(val){ return false; },
                     label: function(){ return null; }
-                }]
+                }
+            ]
         });
 
         // Date Range Slider Ruler
         var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-        $("#rangeSliderRulerDate").dateRangeSlider(
-            {
-                bounds: {min: new Date(2012, 0, 1), max: new Date(2012, 11, 31, 12, 59, 59)},
-                defaultValues: {min: new Date(2012, 1, 10), max: new Date(2012, 4, 22)},
-                scales: [{
-                    first: function(value){ return value; },
-                    end: function(value) {return value; },
-                    next: function(value){
-                        var next = new Date(value);
-                        return new Date(next.setMonth(value.getMonth() + 1));
-                    },
-                    label: function(value){
-                        return months[value.getMonth()];
-                    },
-                    format: function(tickContainer, tickStart, tickEnd){
-                        tickContainer.addClass("myCustomClass");
-                    }
-                }]
-            });
+        $("#rangeSliderRulerDate").dateRangeSlider({
+            bounds: {min: new Date(2012, 0, 1), max: new Date(2012, 11, 31, 12, 59, 59)},
+            defaultValues: {min: new Date(2012, 1, 10), max: new Date(2012, 4, 22)},
+            scales: [{
+                first: function(value){ return value; },
+                end: function(value) {return value; },
+                next: function(value){
+                    var next = new Date(value);
+                    return new Date(next.setMonth(value.getMonth() + 1));
+                },
+                label: function(value){
+                    return months[value.getMonth()];
+                },
+                format: function(tickContainer, tickStart, tickEnd){
+                    tickContainer.addClass("myCustomClass");
+                }
+            }]
+        });
 
         // Range Slider Step
         $("#rangeSliderStep").rangeSlider({step: 10});
@@ -3979,7 +3498,6 @@ function rangeSlidersInit() {
 
         // Range Slider Wheel Scroll
         $("#rangeSliderWheelScroll").rangeSlider({wheelMode: "scroll", wheelSpeed: 30});
-
     });
 }
 
@@ -4154,117 +3672,97 @@ function jqueryUiSlidersInit() {
 /* flotchart-simple-01.init.js */
 function flotchartSimpleInit() {
     $(function() {
-        if($("#chart_simple_001").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_simple_001").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple_001 =
-                {
-                    // data
-                    data:
+            charts.chart_simple_001 = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: false,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_simple_001",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                        points: {
+                            show:true,
+                            radius: 5,
+                            lineWidth: 3,
+                            fill: true,
+                            fillColor: "#000"
                         }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_simple_001",
+                // initialize
+                init: function() {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
 
-            // uncomment to init on load
-            charts.chart_simple_001.init();
+                    var that = this;
+
+                    if (this.plot == null) {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                        {
+                            label: "Data 2",
+                            data: this.data.d2,
+                            lines: { fill: 0.1 },
+                            points: { fillColor: that.options.colors[1] }
+                        }], this.options
+                    );
+                }
+            };
+
+            // uncomment to init on load, commented to suppress console error
+            // charts.chart_simple_001.init();
         }
-
-
-        // use with tabs
-        /*        $('a[href="#chart-simple-lines-001"]').on('shown.bs.tab', function(){
-         if (charts.chart_simple_001.plot == null)
-         charts.chart_simple_001.init();
-         });
-
-         $('.btn-group [data-toggle="tab"]').on('show.bs.tab', function(){
-         $(this).parent().find('[data-toggle]').removeClass('active');
-         $(this).addClass('active');
-         });*/
 
         // use with tabs
         $('a[href="#chart-simple-lines-001"]').on('shown.bs.tab', function(){
@@ -4273,7 +3771,7 @@ function flotchartSimpleInit() {
         });
 
         $('body').on('click', '.btn-group a[href="#chart-simple-lines-001"]', function(){
-            $(this).parent().find('[data-toggle]').removeClass('active');
+            $(this).parent().find('[data-bs-toggle]').removeClass('active');
             $(this).addClass('active');
         });
     });
@@ -4281,105 +3779,94 @@ function flotchartSimpleInit() {
 
 /* flotchart-simple-bars.init.js */
 function flotchartSimpleBarsInit() {
-
-    (function($)
-    {
-        if($("#chart_simple_bars_001").length) {
-            if (typeof charts == 'undefined')
+    (function($) {
+        if ( $("#chart_simple_bars_001").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple_bars_001 =
-                {
-                    // data
-                    data:
+            charts.chart_simple_bars_001 = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                bars: {
-                                    show: true,
-                                    barWidth: .65,
-                                    fill: 1,
-                                    align: 'center'
-                                },
-                                shadowSize: 0
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: .65,
+                            fill: 1,
+                            align: 'center'
                         },
-
-                    placeholder: "#chart_simple_bars_001",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
-                        }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                // bars: { lineWidth: 0 }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    // bars: { lineWidth: 0 }
-                                }], this.options);
+                        shadowSize: 0
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_simple_bars_001",
+                // initialize
+                init: function() {
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
 
+                    if (this.plot == null)
+                    {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            // bars: { lineWidth: 0 }
+                        },
+                            {
+                                label: "Data 2",
+                                data: this.data.d2,
+                                // bars: { lineWidth: 0 }
+                            }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple_bars.init();
 
             // use with tabs
-            /*          $('a[href="#chart-simple-bars-001"]').on('shown.bs.tab', function(){
+            /* $('a[href="#chart-simple-bars-001"]').on('shown.bs.tab', function(){
              if (charts.chart_simple_bars_001.plot == null)
              charts.chart_simple_bars_001.init();
              });
 
-             $('.btn-group [data-toggle="tab"]').on('show.bs.tab', function(){
+             $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
              $(this).parent().find('[data-toggle]').removeClass('active');
              $(this).addClass('active');
              });*/
@@ -4395,218 +3882,202 @@ function flotchartSimpleBarsInit() {
                 $(this).addClass('active');
             });
         }
-
-
     })(jQuery);
 }
 
 /* flotchart-simple-02.init.js */
 function flotchartSimple02Init() {
-    (function($)
-    {
-        if($("#chart_simple_02").length) {
+    (function($) {
+        if ( $("#chart_simple_02").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_simple =
-                {
-                    // data
-                    data:
-                        {
-                            d1: [],
-                            d2: []
-                        },
+            charts.chart_simple ={
+                // data
+                data:
+                    {
+                        d1: [],
+                        d2: []
+                    },
 
-                    // will hold the chart object
-                    plot: null,
+                // will hold the chart object
+                plot: null,
 
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
+                // chart options
+                options:
+                    {
+                        grid:
+                            {
+                                color: "#dedede",
+                                borderWidth: 1,
+                                borderColor: "transparent",
+                                clickable: true,
+                                hoverable: true
                             },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
+                        series: {
+                            lines: {
+                                show: true,
+                                fill: false,
+                                lineWidth: 2,
+                                steps: false
                             },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
+                            points: {
+                                show:true,
+                                radius: 5,
+                                lineWidth: 3,
+                                fill: true,
+                                fillColor: "#000"
                             }
                         },
-
-                    placeholder: "#chart_simple_02",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
-                        }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
+                        xaxis: {
+                            tickColor: 'transparent',
+                            tickDecimals: 2,
+                            tickSize: 2
+                        },
+                        yaxis: {
+                            tickSize: 1000
+                        },
+                        legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                        shadowSize: 0,
+                        tooltip: true,
+                        tooltipOpts: {
+                            content: "%s : %y.3",
+                            shifts: {
+                                x: -30,
+                                y: -50
                             },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                            defaultTheme: false
+                        }
+                    },
+
+                placeholder: "#chart_simple_02",
+
+                // initialize
+                init: function()
+                {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var that = this;
+
+                    if (this.plot == null)
+                    {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
                     }
-                };
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                            {
+                                label: "Data 2",
+                                data: this.data.d2,
+                                lines: { fill: 0.1 },
+                                points: { fillColor: that.options.colors[1] }
+                            }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple.init();
 
             // use with tabs
-            // $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
-            //  if (charts.chart_simple.plot == null)
-            //      charts.chart_simple.init();
-            // });
+            /* $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
+             if (charts.chart_simple.plot == null)
+                 charts.chart_simple.init();
+            });
 
-            // $('.btn-group [data-toggle="tab"]').on('show.bs.tab', function(){
-            //  $(this).parent().find('[data-toggle]').removeClass('active');
-            //  $(this).addClass('active');
-            // });
+            $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
+             $(this).parent().find('[data-toggle]').removeClass('active');
+             $(this).addClass('active');
+            }); */
         }
-
-
     })(jQuery);
-
 }
 
 /* flotchart-line.init.js */
 function flotChartLineInit() {
-    (function($)
-    {
-        if($("#chart_lines_fill_nopoints").length) {
+    (function($) {
+        if( $("#chart_lines_fill_nopoints").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_lines_fill_nopoints =
-                {
-                    // chart data
-                    data:
+            charts.chart_lines_fill_nopoints = {
+                // chart data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false},
-                                lines: {
-                                    show: true,
-                                    fill: true,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {show:false}
-                            },
-                            legend: { position: "nw", backgroundColor: null, backgroundOpacity: 0, noColumns: 2 },
-                            yaxis: { tickSize:25 },
-                            xaxis: { tickColor: 'transparent', tickSize:5, tickDecimals: 0},
-                            colors: [],
-                            shadowSize:1,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        grow: {active:false},
+                        lines: {
+                            show: true,
+                            fill: true,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_lines_fill_nopoints",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        // generate some data
-                        this.data.d1 = [[1, 3+charts.utility.randNum()], [2, 6+charts.utility.randNum()], [3, 9+charts.utility.randNum()], [4, 12+charts.utility.randNum()],[5, 15+charts.utility.randNum()],[6, 18+charts.utility.randNum()],[7, 21+charts.utility.randNum()],[8, 15+charts.utility.randNum()],[9, 18+charts.utility.randNum()],[10, 21+charts.utility.randNum()],[11, 24+charts.utility.randNum()],[12, 27+charts.utility.randNum()],[13, 30+charts.utility.randNum()],[14, 33+charts.utility.randNum()],[15, 24+charts.utility.randNum()],[16, 27+charts.utility.randNum()],[17, 30+charts.utility.randNum()],[18, 33+charts.utility.randNum()],[19, 36+charts.utility.randNum()],[20, 39+charts.utility.randNum()],[21, 42+charts.utility.randNum()],[22, 45+charts.utility.randNum()],[23, 36+charts.utility.randNum()],[24, 39+charts.utility.randNum()],[25, 42+charts.utility.randNum()],[26, 45+charts.utility.randNum()],[27,38+charts.utility.randNum()],[28, 51+charts.utility.randNum()],[29, 55+charts.utility.randNum()], [30, 60+charts.utility.randNum()]];
-                        this.data.d2 = [[1, charts.utility.randNum()-5], [2, charts.utility.randNum()-4], [3, charts.utility.randNum()-4], [4, charts.utility.randNum()],[5, 4+charts.utility.randNum()],[6, 4+charts.utility.randNum()],[7, 5+charts.utility.randNum()],[8, 5+charts.utility.randNum()],[9, 6+charts.utility.randNum()],[10, 6+charts.utility.randNum()],[11, 6+charts.utility.randNum()],[12, 2+charts.utility.randNum()],[13, 3+charts.utility.randNum()],[14, 4+charts.utility.randNum()],[15, 4+charts.utility.randNum()],[16, 4+charts.utility.randNum()],[17, 5+charts.utility.randNum()],[18, 5+charts.utility.randNum()],[19, 2+charts.utility.randNum()],[20, 2+charts.utility.randNum()],[21, 3+charts.utility.randNum()],[22, 3+charts.utility.randNum()],[23, 3+charts.utility.randNum()],[24, 2+charts.utility.randNum()],[25, 4+charts.utility.randNum()],[26, 4+charts.utility.randNum()],[27,5+charts.utility.randNum()],[28, 2+charts.utility.randNum()],[29, 2+charts.utility.randNum()], [30, 3+charts.utility.randNum()]];
-
-                        // make chart
-                        this.plot = $.plot(
-                            this.placeholder,
-                            [{
-                                label: "Visits",
-                                data: this.data.d1,
-                                lines: {fillColor: "rgba(0,0,0,0.01)"},
-                                points: {fillColor: "#88bbc8"}
-                            },
-                                {
-                                    label: "Unique Visits",
-                                    data: this.data.d2,
-                                    lines: {fill: 0.05},
-                                    points: {fillColor: "#ed7a53"}
-                                }],
-                            this.options);
+                        points: {show:false}
+                    },
+                    legend: { position: "nw", backgroundColor: null, backgroundOpacity: 0, noColumns: 2 },
+                    yaxis: { tickSize:25 },
+                    xaxis: { tickColor: 'transparent', tickSize:5, tickDecimals: 0},
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_lines_fill_nopoints",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    // generate some data
+                    this.data.d1 = [[1, 3+charts.utility.randNum()], [2, 6+charts.utility.randNum()], [3, 9+charts.utility.randNum()], [4, 12+charts.utility.randNum()],[5, 15+charts.utility.randNum()],[6, 18+charts.utility.randNum()],[7, 21+charts.utility.randNum()],[8, 15+charts.utility.randNum()],[9, 18+charts.utility.randNum()],[10, 21+charts.utility.randNum()],[11, 24+charts.utility.randNum()],[12, 27+charts.utility.randNum()],[13, 30+charts.utility.randNum()],[14, 33+charts.utility.randNum()],[15, 24+charts.utility.randNum()],[16, 27+charts.utility.randNum()],[17, 30+charts.utility.randNum()],[18, 33+charts.utility.randNum()],[19, 36+charts.utility.randNum()],[20, 39+charts.utility.randNum()],[21, 42+charts.utility.randNum()],[22, 45+charts.utility.randNum()],[23, 36+charts.utility.randNum()],[24, 39+charts.utility.randNum()],[25, 42+charts.utility.randNum()],[26, 45+charts.utility.randNum()],[27,38+charts.utility.randNum()],[28, 51+charts.utility.randNum()],[29, 55+charts.utility.randNum()], [30, 60+charts.utility.randNum()]];
+                    this.data.d2 = [[1, charts.utility.randNum()-5], [2, charts.utility.randNum()-4], [3, charts.utility.randNum()-4], [4, charts.utility.randNum()],[5, 4+charts.utility.randNum()],[6, 4+charts.utility.randNum()],[7, 5+charts.utility.randNum()],[8, 5+charts.utility.randNum()],[9, 6+charts.utility.randNum()],[10, 6+charts.utility.randNum()],[11, 6+charts.utility.randNum()],[12, 2+charts.utility.randNum()],[13, 3+charts.utility.randNum()],[14, 4+charts.utility.randNum()],[15, 4+charts.utility.randNum()],[16, 4+charts.utility.randNum()],[17, 5+charts.utility.randNum()],[18, 5+charts.utility.randNum()],[19, 2+charts.utility.randNum()],[20, 2+charts.utility.randNum()],[21, 3+charts.utility.randNum()],[22, 3+charts.utility.randNum()],[23, 3+charts.utility.randNum()],[24, 2+charts.utility.randNum()],[25, 4+charts.utility.randNum()],[26, 4+charts.utility.randNum()],[27,5+charts.utility.randNum()],[28, 2+charts.utility.randNum()],[29, 2+charts.utility.randNum()], [30, 3+charts.utility.randNum()]];
+
+                    // make chart
+                    this.plot = $.plot(
+                        this.placeholder,
+                        [{
+                            label: "Visits",
+                            data: this.data.d1,
+                            lines: {fillColor: "rgba(0,0,0,0.01)"},
+                            points: {fillColor: "#88bbc8"}
+                        },
+                            {
+                                label: "Unique Visits",
+                                data: this.data.d2,
+                                lines: {fill: 0.05},
+                                points: {fillColor: "#ed7a53"}
+                            }],
+                        this.options);
+                }
+            };
 
             charts.chart_lines_fill_nopoints.init();
         }
@@ -4616,97 +4087,88 @@ function flotChartLineInit() {
 
 /* flotchart-bars-ordered.init.js */
 function flotchartBarsOrderedInit() {
-
-    (function($)
-    {
-        if($("#chart_ordered_bars").length) {
+    (function($) {
+        if ( $("#chart_ordered_bars").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_ordered_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
+            charts.chart_ordered_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    bars: {
+                        show:true,
+                        barWidth: 0.2,
+                        fill:1
+                    },
+                    grid:
                         {
-                            bars: {
-                                show:true,
-                                barWidth: 0.2,
-                                fill:1
-                            },
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false}
-                            },
-                            yaxis: { tickSize: 10 },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    placeholder: "#chart_ordered_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = ["#cc6666", "#cca366", "#b7cc66"];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        //some data
-                        var d1 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d1.push([i, parseInt(Math.random() * 30)]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d2.push([i, parseInt(Math.random() * 30)]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d3.push([i, parseInt(Math.random() * 30)]);
-
-                        var ds = new Array();
-
-                        ds.push({
-                            label: "Data One",
-                            data:d1,
-                            bars: {order: 1}
-                        });
-                        ds.push({
-                            label: "Data Two",
-                            data:d2,
-                            bars: {order: 2}
-                        });
-                        ds.push({
-                            label: "Data Three",
-                            data:d3,
-                            bars: {order: 3}
-                        });
-                        this.data = ds;
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                    series: {
+                        grow: {active:false}
+                    },
+                    yaxis: { tickSize: 10 },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_ordered_bars",
+                // initialize
+                init: function() {
+                    this.options.colors = ["#cc6666", "#cca366", "#b7cc66"];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    //some data
+                    var d1 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d1.push([i, parseInt(Math.random() * 30)]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d2.push([i, parseInt(Math.random() * 30)]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d3.push([i, parseInt(Math.random() * 30)]);
+
+                    var ds = new Array();
+
+                    ds.push({
+                        label: "Data One",
+                        data:d1,
+                        bars: {order: 1}
+                    });
+                    ds.push({
+                        label: "Data Two",
+                        data:d2,
+                        bars: {order: 2}
+                    });
+                    ds.push({
+                        label: "Data Three",
+                        data:d3,
+                        bars: {order: 3}
+                    });
+                    this.data = ds;
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_ordered_bars.init();
         }
@@ -4717,89 +4179,82 @@ function flotchartBarsOrderedInit() {
 /* flotchart-bars-stacked.init.js */
 function flotchartBarsStackedInit() {
     (function($) {
-        if($("#chart_stacked_bars").length) {
+        if ( $("#chart_stacked_bars").length ) {
             if (typeof charts == 'undefined')
                 return;
 
-            charts.chart_stacked_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
+            charts.chart_stacked_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                grow: {active:false},
-                                stack: 0,
-                                lines: { show: false, fill: true, steps: false },
-                                bars: { show: true, barWidth: 0.5, fill:1}
-                            },
-                            yaxis: { tickSize: 10 },
-                            xaxis: { tickColor: 'transparent', tickSize:2 },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
-                            colors: [],
-                            shadowSize:1,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    placeholder: "#chart_stacked_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        this.options.colors = ["#7acc66", "#66cccc", "#77b7c5"];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var d1 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d1.push([i, parseInt(Math.random() * 30)]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d2.push([i, parseInt(Math.random() * 20)]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 10; i += 1)
-                            d3.push([i, parseInt(Math.random() * 20)]);
-
-                        this.data = new Array();
-
-                        this.data.push({
-                            label: "Data One",
-                            data: d1
-                        });
-                        this.data.push({
-                            label: "Data Two",
-                            data: d2
-                        });
-                        this.data.push({
-                            label: "Data Tree",
-                            data: d3
-                        });
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                    series: {
+                        grow: {active:false},
+                        stack: 0,
+                        lines: { show: false, fill: true, steps: false },
+                        bars: { show: true, barWidth: 0.5, fill:1}
+                    },
+                    yaxis: { tickSize: 10 },
+                    xaxis: { tickColor: 'transparent', tickSize:2 },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0, noColumns: 3 },
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
+                },
+                placeholder: "#chart_stacked_bars",
+                // initialize
+                init: function() {
+                    this.options.colors = ["#7acc66", "#66cccc", "#77b7c5"];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var d1 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d1.push([i, parseInt(Math.random() * 30)]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d2.push([i, parseInt(Math.random() * 20)]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 10; i += 1)
+                        d3.push([i, parseInt(Math.random() * 20)]);
+
+                    this.data = new Array();
+
+                    this.data.push({
+                        label: "Data One",
+                        data: d1
+                    });
+                    this.data.push({
+                        label: "Data Two",
+                        data: d2
+                    });
+                    this.data.push({
+                        label: "Data Tree",
+                        data: d3
+                    });
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
                 }
+            };
 
             charts.chart_stacked_bars.init();
         }
@@ -4815,78 +4270,72 @@ function flotchartPieInit() {
                 return;
 
             charts.chart_pie = {
-                    // chart data
-                    data: [
-                        { label: "USA",  data: 38 },
-                        { label: "Brazil",  data: 23 },
-                        { label: "India",  data: 15 },
-                        { label: "Turkey",  data: 9 },
-                        { label: "France",  data: 7 },
-                        { label: "China",  data: 5 },
-                        { label: "Germany",  data: 3 }
-                    ],
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            series: {
-                                pie: {
-                                    show: true,
-                                    highlight: {
-                                        opacity: 0.1
-                                    },
-                                    radius: 1,
-                                    stroke: {
-                                        color: '#fff',
-                                        width: 2
-                                    },
-                                    startAngle: 2,
-                                    combine: {
-                                        color: '#353535',
-                                        threshold: 0.05
-                                    },
-                                    label: {
-                                        show: true,
-                                        radius: 1,
-                                        formatter: function(label, series){
-                                            return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                        }
-                                    }
-                                },
-                                grow: { active: false}
+                // chart data
+                data: [
+                    { label: "USA",  data: 38 },
+                    { label: "Brazil",  data: 23 },
+                    { label: "India",  data: 15 },
+                    { label: "Turkey",  data: 9 },
+                    { label: "France",  data: 7 },
+                    { label: "China",  data: 5 },
+                    { label: "Germany",  data: 3 }
+                ],
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    series: {
+                        pie: {
+                            show: true,
+                            highlight: {
+                                opacity: 0.1
                             },
-                            colors: [],
-                            legend:{show:false},
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                backgroundColor : { }
+                            radius: 1,
+                            stroke: {
+                                color: '#fff',
+                                width: 2
                             },
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.1"+"%",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
+                            startAngle: 2,
+                            combine: {
+                                color: '#353535',
+                                threshold: 0.05
+                            },
+                            label: {
+                                show: true,
+                                radius: 1,
+                                formatter: function(label, series){
+                                    return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+                                }
                             }
                         },
-
-                    placeholder: "#chart_pie",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                        grow: { active: false}
+                    },
+                    colors: [],
+                    legend:{show:false},
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        backgroundColor : { }
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.1"+"%",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_pie",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_pie.init();
         }
@@ -4932,59 +4381,55 @@ function flotchartDonutInit() {
                         data: 3
                     }
                 ],
-
                 // will hold the chart object
                 plot: null,
-
                 // chart options
                 options: {
-                        series: {
-                            pie: {
+                    series: {
+                        pie: {
+                            show: true,
+                            innerRadius: 0.4,
+                            highlight: {
+                                opacity: 0.1
+                            },
+                            radius: 1,
+                            stroke: {
+                                color: '#fff',
+                                width: 8
+                            },
+                            startAngle: 2,
+                            combine: {
+                                color: '#EEE',
+                                threshold: 0.05
+                            },
+                            label: {
                                 show: true,
-                                innerRadius: 0.4,
-                                highlight: {
-                                    opacity: 0.1
-                                },
                                 radius: 1,
-                                stroke: {
-                                    color: '#fff',
-                                    width: 8
-                                },
-                                startAngle: 2,
-                                combine: {
-                                    color: '#EEE',
-                                    threshold: 0.05
-                                },
-                                label: {
-                                    show: true,
-                                    radius: 1,
-                                    formatter: function(label, series){
-                                        return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-                                    }
+                                formatter: function(label, series){
+                                    return '<div class="label label-inverse">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
                                 }
-                            },
-                            grow: { active: false}
+                            }
                         },
-                        legend:{show:false},
-                        grid: {
-                            hoverable: true,
-                            clickable: true,
-                            backgroundColor : { }
+                        grow: { active: false}
+                    },
+                    legend:{show:false},
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        backgroundColor : { }
+                    },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.1"+"%",
+                        shifts: {
+                            x: -30,
+                            y: -50
                         },
-                        colors: [],
-                        tooltip: true,
-                        tooltipOpts: {
-                            content: "%s : %y.1"+"%",
-                            shifts: {
-                                x: -30,
-                                y: -50
-                            },
-                            defaultTheme: false
-                        }
+                        defaultTheme: false
+                    }
                 },
-
                 placeholder: "#chart_donut",
-
                 // initialize
                 init: function() {
                     // apply styling
@@ -5002,110 +4447,103 @@ function flotchartDonutInit() {
 /* flotchart-bars-horizontal.init.js */
 function flotchartBarsHorizontalInit() {
     (function($) {
-        if($("#chart_horizontal_bars").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_horizontal_bars").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_horizontal_bars =
-                {
-                    // chart data
-                    data: null,
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid: {
-                                show: true,
-                                aboveData: false,
-                                color: "#3f3f3f" ,
-                                labelMargin: 5,
-                                axisMargin: 0,
-                                borderWidth: 0,
-                                borderColor:null,
-                                minBorderMargin: 5 ,
-                                clickable: true,
-                                hoverable: true,
-                                autoHighlight: false,
-                                mouseActiveRadius: 20,
-                                backgroundColor : { }
-                            },
-                            series: {
-                                grow: {active:false},
-                                bars: {
-                                    show:true,
-                                    horizontal: true,
-                                    barWidth:0.2,
-                                    fill:1
-                                }
-                            },
-                            legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0 },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+            charts.chart_horizontal_bars = {
+                // chart data
+                data: null,
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f" ,
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    series: {
+                        grow: {active:false},
+                        bars: {
+                            show:true,
+                            horizontal: true,
+                            barWidth:0.2,
+                            fill:1
+                        }
+                    },
+                    legend: { position: "ne", backgroundColor: null, backgroundOpacity: 0 },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
                         },
-
-                    placeholder: "#chart_horizontal_bars",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        var d1 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d1.push([parseInt(Math.random() * 30),i ]);
-
-                        var d2 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d2.push([parseInt(Math.random() * 30),i ]);
-
-                        var d3 = [];
-                        for (var i = 0; i <= 5; i += 1)
-                            d3.push([ parseInt(Math.random() * 30),i]);
-
-                        this.data = new Array();
-                        this.data.push({
-                            data: d1,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 1
-                            }
-                        });
-                        this.data.push({
-                            data: d2,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 2
-                            }
-                        });
-                        this.data.push({
-                            data: d3,
-                            bars: {
-                                horizontal:true,
-                                show: true,
-                                barWidth: 0.2,
-                                order: 3
-                            }
-                        });
-
-                        this.plot = $.plot($(this.placeholder), this.data, this.options);
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_horizontal_bars",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    var d1 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d1.push([parseInt(Math.random() * 30),i ]);
+
+                    var d2 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d2.push([parseInt(Math.random() * 30),i ]);
+
+                    var d3 = [];
+                    for (var i = 0; i <= 5; i += 1)
+                        d3.push([ parseInt(Math.random() * 30),i]);
+
+                    this.data = new Array();
+                    this.data.push({
+                        data: d1,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 1
+                        }
+                    });
+                    this.data.push({
+                        data: d2,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 2
+                        }
+                    });
+                    this.data.push({
+                        data: d3,
+                        bars: {
+                            horizontal:true,
+                            show: true,
+                            barWidth: 0.2,
+                            order: 3
+                        }
+                    });
+
+                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                }
+            };
 
             charts.chart_horizontal_bars.init();
         }
@@ -5116,109 +4554,98 @@ function flotchartBarsHorizontalInit() {
 /* flotchart-autoupdating.init.js */
 function flotchartAutoUpdatingInit() {
     (function($) {
-        if($("#chart_live").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_live").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_live =
-                {
-                    // chart data
-                    data: [],
-                    totalPoints: 300,
-                    updateInterval: 200,
+            charts.chart_live = {
+                // chart data
+                data: [],
+                totalPoints: 300,
+                updateInterval: 200,
+                // we use an inline data source in the example, usually data would
+                // be fetched from a server
+                getRandomData: function() {
+                    if (this.data.length > 0)
+                        this.data = this.data.slice(1);
 
-                    // we use an inline data source in the example, usually data would
-                    // be fetched from a server
-                    getRandomData: function()
-                    {
-                        if (this.data.length > 0)
-                            this.data = this.data.slice(1);
-
-                        // do a random walk
-                        while (this.data.length < this.totalPoints)
-                        {
-                            var prev = this.data.length > 0 ? this.data[this.data.length - 1] : 50;
-                            var y = prev + Math.random() * 10 - 5;
-                            if (y < 0)
-                                y = 0;
-                            if (y > 100)
-                                y = 100;
-                            this.data.push(y);
-                        }
-
-                        // zip the generated y values with the x values
-                        var res = [];
-                        for (var i = 0; i < this.data.length; ++i)
-                            res.push([i, this.data[i]])
-                        return res;
-                    },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            series: {
-                                grow: { active: false },
-                                shadowSize: 0,
-                                lines: {
-                                    show: true,
-                                    fill: true,
-                                    lineWidth: 2,
-                                    steps: false
-                                }
-                            },
-                            grid: {
-                                show: true,
-                                aboveData: false,
-                                color: "#3f3f3f",
-                                labelMargin: 5,
-                                axisMargin: 0,
-                                borderWidth: 0,
-                                borderColor:null,
-                                minBorderMargin: 5 ,
-                                clickable: true,
-                                hoverable: true,
-                                autoHighlight: false,
-                                mouseActiveRadius: 20,
-                                backgroundColor : { }
-                            },
-                            colors: [],
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "Value is : %y.0",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            },
-                            yaxis: { min: 0, max: 100 },
-                            xaxis: { show: true}
-                        },
-
-                    placeholder: "#chart_live",
-
-                    // initialize
-                    init: function()
-                    {
-                        // apply styling
-                        charts.utility.applyStyle(this);
-
-                        this.plot = $.plot($(this.placeholder), [ this.getRandomData() ], this.options);
-                        setTimeout(this.update, charts.chart_live.updateInterval);
-                    },
-
-                    // update
-                    update: function()
-                    {
-                        charts.chart_live.plot.setData([ charts.chart_live.getRandomData() ]);
-                        charts.chart_live.plot.draw();
-
-                        setTimeout(charts.chart_live.update, charts.chart_live.updateInterval);
+                    // do a random walk
+                    while (this.data.length < this.totalPoints) {
+                        var prev = this.data.length > 0 ? this.data[this.data.length - 1] : 50;
+                        var y = prev + Math.random() * 10 - 5;
+                        if (y < 0)
+                            y = 0;
+                        if (y > 100)
+                            y = 100;
+                        this.data.push(y);
                     }
-                };
+
+                    // zip the generated y values with the x values
+                    var res = [];
+                    for (var i = 0; i < this.data.length; ++i)
+                        res.push([i, this.data[i]])
+
+                    return res;
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    series: {
+                        grow: { active: false },
+                        shadowSize: 0,
+                        lines: {
+                            show: true,
+                            fill: true,
+                            lineWidth: 2,
+                            steps: false
+                        }
+                    },
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    colors: [],
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "Value is : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
+                    },
+                    yaxis: { min: 0, max: 100 },
+                    xaxis: { show: true}
+                },
+                placeholder: "#chart_live",
+                // initialize
+                init: function() {
+                    // apply styling
+                    charts.utility.applyStyle(this);
+
+                    this.plot = $.plot($(this.placeholder), [ this.getRandomData() ], this.options);
+                    setTimeout(this.update, charts.chart_live.updateInterval);
+                },
+                // update
+                update: function() {
+                    charts.chart_live.plot.setData([ charts.chart_live.getRandomData() ]);
+                    charts.chart_live.plot.draw();
+
+                    setTimeout(charts.chart_live.update, charts.chart_live.updateInterval);
+                }
+            };
 
             charts.chart_live.init();
         }
@@ -5229,120 +4656,110 @@ function flotchartAutoUpdatingInit() {
 /* flotchart-finances-simple.init.js */
 function flotchartFinancesSimpleInit() {
     (function($) {
-        if($("#chart_finances_simple").length) {
-            if (typeof charts == 'undefined')
+        if ( $("#chart_finances_simple").length ) {
+            if ( typeof charts == 'undefined' )
                 return;
 
-            charts.chart_simple =
-                {
-                    // data
-                    data:
+            charts.chart_simple = {
+                // data
+                data: {
+                    d1: [],
+                    d2: []
+                },
+                // will hold the chart object
+                plot: null,
+                // chart options
+                options: {
+                    grid:
                         {
-                            d1: [],
-                            d2: []
+                            color: "#dedede",
+                            borderWidth: 1,
+                            borderColor: "transparent",
+                            clickable: true,
+                            hoverable: true
                         },
-
-                    // will hold the chart object
-                    plot: null,
-
-                    // chart options
-                    options:
-                        {
-                            grid:
-                                {
-                                    color: "#dedede",
-                                    borderWidth: 1,
-                                    borderColor: "transparent",
-                                    clickable: true,
-                                    hoverable: true
-                                },
-                            series: {
-                                lines: {
-                                    show: true,
-                                    fill: false,
-                                    lineWidth: 2,
-                                    steps: false
-                                },
-                                points: {
-                                    show:true,
-                                    radius: 5,
-                                    lineWidth: 3,
-                                    fill: true,
-                                    fillColor: "#000"
-                                }
-                            },
-                            xaxis: {
-                                tickColor: 'transparent',
-                                tickDecimals: 2,
-                                tickSize: 2
-                            },
-                            yaxis: {
-                                tickSize: 1000
-                            },
-                            legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
-                            shadowSize: 0,
-                            tooltip: true,
-                            tooltipOpts: {
-                                content: "%s : %y.3",
-                                shifts: {
-                                    x: -30,
-                                    y: -50
-                                },
-                                defaultTheme: false
-                            }
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: false,
+                            lineWidth: 2,
+                            steps: false
                         },
-
-                    placeholder: "#chart_finances_simple",
-
-                    // initialize
-                    init: function()
-                    {
-                        // this.options.colors = ["#72af46", "#466baf"];
-                        this.options.colors = [successColor, primaryColor];
-                        this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
-
-                        var that = this;
-
-                        if (this.plot == null)
-                        {
-                            this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
-                            this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                        points: {
+                            show:true,
+                            radius: 5,
+                            lineWidth: 3,
+                            fill: true,
+                            fillColor: "#000"
                         }
-                        this.plot = $.plot(
-                            $(this.placeholder),
-                            [{
-                                label: "Data 1",
-                                data: this.data.d1,
-                                lines: { fill: 0.05 },
-                                points: { fillColor: "#fff" }
-                            },
-                                {
-                                    label: "Data 2",
-                                    data: this.data.d2,
-                                    lines: { fill: 0.1 },
-                                    points: { fillColor: that.options.colors[1] }
-                                }], this.options);
+                    },
+                    xaxis: {
+                        tickColor: 'transparent',
+                        tickDecimals: 2,
+                        tickSize: 2
+                    },
+                    yaxis: {
+                        tickSize: 1000
+                    },
+                    legend: { position: "nw", noColumns: 2, backgroundColor: null, backgroundOpacity: 0 },
+                    shadowSize: 0,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.3",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
                     }
-                };
+                },
+                placeholder: "#chart_finances_simple",
+                // initialize
+                init: function() {
+                    // this.options.colors = ["#72af46", "#466baf"];
+                    this.options.colors = [successColor, primaryColor];
+                    this.options.grid.backgroundColor = { colors: ["#fff", "#fff"]};
+
+                    var that = this;
+
+                    if (this.plot == null) {
+                        this.data.d1 = [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ];
+                        this.data.d2 = [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ];
+                    }
+                    this.plot = $.plot(
+                        $(this.placeholder),
+                        [{
+                            label: "Data 1",
+                            data: this.data.d1,
+                            lines: { fill: 0.05 },
+                            points: { fillColor: "#fff" }
+                        },
+                        {
+                            label: "Data 2",
+                            data: this.data.d2,
+                            lines: { fill: 0.1 },
+                            points: { fillColor: that.options.colors[1] }
+                        }], this.options);
+                }
+            };
 
             // uncomment to init on load
             charts.chart_simple.init();
 
             // use with tabs
-            // $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
-            //  if (charts.chart_simple.plot == null)
-            //      charts.chart_simple.init();
-            // });
+            /* $('a[href="#chart-simple-lines"]').on('shown.bs.tab', function(){
+             if (charts.chart_simple.plot == null)
+                 charts.chart_simple.init();
+            });
 
-            // $('.btn-group [data-toggle="tab"]').on('show.bs.tab', function(){
-            //  $(this).parent().find('[data-toggle]').removeClass('active');
-            //  $(this).addClass('active');
-            // });
+            $('.btn-group [data-bs-toggle="tab"]').on('show.bs.tab', function(){
+             $(this).parent().find('[data-toggle]').removeClass('active');
+             $(this).addClass('active');
+            }); */
         }
 
 
     })(jQuery);
-
 }
 
 /* datepicker.init.js */
@@ -5415,68 +4832,55 @@ function uniformInit() {
 function calendarInit() {
     $(function() {
         /* initialize the external events
-         -----------------------------------------------------------------*/
+         -----------------------------------------------------------------*/       
+        var containerEl = document.getElementById("external-events-list");
 
-        $('#external-events ul li').each(function()
-        {
-
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
-            };
-
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
-
-            // make the event draggable using jQuery UI
-            $(this).draggable(
-                {
-                    zIndex: 999,
-                    revert: true,      // will cause the event to go back to its
-                    revertDuration: 0,  //  original position after the drag,
-                    start: function() { if (typeof mainYScroller != 'undefined') mainYScroller.disable(); },
-                    stop: function() { if (typeof mainYScroller != 'undefined') mainYScroller.enable(); }
-                });
-
-        });
+        if ( $(containerEl).length ) {
+            new FullCalendar.Draggable(containerEl, {
+                itemSelector: '.fc-event-list',
+                eventData: function(eventEl) {
+                    let eventTitle = eventEl.innerText.trim();
+                        return {
+                            title: eventTitle
+                            //create: false
+                        }
+                }
+            });
+        }
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
+        var calendarEl = document.getElementById('calendar');
 
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            droppable: true,
-            events: '/html/admin/ajax/calendarEvents.json',
-            drop: function(date, allDay)
-            {
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
+            if ( $(calendarEl).length ) {
+                var calendarInstance = new FullCalendar.Calendar(calendarEl, {
+                    themeSystem: 'bootstrap5',
+                    initialView: 'dayGridMonth',
+                    nowIndicator: true,
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title'
+                    },
+                    editable: true,
+                    droppable: true,
+                    events: '/MelisDesign/js/calendar/calendarEvents.json',
+                    drop: function(dropInfo) {
+                        // is the "remove after drop" checkbox checked?
+                        if ( $('#drop-remove').is(':checked') ) {
+                            // if so, remove the element from the "Draggable Events" list
+                            $(this).remove();
+                        }
 
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
+                    }
+                });
 
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
+                calendarInstance.render();
 
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-
+                // clicking on calendar tool tab
+                $("body").on("shown.bs.tab", "#id_melis_calendar", function() {
+                    calendarInstance.render();
+                });
             }
-        });
     });
 }
 
@@ -5498,7 +4902,6 @@ function switchBootstrap() {
 
     !function ($) {
         "use strict";
-
         $.fn['bootstrapSwitch'] = function (method) {
             var inputSelector = 'input[type!="hidden"]';
             var methods = {
@@ -5647,9 +5050,9 @@ function switchBootstrap() {
                                 $this.closest('div').removeClass('switch-animate');
 
                                 if ($this.closest('.has-switch').is('.deactivate')) {
-                                    $this.unbind('click');
+                                    $this.off('click');
                                 } else if ($this.closest('.switch-on').parent().is('.radio-no-uncheck')) {
-                                    $this.unbind('click');
+                                    $this.off('click');
                                 } else {
                                     $this.on('mousemove touchmove', function (e) {
                                         var $element = $(this).closest('.make-switch')
@@ -5676,7 +5079,7 @@ function switchBootstrap() {
                                         e.stopImmediatePropagation();
                                         e.preventDefault();
 
-                                        $this.unbind('mouseleave');
+                                        $this.off('mouseleave');
 
                                         if (moving)
                                             $myRadioCheckBox.prop('checked', !(parseInt($this.parent().css('left')) < -25));
@@ -5694,7 +5097,7 @@ function switchBootstrap() {
                                         e.preventDefault();
                                         e.stopImmediatePropagation();
 
-                                        $this.unbind('mouseleave');
+                                        $this.off('mouseleave');
                                         $this.trigger('mouseup');
 
                                         $myInputBox.prop('checked', !(parseInt($this.parent().css('left')) < -25)).trigger('change');
@@ -5704,13 +5107,13 @@ function switchBootstrap() {
                                         e.stopImmediatePropagation();
                                         e.preventDefault();
 
-                                        $(this).unbind('mousemove');
+                                        $(this).off('mousemove');
                                     });
                                 }
                             });
 
                             if ($form.data('bootstrapSwitch') !== 'injected') {
-                                $form.bind('reset', function () {
+                                $form.on('reset', function () {
                                     setTimeout(function () {
                                         $form.find('.make-switch').each(function () {
                                             var $input = $(this).find(inputSelector);
@@ -5738,7 +5141,7 @@ function switchBootstrap() {
 
                     if (active) {
                         $this.removeClass('deactivate');
-                        $this.find(inputSelector).removeAttr('disabled');
+                        $this.find(inputSelector).prop('disabled', false);
                     }
                     else {
                         $this.addClass('deactivate');
@@ -5840,10 +5243,10 @@ function switchBootstrap() {
                     $inputbox = $div.children();
                     $inputbox.unwrap().unwrap();
 
-                    $inputbox.unbind('change');
+                    $inputbox.off('change');
 
                     if ($form) {
-                        $form.unbind('reset');
+                        $form.off('reset');
                         $form.removeData('bootstrapSwitch');
                     }
 
@@ -5872,26 +5275,24 @@ function bootstrapSwitchInit() {
 /* form-validator.init.js */
 function formValidatorInit() {
     $.validator.setDefaults({
-            submitHandler: function() { alert("submitted!"); },
-            showErrors: function(map, list) {
-                this.currentElements.parents('label:first, div:first').find('.has-error').remove();
-                this.currentElements.parents('.form-group:first').removeClass('has-error');
+        submitHandler: function() { alert("submitted!"); },
+        showErrors: function(map, list) {
+            this.currentElements.parents('label:first, div:first').find('.has-error').remove();
+            this.currentElements.parents('.form-group:first').removeClass('has-error');
 
-                $.each(list, function(index, error)
-                {
-                    var ee = $(error.element);
-                    var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('div:first');
+            $.each(list, function(index, error) {
+                var ee = $(error.element);
+                var eep = ee.parents('label:first').length ? ee.parents('label:first') : ee.parents('div:first');
 
-                    ee.parents('.form-group:first').addClass('has-error');
-                    eep.find('.has-error').remove();
-                    eep.append('<p class="has-error help-block">' + error.message + '</p>');
-                });
-                //refreshScrollers();
-            }
-        });
+                ee.parents('.form-group:first').addClass('has-error');
+                eep.find('.has-error').remove();
+                eep.append('<p class="has-error help-block">' + error.message + '</p>');
+            });
+            //refreshScrollers();
+        }
+    });
 
-    $(function()
-    {
+    $(function() {
         // validate signup form on keyup and submit
         $("#validateSubmitForm").validate({
             rules: {
@@ -5942,7 +5343,7 @@ function formValidatorInit() {
         });
 
         // propose username by combining first- and lastname
-        $("#username").focus(function() {
+        $("#username").on("focus", function() {
             var firstname = $("#firstname").val();
             var lastname = $("#lastname").val();
             if(firstname && lastname && !this.value) {
@@ -5957,7 +5358,7 @@ function formValidatorInit() {
         var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
         var topicInputs = topics.find("input").attr("disabled", !inital);
         // show when newsletter is checked
-        newsletter.click(function() {
+        newsletter.on("click", function() {
             topics[this.checked ? "removeClass" : "addClass"]("gray");
             topicInputs.attr("disabled", !this.checked);
         });
@@ -5967,11 +5368,46 @@ function formValidatorInit() {
 /* dropzone.init.js */
 function dropzoneInit() {
     (function($) {
-        if (typeof Dropzone != 'undefined')
-            Dropzone.autoDiscover = false;
+        if (typeof Dropzone != 'undefined') {
+            
+            Dropzone.discover();
 
-        if ($.fn.dropzone != 'undefined')
-            $('.dropzone').dropzone();
+            Dropzone.options.demoUpload = {
+                paramName: "file",
+                maxFilesize: 20,
+                addRemoveLinks: true,
+                dictRemoveFileConfirmation: "Are you sure you want to remove the file?"
+            };
+
+            /* 
+            //dictRemoveFileConfirmation: "Are you sure you want to remove the file?"
+            var removeCallback  = undefined,
+                $body           = $("body");
+
+                $body.on("click", ".btn-remove-all-files", function() {
+                    var $demoUpload = Dropzone.forElement("#demo-upload");
+                        if ( $demoUpload.files.length ) {
+                            $demoUpload.removeAllFiles();
+                            $demoUpload.removeAllFiles(true);
+                        }
+                });
+
+                // listen to click .remove-all, remove the item by calling removeCallback and hide modal
+                $body.on("click", ".remove-all", function() {
+                    if ( removeCallback ) {
+                        removeCallback();
+                    }
+
+                    melisCoreTool.hideModal('remove-all-modal');
+                });
+
+                demoDropzone.confirm = function(question, accepted, rejected) {
+                    // retain the callback to invoke to accept the removal
+                    removeCallback = accepted;
+                    // launch custom modal
+                    melisCoreTool.showModal('remove-all-modal');
+                }; */
+        }
     })(jQuery);
 }
 
@@ -6004,15 +5440,15 @@ function plUploadInit() {
         });
 
         // Client side form validation
-        $('#pluploadForm').submit(function(e) {
+        $('#pluploadForm').on("submit", function(e) {
             var uploader = $('#pluploadUploader').pluploadQueue();
 
             // Files in queue upload them first
             if (uploader.files.length > 0) {
-                // When all files are uploaded submit form
-                uploader.bind('StateChanged', function() {
+                // When all files are uploaded submit form, uploader.bind()
+                uploader.on('StateChanged', function() {
                     if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
-                        $('#pluploadForm').submit();
+                        $('#pluploadForm').trigger("submit");
                     }
                 });
 
@@ -6033,11 +5469,9 @@ function coreInit() {
         top.location.href = document.location.href;
 
     (function($, window) {
+        //window.onunload = function(){};
 
-        window.onunload = function(){};
-
-        $.expr[':'].scrollable = function( elem )
-        {
+        $.expr.pseudos.scrollable = function( elem ) {
             var scrollable = false,
                 props = [ '', '-x', '-y' ],
                 re = /^(?:auto|scroll)$/i,
@@ -6053,8 +5487,7 @@ function coreInit() {
         if (!Modernizr.touch && $('[href="#template-options"][data-auto-open]').length)
             $('#template-options').collapse('show');
 
-        window.beautify = function (source)
-        {
+        window.beautify = function (source) {
             var output,
                 opts = {};
 
@@ -6064,8 +5497,7 @@ function coreInit() {
         }
 
         // generate a random number within a range (PHP's mt_rand JavaScript implementation)
-        window.mt_rand = function (min, max)
-        {
+        window.mt_rand = function (min, max) {
             var argc = arguments.length;
             if (argc === 0) {
                 min = 0;
@@ -6082,14 +5514,12 @@ function coreInit() {
         }
 
         // scroll to element animation
-        function scrollTo(id)
-        {
+        function scrollTo(id) {
             if ($(id).length)
                 $('html,body').animate({scrollTop: $(id).offset().top},'slow');
         }
 
-        window.resizeNiceScroll = function()
-        {
+        window.resizeNiceScroll = function() {
             setTimeout(function(){
                 $('.hasNiceScroll, #menu_kis, #menu').getNiceScroll().show().resize();
             }, 100);
@@ -6106,11 +5536,10 @@ function coreInit() {
         $(".render-my-account [data-toggle='tooltip'], .render-buttons-icons [data-toggle='tooltip']").tooltip();
 
         // popovers
-        $('[data-toggle="popover"]').popover();
+        //$('[data-bs-toggle="popover"]').popover();
 
         // print
-        $('[data-toggle="print"]').click(function(e)
-        {
+        $('[data-toggle="print"]').on("click", function(e) {
             e.preventDefault();
             window.print();
         });
@@ -6125,8 +5554,7 @@ function coreInit() {
             prettyPrint();
 
         // show/hide toggle buttons
-        $('[data-toggle="hide"]').click(function()
-        {
+        $('[data-toggle="hide"]').on("click", function() {
             if ($(this).is('.bootboxTarget'))
                 bootbox.alert($($(this).attr('data-target')).html());
             else {
@@ -6137,13 +5565,11 @@ function coreInit() {
         });
 
         $('ul.collapse')
-            .on('show.bs.collapse', function(e)
-            {
+            .on('show.bs.collapse', function(e) {
                 e.stopPropagation();
                 $(this).closest('li').addClass('active');
             })
-            .on('hidden.bs.collapse', function(e)
-            {
+            .on('hidden.bs.collapse', function(e){
                 e.stopPropagation();
                 $(this).closest('li').removeClass('active');
             });
@@ -6160,8 +5586,7 @@ function coreInit() {
             $(this).addClass('active');
         });
 
-        window.enableContentNiceScroll = function(hide)
-        {
+        window.enableContentNiceScroll = function(hide) {
             if ($('html').is('.ie') || Modernizr.touch)
                 return;
 
@@ -6178,8 +5603,7 @@ function coreInit() {
                     return !$(this).find('> .col-table').length;
                 })
                 .addClass('hasNiceScroll')
-                .each(function()
-                {
+                .each(function() {
                     $(this).niceScroll({
                         horizrailenabled: false,
                         zindex: 2,
@@ -6195,8 +5619,7 @@ function coreInit() {
                 });
         }
 
-        window.disableContentNiceScroll = function()
-        {
+        window.disableContentNiceScroll = function() {
             $('#content .hasNiceScroll').getNiceScroll().remove();
         }
 
@@ -6206,37 +5629,35 @@ function coreInit() {
             $('html').removeClass('app');
 
         $('body')
-            .on('mouseenter', '[data-toggle="dropdown"].dropdown-hover', function()
-            {
+            .on('mouseenter', '[data-bs-toggle="dropdown"].dropdown-hover', function() {
                 if (!$(this).parent('.dropdown').is('.open'))
-                    $(this).click();
+                    $(this).trigger("click");
             });
 
         $('.navbar.main')
             .add('#menu-top')
             .on('mouseleave', function(){
-                $(this).find('.dropdown.open').find('> [data-toggle="dropdown"]').click();
+                $(this).find('.dropdown.open').find('> [data-bs-toggle="dropdown"]').trigger("click");
             });
 
         $('[data-height]').each(function(){
             $(this).height($(this).data('height'));
         });
 
-        $('.app [data-toggle="tab"]')
-            .on('shown.bs.tab', function(e)
-            {
+        $('.app [data-bs-toggle="tab"]')
+            .on('shown.bs.tab', function(e) {
                 $('.hasNiceScroll').getNiceScroll().resize();
             });
 
-        window.enableNavbarMenusHover = function(){
-            $('.navbar.main [data-toggle="dropdown"]')
-                .add('#menu-top [data-toggle="dropdown"]')
+        window.enableNavbarMenusHover = function() {
+            $('.navbar.main [data-bs-toggle="dropdown"]')
+                .add('#menu-top [data-bs-toggle="dropdown"]')
                 .addClass('dropdown-hover');
         }
 
         window.disableNavbarMenusHover = function(){
-            $('.navbar.main [data-toggle="dropdown"]')
-                .add('#menu-top [data-toggle="dropdown"]')
+            $('.navbar.main [data-bs-toggle="dropdown"]')
+                .add('#menu-top [data-bs-toggle="dropdown"]')
                 .removeClass('dropdown-hover');
         }
 
@@ -6255,8 +5676,7 @@ function coreInit() {
                 .removeClass('open');
         }
 
-        if (typeof $.fn.setBreakpoints !== 'undefined')
-        {
+        if (typeof $.fn.setBreakpoints !== 'undefined') {
             $(window).setBreakpoints({
                 distinct: false,
                 breakpoints: [
@@ -6264,30 +5684,31 @@ function coreInit() {
                     992
                 ]
             });
-
-            $(window).bind('exitBreakpoint768',function() {
+            
+            // bind
+            $(window).on('exitBreakpoint768',function() {
                 $('.container-fluid').addClass('menu-hidden');
                 disableNavbarMenusHover();
                 enableResponsiveNavbarSubmenus();
             });
 
-            $(window).bind('enterBreakpoint768',function() {
+            $(window).on('enterBreakpoint768',function() {
                 $('.container-fluid').removeClass('menu-hidden');
                 enableNavbarMenusHover();
                 disableResponsiveNavbarSubmenus();
             });
 
-            $(window).bind('exitBreakpoint992',function() {
+            $(window).on('exitBreakpoint992',function() {
                 disableContentNiceScroll();
             });
 
-            $(window).bind('enterBreakpoint992',function() {
+            $(window).on('enterBreakpoint992',function() {
                 enableContentNiceScroll(false);
             });
         }
 
-        $(window).on('load', function()
-        {
+        //$(window).on('load', function() {
+        $(function() {
             if ($(window).width() < 992)
                 $('.hasNiceScroll').getNiceScroll().stop();
 
@@ -6299,10 +5720,20 @@ function coreInit() {
             if (typeof animations == 'undefined' && typeof $.fn.niceScroll !== 'undefined')
                 $('.hasNiceScroll, #menu_kis, #menu').getNiceScroll().show().resize();
 
-            if (typeof Holder != 'undefined')
-            {
-                Holder.add_theme("dark", {background:"#424242", foreground:"#aaa", size:9}).run();
-                Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9}).run();
+            if (typeof Holder != 'undefined') {
+                Holder.addTheme("dark", {
+                    bg: "#424242",
+                    fg: "#aaa",
+                    size: 9
+                });
+
+                Holder.addTheme("dark", {
+                    bg: "#fff",
+                    fg: "#c9c9c9",
+                    size: 9
+                });
+
+                Holder.run();
             }
         });
 
@@ -6312,11 +5743,11 @@ function coreInit() {
 /* medical.init.js */
 function medicalInit() {
     (function($) {
+
         if (typeof charts == 'undefined')
             return;
 
-        charts.metricsDrawHook = function (plot, canvascontext)
-        {
+        charts.metricsDrawHook = function (plot, canvascontext) {
             var t = $('#metrics table');
 
             if (!t.length)
@@ -6329,294 +5760,288 @@ function medicalInit() {
             t.find('tr').append('<td class="legendSelect"><input type="checkbox" checked="checked"></td>');
         }
 
-        charts.chart_gender =
-            {
-                // chart data
-                data: null,
+        charts.chart_gender = {
+            // chart data
+            data: null,
 
-                // will hold the chart object
-                plot: null,
+            // will hold the chart object
+            plot: null,
 
-                // chart options
-                options:
-                    {
-                        bars: {
-                            show:true,
-                            barWidth: 0.3,
-                            fill:1
-                        },
-                        grid: {
-                            show: true,
-                            aboveData: false,
-                            color: "#3f3f3f",
-                            labelMargin: 5,
-                            axisMargin: 0,
-                            borderWidth: 0,
-                            borderColor:null,
-                            minBorderMargin: 5,
-                            clickable: true,
-                            hoverable: true,
-                            autoHighlight: false,
-                            mouseActiveRadius: 20,
-                            backgroundColor : { }
-                        },
-                        legend: { show: false, position: "ne", backgroundColor: null, backgroundOpacity: 0 },
-                        colors: []
-                    },
-
-                placeholder: "#chart_gender",
-
-                // initialize
-                init: function()
+            // chart options
+            options:
                 {
-                    if (!$(this.placeholder).length)
-                        return;
+                    bars: {
+                        show:true,
+                        barWidth: 0.3,
+                        fill:1
+                    },
+                    grid: {
+                        show: true,
+                        aboveData: false,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: false,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    legend: { show: false, position: "ne", backgroundColor: null, backgroundOpacity: 0 },
+                    colors: []
+                },
 
-                    // apply styling
-                    this.options.colors = ["#D67FB0", "#4193d0"];
-                    this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
-                    this.options.grid.borderColor = primaryColor;
-                    this.options.grid.color = primaryColor;
+            placeholder: "#chart_gender",
 
-                    //some data
-                    var d1 = [];
-                    for (var i = 0; i <= 10; i += 1)
-                        d1.push([i, parseInt(Math.random() * 30)]);
+            // initialize
+            init: function()
+            {
+                if (!$(this.placeholder).length)
+                    return;
 
-                    var d2 = [];
-                    for (var i = 0; i <= 10; i += 1)
-                        d2.push([i, parseInt(Math.random() * 30)]);
+                // apply styling
+                this.options.colors = ["#D67FB0", "#4193d0"];
+                this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
+                this.options.grid.borderColor = primaryColor;
+                this.options.grid.color = primaryColor;
 
-                    var ds = new Array();
+                //some data
+                var d1 = [];
+                for (var i = 0; i <= 10; i += 1)
+                    d1.push([i, parseInt(Math.random() * 30)]);
 
-                    ds.push({
-                        label: "Data One",
-                        data:d1,
-                        bars: {order: 1}
-                    });
-                    ds.push({
-                        label: "Data Two",
-                        data:d2,
-                        bars: {order: 2}
-                    });
-                    this.data = ds;
+                var d2 = [];
+                for (var i = 0; i <= 10; i += 1)
+                    d2.push([i, parseInt(Math.random() * 30)]);
 
-                    this.plot = $.plot($(this.placeholder), this.data, this.options);
+                var ds = new Array();
+
+                ds.push({
+                    label: "Data One",
+                    data:d1,
+                    bars: {order: 1}
+                });
+                ds.push({
+                    label: "Data Two",
+                    data:d2,
+                    bars: {order: 2}
+                });
+                this.data = ds;
+
+                this.plot = $.plot($(this.placeholder), this.data, this.options);
+            }
+        };
+
+        charts.chart_metrics = {
+            // chart data
+            data:
+                {
+                    d: []
+                },
+
+            // will hold the chart object
+            plot: null,
+
+            // chart options
+            options:
+                {
+                    grid: {
+                        show: true,
+                        aboveData: true,
+                        color: "#3f3f3f",
+                        labelMargin: 5,
+                        axisMargin: 0,
+                        borderWidth: 0,
+                        borderColor:null,
+                        minBorderMargin: 5 ,
+                        clickable: true,
+                        hoverable: true,
+                        autoHighlight: true,
+                        mouseActiveRadius: 20,
+                        backgroundColor : { }
+                    },
+                    series: {
+                        grow: { active:true, duration: 200 },
+                        lines: {
+                            show: true,
+                            fill: .07,
+                            lineWidth: 2
+                        },
+                        points: {show:false}
+                    },
+                    legend: {
+                        backgroundColor: null,
+                        backgroundOpacity: 0,
+                        container: $('#metrics'),
+                        labelFormatter: function(label, series) {
+                            return '<a href="#" data-toggle="charts-metrics-toggle" data-series-idx="' + series.idx + '">' + label + '</a>';
+                        }
+                    },
+                    yaxis: { min: 0 },
+                    xaxis: {ticks:11, tickDecimals: 0},
+                    colors: [],
+                    shadowSize:1,
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%s : %y.0",
+                        shifts: {
+                            x: -30,
+                            y: -50
+                        },
+                        defaultTheme: false
+                    },
+                    hooks: { draw: [charts.metricsDrawHook] }
+                },
+
+            placeholder: "#chart_metrics",
+
+            toggle: function(id) {
+                var d = this.plot.getData(),
+                    show = d[id].grow.growings[0].stepDirection == 'down',
+                    nd = [];
+
+                if (show)
+                {
+                    d[id].grow.growings[0].stepDirection = 'up';
+                    d[id].data = this.data.d[id];
                 }
-            };
-
-        charts.chart_metrics =
-            {
-                // chart data
-                data:
-                    {
-                        d: []
-                    },
-
-                // will hold the chart object
-                plot: null,
-
-                // chart options
-                options:
-                    {
-                        grid: {
-                            show: true,
-                            aboveData: true,
-                            color: "#3f3f3f",
-                            labelMargin: 5,
-                            axisMargin: 0,
-                            borderWidth: 0,
-                            borderColor:null,
-                            minBorderMargin: 5 ,
-                            clickable: true,
-                            hoverable: true,
-                            autoHighlight: true,
-                            mouseActiveRadius: 20,
-                            backgroundColor : { }
-                        },
-                        series: {
-                            grow: { active:true, duration: 200 },
-                            lines: {
-                                show: true,
-                                fill: .07,
-                                lineWidth: 2
-                            },
-                            points: {show:false}
-                        },
-                        legend: {
-                            backgroundColor: null,
-                            backgroundOpacity: 0,
-                            container: $('#metrics'),
-                            labelFormatter: function(label, series) {
-                                return '<a href="#" data-toggle="charts-metrics-toggle" data-series-idx="' + series.idx + '">' + label + '</a>';
-                            }
-                        },
-                        yaxis: { min: 0 },
-                        xaxis: {ticks:11, tickDecimals: 0},
-                        colors: [],
-                        shadowSize:1,
-                        tooltip: true,
-                        tooltipOpts: {
-                            content: "%s : %y.0",
-                            shifts: {
-                                x: -30,
-                                y: -50
-                            },
-                            defaultTheme: false
-                        },
-                        hooks: { draw: [charts.metricsDrawHook] }
-                    },
-
-                placeholder: "#chart_metrics",
-
-                toggle: function(id)
+                else
                 {
-                    var d = this.plot.getData(),
-                        show = d[id].grow.growings[0].stepDirection == 'down',
-                        nd = [];
+                    var max = d[id].data.length;
+                    d[id].data = [];
 
-                    if (show)
+                    for (var i=1;i<=max;i++)
+                        d[id].data.push([i, 0]);
+
+                    d[id].grow.growings[0].stepDirection = 'down';
+                }
+
+                this.plot.setData(d);
+                this.plot.draw();
+            },
+
+            changeData: function() {
+                var d = this.plot.getData(),
+                    that = this;
+
+                this.data.d = [];
+
+                // generate some data
+                for (var i=0;i<=5;i++)
+                {
+                    this.data.d.push([]);
+                    for (var j=1;j<=30;j++)
+                        this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
+                }
+
+                $.each(d, function(index, value){
+                    var a = $('[data-series-idx="'+index+'"]'),
+                        c = a.closest('tr').find(':checked').length;
+
+                    d[index].data = c ? that.data.d[index] : [];
+                });
+
+                this.plot.setData(d);
+                this.plot.draw();
+            },
+
+            // initialize
+            init: function()
+            {
+                if (!$(this.placeholder).length)
+                    return;
+
+                var that = this;
+
+                $('body')
+                    .on('click', '[data-toggle="charts-metrics-toggle"]', function(e)
                     {
-                        d[id].grow.growings[0].stepDirection = 'up';
-                        d[id].data = this.data.d[id];
-                    }
-                    else
-                    {
-                        var max = d[id].data.length;
-                        d[id].data = [];
+                        e.preventDefault();
+                        charts.chart_metrics.toggle($(this).attr('data-series-idx'));
+                    })
+                    .on('change', '.legendSelect :checkbox', function(){
+                        var idx = $(this).closest('tr').find('[data-toggle="charts-metrics-toggle"]').attr('data-series-idx');
+                        charts.chart_metrics.toggle(idx);
+                    })
+                    .on('click', '#metrics table tr', function(e){
+                        if ($(e.target).is('a') || $(e.target).is(':checkbox'))
+                            return;
 
-                        for (var i=1;i<=max;i++)
-                            d[id].data.push([i, 0]);
-
-                        d[id].grow.growings[0].stepDirection = 'down';
-                    }
-
-                    this.plot.setData(d);
-                    this.plot.draw();
-                },
-
-                changeData: function(){
-                    var d = this.plot.getData(),
-                        that = this;
-
-                    this.data.d = [];
-
-                    // generate some data
-                    for (var i=0;i<=5;i++)
-                    {
-                        this.data.d.push([]);
-                        for (var j=1;j<=30;j++)
-                            this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
-                    }
-
-                    $.each(d, function(index, value){
-                        var a = $('[data-series-idx="'+index+'"]'),
-                            c = a.closest('tr').find(':checked').length;
-
-                        d[index].data = c ? that.data.d[index] : [];
+                        var c = $(this).find(':checkbox');
+                        c.prop('checked', !c.prop('checked')).trigger('change');
+                    })
+                    .on('click', '[data-toggle="charts-metrics-changedata"] .btn', function(){
+                        if ($(this).is('.active')) return;
+                        $('[data-toggle="charts-metrics-changedata"] .btn.active').removeClass('active');
+                        $(this).addClass('active');
+                        charts.chart_metrics.changeData();
                     });
 
-                    this.plot.setData(d);
-                    this.plot.draw();
-                },
+                // apply styling
+                this.options.colors = [primaryColor, "#cc6666", "#cca366", "#b7cc66", "#7acc66", "#66cccc"];
+                this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
+                this.options.grid.borderColor = primaryColor;
+                this.options.grid.color = primaryColor;
 
-                // initialize
-                init: function()
+                // generate some data
+                for (var i=0;i<=5;i++)
                 {
-                    if (!$(this.placeholder).length)
-                        return;
+                    this.data.d.push([]);
+                    for (var j=1;j<=30;j++)
+                        this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
+                }
 
-                    var that = this;
-
-                    $('body')
-                        .on('click', '[data-toggle="charts-metrics-toggle"]', function(e)
+                // make chart
+                this.plot = $.plot(
+                    this.placeholder,
+                    [{
+                        label: "Hypertension",
+                        data: this.data.d[0],
+                        idx: 0,
+                        grow: { growings:[ { stepMode: "linear" } ] }
+                    },
                         {
-                            e.preventDefault();
-                            charts.chart_metrics.toggle($(this).attr('data-series-idx'));
-                        })
-                        .on('change', '.legendSelect :checkbox', function(){
-                            var idx = $(this).closest('tr').find('[data-toggle="charts-metrics-toggle"]').attr('data-series-idx');
-                            charts.chart_metrics.toggle(idx);
-                        })
-                        .on('click', '#metrics table tr', function(e){
-                            if ($(e.target).is('a') || $(e.target).is(':checkbox'))
-                                return;
-
-                            var c = $(this).find(':checkbox');
-                            c.prop('checked', !c.prop('checked')).trigger('change');
-                        })
-                        .on('click', '[data-toggle="charts-metrics-changedata"] .btn', function(){
-                            if ($(this).is('.active')) return;
-                            $('[data-toggle="charts-metrics-changedata"] .btn.active').removeClass('active');
-                            $(this).addClass('active');
-                            charts.chart_metrics.changeData();
-                        });
-
-                    // apply styling
-                    this.options.colors = [primaryColor, "#cc6666", "#cca366", "#b7cc66", "#7acc66", "#66cccc"];
-                    this.options.grid.backgroundColor = { colors: ["transparent", "transparent"]};
-                    this.options.grid.borderColor = primaryColor;
-                    this.options.grid.color = primaryColor;
-
-                    // generate some data
-                    for (var i=0;i<=5;i++)
-                    {
-                        this.data.d.push([]);
-                        for (var j=1;j<=30;j++)
-                            this.data.d[i].push([j, ((6-i)*10)+charts.utility.randNum()]);
-                    }
-
-                    // make chart
-                    this.plot = $.plot(
-                        this.placeholder,
-                        [{
-                            label: "Hypertension",
-                            data: this.data.d[0],
-                            idx: 0,
-                            grow: { growings:[ { stepMode: "linear" } ] }
+                            label: "Blood Pressure",
+                            data: this.data.d[1],
+                            idx: 1
                         },
-                            {
-                                label: "Blood Pressure",
-                                data: this.data.d[1],
-                                idx: 1
-                            },
-                            {
-                                label: "Blood Sugar",
-                                data: this.data.d[2],
-                                idx: 2
-                            },
-                            {
-                                label: "Alergy",
-                                data: this.data.d[3],
-                                idx: 3
-                            },
-                            {
-                                label: "Macrobacterium",
-                                data: this.data.d[4],
-                                idx: 4
-                            },
-                            {
-                                label: "Quadrigeminy",
-                                data: this.data.d[5],
-                                idx: 5
-                            }],
-                        this.options);
-                }
-            };
+                        {
+                            label: "Blood Sugar",
+                            data: this.data.d[2],
+                            idx: 2
+                        },
+                        {
+                            label: "Alergy",
+                            data: this.data.d[3],
+                            idx: 3
+                        },
+                        {
+                            label: "Macrobacterium",
+                            data: this.data.d[4],
+                            idx: 4
+                        },
+                        {
+                            label: "Quadrigeminy",
+                            data: this.data.d[5],
+                            idx: 5
+                        }],
+                    this.options);
+            }
+        };
 
         charts.chart_gender.init();
         charts.chart_metrics.init();
-
-
     })(jQuery);
-
 }
 
 /* tables-responsive-footable.init.js */
 function tablesResponsiveFootableInit() {
     $(function() {
         /* FooTable */
-        if ($('.footable').length)
+        if ( $('.footable').length )
             $('.footable').footable();
     });
 }
@@ -6684,8 +6109,8 @@ function initButtons() {
 function tablesInit() {
     jQueryDataTables();
     //tableTools();
-    colVis();
-    dtBootstrap();
+    //colVis();
+    //dtBootstrap();
     dataTablesInit();
     fueluxCheckBoxInit();
     bootstrapSelectInit();
@@ -6743,13 +6168,38 @@ function initFormWizards() {
 }
 
 function colorPickerInit() {
-    var $colorPicker = $("#colorpickerColor");
+    var $minicolor = $(".minicolor");
+        if ( $minicolor.length ) {
+            $minicolor.each(function() {
+                var $this = $(this);
+                    $this.minicolors({
+                        inline: true,
+                        control: $this.attr("data-control") || 'hue',
+                        defaultValue: $this.attr("data-defaultValue") || '',
+                        format: $this.attr('data-format') || 'hex',
+                        keywords: $this.attr('data-keywords') || '',
+                        inline: $this.attr('data-inline') === 'true',
+                        letterCase: $this.attr('data-letterCase') || 'lowercase',
+                        opacity: $this.attr('data-opacity'),
+                        position: $this.attr('data-position') || 'bottom',
+                        swatches: $this.attr('data-swatches') ? $this.attr('data-swatches').split('|') : [],
+                        change: function(hex, opacity) {
+                            var log;
+                                try {
+                                    log = hex ? hex : 'transparent';
 
-        $colorPicker.colorpicker();
-
-        $colorPicker.on('colorpickerChange', function(event) {
-            $colorPicker.css('background-color', event.color.toString());
-        });
+                                    if( opacity ) 
+                                        log += ', ' + opacity;
+                                    
+                                    if ( $this.closest(".osta_color_code").find(".minicolor-hex").length ) {
+                                        $this.closest(".osta_color_code").find(".minicolor-hex").val(hex);
+                                    }
+                                } catch(e) {}
+                        },
+                        theme: 'default'
+                    });
+            });
+        }
 }
 
 function inputMaskInit() {
@@ -6821,7 +6271,6 @@ function initMedicalAppointments() {
 /* medical-metrics.init.js */
 function initMedicalMetrics() {
     medicalInit();
-
 }
 
 /* social.init.js */
@@ -6857,9 +6306,8 @@ function initRatings() {
 /* remove body style */
 function removeStyleAttr() {
     var $body = $("body");
-
         setTimeout(function() {
-            $body.removeAttr("style");
+            $body.prop("style", null);
         }, 1000);
 }
 
@@ -6909,11 +6357,15 @@ $(function() {
         /* form-validator.render.init.js */
         initFormValidator();
         /* form-elements.init.js */
-        initFormElements();
+        if ( typeof melisUserTabs != 'undefined' && activeTabId === 'id_melis_form_elements' ) {
+            initFormElements();
+        }
         /* form-wizards.render.init.js */
         initFormWizards();
         /* sliders.init.js */
         initSliders();
+        /* charts.init.js */
+        initCharts();
         /* calendar.render.init.js */
         initCalendar();
         /* widgets.init.js */
@@ -6945,7 +6397,8 @@ $(function() {
         /* portfolio.init.js */
         initPortfolio();
         /* google maps vector init */
-        mapsVectorInit();
+        // removed google maps for the meantime
+        // mapsVectorInit();
 
         $(".dataTables_wrapper").find(".separator").addClass("d-flex flex-row");
 
@@ -6967,6 +6420,24 @@ $(function() {
 
                 if ( $spinner.length === 0 ) {
                     $this.prepend( spinnerHtml );
+                }
+        });
+
+        $body.on("click", ".page-elements a", function(e) {
+            e.preventDefault();
+        });
+
+        $body.on("click", ".show-code", function() {
+            var $this = $(this),
+                $sliderCode = $this.closest(".tns-wrapper").find(".slider-code");
+
+                $sliderCode.toggleClass("shown");
+
+                if ( $sliderCode.hasClass("shown") ) {
+                    $sliderCode.fadeIn("slow");
+                }
+                else {
+                    $sliderCode.fadeOut("slow");
                 }
         });
 });

@@ -115,7 +115,7 @@
                         <div class="innerAll">
                             <h5 class="strong">Buttons + Dropdowns</h5>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-regular dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-default btn-regular dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Default
                                     <span class="caret"></span>
                                 </button>
@@ -132,7 +132,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Primary
                                     <span class="caret"></span>
                                 </button>
@@ -149,7 +149,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-inverse dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Inverse
                                     <span class="caret"></span>
                                 </button>
@@ -166,7 +166,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-danger btn-regular dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-danger btn-regular dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Danger
                                     <span class="caret"></span>
                                 </button>
@@ -183,7 +183,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-success btn-regular dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-success btn-regular dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Success
                                     <span class="caret"></span>
                                 </button>
@@ -200,7 +200,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown">
                                     Dropdown Warning
                                     <span class="caret"></span>
                                 </button>
@@ -276,16 +276,17 @@
                         <div class="col-md-6">
                             <!-- Alert -->
                             <div class="alert alert-primary">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <!-- &times; -->
                                 <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                             <!-- // Alert END -->
 
 
                             <!-- Alert -->
                             <div class="alert alert-warning">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                             <!-- // Alert END -->
 
@@ -294,16 +295,16 @@
                         <div class="col-md-6">
                             <!-- Alert -->
                             <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                             <!-- // Alert END -->
 
 
                             <!-- Alert -->
                             <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                             <!-- // Alert END -->
 
@@ -726,7 +727,7 @@
 
                         <!-- Column -->
                         <div class="col-md-6">
-                            <p class="muted">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="" data-original-title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="" data-original-title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="" data-original-title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="" data-original-title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.</p>
+                            <p class="muted">Tight pants next level keffiyeh <a href="#" data-bs-toggle="tooltip" title="" data-bs-title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-bs-toggle="tooltip" title="" data-bs-title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-bs-toggle="tooltip" title="" data-bs-title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-bs-toggle="tooltip" title="" data-bs-title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.</p>
                         </div>
                         <!-- // Column END -->
 
@@ -738,15 +739,15 @@
                                 <table class="table table-bordered table-vertical-center">
                                     <tbody>
                                         <tr>
-                                            <td class="center"><button type="button" class="btn btn-primary" data-toggle="tooltip" data-original-title="Tooltip on Left" data-placement="left">Tooltip on Left</button>
+                                            <td class="center"><button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Tooltip on Left" data-bs-placement="left">Tooltip on Left</button>
                                             </td>
-                                            <td class="center"><button type="button" class="btn btn-primary" data-toggle="tooltip" data-original-title="Tooltip on Top" data-placement="top">Tooltip on Top</button>
+                                            <td class="center"><button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Tooltip on Top" data-bs-placement="top">Tooltip on Top</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="center"><button type="button" class="btn btn-primary" data-toggle="tooltip" data-original-title="Tooltip on Right" data-placement="right">Tooltip on Right</button>
+                                            <td class="center"><button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Tooltip on Right" data-bs-placement="right">Tooltip on Right</button>
                                             </td>
-                                            <td class="center"><button type="button" class="btn btn-primary" data-toggle="tooltip" data-original-title="Tooltip on Bottom" data-placement="bottom">Tooltip on Bottom</button>
+                                            <td class="center"><button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Tooltip on Bottom" data-bs-placement="bottom">Tooltip on Bottom</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -874,18 +875,18 @@
                             <div class="inner">
 
                                 <!-- Live DEMO Popover Options Table -->
-                                <table class="table table-bordered table-vertical-center">
+                                <table class="table table-bordered table-vertical-center table-popover">
                                     <tbody>
                                         <tr>
-                                            <td class="center"><span class="btn btn-inverse" data-toggle="popover" data-title="Popover on Left" data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-placement="left">Popover on Left</span>
+                                            <td class="center"><span class="btn btn-inverse" data-bs-toggle="popover" data-bs-title="Popover on Left" data-bs-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-bs-placement="left">Popover on Left</span>
                                             </td>
-                                            <td class="center"><span class="btn btn-inverse" data-toggle="popover" data-title="Popover on Top" data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-placement="top">Popover on Top</span>
+                                            <td class="center"><span class="btn btn-inverse" data-bs-toggle="popover" data-bs-title="Popover on Top" data-bs-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-bs-placement="top">Popover on Top</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="center"><span class="btn btn-inverse" data-toggle="popover" data-title="Popover on Right" data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-placement="right">Popover on Right</span>
+                                            <td class="center"><span class="btn btn-inverse" data-bs-toggle="popover" data-bs-title="Popover on Right" data-bs-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-bs-placement="right">Popover on Right</span>
                                             </td>
-                                            <td class="center"><span class="btn btn-inverse" data-toggle="popover" data-title="Popover on Bottom" data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-placement="bottom">Popover on Bottom</span>
+                                            <td class="center"><span class="btn btn-inverse" data-bs-toggle="popover" data-bs-title="Popover on Bottom" data-bs-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." data-bs-placement="bottom">Popover on Bottom</span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -898,24 +899,20 @@
 
                     </div>
                     <!-- // Row END -->
-
                 </div>
             </div>
             <!-- // Popovers END -->
-
-
-
         </div>
-
-
-
-
     </div>
     <!-- // Content END -->
-
     <div class="clearfix"></div>
     <!-- // Sidebar menu & content wrapper END -->
-
 </div>
 <!-- // Tab END -->
+<script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
 
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
+</script>
