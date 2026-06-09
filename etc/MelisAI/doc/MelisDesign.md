@@ -33,9 +33,15 @@ No CSS hunting — the look comes from MelisCore.*
 
 ## A1. Browsing the catalog
 
-In the back office, open **MelisCore → Designs** (left-menu tool, melisKey `meliscore_tool_creatrion_designs`).
-Its left sub-menu (labelled **HTML**) lists every demo page; clicking one renders that design full-screen so
-you can see the component live. There is nothing to configure or save — it is a read-only showcase.
+In the back office, open the tool under **MelisCore** — it appears in the left menu as **HTML** (the tool’s
+melisKey is `meliscore_tool_creatrion_designs`). That **HTML** sub-menu lists every demo page; clicking one
+renders that design full-screen so you can see the component live. There is nothing to configure or save — it
+is a read-only showcase.
+
+![The HTML (Designs) sub-menu under MelisCore, listing the demo pages](./images/melisdesign-menu-html-entries.png)
+
+The designs are built on MelisCore’s admin theme (the demos refer to it as **“FLAT PLUS”**) — which is why you
+copy only the markup, never the CSS.
 
 ## A2. The catalog (what’s in the box)
 
@@ -54,6 +60,18 @@ The ~60 demos, grouped:
 | **Forms** | Form Wizards · Form Elements · Form Validator |
 | **Files & messaging** | File Manager · Inbox |
 | **Auth & errors** | Login · Signup · Error |
+
+Two representative demos — a **components** page (Form Elements) and a **composite layout** (Events):
+
+![The Form Elements demo — toggles, inputs, horizontal form, form-in-modals](./images/melisdesign-design-formelements.png)
+
+*Form Elements* is a **component sheet**: toggle on/off buttons, default/large/disabled inputs, a horizontal
+form, form-in-modals and prepended-icon inputs — copy whichever block you need.
+
+![The Events demo — a composite event landing layout](./images/melisdesign-design-events.png)
+
+*Events* is a **full-page layout**: a hero, an event card, a schedule, speakers and a discussions feed — a
+starting point for a whole screen rather than a single widget.
 
 ## A3. How do I…?
 
@@ -119,5 +137,13 @@ a catalog of front-end templates.
 
 ---
 
-*Screenshots will be added later. When captured (the Designs tool and representative demo pages), save the PNGs
-under `./images/`, reference them 1:1 from Part A, and add a Screenshot index here.*
+## Screenshot index
+
+| File | Shows |
+|---|---|
+| `images/melisdesign-menu-html-entries.png` | The **HTML** (Designs) sub-menu under MelisCore, enumerating the demo pages. |
+| `images/melisdesign-design-formelements.png` | The **Form Elements** demo — a component sheet (toggles, inputs, horizontal form, form-in-modals). |
+| `images/melisdesign-design-events.png` | The **Events** demo — a composite full-page layout (hero, event card, schedule, speakers, discussions). |
+
+*The promo images under `etc/MarketPlace/` are kept separate and are not referenced by this doc. Other demo
+pages are not individually captured — add more under `./images/` and extend this index if useful.*
